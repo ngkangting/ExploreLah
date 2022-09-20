@@ -1,7 +1,8 @@
 <template>
   <div class="container-fluid vh-100">
     <div class="row h-100">
-      <div class="col-12 col-lg-5 align-items-center my-auto px-5">
+      <div class="col-1"></div>
+      <div class="col-12 col-lg-4 align-items-center my-auto px-5">
         <div class="mb-5">
           <h1>Login</h1>
           <p>Ready to explore Singapore?</p>
@@ -44,7 +45,8 @@
           </div>
         </form>
       </div>
-      <div class="col-12 col-lg-7 bg-warning"></div>
+      <div class="col-1"></div>
+      <div class="col-12 col-lg-6 bg-warning"></div>
     </div>
   </div>
 </template>
