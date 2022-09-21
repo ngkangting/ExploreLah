@@ -67,7 +67,7 @@
 </template>
 
 <script>
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import AuthHero from "@/components/auth/AuthHero.vue";
 import LineText from "@/components/LineText.vue";
 
@@ -82,19 +82,22 @@ export default {
       email: "",
       password: "",
       confirmPassword: "",
+      user: null,
     };
   },
   methods: {
     signUpUser() {
+      const vm = this;
       const auth = getAuth();
-      signInWithEmailAndPassword(auth, this.email, this.password)
+
+      createUserWithEmailAndPassword(auth, this.email, this.password)
         .then((userCredential) => {
-          console.log(userCredential);
-          this.$router.push("/home");
+          vm.user = userCredential.user;
+          vm.$router.push("/home");
         })
         .catch((error) => {
           console.log(error.message);
-          alert("User not found!");
+          alert("Unsuccessful Sign Up!");
         });
     },
   },

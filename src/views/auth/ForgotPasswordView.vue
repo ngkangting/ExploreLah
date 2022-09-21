@@ -3,7 +3,7 @@
     <div class="row h-100 justify-content-around">
       <div class="col-12 col-lg-4 my-auto px-5 offset-lg-1">
         <div class="mb-5">
-          <h1 class="text-dark-blue">Login</h1>
+          <h1 class="text-dark-blue">Forgot Password</h1>
           <p class="text-black-50">Ready to explore Singapore?</p>
         </div>
         <form @submit.prevent="login()">
@@ -43,7 +43,7 @@
                 >Remember Me</label
               >
             </div>
-            <router-link to="/forgotpassword" class="link-primary"
+            <router-link to="/signup" class="link-primary"
               >Forgot Password?</router-link
             >
           </div>
@@ -72,17 +72,12 @@
 </template>
 
 <script>
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-  GoogleAuthProvider,
-} from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import AuthHero from "@/components/auth/AuthHero.vue";
 import LineText from "@/components/LineText.vue";
 
 export default {
-  name: "LoginView",
+  name: "ForgotPasswordView",
   components: {
     AuthHero,
     LineText,
@@ -96,38 +91,7 @@ export default {
     };
   },
   created() {},
-  methods: {
-    login() {
-      const vm = this;
-      const auth = getAuth();
-
-      signInWithEmailAndPassword(auth, this.email, this.password)
-        .then((userCredential) => {
-          vm.user = userCredential.user;
-          vm.$router.push("/home");
-        })
-        .catch((error) => {
-          alert("User not found!");
-        });
-    },
-    loginGoogle() {
-      const vm = this;
-      const auth = getAuth();
-      const provider = new GoogleAuthProvider();
-
-      signInWithPopup(auth, provider)
-        .then((result) => {
-          vm.user = result.user;
-          vm.$router.push("/home");
-        })
-        .catch((error) => {
-          const email = error.customData.email;
-          const credential = GoogleAuthProvider.credentialFromError(error);
-
-          console.log(error.message);
-        });
-    },
-  },
+  methods: {},
 };
 </script>
 
