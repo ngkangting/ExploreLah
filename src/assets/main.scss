@@ -28,6 +28,20 @@
   color: #d6f4ff;
 }
 
+.btn-light-gray {
+  @include button-variant(
+    #e9ecef,
+    #e9ecef,
+    #6c757d,
+    #f8f9fa,
+    #f8f9fa,
+    #6c757d,
+    #dee2e6,
+    #dee2e6,
+    #6c757d
+  );
+}
+
 .bg-pink {
   background-color: #ff8397;
 }
@@ -37,5 +51,15 @@
 }
 
 .btn-pink {
-  @include button-variant(#ff8397, #ff8397, #ffffff, #ff8397, #ff8397, #ffffff);
+  @include button-variant(
+    #ff8397,
+    #ff8397,
+    #ffffff,
+    #ff9cac,
+    #ff9cac,
+    #ffffff,
+    #ff5c77,
+    #ff5c77,
+    #ffffff
+  );
 }

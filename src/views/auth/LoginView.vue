@@ -39,7 +39,7 @@
                 class="form-check-input"
                 id="rememberCheck"
               />
-              <label class="form-check-label" for="rememberCheck"
+              <label class="form-check-label text-secondary" for="rememberCheck"
                 >Remember Me</label
               >
             </div>
@@ -55,10 +55,10 @@
         <div class="mb-5">
           <button
             type="button"
-            class="btn btn-light w-100"
+            class="btn btn-light-gray w-100"
             @click="loginGoogle()"
           >
-            Sign In with Google
+            <GoogleIcon class="me-2" /> Login with Google
           </button>
         </div>
         <div class="text-center">
@@ -80,12 +80,14 @@ import {
 } from "firebase/auth";
 import AuthHero from "@/components/auth/AuthHero.vue";
 import LineText from "@/components/LineText.vue";
+import GoogleIcon from "@/components/icons/GoogleIcon.vue";
 
 export default {
   name: "LoginView",
   components: {
     AuthHero,
     LineText,
+    GoogleIcon,
   },
   data() {
     return {
@@ -104,10 +106,12 @@ export default {
       signInWithEmailAndPassword(auth, this.email, this.password)
         .then((userCredential) => {
           vm.user = userCredential.user;
+          // console.log(vm.user);
           vm.$router.push("/home");
         })
         .catch((error) => {
           alert("User not found!");
+          console.log(error.message);
         });
     },
     loginGoogle() {
