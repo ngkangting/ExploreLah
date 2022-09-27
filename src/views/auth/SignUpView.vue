@@ -5,7 +5,7 @@
         <div class="mb-5">
           <h1 class="text-dark-blue">Sign Up</h1>
           <p class="text-black-50">
-            Register to take your trip planning to the next level!
+            Create an account to take your trip planning to the next level!
           </p>
         </div>
         <form @submit.prevent="signUpUser()">
@@ -46,14 +46,27 @@
               required
             />
           </div>
+          <div class="mb-3 d-flex justify-content-between">
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="termsCheck" />
+              <label class="form-check-label text-secondary" for="termsCheck"
+                >I have read and agree to the
+                <router-link to="/signup">Terms of Service</router-link></label
+              >
+            </div>
+          </div>
           <div class="text-center">
             <button type="submit" class="btn btn-pink w-100">Sign Up</button>
           </div>
         </form>
         <LineText content="OR" />
         <div class="mb-5">
-          <button type="button" class="btn btn-light w-100">
-            Sign Up with Google
+          <button
+            type="button"
+            class="btn btn-light-gray w-100"
+            @click="loginGoogle()"
+          >
+            <GoogleIcon class="me-2" /> Sign Up with Google
           </button>
         </div>
         <div class="text-center">
@@ -67,15 +80,22 @@
 </template>
 
 <script>
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+} from "firebase/auth";
 import AuthHero from "@/components/auth/AuthHero.vue";
 import LineText from "@/components/LineText.vue";
+import GoogleIcon from "@/components/icons/GoogleIcon.vue";
 
 export default {
   name: "SignUpView",
   components: {
     AuthHero,
     LineText,
+    GoogleIcon,
   },
   data() {
     return {
@@ -90,6 +110,11 @@ export default {
       const vm = this;
       const auth = getAuth();
 
+      if (this.password != this.confirmPassword) {
+        alert("Passwords do not match!");
+        return;
+      }
+
       createUserWithEmailAndPassword(auth, this.email, this.password)
         .then((userCredential) => {
           vm.user = userCredential.user;
@@ -98,6 +123,23 @@ export default {
         .catch((error) => {
           console.log(error.message);
           alert("Unsuccessful Sign Up!");
+        });
+    },
+    loginGoogle() {
+      const vm = this;
+      const auth = getAuth();
+      const provider = new GoogleAuthProvider();
+
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          vm.user = result.user;
+          vm.$router.push("/home");
+        })
+        .catch((error) => {
+          const email = error.customData.email;
+          const credential = GoogleAuthProvider.credentialFromError(error);
+
+          console.log(error.message);
         });
     },
   },
