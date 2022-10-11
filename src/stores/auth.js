@@ -26,12 +26,12 @@ export const useAuthStore = defineStore("auth", {
 
           if (
             this.$router.isReady() &&
-            this.$router.currentRoute.value.path === "/"
+            (this.$router.currentRoute.value.path === "/login" ||
+              this.$router.currentRoute.value.path === "/signup" ||
+              this.$router.currentRoute.value.path === "/forgotpassword")
           ) {
-            this.$router.push("/home");
+            this.$router.push("/");
           }
-        } else {
-          this.$router.push("/");
         }
       });
     },
@@ -43,7 +43,7 @@ export const useAuthStore = defineStore("auth", {
       await signInWithEmailAndPassword(auth, email, password)
         .then((response) => {
           this.user = response.user;
-          this.$router.push("/home");
+          this.$router.push("/");
           isSuccess = true;
         })
         .catch((error) => {
@@ -68,7 +68,7 @@ export const useAuthStore = defineStore("auth", {
       await signInWithPopup(auth, provider)
         .then((response) => {
           this.user = response.user;
-          this.$router.push("/home");
+          this.$router.push("/");
           isSuccess = true;
         })
         .catch((error) => {
@@ -92,7 +92,7 @@ export const useAuthStore = defineStore("auth", {
       await createUserWithEmailAndPassword(auth, email, password)
         .then((response) => {
           this.user = response.user;
-          this.$router.push("/home");
+          this.$router.push("/");
           isSuccess = true;
         })
         .catch((error) => {
@@ -132,7 +132,6 @@ export const useAuthStore = defineStore("auth", {
       await signOut(auth)
         .then(() => {
           this.user = null;
-          this.$router.push("/");
         })
         .catch((error) => {
           switch (error.code) {

@@ -66,7 +66,9 @@
         </div>
         <div class="text-center">
           <span class="text-secondary">Already have an account? </span>
-          <router-link to="/" class="text-decoration-none">Login</router-link>
+          <router-link to="/login" class="text-decoration-none"
+            >Login</router-link
+          >
         </div>
       </div>
       <AuthHero />

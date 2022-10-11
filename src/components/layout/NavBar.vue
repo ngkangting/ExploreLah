@@ -14,42 +14,55 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav me-auto mb-0 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link" href="#">Discover</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="#">About Us</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0" v-if="!this.authStore.user">
+          <li class="nav-item">
+            <router-link to="/login" class="nav-link">Login</router-link>
           </li>
           <li class="nav-item">
-            <a
-              class="nav-link disabled"
-              href="#"
-              tabindex="-1"
-              aria-disabled="true"
-              >Disabled</a
+            <router-link to="/signup" class="nav-link">Sign Up</router-link>
+          </li>
+        </ul>
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0" v-else>
+          <li class="nav-item">
+            <router-link to="/" class="nav-link" @click="logoutUser()"
+              >Logout</router-link
             >
           </li>
         </ul>
-        <form class="d-flex">
-          <input
-            class="form-control me-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
       </div>
     </div>
   </nav>
 </template>
 
 <script>
+import { useAuthStore } from "@/stores/auth";
+
 export default {
   name: "NavBar",
   data() {
     return {};
+  },
+  setup() {
+    const authStore = useAuthStore();
+
+    return { authStore };
+  },
+  methods: {
+    async logoutUser() {
+      try {
+        const response = await this.authStore.logoutUser();
+      } catch (error) {
+        console.log(error.message);
+      }
+    },
   },
 };
 </script>

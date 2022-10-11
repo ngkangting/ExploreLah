@@ -1,9 +1,5 @@
 <template>
-  <div class="text-center align-middle">
-    <button type="button" class="btn btn-secondary" @click="logoutUser()">
-      Logout
-    </button>
-  </div>
+  <div class="text-center align-middle">Home</div>
 </template>
 
 <script>

@@ -9,7 +9,7 @@
       <div class="col-12 col-lg-4 my-auto px-5 offset-lg-1">
         <RoundLink
           class="position-absolute top-0 start-0 mt-4 ms-4"
-          :path="'/'"
+          :path="'/login'"
           :height="50"
           :width="50"
         >
