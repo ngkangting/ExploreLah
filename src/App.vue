@@ -1,5 +1,5 @@
 <template>
-  <NavBar v-if="this.authStore.user" />
+  <NavBar v-if="!this.$route.meta.hideNavBar" />
   <RouterView />
 </template>
 
