@@ -1,30 +1,31 @@
 <template>
   <div class="text-center align-middle">
-    <button type="button" class="btn btn-secondary" @click="signOutUser()">
+    <button type="button" class="btn btn-secondary" @click="logoutUser()">
       Logout
     </button>
   </div>
 </template>
 
 <script>
-import { getAuth, signOut } from "firebase/auth";
+import { useAuthStore } from "@/stores/auth";
 
 export default {
   name: "HomeView",
   data() {
     return {};
   },
-  created() {},
-  methods: {
-    signOutUser() {
-      const vm = this;
-      const auth = getAuth();
+  setup() {
+    const authStore = useAuthStore();
 
-      signOut(auth)
-        .then(() => {
-          vm.$router.push("/");
-        })
-        .catch((error) => {});
+    return { authStore };
+  },
+  methods: {
+    async logoutUser() {
+      try {
+        const response = await this.authStore.logoutUser();
+      } catch (error) {
+        console.log(error.message);
+      }
     },
   },
 };

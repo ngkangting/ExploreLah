@@ -14,8 +14,8 @@ export default {
   name: "RoundLink",
   props: {
     path: String,
-    height: String,
-    width: String,
+    height: Number,
+    width: Number,
   },
   data() {
     return {};

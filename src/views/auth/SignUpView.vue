@@ -13,7 +13,7 @@
             Create an account to take your trip planning to the next level!
           </p>
         </div>
-        <form @submit.prevent="signUpUser()">
+        <form @submit.prevent="registerUser()">
           <div class="mb-3">
             <label for="emailInput" class="form-label"
               >Email address<span class="text-danger">*</span></label
@@ -59,7 +59,7 @@
           <button
             type="button"
             class="btn btn-light-gray w-100"
-            @click="loginGoogle()"
+            @click="loginWithGoogle()"
           >
             <GoogleIcon class="me-2" /> Sign Up with Google
           </button>
@@ -75,12 +75,8 @@
 </template>
 
 <script>
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithPopup,
-  GoogleAuthProvider,
-} from "firebase/auth";
+import { useAuthStore } from "@/stores/auth";
+
 import AuthHero from "@/components/auth/AuthHero.vue";
 import LineText from "@/components/common/LineText.vue";
 import GoogleIcon from "@/components/icons/GoogleIcon.vue";
@@ -98,47 +94,37 @@ export default {
     return {
       email: "",
       password: "",
-      user: null,
       variant: "",
       alertContent: "",
       isAlert: false,
     };
   },
+  setup() {
+    const authStore = useAuthStore();
+
+    return { authStore };
+  },
   methods: {
-    signUpUser() {
-      const vm = this;
-      const auth = getAuth();
-
-      createUserWithEmailAndPassword(auth, this.email, this.password)
-        .then((userCredential) => {
-          vm.user = userCredential.user;
-          vm.$router.push("/home");
-        })
-        .catch((error) => {
-          vm.variant = "alert-danger";
-          vm.alertContent = "Oops! Something went wrong...";
-          vm.showAlert();
-
-          console.log(error.message);
-        });
+    async registerUser() {
+      try {
+        const response = await this.authStore.registerUser(
+          this.email,
+          this.password
+        );
+      } catch (error) {
+        this.variant = "alert-danger";
+        this.alertContent = error.message;
+        this.showAlert();
+      }
     },
-    loginGoogle() {
-      const vm = this;
-      const auth = getAuth();
-      const provider = new GoogleAuthProvider();
-
-      signInWithPopup(auth, provider)
-        .then((result) => {
-          vm.user = result.user;
-          vm.$router.push("/home");
-        })
-        .catch((error) => {
-          vm.variant = "alert-danger";
-          vm.alertContent = "Oops! Something went wrong...";
-          vm.showAlert();
-
-          console.log(error.message);
-        });
+    async loginWithGoogle() {
+      try {
+        const response = await this.authStore.loginWithGoogle();
+      } catch (error) {
+        this.variant = "alert-danger";
+        this.alertContent = error.message;
+        this.showAlert();
+      }
     },
   },
 };

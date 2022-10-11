@@ -1,9 +1,28 @@
-<script setup>
-import { RouterLink, RouterView } from "vue-router";
-</script>
-
 <template>
+  <NavBar v-if="this.authStore.user" />
   <RouterView />
 </template>
 
-<style scoped></style>
+<script>
+import { useAuthStore } from "@/stores/auth";
+
+import { RouterLink, RouterView } from "vue-router";
+import NavBar from "@/components/layout/NavBar.vue";
+
+export default {
+  name: "App",
+  components: {
+    NavBar,
+  },
+  setup() {
+    const authStore = useAuthStore();
+
+    return { authStore };
+  },
+  beforeMount() {
+    this.authStore.fetchUser();
+  },
+};
+</script>
+
+<style lang="scss"></style>

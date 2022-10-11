@@ -55,7 +55,8 @@
 </template>
 
 <script>
-import { getAuth, sendPasswordResetEmail } from "firebase/auth";
+import { useAuthStore } from "@/stores/auth";
+
 import AuthHero from "@/components/auth/AuthHero.vue";
 import FixedAlert from "@/components/ui/FixedAlert.vue";
 import RoundLink from "@/components/ui/RoundLink.vue";
@@ -75,25 +76,26 @@ export default {
       isAlert: false,
     };
   },
+  setup() {
+    const authStore = useAuthStore();
+
+    return { authStore };
+  },
   methods: {
-    resetPassword() {
-      const vm = this;
-      const auth = getAuth();
+    async resetPassword() {
+      try {
+        const response = await this.authStore.resetPassword(this.email);
 
-      sendPasswordResetEmail(auth, this.email)
-        .then(() => {
-          vm.variant = "alert-success";
-          vm.alertContent = "We have e-mailed your password reset link!";
-        })
-        .catch((error) => {
-          vm.variant = "alert-danger";
-          vm.alertContent = "Oops! Something went wrong...";
-
-          console.log(error.message);
-        })
-        .finally(() => {
-          vm.showAlert();
-        });
+        if (response) {
+          this.variant = "alert-success";
+          this.alertContent = "We have e-mailed your password reset link!";
+          this.showAlert();
+        }
+      } catch (error) {
+        this.variant = "alert-danger";
+        this.alertContent = error.message;
+        this.showAlert();
+      }
     },
     showAlert() {
       this.isAlert = true;
