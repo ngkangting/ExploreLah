@@ -22,7 +22,10 @@
             <a class="nav-link" href="#">About Us</a>
           </li>
         </ul>
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0" v-if="!this.authStore.user">
+        <ul
+          class="navbar-nav ms-auto mb-2 mb-lg-0"
+          v-if="!this.authStore.isLoggedIn"
+        >
           <li class="nav-item">
             <router-link to="/login" class="nav-link">Login</router-link>
           </li>

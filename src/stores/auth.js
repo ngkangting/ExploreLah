@@ -15,7 +15,11 @@ export const useAuthStore = defineStore("auth", {
   state: () => ({
     user: null,
   }),
-  getters: {},
+  getters: {
+    isLoggedIn(state) {
+      return !(state.user === undefined || state.user === null);
+    },
+  },
   actions: {
     async fetchUser() {
       const auth = getAuth();
@@ -25,10 +29,9 @@ export const useAuthStore = defineStore("auth", {
           this.user = user;
 
           if (
-            this.$router.isReady() &&
-            (this.$router.currentRoute.value.path === "/login" ||
-              this.$router.currentRoute.value.path === "/signup" ||
-              this.$router.currentRoute.value.path === "/forgotpassword")
+            this.$router.currentRoute.value.path === "/login" ||
+            this.$router.currentRoute.value.path === "/signup" ||
+            this.$router.currentRoute.value.path === "/forgotpassword"
           ) {
             this.$router.push("/");
           }

@@ -1,7 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-import { getAuth } from "firebase/auth";
-
 import HomeView from "../views/HomeView.vue";
 import LoginView from "../views/auth/LoginView.vue";
 import SignUpView from "../views/auth/SignUpView.vue";
@@ -40,20 +38,6 @@ const router = createRouter({
       },
     },
   ],
-});
-
-router.beforeEach((to, from, next) => {
-  if (
-    (to.path === "/login" ||
-      to.path === "/signup" ||
-      to.path === "/forgotpassword") &&
-    getAuth().currentUser
-  ) {
-    next("/");
-    return;
-  }
-
-  next();
 });
 
 export default router;
