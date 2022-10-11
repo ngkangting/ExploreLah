@@ -8,6 +8,9 @@ export default {
   props: {
     content: String,
   },
+  data() {
+    return {};
+  },
 };
 </script>
 

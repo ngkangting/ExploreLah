@@ -12,8 +12,7 @@ export default {
   data() {
     return {};
   },
-  methods: {},
 };
 </script>
 
-<style></style>
+<style lang="scss"></style>
