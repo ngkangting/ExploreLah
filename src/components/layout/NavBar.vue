@@ -45,6 +45,13 @@
   </nav>
 </template>
 
-<script setup></script>
+<script>
+export default {
+  name: "NavBar",
+  data() {
+    return {};
+  },
+};
+</script>
 
-<style scoped></style>
+<style lang="scss"></style>

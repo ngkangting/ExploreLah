@@ -1,6 +1,11 @@
 <template>
   <div class="container-fluid vh-100">
     <div class="row h-100 justify-content-around">
+      <FixedAlert
+        :variant="variant"
+        :alertContent="alertContent"
+        v-if="isAlert"
+      />
       <div class="col-12 col-lg-4 my-auto px-5 offset-lg-1">
         <div class="mb-5">
           <h1 class="text-dark-blue">Login</h1>
@@ -43,7 +48,9 @@
                 >Remember Me</label
               >
             </div>
-            <router-link to="/forgotpassword" class="link-primary"
+            <router-link
+              to="/forgotpassword"
+              class="link-primary text-decoration-none"
               >Forgot Password?</router-link
             >
           </div>
@@ -63,7 +70,9 @@
         </div>
         <div class="text-center">
           <span class="text-secondary">Don't have an account? </span>
-          <router-link to="/signup">Sign up</router-link>
+          <router-link to="/signup" class="text-decoration-none"
+            >Sign up</router-link
+          >
         </div>
       </div>
       <AuthHero />
@@ -79,8 +88,9 @@ import {
   GoogleAuthProvider,
 } from "firebase/auth";
 import AuthHero from "@/components/auth/AuthHero.vue";
-import LineText from "@/components/LineText.vue";
+import LineText from "@/components/common/LineText.vue";
 import GoogleIcon from "@/components/icons/GoogleIcon.vue";
+import FixedAlert from "@/components/ui/FixedAlert.vue";
 
 export default {
   name: "LoginView",
@@ -88,6 +98,7 @@ export default {
     AuthHero,
     LineText,
     GoogleIcon,
+    FixedAlert,
   },
   data() {
     return {
@@ -95,6 +106,9 @@ export default {
       password: "",
       token: null,
       user: null,
+      variant: "",
+      alertContent: "",
+      isAlert: false,
     };
   },
   created() {},
@@ -106,11 +120,13 @@ export default {
       signInWithEmailAndPassword(auth, this.email, this.password)
         .then((userCredential) => {
           vm.user = userCredential.user;
-          // console.log(vm.user);
           vm.$router.push("/home");
         })
         .catch((error) => {
-          alert("User not found!");
+          vm.variant = "alert-danger";
+          vm.alertContent = "User not found!";
+          vm.showAlert();
+
           console.log(error.message);
         });
     },
@@ -125,14 +141,21 @@ export default {
           vm.$router.push("/home");
         })
         .catch((error) => {
-          const email = error.customData.email;
-          const credential = GoogleAuthProvider.credentialFromError(error);
+          vm.variant = "alert-danger";
+          vm.alertContent = "Oops! Something went wrong...";
+          vm.showAlert();
 
           console.log(error.message);
         });
+    },
+    showAlert() {
+      this.isAlert = true;
+      setTimeout(() => {
+        this.isAlert = false;
+      }, 5000);
     },
   },
 };
 </script>
 
-<style></style>
+<style lang="scss"></style>
