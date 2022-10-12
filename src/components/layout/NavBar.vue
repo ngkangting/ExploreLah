@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <router-link to="/" class="navbar-brand">ExploreLah!</router-link>
       <button
-        class="navbar-toggler"
+        class="navbar-toggler border-0"
         type="button"
         data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasNavbar"
@@ -49,8 +49,8 @@
               <router-link to="/signup" class="nav-link">Sign Up</router-link>
             </li>
           </ul>
-          <!-- <ul class="navbar-nav justify-content-end flex-grow-1" v-else>
-            <li class="nav-item dropdown">
+          <ul class="navbar-nav justify-content-end flex-grow-1" v-else>
+            <!-- <li class="nav-item dropdown">
               <a
                 class="nav-link bg-secondary rounded-circle d-flex justify-content-center align-items-center"
                 href="#"
@@ -76,13 +76,13 @@
                   >
                 </li>
               </ul>
-            </li>
+            </li> -->
             <li class="nav-item">
               <router-link to="/" class="nav-link" @click="logoutUser()"
                 >Logout</router-link
               >
             </li>
-          </ul> -->
+          </ul>
         </div>
       </div>
     </div>
