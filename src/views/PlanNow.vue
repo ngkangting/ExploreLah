@@ -9,23 +9,34 @@
           Catered to your personal preferences, find the best possible travel
           route!
         </p>
-        <form>
+        <form @submit.prevent="generateItinerary()">
           <div class="mb-3">
             <label for="location" class="form-label">Location</label>
             <input
-              type="email"
+              type="text"
               class="form-control"
               id="location"
               placeholder="Where are you staying?"
+              v-model="location"
             />
           </div>
           <div class="mb-3">
             <label for="start-date" class="form-label">Start Date</label>
-            <input type="date" class="form-control" id="start-date" />
+            <input
+              type="date"
+              class="form-control"
+              id="start-date"
+              v-model="startDate"
+            />
           </div>
           <div class="mb-3">
             <label for="end-date" class="form-label">End Date</label>
-            <input type="date" class="form-control" id="end-date" />
+            <input
+              type="date"
+              class="form-control"
+              id="end-date"
+              v-model="endDate"
+            />
           </div>
           <div>
             <label for="shopping" class="form-label">Shopping</label>
@@ -34,8 +45,8 @@
               class="form-range"
               min="0"
               max="5"
-              value="0"
               id="shopping"
+              v-model="shopping"
             />
           </div>
           <div>
@@ -45,8 +56,8 @@
               class="form-range"
               min="0"
               max="5"
-              value="0"
               id="arts-culture"
+              v-model="arts"
             />
           </div>
           <div>
@@ -56,8 +67,8 @@
               class="form-range"
               min="0"
               max="5"
-              value="0"
               id="outdoor"
+              v-model="outdoor"
             />
           </div>
           <div>
@@ -67,8 +78,8 @@
               class="form-range"
               min="0"
               max="5"
-              value="0"
               id="adventure"
+              v-model="adventure"
             />
           </div>
           <div>
@@ -78,8 +89,8 @@
               class="form-range"
               min="0"
               max="5"
-              value="0"
               id="nightlife"
+              v-model="nightlife"
             />
           </div>
           <div class="">
@@ -90,6 +101,9 @@
                 type="radio"
                 name="public-transport"
                 id="public-transport"
+                value="public"
+                v-model="transportation"
+                checked
               />
               <label class="form-check-label" for="flexRadioDefault1">
                 Public Transport
@@ -101,7 +115,8 @@
                 type="radio"
                 name="private-transport"
                 id="private-transport"
-                checked
+                value="private"
+                v-model="transportation"
               />
               <label class="form-check-label" for="private-transport">
                 Private Transport
@@ -121,10 +136,31 @@
 export default {
   name: "PlanNow",
   data() {
-    return {};
+    return {
+      location: "",
+      startDate: "",
+      endDate: "",
+      shopping: 0,
+      arts: 0,
+      outdoor: 0,
+      adventure: 0,
+      nightlife: 0,
+      transportation: "",
+    };
   },
-
-  methods: {},
+  methods: {
+    generateItinerary() {
+      console.log(this.location);
+      console.log(this.startDate);
+      console.log(this.endDate);
+      console.log(this.shopping);
+      console.log(this.arts);
+      console.log(this.outdoor);
+      console.log(this.adventure);
+      console.log(this.nightlife);
+      console.log(this.transportation);
+    },
+  },
 };
 </script>
 
