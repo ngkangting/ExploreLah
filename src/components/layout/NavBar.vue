@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid">
+    <div class="container-fluid mx-4">
       <router-link to="/" class="navbar-brand">ExploreLah!</router-link>
       <button
         class="navbar-toggler border-0"
@@ -27,43 +27,57 @@
           ></button>
         </div>
         <div class="offcanvas-body">
-          <ul class="navbar-nav flex-grow-1 pe-3">
+          <ul class="navbar-nav flex-grow-1 pe-3 align-items-center">
             <li class="nav-item">
               <a class="nav-link" href="#">Discover</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">About Us</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">My Trips</a>
-            </li>
           </ul>
           <ul
-            class="navbar-nav justify-content-end flex-grow-1"
+            class="navbar-nav flex-grow-1 justify-content-end align-items-center"
             v-if="!this.authStore.isLoggedIn"
           >
-            <li class="nav-item">
-              <router-link to="/login" class="nav-link">Login</router-link>
+            <li class="nav-item me-2">
+              <router-link to="/signup" class="nav-link">Sign Up</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/signup" class="nav-link">Sign Up</router-link>
+              <router-link
+                to="/login"
+                class="nav-link btn btn-primary text-white"
+                >Login</router-link
+              >
             </li>
           </ul>
           <ul class="navbar-nav justify-content-end flex-grow-1" v-else>
-            <!-- <li class="nav-item dropdown">
+            <li class="nav-item dropdown">
               <a
-                class="nav-link bg-secondary rounded-circle d-flex justify-content-center align-items-center"
+                class="nav-link d-flex justify-content-center align-items-center"
                 href="#"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
-                style="width: 40px; height: 40px"
               >
-                T
+                <div
+                  class="bg-secondary rounded-circle text-white d-flex justify-content-center align-items-center me-2"
+                  style="width: 40px; height: 40px"
+                >
+                  {{ this.authStore.user.email.charAt(0).toUpperCase() }}
+                </div>
+                {{ this.authStore.user.email }}
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><i class="bi bi-geo-alt"></i> My Trips</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><i class="bi bi-gear"></i> Settings</a
+                  >
+                </li>
                 <li>
                   <hr class="dropdown-divider" />
                 </li>
@@ -72,15 +86,10 @@
                     to="/"
                     class="dropdown-item"
                     @click="logoutUser()"
-                    >Logout</router-link
+                    ><i class="bi bi-box-arrow-right"></i> Logout</router-link
                   >
                 </li>
               </ul>
-            </li> -->
-            <li class="nav-item">
-              <router-link to="/" class="nav-link" @click="logoutUser()"
-                >Logout</router-link
-              >
             </li>
           </ul>
         </div>
