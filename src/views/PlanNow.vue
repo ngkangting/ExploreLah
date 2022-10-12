@@ -30,12 +30,12 @@
             />
           </div>
           <div class="mb-3">
-            <label for="end-date" class="form-label">End Date</label>
+            <label for="duration" class="form-label">Duration</label>
             <input
-              type="date"
+              type="number"
               class="form-control"
-              id="end-date"
-              v-model="endDate"
+              id="duration"
+              v-model="duration"
             />
           </div>
           <div>
@@ -124,7 +124,7 @@
             </div>
           </div>
           <div class="text-center">
-            <button type="submit" class="btn btn-pink">Login</button>
+            <button type="submit" class="btn btn-pink">Plan Now!</button>
           </div>
         </form>
       </div>
@@ -133,13 +133,15 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: "PlanNow",
   data() {
     return {
       location: "",
       startDate: "",
-      endDate: "",
+      duration:"",
       shopping: 0,
       arts: 0,
       outdoor: 0,
@@ -150,15 +152,24 @@ export default {
   },
   methods: {
     generateItinerary() {
-      console.log(this.location);
-      console.log(this.startDate);
-      console.log(this.endDate);
-      console.log(this.shopping);
-      console.log(this.arts);
-      console.log(this.outdoor);
-      console.log(this.adventure);
-      console.log(this.nightlife);
-      console.log(this.transportation);
+      let parsedStartDay= new Date(this.startDate);
+      let days = ["Sun","Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+      const userInfo = {
+        name: "ignore",
+        startLoc: this.location,
+        day: days[parsedStartDay.getDay()],
+        dur: this.duration,
+        byCar: this.transportation == "public" ? true : false,
+        pref:{
+          shop: parseInt(this.shopping),
+          arts: parseInt(this.arts),
+          outdoor: parseInt(this.outdoor),
+          adventure: parseInt(this.adventure),
+          nightlife: parseInt(this.nightlife)
+        },
+      }
+      console.log(userInfo)
     },
   },
 };
