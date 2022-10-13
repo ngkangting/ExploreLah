@@ -1,5 +1,8 @@
 <template>
-  <nav class="navbar navbar-expand-lg bg-light">
+  <nav
+    class="navbar navbar-expand-lg bg-white border-bottom fw-bold"
+    style="height: 75px"
+  >
     <div class="container-fluid mx-4">
       <router-link to="/" class="navbar-brand">ExploreLah!</router-link>
       <button
@@ -42,16 +45,20 @@
             <li class="nav-item me-2">
               <router-link to="/signup" class="nav-link">Sign Up</router-link>
             </li>
+            <li class="nav-item me-2">
+              <router-link to="/login" class="nav-link">Login</router-link>
+            </li>
             <li class="nav-item">
-              <router-link
-                to="/login"
-                class="nav-link btn btn-primary text-white"
-                >Login</router-link
+              <router-link to="/plannow" class="btn btn-pink"
+                >Plan Now</router-link
               >
             </li>
           </ul>
-          <ul class="navbar-nav justify-content-end flex-grow-1" v-else>
-            <li class="nav-item dropdown">
+          <ul
+            class="navbar-nav flex-grow-1 justify-content-end align-items-center"
+            v-else
+          >
+            <li class="nav-item dropdown me-4">
               <a
                 class="nav-link d-flex justify-content-center align-items-center"
                 href="#"
@@ -90,6 +97,11 @@
                   >
                 </li>
               </ul>
+            </li>
+            <li class="nav-item">
+              <router-link to="/plannow" class="btn btn-pink"
+                >Plan Now</router-link
+              >
             </li>
           </ul>
         </div>

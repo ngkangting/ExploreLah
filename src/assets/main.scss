@@ -1,6 +1,16 @@
 $btn-close-width: 0.8rem;
 
+@import url("https://fonts.googleapis.com/css?family=Lato");
 @import "bootstrap/scss/bootstrap";
+
+html,
+body {
+  font-family: "Lato", sans-serif;
+}
+
+#app {
+  font-family: "Lato", sans-serif;
+}
 
 .bg-dark-blue {
   background-color: #174877;
