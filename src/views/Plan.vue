@@ -134,7 +134,7 @@
 
 <script>
 export default {
-  name: "PlanNow",
+  name: "Plan",
   data() {
     return {
       location: "",
