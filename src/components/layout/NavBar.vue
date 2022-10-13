@@ -49,7 +49,7 @@
               <router-link to="/login" class="nav-link">Login</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/plannow" class="btn btn-pink"
+              <router-link to="/plan" class="btn btn-pink"
                 >Plan Now</router-link
               >
             </li>
@@ -99,7 +99,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <router-link to="/plannow" class="btn btn-pink"
+              <router-link to="/plan" class="btn btn-pink"
                 >Plan Now</router-link
               >
             </li>

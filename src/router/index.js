@@ -4,7 +4,7 @@ import HomeView from "../views/HomeView.vue";
 import LoginView from "../views/auth/LoginView.vue";
 import SignUpView from "../views/auth/SignUpView.vue";
 import ForgotPasswordView from "../views/auth/ForgotPasswordView.vue";
-import PlanNow from "../views/PlanNow.vue";
+import Plan from "../views/Plan.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -39,9 +39,9 @@ const router = createRouter({
       },
     },
     {
-      path: "/plannow",
-      name: "plannow",
-      component: PlanNow,
+      path: "/plan",
+      name: "plan",
+      component: Plan,
     },
   ],
 });
