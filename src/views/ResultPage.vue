@@ -5,7 +5,6 @@
 </template>
   
   <script>
-  import {useItineraryStore} from "@/stores/itinerary";
 
   export default {
     name: "ResultPage",
@@ -16,15 +15,11 @@
 
       };
     },
-    setup() {
-      const itineraryStore = useItineraryStore();
-      return {itineraryStore};
-    },
+
     methods: {
       
     },
     created(){
-      this.itineraryStore.fetchItinerary();
     }
   };
   </script>

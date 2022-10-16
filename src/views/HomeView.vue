@@ -4,6 +4,7 @@
 
 <script>
 import { useAuthStore } from "@/stores/auth";
+import {useItineraryStore} from "@/stores/itinerary";
 
 export default {
   name: "HomeView",
@@ -12,7 +13,8 @@ export default {
   },
   setup() {
     const authStore = useAuthStore();
-    return { authStore };
+    const itineraryStore = useItineraryStore();
+    return { authStore,itineraryStore };
   },
   methods: {
     async logoutUser() {``
