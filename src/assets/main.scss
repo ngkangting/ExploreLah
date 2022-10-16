@@ -1,15 +1,16 @@
-$btn-close-width: 0.8rem;
-
-@import url("https://fonts.googleapis.com/css?family=Lato");
+@import url("https://fonts.googleapis.com/css?family=Fredoka");
 @import "bootstrap/scss/bootstrap";
+@import "bootstrap/scss/bootstrap-utilities";
+
+$btn-close-width: 0.8rem;
 
 html,
 body {
-  font-family: "Lato", sans-serif;
+  font-family: "Fredoka", sans-serif;
 }
 
 #app {
-  font-family: "Lato", sans-serif;
+  font-family: "Fredoka", sans-serif;
 }
 
 .bg-dark-blue {
