@@ -12,11 +12,10 @@ export default {
   },
   setup() {
     const authStore = useAuthStore();
-
     return { authStore };
   },
   methods: {
-    async logoutUser() {
+    async logoutUser() {``
       try {
         const response = await this.authStore.logoutUser();
       } catch (error) {

@@ -133,10 +133,14 @@
 </template>
 
 <script>
-import axios from 'axios';
+import {useItineraryStore} from "@/stores/itinerary";
 
 export default {
   name: "PlanNow",
+  setup() {
+    const itineraryStore = useItineraryStore();
+    return {itineraryStore}
+  },
   data() {
     return {
       location: "",
@@ -169,7 +173,13 @@ export default {
           nightlife: parseInt(this.nightlife)
         },
       }
-      console.log(userInfo)
+      this.itineraryStore.fetchItinerary(userInfo);
+      this.redirect();
+    },
+    redirect() {
+        this.$router.push({
+          name:'result',
+        });
     },
   },
 };
