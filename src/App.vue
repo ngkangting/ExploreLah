@@ -1,6 +1,13 @@
 <template>
   <NavBar v-if="!this.$route.meta.hideNavBar" />
-  <RouterView />
+  <RouterView
+    :class="[
+      this.$route.meta.hideNavBar ? 'bg-white' : 'bg-light',
+      this.$route.meta.hideNavBar ? '' : 'py-4',
+      this.$route.meta.hideNavBar ? '' : 'px-5',
+    ]"
+    style="min-height: calc(100vh - 75px)"
+  />
 </template>
 
 <script>
@@ -12,6 +19,9 @@ export default {
   name: "App",
   components: {
     NavBar,
+  },
+  data() {
+    return {};
   },
   setup() {
     const authStore = useAuthStore();
