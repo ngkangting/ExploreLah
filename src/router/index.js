@@ -6,6 +6,8 @@ import SignUpView from "../views/auth/SignUpView.vue";
 import ForgotPasswordView from "../views/auth/ForgotPasswordView.vue";
 import PlanNow from "../views/PlanNow.vue";
 import ResultPage from "../views/ResultPage.vue";
+import Plan from "../views/Plan.vue";
+import Result from "../views/ResultView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -40,9 +42,14 @@ const router = createRouter({
       },
     },
     {
-      path: "/plannow",
-      name: "plannow",
-      component: PlanNow,
+      path: "/plan",
+      name: "plan",
+      component: Plan,
+    },
+    {
+      path: "/result",
+      name: "result",
+      component: Result,
     },
     {
       path: "/result",

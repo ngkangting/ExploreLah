@@ -1,6 +1,17 @@
+@import url("https://fonts.googleapis.com/css?family=Fredoka");
+@import "bootstrap/scss/bootstrap";
+@import "bootstrap/scss/bootstrap-utilities";
+
 $btn-close-width: 0.8rem;
 
-@import "bootstrap/scss/bootstrap";
+html,
+body {
+  font-family: "Fredoka", sans-serif;
+}
+
+#app {
+  font-family: "Fredoka", sans-serif;
+}
 
 .bg-dark-blue {
   background-color: #174877;
