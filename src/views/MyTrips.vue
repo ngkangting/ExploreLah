@@ -1,4 +1,4 @@
-<template>MyTrips</template>
+<template>MyTrips idjiasdjasidjas</template>
 
 <script>
 export default {
