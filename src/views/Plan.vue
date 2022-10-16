@@ -38,89 +38,96 @@
               v-model="endDate"
             />
           </div>
-          <div>
-            <label for="shopping" class="form-label">Shopping</label>
-            <input
-              type="range"
-              class="form-range"
-              min="0"
-              max="5"
-              id="shopping"
-              v-model="shopping"
-            />
-          </div>
-          <div>
-            <label for="arts-culture" class="form-label">Arts & Culture</label>
-            <input
-              type="range"
-              class="form-range"
-              min="0"
-              max="5"
-              id="arts-culture"
-              v-model="arts"
-            />
-          </div>
-          <div>
-            <label for="outdoor" class="form-label">Outdoor</label>
-            <input
-              type="range"
-              class="form-range"
-              min="0"
-              max="5"
-              id="outdoor"
-              v-model="outdoor"
-            />
-          </div>
-          <div>
-            <label for="adventure" class="form-label">Adventure</label>
-            <input
-              type="range"
-              class="form-range"
-              min="0"
-              max="5"
-              id="adventure"
-              v-model="adventure"
-            />
-          </div>
-          <div>
-            <label for="nightlife" class="form-label">Nightlife</label>
-            <input
-              type="range"
-              class="form-range"
-              min="0"
-              max="5"
-              id="nightlife"
-              v-model="nightlife"
-            />
-          </div>
-          <div class="">
-            <h6>Transportation Method</h6>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="public-transport"
-                id="public-transport"
-                value="public"
-                v-model="transportation"
-                checked
-              />
-              <label class="form-check-label" for="flexRadioDefault1">
-                Public Transport
-              </label>
+          <div class="row">
+            <div class="col-6">
+              <h6 class="text-center">Preferences</h6>
+              <div>
+                <label for="shopping" class="form-label">Shopping</label>
+                <input
+                  type="range"
+                  class="form-range"
+                  min="0"
+                  max="5"
+                  id="shopping"
+                  v-model="shopping"
+                />
+              </div>
+              <div>
+                <label for="arts-culture" class="form-label"
+                  >Arts & Culture</label
+                >
+                <input
+                  type="range"
+                  class="form-range"
+                  min="0"
+                  max="5"
+                  id="arts-culture"
+                  v-model="arts"
+                />
+              </div>
+              <div>
+                <label for="outdoor" class="form-label">Outdoor</label>
+                <input
+                  type="range"
+                  class="form-range"
+                  min="0"
+                  max="5"
+                  id="outdoor"
+                  v-model="outdoor"
+                />
+              </div>
+              <div>
+                <label for="adventure" class="form-label">Adventure</label>
+                <input
+                  type="range"
+                  class="form-range"
+                  min="0"
+                  max="5"
+                  id="adventure"
+                  v-model="adventure"
+                />
+              </div>
+              <div>
+                <label for="nightlife" class="form-label">Nightlife</label>
+                <input
+                  type="range"
+                  class="form-range"
+                  min="0"
+                  max="5"
+                  id="nightlife"
+                  v-model="nightlife"
+                />
+              </div>
             </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="private-transport"
-                id="private-transport"
-                value="private"
-                v-model="transportation"
-              />
-              <label class="form-check-label" for="private-transport">
-                Private Transport
-              </label>
+            <div class="col-6">
+              <h6 class="text-center">Transportation Method</h6>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="public-transport"
+                  id="public-transport"
+                  value="public"
+                  v-model="transportation"
+                  checked
+                />
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Public Transport
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="private-transport"
+                  id="private-transport"
+                  value="private"
+                  v-model="transportation"
+                />
+                <label class="form-check-label" for="private-transport">
+                  Private Transport
+                </label>
+              </div>
             </div>
           </div>
           <div class="text-center">
