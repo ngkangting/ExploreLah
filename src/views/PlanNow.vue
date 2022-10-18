@@ -160,74 +160,76 @@
       </div>
     </div>
   </div>
+  <MerlionMascot positionX=0 positionY=-150></MerlionMascot>
+
 </template>
 
 <script>
 import {useItineraryStore} from "@/stores/itinerary";
+import MerlionMascot from "../components/common/MerlionMascot.vue"
 
 export default {
-  name: "PlanNow",
-  setup() {
-    const itineraryStore = useItineraryStore();
-    return {itineraryStore}
-  },
-  data() {
-    return {
-      location: "",
-      startDate: "",
-      duration:"",
-      shopping: 0,
-      arts: 0,
-      outdoor: 0,
-      adventure: 0,
-      nightlife: 0,
-      transportation: "",
-      activePhase:0,
-    };
-  },
-  methods: {
-    generateItinerary() {
-      let parsedStartDay= new Date(this.startDate);
-      let days = ["Sun","Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
-      const userInfo = {
-        name: "ignore",
-        startLoc: this.location,
-        day: days[parsedStartDay.getDay()],
-        dur: this.duration,
-        byCar: this.transportation == "public" ? true : false,
-        pref:{
-          shop: parseInt(this.shopping),
-          arts: parseInt(this.arts),
-          outdoor: parseInt(this.outdoor),
-          adventure: parseInt(this.adventure),
-          nightlife: parseInt(this.nightlife)
+    name: "PlanNow",
+    setup() {
+        const itineraryStore = useItineraryStore();
+        return { itineraryStore };
+    },
+    data() {
+        return {
+            location: "",
+            startDate: "",
+            duration: "",
+            shopping: 0,
+            arts: 0,
+            outdoor: 0,
+            adventure: 0,
+            nightlife: 0,
+            transportation: "",
+            activePhase: 0,
+        };
+    },
+    methods: {
+        generateItinerary() {
+            let parsedStartDay = new Date(this.startDate);
+            let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+            const userInfo = {
+                name: "ignore",
+                startLoc: this.location,
+                day: days[parsedStartDay.getDay()],
+                dur: this.duration,
+                byCar: this.transportation == "public" ? true : false,
+                pref: {
+                    shop: parseInt(this.shopping),
+                    arts: parseInt(this.arts),
+                    outdoor: parseInt(this.outdoor),
+                    adventure: parseInt(this.adventure),
+                    nightlife: parseInt(this.nightlife)
+                },
+            };
+            this.itineraryStore.fetchItinerary(userInfo);
+            this.redirect();
         },
-      }
-      this.itineraryStore.fetchItinerary(userInfo);
-      this.redirect();
+        redirect() {
+            this.$router.push({
+                name: "result",
+            });
+        },
+        goToNextStep() {
+            this.activePhase += 1;
+        },
+        goToPrevStep() {
+            this.activePhase -= 1;
+        }
     },
-    redirect() {
-        this.$router.push({
-          name:'result',
-        });
+    computed: {
+        progressCompleted() {
+            return `width:${this.activePhase * 33.33}%`;
+        }
     },
-    goToNextStep(){
-      this.activePhase += 1
+    created() {
+        console.log(this.activePhase);
     },
-    goToPrevStep(){
-      this.activePhase -=1
-    }
-  },
-  computed: {
-    progressCompleted(){
-      return `width:${this.activePhase * 33.33}%`
-    }
-  },
-  created(){
-    console.log(this.activePhase)
-  },
-  
+    components: { MerlionMascot }
 };
 </script>
 
