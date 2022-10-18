@@ -47,6 +47,11 @@ const router = createRouter({
       component: Plan,
     },
     {
+      path:'/plannow',
+      name:"plannow",
+      component:PlanNow
+    },
+    {
       path: "/result",
       name: "result",
       component: Result,
