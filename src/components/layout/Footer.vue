@@ -3,7 +3,8 @@
     <div class="row p-5 justify-content-center">
       <div class="col-12 col-sm-6 col-md-3">
           <h5 class="fw-bold">ExploreLah!</h5>
-          <span class="line border-top text-dark-blue">-----</span> <!--bootstrap and css border-color does not work-->
+          <hr class="line" style="width: 35px; color: #ff8397;">
+          <span class="line text-pink text-dark-blue">─────</span> <!--bootstrap and css border-color does not work-->
           <ul class="list-unstyled mb-3">
             <li>
               <a href="#!" style="text-decoration: none; color: white;">About Us</a>
@@ -15,10 +16,10 @@
       </div>
       <div class="col-12 col-sm-6 col-md-3">
           <h5 class="fw-bold">Browse</h5>
-          <span class="line border-top text-dark-blue">-----</span>
+          <span class="line border-top border-pink text-dark-blue">-----</span>
           <ul class="list-unstyled mb-3">
             <li>
-              <a href="#!" style="text-decoration: none; color: white;">Discover</a>
+              <a href="#!">Discover</a>
             </li>
             <li>
               <a href="#!" style="text-decoration: none; color: white;">Plan Now</a>
@@ -30,7 +31,7 @@
       </div>
       <div class="col-12 col-sm-6 col-md-3">
           <h5 class="fw-bold">Help</h5>
-          <span class="line border-top text-dark-blue">-----</span>
+          <span class="line border-top border-pink text-dark-blue">-----</span>
           <ul class="list-unstyled mb-3">
             <li>
               <a href="#!" style="text-decoration: none; color: white;">FAQ</a>
@@ -39,7 +40,7 @@
       </div>
       <div class="col-12 col-sm-6 col-md-2">
           <h5 class="fw-bold">Contact Us</h5>
-          <span class="line border-top text-dark-blue">-----</span>
+          <span class="line border-top border-pink text-dark-blue">-----</span>
           <section class="mb-4">
   
             <!-- Facebook -->
@@ -69,15 +70,21 @@
   
 </template>
   
-  <script>
-  export default {
-      name: "Footer",
-      data() {
-        return {};
-      },
-    };
-  </script>
-  
-  <style>
+<script>
+export default {
+    name: "Footer",
+    data() {
+      return {};
+    },
+  };
+</script>
 
-  </style>
+<style lang="scss">
+a {
+  text-decoration: none ; 
+  color: white;
+}
+.line {
+  border-color: #ff8397;
+}
+</style>
