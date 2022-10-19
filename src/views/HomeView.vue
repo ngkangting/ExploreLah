@@ -4,34 +4,40 @@
         
         <div class="row">
           <div class="col-12 col-md-8 p-2">
-            <h1 class="fw-bold">Singapore is yours to explore!</h1>
-            <div>Planning your itinerary has never been easier with ExploreLah!</div>
-            <button class="btn btn-pink btn-lg m-1" type="button">Plan now</button>
+            <h1 class="fw-bold pb-2">Singapore is yours to explore!</h1>
+            <h5>Planning your itinerary has never been easier with ExploreLah!</h5>
+            <button class="btn btn-pink btn-md m-3" type="button">Start Planning</button>
           </div>
-          <div class="bg-white col-md-4 p-5">picture picture picture picture picture picture picture picture picture picture picture picture picture picture picture picture picture picture picture picture picture picture picture picture picture picture picture picture picture picture picture picture picture picture picture picture picture picture picture picture</div>
+        
+          <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_a3emlnqk.json"  background="transparent"  speed="0.6"  style="width: 350px; height: 350px;"  loop  autoplay></lottie-player>
         </div>  
     </div>
   </div>
 
-  <h2 class="text-center m-3">Reviews</h2>
+<h1 class="text-center mt-5 fw-bold py-5">What do our travelers think</h1>
 
-  <div id="carouselExample" class="carousel slide carousel-dark m-3" data-bs-ride="carousel">
-    <div class="carousel-inner ">
+
+<div class="row mx-auto my-auto justify-content-center">
+  <div id="carouselExample" class="carousel slide carousel-dark m-3" data-interval="false">
+    <div class="carousel-inner" role="listbox">
+
       <div v-for="(review,index) in reviewArray" :key="review" :index="index">
-        <div class='carousel-item active'> 
-          <div class="card mx-auto col-2" style="width: 300px; height: 200px">
+
+        <div :class="{'carousel-item': isItem, 'active': checkActiveStatus(index)}"></div> 
+          <div class="card mx-auto col-4 p-3 bg-light border-0" style="width: 300px; height: 200px">
             <div class="card-body">
                 <p class="card-title fw-bold text-dark-blue">{{ review.name }}</p>
                 <p class="card-text text-dark-blue">{{ review.reviewText }}</p>
-                <p class="position-absolute bottom-0 start-0">{{ review.stars }}</p>
+                <p class="align-bottom text-pink">{{ review.stars }}</p>
             </div>
           </div>
+        </div>
         <!-- {'carousel-item': isItem,'active': isActive} -->
           <!-- <carouselCard></carouselCard> -->
-        </div>
-      </div>
+  
         <!-- <carouselCard v-for="(review,index) in reviewArray" review="review[]"/> -->
     </div>
+
     <button @click="updatePrev()" class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
@@ -41,11 +47,63 @@
       <span class="visually-hidden">Next</span>
     </button>
 </div>
+</div>
 
+<div class="mx-5">
+  <h1 class="fw-bold text-center mt-5 py-5">Features to replace all your other tools</h1>
+  <div class="row text-center">
+    <div class="col-12 col-sm-6 col-lg-4 p-3">
+      <div class="h-50">
+        <img class="w-50 pb-2 mx-auto" src="../assets/img/feature2.png" alt="feature2">
+      </div>
+      <div>
+        <h4>Optimise your route</h4>
+        <p class="text-secondary">Minimise travel time. Maximise fun.</p>
+      </div>
+      
+    </div>
+    <div class="col-12 col-sm-6 col-lg-4 p-3">
+      <div class="h-50">
+        <img class="w-25 pb-2 mx-auto" src="../assets/img/feature3.png" alt="feature3">
+      </div>
+      <h4>Check weather forecast</h4>
+      <p class="text-secondary">Be fully prepared for your amazing day with equipment of your choice (e.g umbrella, sunblock).</p>
+    </div>
+    <div class="col-12 col-sm-6 col-lg-4 p-3">
+      <div class="h-50">
+        <img class="w-25 pb-2 mx-auto" src="../assets/img/feature4.png" alt="feature4">
+      </div>
+      <h4>Check live traffic conditions</h4>
+      <p class="text-secondary">Planning to travel by car? Traffic can be tough sometimes.</p>
+    </div>
 
-<div class="bg-info">
-<h2 class="fw-bold">About us</h2>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus laoreet risus ut neque egestas gravida. Proin ornare, lacus consequat semper finibus, diam ex tristique felis, iaculis porta dolor sem vitae ligula. In efficitur purus enim, sit amet feugiat nibh fringilla ultrices.</p>
+    <div class="col-0 col-lg-2"></div>
+
+    <div class="col-12 col-sm-6 col-lg-4 p-3">
+      <div class="h-50">
+        <img class="w-50 pb-2 mx-auto" src="../assets/img/feature1.png" alt="feature1">
+      </div>
+      <h4>Personalise your itinerary with just a few clicks</h4>
+      <p class="text-secondary">Plan your best trip based on your travel preferences in the easiest possible way.</p>
+    </div>
+    <div class="col-12 col-sm-6 col-lg-4 p-3">
+      <div class="h-50">
+        <img class="w-25 pb-2 mx-auto" src="../assets/img/feature5.png" alt="feature5">
+      </div>
+      <h4>Download your itinerary to your phone</h4>
+      <p class="text-secondary">No wifi, no problem. Your trip plans can be downloaded for access anywhere.</p>
+    </div>
+
+    <div class="col-lg-2"></div>
+  </div>
+</div>
+
+<div class="aboutUs">
+  <h1 class="fw-bold text-center mt-5 py-5">About us</h1>
+  <h5 class="px-5">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus laoreet risus ut neque egestas gravida. Proin ornare, lacus consequat semper finibus, diam ex tristique felis, iaculis porta dolor sem vitae ligula. In efficitur purus enim, sit amet feugiat nibh fringilla ultrices.
+  </h5>
+  <img class="w-75 mx-auto d-block" src="../assets/img/skyline.png" alt="Skyline Image" />
 </div>
 
 <Footer></Footer>
@@ -54,8 +112,9 @@
   
 
 </template>
-
+<!-- <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> -->
 <script>
+import lottieWeb from "https://cdn.skypack.dev/lottie-web"
 import Footer from '@/components/layout/Footer.vue'
 import carouselCard from '@/components/common/carouselCard.vue';
 import { useAuthStore } from "@/stores/auth";
@@ -67,6 +126,7 @@ export default {
         Footer},
     data() {
         return {
+          isItem: true,
           activeMin: 0,
           activeMax: 2,
           reviewArray: [ 
@@ -124,9 +184,34 @@ export default {
             this.activeMin -= 1
             this.activeMax -= 1
           }
-        }, 
+        },
+        checkActiveStatus(index) {
+          if (index > this.activeMin && index < this.activeMax) {
+            return true
+          }
+          return false
+        }
     }
 };
 </script>
 
-<style></style>
+<style>
+@media (min-width: 768px) {
+  .carousel-inner {
+    display: flex;
+  }
+  .carousel-inner{
+    padding: 1em;
+  }
+}
+.carousel-inner{
+    padding: 1em;
+}
+.card{
+    margin: 0 .5em;
+    border: none;
+}
+.aboutUs{
+  background-color: #d6f4ff;
+}
+</style>
