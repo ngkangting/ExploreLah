@@ -43,14 +43,14 @@ const router = createRouter({
     },
     {
       path: "/plan",
-      name: "plan",
-      component: Plan,
+      name: "plannow",
+      component: PlanNow,
     },
-    {
-      path:'/plannow',
-      name:"plannow",
-      component:PlanNow
-    },
+    // {
+    //   path:'/plannow',
+    //   name:"plannow",
+    //   component:PlanNow
+    // },
     {
       path: "/result",
       name: "result",

@@ -1,36 +1,42 @@
 <template>
+  
   <div class="d-flex justify-content-center">
-    <div class="card mt-3 w-75">
+    <div class="col-lg-6 card mt-3 h-25">
       <div class="card-body">
         <div class="progress">
           <div class="progress-bar bg-pink" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" :style=progressCompleted></div>
         </div>
-        <h5 class="card-title text-center mt-4">
+        <h5 class=" card-title text-center mt-4">
           Build Your Own Customised Itinerary Now!
         </h5>
         <p class="text-center">
-          Catered to your personal preferences, find the best possible travel
-          route!
+          <!-- Catered to your personal preferences, find the best possible travel
+          route! -->
+          {{headerText[activePhase]}}
         </p>
-        <form @submit.prevent="generateItinerary()">
+        <form @submit.prevent="generateItinerary()" class="needs-validation" novalidate>
+          <!-- Form Part 1 -->
           <template v-if="activePhase === 0">
-            <div class="mb-3">
-              <label for="location" class="form-label">Location</label>
-              <input
-                type="text"
-                class="form-control"
-                id="location"
-                placeholder="Where are you staying?"
-                v-model="location"
-              />
+              <div class="col-lg-8 offset-lg-2 mb-4">
+                <label for="location" class="form-label" >Location</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="location"
+                  placeholder="Where are you staying?"
+                  v-model="location"
+                  required
+                />
+                <div v-if="!isLocationValid" class="text-danger">MAKE ME A SLOT PLEASE Empty Field</div> 
             </div>
             <div class="text-center">
               <button class="btn btn-pink" @click.prevent="goToNextStep()">Next</button>
             </div>
           </template>
 
+          <!-- Form Part 2 -->
           <template v-if="activePhase === 1">
-            <div class="mb-3 form-floating">
+            <div class="col-6 offset-3 mb-4 mb-3 form-floating">
               <input
                 type="date"
                 class="form-control"
@@ -40,7 +46,7 @@
               <label for="start-date" class="form-label">Start Date</label>
 
             </div>
-            <div class="mb-3">
+            <div class="col-6 offset-3 mb-4">
               <label for="duration" class="form-label">Duration</label>
               <input
                 type="number"
@@ -54,9 +60,10 @@
             </div>
             </div>
           </template>
-          
-          <template v-if="activePhase === 2">
 
+          <!-- Form Part 3 -->
+          <template v-if="activePhase === 2">
+            <div class="col-6 offset-3 mb-4">
             <div>
               <label for="shopping" class="form-label">Shopping</label>
               <input
@@ -112,14 +119,16 @@
                 v-model="nightlife"
               />
             </div>
+            </div>
             <div class="text-center">
               <button class="btn btn-link" @click.prevent="goToPrevStep()">Back</button>
               <button class="btn btn-pink" @click.prevent="goToNextStep()">Next</button>
             </div>
           </template>
+          <!-- Form Part 4 -->
           <template v-if="activePhase === 3">
 
-            <div class="">
+            <div class="col-6 offset-3 mb-4">
               <h6>Transportation Method</h6>
               <div class="form-check">
                 <input
@@ -160,7 +169,7 @@
       </div>
     </div>
   </div>
-  <MerlionMascot positionX=0 positionY=-150></MerlionMascot>
+  <!-- <MerlionMascot positionX=0 positionY=-150></MerlionMascot> -->
 
 </template>
 
@@ -186,7 +195,17 @@ export default {
             nightlife: 0,
             transportation: "",
             activePhase: 0,
+            checkLocation:false,
+            headerText: ['Where do you want to start from?', "How many days will this trip be?", "What type of activities are you interested in?", "Lastly, how are you planning on travelling?"],
         };
+    },
+    computed: {
+        progressCompleted() {
+            return `width:${this.activePhase * 33.33}%`;
+        },
+        isLocationValid() {
+          return this.location || !this.checkLocation
+        },
     },
     methods: {
         generateItinerary() {
@@ -215,15 +234,15 @@ export default {
             });
         },
         goToNextStep() {
-            this.activePhase += 1;
+            // Check if the first step is filled in, if it is not don't let them go to second page
+            if (this.activePhase==0 && this.location ==""){
+              this.checkLocation = true;
+            } else {
+              this.activePhase += 1;
+            }
         },
         goToPrevStep() {
             this.activePhase -= 1;
-        }
-    },
-    computed: {
-        progressCompleted() {
-            return `width:${this.activePhase * 33.33}%`;
         }
     },
     created() {
@@ -233,4 +252,13 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+  @import '../assets/breakpoints_ref.css';
+
+  .progress{
+    height: 8px !important;
+    margin-top: -17px !important;
+    
+  }
+
+</style>

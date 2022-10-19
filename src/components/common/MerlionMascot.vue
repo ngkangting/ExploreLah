@@ -29,7 +29,7 @@ const element = document.getElementById("anchor");
     },
     methods : {
         calculateDistance(elem, mouseX, mouseY){
-            return Math.floor(Math.sqrt(Math.pow(mouseX - (.left+(elem.width()/2)), 2) + Math.pow(mouseY - (elem.offset().top+(elem.height()/2)), 2)));
+            // return Math.floor(Math.sqrt(Math.pow(mouseX - (.left+(elem.width()/2)), 2) + Math.pow(mouseY - (elem.offset().top+(elem.height()/2)), 2)));
         },
         mouseMove(event) {
             // this.getAngle(event.clientX, event.clientY, this.anchorX, this.anchorY)
