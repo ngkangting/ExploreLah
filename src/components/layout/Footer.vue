@@ -3,8 +3,7 @@
     <div class="row p-5 justify-content-center">
       <div class="col-12 col-sm-6 col-md-3">
           <h5 class="fw-bold">ExploreLah!</h5>
-          <hr class="line" style="width: 35px; color: #ff8397;">
-          <span class="line text-pink text-dark-blue">─────</span> <!--bootstrap and css border-color does not work-->
+          <span class="line text-pink pb-2">━━━</span> 
           <ul class="list-unstyled mb-3">
             <li>
               <a href="#!" style="text-decoration: none; color: white;">About Us</a>
@@ -16,10 +15,10 @@
       </div>
       <div class="col-12 col-sm-6 col-md-3">
           <h5 class="fw-bold">Browse</h5>
-          <span class="line border-top border-pink text-dark-blue">-----</span>
+          <span class="line text-pink pb-2">━━━</span> 
           <ul class="list-unstyled mb-3">
             <li>
-              <a href="#!">Discover</a>
+              <a href="#!" style="text-decoration: none; color: white;">Discover</a>
             </li>
             <li>
               <a href="#!" style="text-decoration: none; color: white;">Plan Now</a>
@@ -31,7 +30,7 @@
       </div>
       <div class="col-12 col-sm-6 col-md-3">
           <h5 class="fw-bold">Help</h5>
-          <span class="line border-top border-pink text-dark-blue">-----</span>
+          <span class="line text-pink pb-2">━━━</span> 
           <ul class="list-unstyled mb-3">
             <li>
               <a href="#!" style="text-decoration: none; color: white;">FAQ</a>
@@ -40,7 +39,7 @@
       </div>
       <div class="col-12 col-sm-6 col-md-2">
           <h5 class="fw-bold">Contact Us</h5>
-          <span class="line border-top border-pink text-dark-blue">-----</span>
+          <span class="line text-pink pb-2">━━━</span> 
           <section class="mb-4">
   
             <!-- Facebook -->
@@ -80,11 +79,9 @@ export default {
 </script>
 
 <style lang="scss">
-a {
-  text-decoration: none ; 
-  color: white;
+
+a:hover{
+  color:pink!important;
 }
-.line {
-  border-color: #ff8397;
-}
+
 </style>
