@@ -24,18 +24,9 @@
     <h1 class="text-center mt-5 fw-bold py-5">What do users think?</h1>
 
     <div class="my-auto justify-content-center">
-      <div
-        id="carouselExample"
-        class="carousel carousel-dark m-3"
-        data-interval="false"
-      >
+      <div id="carouselExample" class="carousel carousel-dark m-3" data-interval="false">
         <div class="carousel-inner row" role="listbox">
-          <div
-            v-for="review in reviewArray"
-            :key="review"
-            :index="index"
-            class="carousel-item"
-          >
+          <div v-for="review in reviewArray" :key="review" :index="index" class="carousel-item">
             <div class="card mx-auto col-4 p-3 bg-light border-0">
               <div class="card-body">
                 <p class="card-title fw-bold text-dark-blue">
@@ -72,23 +63,13 @@
           </div>
         </div>
 
-        <button
-          @click="updatePrev()"
-          class="carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselExample"
-          data-bs-slide="prev"
-        >
+        <button @click="updatePrev()" class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+          data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
         </button>
-        <button
-          @click="updateNext()"
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselExample"
-          data-bs-slide="next"
-        >
+        <button @click="updateNext()" class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+          data-bs-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
@@ -96,15 +77,8 @@
     </div>
   </div>
 
-  <vueper-slides
-    class="no-shadow"
-    :visible-slides="3"
-    slide-multiple
-    :gap="3"
-    :slide-ratio="1 / 4"
-    :dragging-distance="200"
-    :breakpoints="{ 800: { visibleSlides: 2, slideMultiple: 2 } }"
-  >
+  <vueper-slides class="no-shadow" :visible-slides="3" slide-multiple :gap="3" :slide-ratio="1 / 4"
+    :dragging-distance="200" :breakpoints="{ 800: { visibleSlides: 2, slideMultiple: 2 } }">
     <vueper-slide v-for="i in 10" :key="i" :title="i.toString()" />
   </vueper-slides>
 
@@ -115,11 +89,7 @@
     <div class="row text-center justify-content-center">
       <div class="feature col-12 col-sm-6 col-lg-4 p-3">
         <div class="row picture align-items-center">
-          <img
-            class="w-50 p-2 mx-auto"
-            src="../assets/img/feature2.png"
-            alt="feature2"
-          />
+          <img class="w-50 p-2 mx-auto" src="../assets/img/feature2.png" alt="feature2" />
         </div>
         <h4>Optimise your route</h4>
         <p class="text-secondary">Minimise travel time. Maximise fun.</p>
@@ -127,11 +97,7 @@
 
       <div class="feature col-12 col-sm-6 col-lg-4 p-3">
         <div class="row picture align-items-center">
-          <img
-            class="w-25 p-2 mx-auto"
-            src="../assets/img/feature3.png"
-            alt="feature3"
-          />
+          <img class="w-25 p-2 mx-auto" src="../assets/img/feature3.png" alt="feature3" />
         </div>
         <h4>Check weather forecast</h4>
         <p class="text-secondary">
@@ -141,11 +107,7 @@
       </div>
       <div class="feature col-12 col-sm-6 col-lg-4 p-3">
         <div class="row picture align-items-center">
-          <img
-            class="w-25 p-2 mx-auto"
-            src="../assets/img/feature4.png"
-            alt="feature4"
-          />
+          <img class="w-25 p-2 mx-auto" src="../assets/img/feature4.png" alt="feature4" />
         </div>
         <h4>Check live traffic conditions</h4>
         <p class="text-secondary">
@@ -155,11 +117,7 @@
 
       <div class="feature col-12 col-sm-6 col-lg-4 p-3">
         <div class="row picture align-items-center">
-          <img
-            class="w-50 p-2 mx-auto"
-            src="../assets/img/feature1.png"
-            alt="feature1"
-          />
+          <img class="w-50 p-2 mx-auto" src="../assets/img/feature1.png" alt="feature1" />
         </div>
         <h4>Personalise your itinerary with just a few clicks</h4>
         <p class="text-secondary">
@@ -170,11 +128,7 @@
 
       <div class="feature col-12 col-sm-6 col-lg-4 p-3">
         <div class="row picture align-items-center">
-          <img
-            class="w-25 p-2 mx-auto"
-            src="../assets/img/feature5.png"
-            alt="feature5"
-          />
+          <img class="w-25 p-2 mx-auto" src="../assets/img/feature5.png" alt="feature5" />
         </div>
         <h4>Download your itinerary to your phone</h4>
         <p class="text-secondary">
@@ -193,11 +147,7 @@
       finibus, diam ex tristique felis, iaculis porta dolor sem vitae ligula. In
       efficitur purus enim, sit amet feugiat nibh fringilla ultrices.
     </h5>
-    <img
-      class="w-75 mx-auto d-block"
-      src="../assets/img/skyline.png"
-      alt="Skyline Image"
-    />
+    <img class="w-75 mx-auto d-block" src="../assets/img/skyline.png" alt="Skyline Image" />
   </div>
 
   <Footer></Footer>
@@ -293,6 +243,7 @@ export default {
     display: flex;
   }
 }
+
 .carousel-inner {
   padding: 1em;
   margin: 0% 3%;
@@ -320,8 +271,10 @@ div.card-body {
   0% {
     transform: translate3d(0, 0, 0);
   }
+
   100% {
-    transform: translate3d(-1692px, 0, 0); /* The image width */
+    transform: translate3d(-1692px, 0, 0);
+    /* The image width */
   }
 }
 
@@ -332,7 +285,8 @@ div.card-body {
 .sliding-background {
   background: url("../assets/img/trainview.png") repeat-x;
   height: 500px;
-  width: 3358px; /* The image width times 3 */
+  width: 3358px;
+  /* The image width times 3 */
   animation: slide 60s linear infinite;
 }
 
@@ -352,6 +306,7 @@ a.btn-special:hover,
 span.btn-special:hover {
   color: #fff;
 }
+
 .btn-special:hover {
   box-shadow: 127px 0 0 0 #f44a66 inset, -127px 0 0 0 #f44a66 inset;
 }
