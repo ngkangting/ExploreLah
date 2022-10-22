@@ -2,6 +2,7 @@ import { createApp, markRaw } from "vue";
 import { createPinia } from "pinia";
 import { initializeApp } from "firebase/app";
 import firebaseConfig from "./firebaseConfig";
+import { MotionPlugin } from "@vueuse/motion";
 
 import App from "./App.vue";
 import router from "./router";
@@ -20,6 +21,7 @@ pinia.use(({ store }) => {
 
 app.use(pinia);
 app.use(router);
+app.use(MotionPlugin);
 
 app.mount("#app");
 
