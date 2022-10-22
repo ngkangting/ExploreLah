@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid">
       <h3 class="text-center fw-semibold mb-4">Result</h3> 
-      <div class="card">
+      <div class="col-10 offset-1 card">
         <div class="card-body">
           <div class="row">
             <div class="col-6">
@@ -18,7 +18,8 @@
                 </div>  
                 <div class="row">
                   <div class="col-6">
-                    {{shownFoodReco}}
+                    <FoodLocation :data="shownFoodReco"></FoodLocation>
+                    <!-- {{shownFoodReco}} -->
                   </div>
                 </div>
                 <div class="row">
@@ -28,11 +29,6 @@
                     <button @click="goNextDay">Next</button>
                   </div>
                 </div>
-                <!-- <div class="row">
-                  <div v-for="food in foodReco">
-                  {{food}}
-                  </div>  
-                </div>         -->
 
            
             </div>
@@ -49,13 +45,13 @@ import { useAuthStore } from "@/stores/auth";
 import {useItineraryStore} from "@/stores/itinerary";
 import { GoogleMap, Marker } from "vue3-google-map";
 
-import Food from "../components/resultpage/FoodLocation.vue";
+import FoodLocation from "../components/resultpage/FoodLocation.vue";
 
 
   export default {
     name: "ResultPage",
     components: {
-      GoogleMap, Marker, Food
+      GoogleMap, Marker, FoodLocation
     },
     data() {
       return {
@@ -88,16 +84,15 @@ import Food from "../components/resultpage/FoodLocation.vue";
       shownFoodReco(){
         if (this.state) {
           //Show lunch reco
-          return this.foodReco[this.currDay]["lunch"]
+          return this.foodReco[this.currDay-1]["lunch"]
         } 
-        return this.foodReco[this.currDay]["dinner"]
+        return this.foodReco[this.currDay-1]["dinner"]
       }
     },
 
     methods: {
       toggleState(){
         this.state = !this.state;
-
       },
       goPrevDay(){
         if (this.currDay != 1) {
