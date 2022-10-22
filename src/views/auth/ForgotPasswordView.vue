@@ -32,12 +32,17 @@
               class="form-control"
               id="emailInput"
               aria-describedby="emailInput"
+              placeholder="Enter email address"
               v-model="email"
               required
             />
           </div>
           <div class="text-center">
-            <button type="submit" class="btn btn-pink w-100">
+            <button
+              type="submit"
+              class="btn btn-pink w-100"
+              :disabled="isLoading"
+            >
               Reset Password
             </button>
           </div>
@@ -73,6 +78,7 @@ export default {
       email: "",
       variant: "",
       alertContent: "",
+      isLoading: false,
       isAlert: false,
     };
   },
@@ -83,6 +89,8 @@ export default {
   },
   methods: {
     async resetPassword() {
+      this.isLoading = true;
+
       try {
         const response = await this.authStore.resetPassword(this.email);
 
@@ -96,6 +104,8 @@ export default {
         this.alertContent = error.message;
         this.showAlert();
       }
+
+      this.isLoading = false;
     },
     showAlert() {
       this.isAlert = true;
