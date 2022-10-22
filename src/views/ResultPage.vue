@@ -6,7 +6,10 @@
           <div class="row">
             <div class="col-6">
               <GoogleMap api-key="AIzaSyA__JlBf_-nIjvNRUNSpM4gdrygcyDenm0" style="width: 100%; height: 85vh; background-color: azure;" :center="center" :zoom="15">
-                <!-- <Marker :options="{ position: center }" /> -->
+                <!-- <Marker v-for="(pos, index) in markers" :options="{ position: pos }" :icon="{url:('../../public/ico/food.ico'), size: {width:30, height:30}}" /> -->
+                <CustomMarker v-for="(pos, index) in markers" :options="{ position: pos}">
+                    <img src="../../public/ico/food.ico" width="32" height="32" style="margin-top: 8px" />
+                </CustomMarker>
               </GoogleMap> 
             </div>
             <div class="col-6">
@@ -43,7 +46,7 @@
   <script>
 import { useAuthStore } from "@/stores/auth";
 import {useItineraryStore} from "@/stores/itinerary";
-import { GoogleMap, Marker } from "vue3-google-map";
+import { GoogleMap, Marker, CustomMarker } from "vue3-google-map";
 
 import FoodLocation from "../components/resultpage/FoodLocation.vue";
 
@@ -51,7 +54,7 @@ import FoodLocation from "../components/resultpage/FoodLocation.vue";
   export default {
     name: "ResultPage",
     components: {
-      GoogleMap, Marker, FoodLocation
+      GoogleMap, Marker, FoodLocation,CustomMarker
     },
     data() {
       return {
@@ -87,6 +90,14 @@ import FoodLocation from "../components/resultpage/FoodLocation.vue";
           return this.foodReco[this.currDay-1]["lunch"]
         } 
         return this.foodReco[this.currDay-1]["dinner"]
+      },
+      markers(){
+        if(this.state) {
+          console.log(this.foodReco[this.currDay-1]["lunchPin"][0])
+          return this.foodReco[this.currDay-1]["lunchPin"]
+        }
+        return this.foodReco[this.currDay-1]["dinnerPin"]
+
       }
     },
 
