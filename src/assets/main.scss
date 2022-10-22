@@ -30,6 +30,10 @@ body {
   font-family: "Fredoka", sans-serif;
 }
 
+body {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
 #app {
   font-family: "Fredoka", sans-serif;
 }
