@@ -42,7 +42,7 @@
             v-if="!this.authStore.isLoggedIn"
           >
             <li class="nav-item me-2">
-              <router-link to="/plannow" class="btn btn-pink"
+              <router-link to="/plan" class="btn btn-pink"
                 >Plan Now</router-link
               >
             </li>

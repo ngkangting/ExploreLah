@@ -27,6 +27,7 @@ export const useItineraryStore = defineStore("itinerary", {
                 console.error(err);
             })
             },
+        
 
         },
 

@@ -52,7 +52,7 @@ const router = createRouter({
     //   component:PlanNow
     // },
     {
-      path: "/result",
+      path: "/result2",
       name: "result",
       component: Result,
     },
