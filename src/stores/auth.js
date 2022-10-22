@@ -90,6 +90,8 @@ export const useAuthStore = defineStore("auth", {
         })
         .catch((error) => {
           switch (error.code) {
+            case "auth/email-already-in-use":
+              throw new Error("Email address is already in use!");
             default:
               throw new Error("Oops! Something went wrong...");
           }

@@ -1,14 +1,14 @@
 <template>
-  <div class="container-fluid vh-100">
-    <div class="row h-100 justify-content-around position-relative">
+  <div class="container-fluid h-100">
+    <div class="row min-vh-100 mt-5 my-lg-0 justify-content-around">
       <FixedAlert
         :variant="variant"
         :alertContent="alertContent"
         v-if="isAlert"
       />
-      <div class="col-12 col-lg-4 my-auto px-5 offset-lg-1">
+      <div class="col-12 col-lg-5 offset-lg-1 my-auto px-5">
         <RoundLink
-          class="position-absolute top-0 start-0 mt-4 ms-4"
+          class="position-absolute top-0 start-0 mt-4 ms-3 mt-lg-4 ms-lg-4"
           :path="'/login'"
           :height="50"
           :width="50"
