@@ -23,6 +23,7 @@
               class="form-control"
               id="emailInput"
               aria-describedby="emailInput"
+              placeholder="Enter email address"
               v-model="email"
               required
             />
@@ -35,6 +36,7 @@
               type="password"
               class="form-control"
               id="passwordInput"
+              placeholder="Enter password"
               v-model="password"
               required
             />
@@ -51,15 +53,22 @@
             </div>
           </div>
           <div class="text-center">
-            <button type="submit" class="btn btn-pink w-100">Sign Up</button>
+            <button
+              type="submit"
+              class="btn btn-pink w-100"
+              :disabled="isLoading"
+            >
+              Sign Up
+            </button>
           </div>
         </form>
-        <LineText content="OR" />
+        <LineText content="or" />
         <div class="mb-5">
           <button
             type="button"
-            class="btn btn-light-gray w-100"
+            class="btn btn-light-gray w-100 d-flex align-items-center justify-content-center"
             @click="loginWithGoogle()"
+            :disabled="isLoading"
           >
             <GoogleIcon class="me-2" /> Sign Up with Google
           </button>
@@ -98,6 +107,7 @@ export default {
       password: "",
       variant: "",
       alertContent: "",
+      isLoading: false,
       isAlert: false,
     };
   },
@@ -108,25 +118,48 @@ export default {
   },
   methods: {
     async registerUser() {
+      this.isLoading = true;
+
       try {
         const response = await this.authStore.registerUser(
           this.email,
           this.password
         );
+
+        if (response) {
+          this.variant = "alert-success";
+          this.alertContent = "Your account has been successfully created! ";
+          this.showAlert();
+        }
       } catch (error) {
         this.variant = "alert-danger";
         this.alertContent = error.message;
         this.showAlert();
       }
+
+      this.isLoading = false;
     },
     async loginWithGoogle() {
+      this.isLoading = true;
+
       try {
-        const response = await this.authStore.loginWithGoogle();
+        const response = await this.authStore.registerWithGoogle();
+
+        if (response) {
+          this.variant = "alert-success";
+          this.alertContent = "Your account has been successfully created! ";
+          this.showAlert();
+        }
       } catch (error) {
         this.variant = "alert-danger";
         this.alertContent = error.message;
         this.showAlert();
       }
+
+      this.isLoading = false;
+    },
+    showAlert() {
+      this.isAlert = true;
     },
   },
 };
