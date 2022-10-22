@@ -7,7 +7,7 @@
     ]"
     :style="[
       this.$route.meta.hideNavBar
-        ? { 'min-height': `100vh + env(safe-area-inset-bottom)` }
+        ? { 'min-height': `100vh` }
         : { 'min-height': `calc(100vh - 75px)` },
     ]"
   />
