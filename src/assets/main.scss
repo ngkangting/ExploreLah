@@ -54,6 +54,7 @@ body,
 }
 
 body {
+  -webkit-overflow-scrolling: touch;
   min-height: -webkit-fill-available;
   padding-bottom: env(safe-area-inset-bottom);
 }
