@@ -47,29 +47,16 @@ $nav-pills-link-active-bg: transparent;
 
 @import "bootstrap/scss/bootstrap";
 
-html {
-  overflow: hidden;
-  width: 100%;
-}
-
 html,
 body,
 #app {
   font-family: "Fredoka", sans-serif;
 }
 
-body.noscroll {
-  height: 100%;
-  overflow: hidden;
-}
-
-body {
-  height: 100%;
-  position: fixed;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
+.wrapper {
+  overflow: scroll;
   min-height: -webkit-fill-available;
-  padding-bottom: env(safe-area-inset-bottom);
+  -webkit-overflow-scrolling: touch;
 }
 
 .form-control::placeholder {
