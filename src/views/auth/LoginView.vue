@@ -1,12 +1,12 @@
 <template>
-  <div class="container-fluid position-relative">
-    <div class="row min-vh-100 mt-5 mt-lg-0 justify-content-around scrollable">
+  <div class="container-fluid h-100">
+    <div class="row pt-5 pt-lg-0 justify-content-around">
       <FixedAlert
         :variant="variant"
         :alertContent="alertContent"
         v-if="isAlert"
       />
-      <div class="col-12 col-lg-5 offset-lg-1 my-auto px-5">
+      <div class="col-12 col-lg-5 offset-lg-1 my-auto px-5 pt-5">
         <RoundLink
           class="position-absolute top-0 start-0 mt-4 ms-3 mt-lg-4 ms-lg-4"
           :path="'/'"
