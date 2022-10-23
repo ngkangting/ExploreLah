@@ -23,19 +23,42 @@ $utilities: map-merge(
   )
 );
 
+$nav-link-padding-y: 0.5rem;
+$nav-link-padding-x: 1rem;
+$nav-link-font-size: null;
+$nav-link-font-weight: null;
+$nav-link-color: $gray-300;
+$nav-link-hover-color: $gray-500;
+$nav-link-transition: color 0.15s ease-in-out,
+  background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+$nav-link-disabled-color: $gray-600;
+
+$nav-tabs-border-color: $gray-300;
+$nav-tabs-border-width: $border-width;
+$nav-tabs-border-radius: $border-radius;
+$nav-tabs-link-hover-border-color: $gray-200 $gray-200 $nav-tabs-border-color;
+$nav-tabs-link-active-color: $gray-700;
+$nav-tabs-link-active-bg: $body-bg;
+$nav-tabs-link-active-border-color: $gray-300 $gray-300 $nav-tabs-link-active-bg;
+
+$nav-pills-border-radius: $border-radius;
+$nav-pills-link-active-color: $gray-600;
+$nav-pills-link-active-bg: transparent;
+
 @import "bootstrap/scss/bootstrap";
 
 html,
-body {
-  font-family: "Fredoka", sans-serif;
-}
-
+body,
 #app {
   font-family: "Fredoka", sans-serif;
 }
 
+body {
+  min-height: -webkit-fill-available;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
 .form-control::placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
   opacity: 0.4;
 }
 

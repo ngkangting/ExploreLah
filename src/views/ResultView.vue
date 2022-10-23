@@ -62,25 +62,38 @@
 
       <!-- Locations -->
       <div class="col col-lg-4">
-        <div class="">
-          <div
-            class="nav flex-column nav-pills me-3"
-            id="v-pills-tab"
-            role="tablist"
-            aria-orientation="vertical"
-          >
+        <div
+          class="nav flex-column nav-pills me-3"
+          id="v-pills-tab"
+          role="tablist"
+          aria-orientation="vertical"
+        >
+          <div class="d-flex align-items-center my-3">
             <button
-              class="nav-link active"
+              class="nav-link nav-link-color active"
               id="v-pills-home-tab"
               data-bs-toggle="pill"
               data-bs-target="#v-pills-home"
-              type="button"
               role="tab"
               aria-controls="v-pills-home"
               aria-selected="true"
             >
               <i class="bi bi-circle-fill"></i>
             </button>
+            <div
+              class="card border-0 py-4 px-4 w-100"
+              style="transform: scale(0.85); transform-origin: left center"
+            >
+              <h4>Mueseum of Old</h4>
+              <p>Arts & Culture</p>
+              <div class="d-flex justify-content-between">
+                <span>Arrival Time: 12:00</span>
+                <span>Depature Time: 15:00</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-center my-3">
             <button
               class="nav-link"
               id="v-pills-profile-tab"
@@ -93,19 +106,20 @@
             >
               <i class="bi bi-circle-fill"></i>
             </button>
-            <button
-              class="nav-link"
-              id="v-pills-disabled-tab"
-              data-bs-toggle="pill"
-              data-bs-target="#v-pills-disabled"
-              type="button"
-              role="tab"
-              aria-controls="v-pills-disabled"
-              aria-selected="false"
-              disabled
+            <div
+              class="card border-0 py-4 px-4 w-100"
+              style="transform: scale(0.75); transform-origin: left center"
             >
-              <i class="bi bi-circle-fill"></i>
-            </button>
+              <h5>Mueseum of Old</h5>
+              <p>Arts & Culture</p>
+              <div class="d-flex justify-content-between">
+                <span>Arrival Time: 12:00</span>
+                <span>Depature Time: 15:00</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-center my-3">
             <button
               class="nav-link"
               id="v-pills-messages-tab"
@@ -118,6 +132,20 @@
             >
               <i class="bi bi-circle-fill"></i>
             </button>
+            <div
+              class="card border-0 py-4 px-4 w-100"
+              style="transform: scale(0.75); transform-origin: left center"
+            >
+              <h5>Mueseum of Old</h5>
+              <p>Arts & Culture</p>
+              <div class="d-flex justify-content-between">
+                <span>Arrival Time: 12:00</span>
+                <span>Depature Time: 15:00</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-center my-3">
             <button
               class="nav-link"
               id="v-pills-settings-tab"
@@ -130,6 +158,17 @@
             >
               <i class="bi bi-circle-fill"></i>
             </button>
+            <div
+              class="card border-0 py-4 px-4 w-100"
+              style="transform: scale(0.75); transform-origin: left center"
+            >
+              <h5>Mueseum of Old</h5>
+              <p>Arts & Culture</p>
+              <div class="d-flex justify-content-between">
+                <span>Arrival Time: 12:00</span>
+                <span>Depature Time: 15:00</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
