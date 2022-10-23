@@ -47,6 +47,11 @@ $nav-pills-link-active-bg: transparent;
 
 @import "bootstrap/scss/bootstrap";
 
+html {
+  overflow: hidden;
+  width: 100%;
+}
+
 html,
 body,
 #app {
@@ -59,13 +64,12 @@ body.noscroll {
 }
 
 body {
-  padding-bottom: env(safe-area-inset-bottom);
-}
-
-.wrapper {
-  overflow: scroll;
-  min-height: -webkit-fill-available;
+  height: 100%;
+  position: fixed;
+  overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
+  min-height: -webkit-fill-available;
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .form-control::placeholder {
