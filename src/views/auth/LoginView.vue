@@ -1,6 +1,6 @@
 <template>
-  <div class="container-fluid h-100">
-    <div class="row min-vh-100 mt-5 my-lg-0 justify-content-around">
+  <div class="container-fluid position-relative">
+    <div class="row min-vh-100 mt-5 mt-lg-0 justify-content-around scrollable">
       <FixedAlert
         :variant="variant"
         :alertContent="alertContent"
