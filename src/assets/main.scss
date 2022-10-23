@@ -54,9 +54,13 @@ body,
 }
 
 body {
-  -webkit-overflow-scrolling: touch;
   min-height: -webkit-fill-available;
   padding-bottom: env(safe-area-inset-bottom);
+}
+
+.scrollable {
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 .form-control::placeholder {
