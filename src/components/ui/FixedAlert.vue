@@ -1,6 +1,6 @@
 <template>
   <div
-    class="fixed-top w-100 alert alert-dismissible fade show text-center rounded-0 test"
+    class="fixed-top w-100 alert alert-dismissible fade show text-center border-0 rounded-0 test"
     :class="[variant]"
     role="alert"
   >

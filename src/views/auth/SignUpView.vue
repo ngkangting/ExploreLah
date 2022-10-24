@@ -1,12 +1,20 @@
 <template>
-  <div class="container-fluid vh-100">
-    <div class="row h-100 justify-content-around">
+  <div class="container-fluid h-100">
+    <div class="row min-vh-100 pt-5 pt-lg-0 justify-content-around">
       <FixedAlert
         :variant="variant"
         :alertContent="alertContent"
         v-if="isAlert"
       />
-      <div class="col-12 col-lg-4 my-auto px-5 offset-lg-1">
+      <div class="col-12 col-lg-5 offset-lg-1 my-auto px-5">
+        <RoundLink
+          class="position-absolute top-0 start-0 mt-4 ms-3 mt-lg-4 ms-lg-4"
+          :path="'/'"
+          :height="50"
+          :width="50"
+        >
+          <i class="bi-chevron-left text-secondary" style="font-size: 1rem"></i>
+        </RoundLink>
         <div class="mb-5">
           <h1 class="text-dark-blue">Sign Up</h1>
           <p class="text-black-50">
@@ -23,6 +31,7 @@
               class="form-control"
               id="emailInput"
               aria-describedby="emailInput"
+              placeholder="Enter email address"
               v-model="email"
               required
             />
@@ -35,6 +44,7 @@
               type="password"
               class="form-control"
               id="passwordInput"
+              placeholder="Enter password"
               v-model="password"
               required
             />
@@ -51,15 +61,22 @@
             </div>
           </div>
           <div class="text-center">
-            <button type="submit" class="btn btn-pink w-100">Sign Up</button>
+            <button
+              type="submit"
+              class="btn btn-pink w-100"
+              :disabled="isLoading"
+            >
+              Sign Up
+            </button>
           </div>
         </form>
-        <LineText content="OR" />
+        <LineText content="or" />
         <div class="mb-5">
           <button
             type="button"
-            class="btn btn-light-gray w-100"
+            class="btn btn-light-gray w-100 d-flex align-items-center justify-content-center"
             @click="loginWithGoogle()"
+            :disabled="isLoading"
           >
             <GoogleIcon class="me-2" /> Sign Up with Google
           </button>
@@ -79,6 +96,7 @@
 <script>
 import { useAuthStore } from "@/stores/auth";
 
+import RoundLink from "@/components/ui/RoundLink.vue";
 import AuthHero from "@/components/auth/AuthHero.vue";
 import LineText from "@/components/common/LineText.vue";
 import GoogleIcon from "@/components/icons/GoogleIcon.vue";
@@ -87,6 +105,7 @@ import FixedAlert from "@/components/ui/FixedAlert.vue";
 export default {
   name: "SignUpView",
   components: {
+    RoundLink,
     AuthHero,
     LineText,
     GoogleIcon,
@@ -98,6 +117,7 @@ export default {
       password: "",
       variant: "",
       alertContent: "",
+      isLoading: false,
       isAlert: false,
     };
   },
@@ -108,25 +128,48 @@ export default {
   },
   methods: {
     async registerUser() {
+      this.isLoading = true;
+
       try {
         const response = await this.authStore.registerUser(
           this.email,
           this.password
         );
+
+        if (response) {
+          this.variant = "alert-success";
+          this.alertContent = "Your account has been successfully created! ";
+          this.showAlert();
+        }
       } catch (error) {
         this.variant = "alert-danger";
         this.alertContent = error.message;
         this.showAlert();
       }
+
+      this.isLoading = false;
     },
     async loginWithGoogle() {
+      this.isLoading = true;
+
       try {
-        const response = await this.authStore.loginWithGoogle();
+        const response = await this.authStore.registerWithGoogle();
+
+        if (response) {
+          this.variant = "alert-success";
+          this.alertContent = "Your account has been successfully created! ";
+          this.showAlert();
+        }
       } catch (error) {
         this.variant = "alert-danger";
         this.alertContent = error.message;
         this.showAlert();
       }
+
+      this.isLoading = false;
+    },
+    showAlert() {
+      this.isAlert = true;
     },
   },
 };
