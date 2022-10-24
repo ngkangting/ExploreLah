@@ -1,7 +1,6 @@
 <template>
   <NavBar v-if="!this.$route.meta.hideNavBar" />
   <RouterView
-    class="wrapper"
     :class="[
       this.$route.meta.hideNavBar ? 'bg-white' : 'bg-light',
       this.$route.meta.hideNavBar ? '' : 'py-5 px-5',
