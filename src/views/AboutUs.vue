@@ -44,7 +44,8 @@
       <div class="card h-100 text-center p-5" style="border-color:#174877;border:solid 2px;color:#174877">
         <div class="card-body">
           <h3 class="card-title">Our Vision</h3>
-          <p class="card-text">To effectively promote inbound tourism for Singapore so more are able to explore what our
+          <p class="card-text">By making planning trips around Singapore easier, we hope to effectively promote inbound
+            tourism for Singapore so more are able to explore what our
             beautiful
             city has to offer.</p>
         </div>
