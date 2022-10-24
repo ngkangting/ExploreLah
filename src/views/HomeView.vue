@@ -1,16 +1,20 @@
 <template>
-  <div class="p-4 bg-dark-blue">
-    <div class="row top container-fluid p-5 text-white">
+  <div class="p-4 bg-dark-blue" :style="{ height: 'calc(100vh - 75px)' }">
+    <div class="row top container-fluid p-5 text-white h-100">
       <div class="top-words col-12 col-lg-6 bg-dark-blue p-5">
         <h1 class="fw-bold pb-2">Singapore is yours to explore!</h1>
         <h5>Planning your itinerary has never been easier with ExploreLah!</h5>
         <span class="btn-special my-3">Start Planning!</span>
       </div>
-      <div class="train col-lg-6 d-none d-lg-block d-xl-block mb-5 pb-5">
-        <div class="sliding-container pt-1">
+      <div class="train col-lg-6 d-none d-lg-block d-xl-block mb-5 pb-5 h-100">
+        <div class="sliding-container pt-1 h-100">
           <div class="sliding-background"></div>
         </div>
-        <img class="train-pic" src="../assets/img/train.png" alt="train" />
+        <img
+          class="train-pic w-100"
+          src="../assets/img/train.png"
+          alt="train"
+        />
       </div>
     </div>
   </div>
