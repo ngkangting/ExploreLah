@@ -3,23 +3,17 @@
     <div class="row top container-fluid p-5 text-white">
       <div class="top-words col-12 col-lg-6 bg-dark-blue p-5">
         <h1 class="fw-bold pb-2">Singapore is yours to explore!</h1>
-        <h5>
-          Planning your itinerary has never been easier with ExploreLah!
-        </h5>
+        <h5>Planning your itinerary has never been easier with ExploreLah!</h5>
         <span class="btn-special my-3">Start Planning!</span>
       </div>
       <div class="train col-lg-6 d-none d-lg-block d-xl-block mb-5 pb-5">
         <div class="sliding-container pt-1">
           <div class="sliding-background"></div>
         </div>
-        <img
-          class="train-pic"
-          src="../assets/img/train.png"
-          alt="train">
+        <img class="train-pic" src="../assets/img/train.png" alt="train" />
       </div>
-      </div>
+    </div>
   </div>
-
 
   <div class="mx-5">
     <h1 class="fw-bold text-center mt-5 py-5">
@@ -99,13 +93,20 @@
   </div>
 
   <div class="mx-5">
-    <h1 class="fw-bold text-center mt-5 py-5">
-      How It Works
-    </h1>
+    <h1 class="fw-bold text-center mt-5 py-5">How It Works</h1>
 
     <div class="row justify-content-center">
-      <div class="col-5 bg-pink d-flex justify-content-center align-items-center py-3">
-        <lottie-player src="https://lottie.host/712cd913-eaae-47e7-b808-a59e233c96f4/t26HzyDftD.json" background="transparent" speed="1" style="width: 150px; height: 150px;" loop autoplay></lottie-player>
+      <div
+        class="col-5 bg-pink d-flex justify-content-center align-items-center py-3"
+      >
+        <lottie-player
+          src="https://lottie.host/712cd913-eaae-47e7-b808-a59e233c96f4/t26HzyDftD.json"
+          background="transparent"
+          speed="1"
+          style="width: 150px; height: 150px"
+          loop
+          autoplay
+        ></lottie-player>
       </div>
       <div class="col-5 d-flex justify-content-center align-items-center">
         <div class="m-4">
@@ -114,7 +115,8 @@
             Location
           </h2>
           <div>
-            Let us know where you're currently staying so we have an idea of whats near you!
+            Let us know where you're currently staying so we have an idea of
+            whats near you!
           </div>
         </div>
       </div>
@@ -127,19 +129,35 @@
             <i class="bi bi-2-circle"></i>
             Duration
           </h2>
-          <div>
-            Tell us how long you plan on hanging around Singapore!
-          </div>
+          <div>Tell us how long you plan on hanging around Singapore!</div>
         </div>
       </div>
-      <div class="col-5 bg-light-pink d-flex justify-content-center align-items-center">
-        <lottie-player src="https://lottie.host/048ba3f9-a020-4b50-bdc6-8b83e1756fee/YkvCh1R331.json" background="transparent" speed="1" style="width: 180px; height: 180px;" loop autoplay></lottie-player>
+      <div
+        class="col-5 bg-light-pink d-flex justify-content-center align-items-center"
+      >
+        <lottie-player
+          src="https://lottie.host/048ba3f9-a020-4b50-bdc6-8b83e1756fee/YkvCh1R331.json"
+          background="transparent"
+          speed="1"
+          style="width: 180px; height: 180px"
+          loop
+          autoplay
+        ></lottie-player>
       </div>
     </div>
 
     <div class="row justify-content-center">
-      <div class="col-5 bg-light-blue d-flex justify-content-center align-items-center">
-        <lottie-player src="https://lottie.host/68c62294-996a-42ad-adb4-9d32e0f9d46a/uJcTvqPOAh.json" background="transparent" speed="1" style="width: 190px; height: 190px;" loop autoplay></lottie-player>
+      <div
+        class="col-5 bg-light-blue d-flex justify-content-center align-items-center"
+      >
+        <lottie-player
+          src="https://lottie.host/68c62294-996a-42ad-adb4-9d32e0f9d46a/uJcTvqPOAh.json"
+          background="transparent"
+          speed="1"
+          style="width: 190px; height: 190px"
+          loop
+          autoplay
+        ></lottie-player>
       </div>
       <div class="col-5 d-flex justify-content-center align-items-center">
         <div class="m-4">
@@ -153,7 +171,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="row justify-content-center">
       <div class="col-5 d-flex justify-content-center align-items-center">
         <div class="m-4">
@@ -162,16 +180,25 @@
             Transportation
           </h2>
           <div>
-            Whether you're taking the MRT, bus or private transport, we will plan the best route for you!
+            Whether you're taking the MRT, bus or private transport, we will
+            plan the best route for you!
           </div>
         </div>
       </div>
-      <div class="col-5 bg-blue d-flex justify-content-center align-items-center py-3">
-        <lottie-player src="https://lottie.host/4dc34aa3-8885-4abd-b4f6-420193871a48/MNifFgZ0g3.json" background="transparent" speed="1" style="width: 150px; height: 150px;" loop autoplay></lottie-player>
+      <div
+        class="col-5 bg-blue d-flex justify-content-center align-items-center py-3"
+      >
+        <lottie-player
+          src="https://lottie.host/4dc34aa3-8885-4abd-b4f6-420193871a48/MNifFgZ0g3.json"
+          background="transparent"
+          speed="1"
+          style="width: 150px; height: 150px"
+          loop
+          autoplay
+        ></lottie-player>
       </div>
     </div>
   </div>
-
 
   <div class="m-5 px-5">
     <h1 class="fw-bold text-center mt-5 py-5 px-5">
@@ -179,87 +206,68 @@
     </h1>
     <div class="row justify-content-center">
       <div class="landmark p-2 col-12 col-md-12 col-lg-8">
-        <img 
-          class="w-100"
-          src="../assets/img/Landmark1.jpg" 
-          alt="Landmark1"
-        />
+        <img class="w-100" src="../assets/img/Landmark1.jpg" alt="Landmark1" />
         <div class="description p-3 text-white fw-bolder">
           <h2>GARDENS BY THE BAY</h2>
         </div>
       </div>
       <div class="landmark p-2 col-12 col-md-6 col-lg-4">
-        <img 
-          class="w-100"
-          src="../assets/img/Landmark2.jpg" 
-          alt="Landmark2"
-        />
+        <img class="w-100" src="../assets/img/Landmark2.jpg" alt="Landmark2" />
         <div class="description p-3 text-white fw-bolder">
           <h2>S.E.A AQUARIUM</h2>
         </div>
       </div>
       <div class="landmark p-2 col-12 col-md-6 col-lg-4">
-        <img 
-          class="w-100"
-          src="../assets/img/Landmark3.jpg" 
-          alt="Landmark3"
-        />
+        <img class="w-100" src="../assets/img/Landmark3.jpg" alt="Landmark3" />
         <div class="description p-3 text-white fw-bolder">
           <h2>HAJI LANE</h2>
         </div>
       </div>
       <div class="p-2 col-12 col-md-12 col-lg-4">
-        <div class="d-flex justify-content-center align-items-center bg-light-blue h-100 w-100 text-center p-5 rounded-5">
-          <div class="h3 fw-bold w-90">258</div>&nbsp;&nbsp;&nbsp;
+        <div
+          class="d-flex justify-content-center align-items-center bg-light-blue h-100 w-100 text-center p-5 rounded-5"
+        >
+          <div class="h3 fw-bold w-90">258</div>
+          &nbsp;&nbsp;&nbsp;
           <div>trips planned in the last hour</div>
         </div>
       </div>
       <div class="landmark p-2 col-12 col-md-6 col-lg-4">
-        <img 
-          class="w-100"
-          src="../assets/img/Landmark4.jpg" 
-          alt="Landmark4"
-        />
+        <img class="w-100" src="../assets/img/Landmark4.jpg" alt="Landmark4" />
         <div class="description p-3 text-white fw-bolder">
           <h2>JEWEL CHANGI AIRPORT</h2>
         </div>
       </div>
       <div class="landmark p-2 col-12 col-md-6 col-lg-4">
-        <img 
-          class="w-100"
-          src="../assets/img/Landmark5.jpg" 
-          alt="Landmark5"
-        />
+        <img class="w-100" src="../assets/img/Landmark5.jpg" alt="Landmark5" />
         <div class="description p-3 text-white fw-bolder">
           <h2>MASJID SULTAN</h2>
         </div>
       </div>
       <div class="landmark p-2 col-12 col-md-12 col-lg-8">
-        <img 
-          class="w-100"
-          src="../assets/img/Landmark6.jpg" 
-          alt="Landmark6"
-        />
+        <img class="w-100" src="../assets/img/Landmark6.jpg" alt="Landmark6" />
         <div class="description p-3 text-white fw-bolder">
           <h2>MARINA BAY SANDS</h2>
         </div>
       </div>
     </div>
-  </div> 
+  </div>
 
   <div class="m-5">
-    <h1 class="text-center mt-5 fw-bold py-5">Don't just take our word for it</h1>
+    <h1 class="text-center mt-5 fw-bold py-5">
+      Don't just take our word for it
+    </h1>
     <vueper-slides
-    class="no-shadow m-5"
-    :visible-slides="3"
-    :gap="3"
-    :slide-ratio="1 / 4"
-    :dragging-distance="200"
-    :breakpoints="{ 992: { visibleSlides: 2 },  576: { visibleSlides: 1 } }"
-    :infinite="true"
-    :arrows-outside="true"
-    bullets-outside
-    autoplay
+      class="no-shadow m-5"
+      :visible-slides="3"
+      :gap="3"
+      :slide-ratio="1 / 4"
+      :dragging-distance="200"
+      :breakpoints="{ 992: { visibleSlides: 2 }, 576: { visibleSlides: 1 } }"
+      :infinite="true"
+      :arrows-outside="true"
+      bullets-outside
+      autoplay
     >
       <template #arrow-left>
         <i class="bi bi-arrow-left-circle display-6 text-dark-blue"></i>
@@ -268,16 +276,18 @@
       <template #arrow-right>
         <i class="bi bi-arrow-right-circle display-6 text-dark-blue"></i>
       </template>
-      <vueper-slide 
-      class="p-4 rounded-5"
-      v-for="(slide, i) in slides" 
-      :key="i" 
-      style="background-color: #f8f9fa;"
+      <vueper-slide
+        class="p-4 rounded-5"
+        v-for="(slide, i) in slides"
+        :key="i"
+        style="background-color: #f8f9fa"
       >
         <template #content>
           <div style="min-height: 150px">
             <p class="py-2">
-              <i class="bi bi-quote border border-0 rounded-circle p-2 bg-dark-blue text-white"></i>
+              <i
+                class="bi bi-quote border border-0 rounded-circle p-2 bg-dark-blue text-white"
+              ></i>
             </p>
             <p class="fw-bold text-dark-blue">
               {{ slide.title }}
@@ -287,7 +297,7 @@
             </p>
           </div>
           <h3 class="text-pink">
-            {{ slide.stars}}
+            {{ slide.stars }}
           </h3>
         </template>
       </vueper-slide>
@@ -295,13 +305,14 @@
   </div>
 
   <div>
-    <h1 class="fw-bold text-center mt-5 py-5">Ready to plan your trip in half the time?</h1>
+    <h1 class="fw-bold text-center mt-5 py-5">
+      Ready to plan your trip in half the time?
+    </h1>
     <div class="d-flex justify-content-center">
       <h4 class="btn-special">Plan Now</h4>
     </div>
   </div>
 
-  
   <div>
     <img
       class="w-100 mx-auto d-block"
@@ -330,41 +341,35 @@ export default {
     return {
       initialActiveCards: 0,
       slides: [
-          {
-            title: "John",
-            content:
-              "ExploreLah makes planning activities really easy! Highly recommend.",
-            stars: "★★★★★",
-          },
-          {
-            title: "Derrick",
-            content:
-              "Easy to use and convenient! Wish I had something like this for overseas too.",
-            stars: "★★★★☆",
-          },
-          { title: "Prof Mok", 
-          content: 
-              "Amazing app! A+!", 
-            stars: "★★★★★" 
-          },
-          {
-            title: "Nicole",
-            content:
-              "Great app that saved me a lot of time while I was travelling",
-            stars: "★★★★☆",
-          },
-          {
-            title: "Instructor Jason",
-            content: 
-              "Aesthetically pleasing and really user friendly!",
-            stars: "★★★★★",
-          },
-          {
-            title: "TA Chen",
-            content: 
-              "App is so useful! Will never stop using it",
-            stars: "★★★★★",
-          },
+        {
+          title: "John",
+          content:
+            "ExploreLah makes planning activities really easy! Highly recommend.",
+          stars: "★★★★★",
+        },
+        {
+          title: "Derrick",
+          content:
+            "Easy to use and convenient! Wish I had something like this for overseas too.",
+          stars: "★★★★☆",
+        },
+        { title: "Prof Mok", content: "Amazing app! A+!", stars: "★★★★★" },
+        {
+          title: "Nicole",
+          content:
+            "Great app that saved me a lot of time while I was travelling",
+          stars: "★★★★☆",
+        },
+        {
+          title: "Instructor Jason",
+          content: "Aesthetically pleasing and really user friendly!",
+          stars: "★★★★★",
+        },
+        {
+          title: "TA Chen",
+          content: "App is so useful! Will never stop using it",
+          stars: "★★★★★",
+        },
       ],
     };
   },
@@ -386,7 +391,6 @@ export default {
 </script>
 
 <style lang="scss">
-
 @keyframes slide {
   0% {
     transform: translate3d(0, 0, 0);
@@ -417,8 +421,8 @@ export default {
   bottom: 0;
   right: 0;
   left: 0;
-  width:100%;
-  height:auto;
+  width: 100%;
+  height: auto;
 }
 
 .btn-special {
@@ -462,18 +466,18 @@ span.btn-special:hover {
 }
 
 .bg-light-pink {
-  background-color: #ffdee1!important;
+  background-color: #ffdee1 !important;
 }
 
 .landmark {
   position: relative;
-  box-sizing:border-box;
+  box-sizing: border-box;
   overflow: hidden;
-  z-index:1;
+  z-index: 1;
   border-radius: 30px;
 }
 
-.landmark img{
+.landmark img {
   transition: 0.5s all ease-in-out;
   border-radius: 30px;
 }
@@ -485,15 +489,14 @@ span.btn-special:hover {
 .description {
   position: absolute;
   bottom: 0;
-  background: rgba(255,255,255,0); /* Black background with 0.5 opacity */
+  background: rgba(255, 255, 255, 0); /* Black background with 0.5 opacity */
   bottom: 0;
   right: 0;
   left: 0;
-  top:0;
+  top: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
 }
-
 </style>
