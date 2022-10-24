@@ -174,7 +174,7 @@
 
 
   <div class="m-5 px-5">
-    <h1 class="fw-bold text-center mt-5 py-5">
+    <h1 class="fw-bold text-center mt-5 py-5 px-5">
       Iconic Landmarks in Singapore
     </h1>
     <div class="row justify-content-center">
