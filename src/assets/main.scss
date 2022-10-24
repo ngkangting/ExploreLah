@@ -1,16 +1,66 @@
 @import url("https://fonts.googleapis.com/css?family=Fredoka");
-@import "bootstrap/scss/bootstrap";
 @import "bootstrap/scss/bootstrap-utilities";
 
 $btn-close-width: 0.8rem;
+$h7-font-size: $font-size-base * 0.75;
+
+$utilities: map-merge(
+  $utilities,
+  (
+    "font-size":
+      map-merge(
+        map-get($utilities, "font-size"),
+        (
+          values:
+            map-merge(
+              map-get(map-get($utilities, "font-size"), "values"),
+              (
+                7: $h7-font-size,
+              )
+            ),
+        )
+      ),
+  )
+);
+
+$nav-link-padding-y: 0.5rem;
+$nav-link-padding-x: 1rem;
+$nav-link-font-size: null;
+$nav-link-font-weight: null;
+$nav-link-color: $gray-300;
+$nav-link-hover-color: $gray-500;
+$nav-link-transition: color 0.15s ease-in-out,
+  background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+$nav-link-disabled-color: $gray-600;
+
+$nav-tabs-border-color: $gray-300;
+$nav-tabs-border-width: $border-width;
+$nav-tabs-border-radius: $border-radius;
+$nav-tabs-link-hover-border-color: $gray-200 $gray-200 $nav-tabs-border-color;
+$nav-tabs-link-active-color: $gray-700;
+$nav-tabs-link-active-bg: $body-bg;
+$nav-tabs-link-active-border-color: $gray-300 $gray-300 $nav-tabs-link-active-bg;
+
+$nav-pills-border-radius: $border-radius;
+$nav-pills-link-active-color: $gray-600;
+$nav-pills-link-active-bg: transparent;
+
+@import "bootstrap/scss/bootstrap";
 
 html,
-body {
+body,
+#app {
   font-family: "Fredoka", sans-serif;
 }
 
-#app {
-  font-family: "Fredoka", sans-serif;
+.wrapper {
+  overflow: scroll;
+  min-height: -webkit-fill-available;
+  -webkit-overflow-scrolling: touch;
+}
+
+.form-control::placeholder {
+  opacity: 0.4;
 }
 
 .bg-dark-blue {
@@ -43,14 +93,14 @@ body {
 
 .btn-light-gray {
   @include button-variant(
-    #e9ecef,
-    #e9ecef,
+    $gray-100,
+    $gray-100,
     #6c757d,
-    #f8f9fa,
-    #f8f9fa,
+    $gray-200,
+    $gray-200,
     #6c757d,
-    #dee2e6,
-    #dee2e6,
+    $gray-300,
+    $gray-300,
     #6c757d
   );
 }

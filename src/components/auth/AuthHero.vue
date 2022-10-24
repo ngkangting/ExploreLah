@@ -1,8 +1,12 @@
 <template>
   <div
-    class="col-12 col-lg-6 offset-1 bg-dark-blue d-none d-lg-block text-center"
+    class="col-12 col-lg-5 offset-lg-1 bg-dark-blue vh-100 d-none d-lg-flex flex-row justify-content-center align-items-center"
   >
-    <img class="vh-100" src="../../assets/img/hero.png" alt="Hero Image" />
+    <img
+      class="w-100 mh-100"
+      src="../../assets/img/hero.png"
+      alt="Hero Image"
+    />
   </div>
 </template>
 
