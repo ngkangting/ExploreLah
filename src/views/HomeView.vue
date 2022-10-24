@@ -9,7 +9,7 @@
         <span class="btn-special my-3">Start Planning!</span>
       </div>
       <div class="train col-lg-6 d-none d-lg-block d-xl-block mb-5 pb-5">
-        <div class="sliding-container">
+        <div class="sliding-container pt-1">
           <div class="sliding-background"></div>
         </div>
         <img
@@ -17,12 +17,8 @@
           src="../assets/img/train.png"
           alt="train">
       </div>
-      
-        <!-- <div class="col-12 col-md-6 p-2">
-            <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_a3emlnqk.json"  background="transparent" speed="0.6" style="width: 350px; height: 350px;" loop autoplay></lottie-player>
-          </div> -->
       </div>
-    </div>
+  </div>
 
 
   <div class="mx-5">
@@ -103,10 +99,77 @@
   </div>
 
   <div class="mx-5">
-    <div class="border-top border-start border-bottom border-dark-blue w-100">ergwg</div>
-    <div class="border-end border-bottom border-dark-blue w-100">qbeir</div>
-    <div class="border-start border-bottom border-dark-blue w-100">ewrgwrg</div>
-    <div class="border-end border-bottom border-dark-blue w-100">wegrgwg</div>
+    <h1 class="fw-bold text-center mt-5 py-5">
+      How It Works
+    </h1>
+
+    <div class="row justify-content-center">
+      <div class="col-5 bg-pink d-flex justify-content-center align-items-center py-3">
+        <lottie-player src="https://lottie.host/712cd913-eaae-47e7-b808-a59e233c96f4/t26HzyDftD.json" background="transparent" speed="1" style="width: 150px; height: 150px;" loop autoplay></lottie-player>
+      </div>
+      <div class="col-5 d-flex justify-content-center align-items-center">
+        <div class="m-4">
+          <h2>
+            <i class="bi bi-1-circle"></i>
+            Location
+          </h2>
+          <div>
+            Let us know where you're currently staying so we have an idea of whats near you!
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-5 d-flex justify-content-center align-items-center">
+        <div class="m-4">
+          <h2>
+            <i class="bi bi-2-circle"></i>
+            Duration
+          </h2>
+          <div>
+            Tell us how long you plan on hanging around Singapore!
+          </div>
+        </div>
+      </div>
+      <div class="col-5 bg-light-pink d-flex justify-content-center align-items-center">
+        <lottie-player src="https://lottie.host/048ba3f9-a020-4b50-bdc6-8b83e1756fee/YkvCh1R331.json" background="transparent" speed="1" style="width: 180px; height: 180px;" loop autoplay></lottie-player>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-5 bg-light-blue d-flex justify-content-center align-items-center">
+        <lottie-player src="https://lottie.host/68c62294-996a-42ad-adb4-9d32e0f9d46a/uJcTvqPOAh.json" background="transparent" speed="1" style="width: 190px; height: 190px;" loop autoplay></lottie-player>
+      </div>
+      <div class="col-5 d-flex justify-content-center align-items-center">
+        <div class="m-4">
+          <h2>
+            <i class="bi bi-3-circle"></i>
+            Preferences
+          </h2>
+          <div>
+            Use our sliders to indicate what you'd rather do around Singapore.
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row justify-content-center">
+      <div class="col-5 d-flex justify-content-center align-items-center">
+        <div class="m-4">
+          <h2>
+            <i class="bi bi-4-circle"></i>
+            Transportation
+          </h2>
+          <div>
+            Whether you're taking the MRT, bus or private transport, we will plan the best route for you!
+          </div>
+        </div>
+      </div>
+      <div class="col-5 bg-blue d-flex justify-content-center align-items-center py-3">
+        <lottie-player src="https://lottie.host/4dc34aa3-8885-4abd-b4f6-420193871a48/MNifFgZ0g3.json" background="transparent" speed="1" style="width: 150px; height: 150px;" loop autoplay></lottie-player>
+      </div>
+    </div>
   </div>
 
 
@@ -117,7 +180,7 @@
     <div class="row justify-content-center">
       <div class="landmark p-2 col-12 col-md-12 col-lg-8">
         <img 
-          class="w-100 rounded-5"
+          class="w-100"
           src="../assets/img/Landmark1.jpg" 
           alt="Landmark1"
         />
@@ -127,7 +190,7 @@
       </div>
       <div class="landmark p-2 col-12 col-md-6 col-lg-4">
         <img 
-          class="w-100 rounded-5"
+          class="w-100"
           src="../assets/img/Landmark2.jpg" 
           alt="Landmark2"
         />
@@ -137,7 +200,7 @@
       </div>
       <div class="landmark p-2 col-12 col-md-6 col-lg-4">
         <img 
-          class="w-100 rounded-5"
+          class="w-100"
           src="../assets/img/Landmark3.jpg" 
           alt="Landmark3"
         />
@@ -153,7 +216,7 @@
       </div>
       <div class="landmark p-2 col-12 col-md-6 col-lg-4">
         <img 
-          class="w-100 rounded-5"
+          class="w-100"
           src="../assets/img/Landmark4.jpg" 
           alt="Landmark4"
         />
@@ -163,7 +226,7 @@
       </div>
       <div class="landmark p-2 col-12 col-md-6 col-lg-4">
         <img 
-          class="w-100 rounded-5"
+          class="w-100"
           src="../assets/img/Landmark5.jpg" 
           alt="Landmark5"
         />
@@ -173,7 +236,7 @@
       </div>
       <div class="landmark p-2 col-12 col-md-12 col-lg-8">
         <img 
-          class="w-100 rounded-5"
+          class="w-100"
           src="../assets/img/Landmark6.jpg" 
           alt="Landmark6"
         />
@@ -334,7 +397,7 @@ export default {
 }
 
 .sliding-background {
-  background: url("../assets/img/slidingBackground.jpg") repeat-x;
+  background: url("../assets/img/slidingBackground.png") repeat-x;
   height: 350px;
   width: 1800px; /* The image width times 2 */
   animation: slide 60s linear infinite;
@@ -398,12 +461,25 @@ span.btn-special:hover {
   min-height: 150px;
 }
 
-.border-dark-blue {
-  border-color: #174877 !important;
+.bg-light-pink {
+  background-color: #ffdee1!important;
 }
+
 .landmark {
   position: relative;
   box-sizing:border-box;
+  overflow: hidden;
+  z-index:1;
+  border-radius: 30px;
+}
+
+.landmark img{
+  transition: 0.5s all ease-in-out;
+  border-radius: 30px;
+}
+
+.landmark:hover img {
+  transform: scale(1.5);
 }
 
 .description {
