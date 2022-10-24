@@ -27,14 +27,6 @@ export const useAuthStore = defineStore("auth", {
       await onAuthStateChanged(auth, (user) => {
         if (user) {
           this.user = user;
-
-          if (
-            this.$router.currentRoute.value.path === "/login" ||
-            this.$router.currentRoute.value.path === "/signup" ||
-            this.$router.currentRoute.value.path === "/forgotpassword"
-          ) {
-            this.$router.push("/");
-          }
         }
       });
     },
@@ -94,12 +86,35 @@ export const useAuthStore = defineStore("auth", {
 
       await createUserWithEmailAndPassword(auth, email, password)
         .then((response) => {
-          this.user = response.user;
-          this.$router.push("/");
           isSuccess = true;
         })
         .catch((error) => {
           switch (error.code) {
+            case "auth/email-already-in-use":
+              throw new Error("Email address is already in use!");
+            default:
+              throw new Error("Oops! Something went wrong...");
+          }
+        });
+
+      return isSuccess;
+    },
+    async registerWithGoogle() {
+      const auth = getAuth();
+      const provider = new GoogleAuthProvider();
+
+      let isSuccess = false;
+
+      await signInWithPopup(auth, provider)
+        .then((response) => {
+          isSuccess = true;
+        })
+        .catch((error) => {
+          switch (error.code) {
+            case "auth/user-not-found":
+              throw new Error("User not found!");
+            case "auth/wrong-password":
+              throw new Error("Wrong Password!");
             default:
               throw new Error("Oops! Something went wrong...");
           }
@@ -135,6 +150,7 @@ export const useAuthStore = defineStore("auth", {
       await signOut(auth)
         .then(() => {
           this.user = null;
+          this.$router.go(0);
         })
         .catch((error) => {
           switch (error.code) {

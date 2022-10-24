@@ -7,19 +7,21 @@ import ForgotPasswordView from "../views/auth/ForgotPasswordView.vue";
 import PlanNow from "../views/PlanNow.vue";
 import ResultPage from "../views/ResultPage.vue";
 import Plan from "../views/Plan.vue";
+import MyTrips from "../views/MyTrips.vue";
 import Result from "../views/ResultView.vue";
+import AboutUs from "../views/AboutUs.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: "/",
-      name: "home",
+      name: "Home",
       component: HomeView,
     },
     {
       path: "/login",
-      name: "login",
+      name: "Login",
       component: LoginView,
       meta: {
         hideNavBar: true,
@@ -27,7 +29,7 @@ const router = createRouter({
     },
     {
       path: "/signup",
-      name: "signup",
+      name: "Sign Up",
       component: SignUpView,
       meta: {
         hideNavBar: true,
@@ -35,7 +37,7 @@ const router = createRouter({
     },
     {
       path: "/forgotpassword",
-      name: "forgotpassword",
+      name: "Forgot Password",
       component: ForgotPasswordView,
       meta: {
         hideNavBar: true,
@@ -43,25 +45,35 @@ const router = createRouter({
     },
     {
       path: "/plan",
-      name: "plannow",
+      name: "Plan",
       component: PlanNow,
-    },
-    // {
-    //   path:'/plannow',
-    //   name:"plannow",
-    //   component:PlanNow
-    // },
-    {
-      path: "/result2",
-      name: "result",
-      component: Result,
     },
     {
       path: "/result",
-      name: "result",
-      component: ResultPage,
+      name: "Result",
+      component: Result,
+    },
+    {
+      path: "/mytrips",
+      name: "My Trips",
+      component: MyTrips,
+    },
+    {
+      path: "/aboutus",
+      name: "About Us",
+      component: AboutUs,
+    },
+    {
+      path: "/result",
+      name: "Result",
+      component: Result,
     },
   ],
+});
+
+router.beforeEach((to, from, next) => {
+  to.name ? (document.title = `ExploreLah | ${to.name}`) : "ExploreLah";
+  next();
 });
 
 export default router;

@@ -3,10 +3,13 @@
   <RouterView
     :class="[
       this.$route.meta.hideNavBar ? 'bg-white' : 'bg-light',
-      this.$route.meta.hideNavBar ? '' : 'py-4',
-      this.$route.meta.hideNavBar ? '' : 'px-5',
+      this.$route.meta.hideNavBar ? '' : 'py-5 px-5',
     ]"
-    style="min-height: calc(100vh - 75px)"
+    :style="[
+      this.$route.meta.hideNavBar
+        ? { 'min-height': `100vh` }
+        : { 'min-height': `calc(100vh - 75px)` },
+    ]"
   />
 </template>
 

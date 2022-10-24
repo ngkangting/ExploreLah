@@ -1,45 +1,47 @@
 /* Just link this to the class if you want to see the breakpoints */
-/*   @import '../assets/breakpoints_ref.css';  */ 
+/*   @import '../assets/breakpoints_ref.css';  */
 /* ^ Include this in your style tags */
-  
-  body::before {
-    content: "XS";
-    color: red;
-    font-size: 2rem;
-    font-weight: bold;
-    position: fixed;
-    top: 250px;
-    right: 50px;
-  }
-  
-  /* This box class is purely used for explaining how the bootstrap grid system works. */
-  
+/*
+body::before {
+  content: "XS";
+  color: red;
+  font-size: 2rem;
+  font-weight: bold;
+  position: fixed;
+  top: 250px;
+  right: 50px;
+}
+*/
+
+/* This box class is purely used for explaining how the bootstrap grid system works. */
+/*
 @media (min-width: 576px) {
-    body::before {
-      content: "SM";
-    }
+  body::before {
+    content: "SM";
   }
-  
-  @media (min-width: 768px) {
-    body::before {
-      content: "MD";
-    }
+}
+
+@media (min-width: 768px) {
+  body::before {
+    content: "MD";
   }
-  
-  @media (min-width: 992px) {
-    body::before {
-      content: "LG";
-    }
+}
+
+@media (min-width: 992px) {
+  body::before {
+    content: "LG";
   }
-  
-  @media (min-width: 1200px) {
-    body::before {
-      content: "XL";
-    }
+}
+
+@media (min-width: 1200px) {
+  body::before {
+    content: "XL";
   }
-  
-  @media (min-width: 1400px) {
-    body::before {
-      content: "XXL";
-    }
+}
+
+@media (min-width: 1400px) {
+  body::before {
+    content: "XXL";
   }
+}
+*/
