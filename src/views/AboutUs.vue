@@ -1,6 +1,6 @@
 <template>
   <div v-motion :initial="{opacity: 0,y: 100,}" :enter="{opacity: 1, y: 0,}">
-    <div class="row d-flex align-items-center justify-content-center">
+    <div class="row d-flex align-items-center justify-content-center" style="background-color: #D6F4FF">
       <div class="col-lg-6">
         <h1 class="display-4 fw-bold lh-1 text-center ps-5">We help you make exploring Singapore easier than ever.</h1>
       </div>
@@ -25,19 +25,32 @@
 
   <div v-motion-slide-visible-left class="row row-cols-1 row-cols-md-2 mx-5">
     <div class="col">
-      <div class="card h-100 text-center p-5">
+      <div class="card h-100 text-center p-5" style="background-color:#174877; border:none; color:white">
+        <div class="mx-auto">
+          <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_x9h8ar8l.json" background="transparent"
+            speed="1" style="width: 200px; height: 200px" hover loop autoplay>
+          </lottie-player>
+        </div>
         <div class="card-body">
-          <h5 class="card-title">Our Mission</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-            content. This content is a little bit longer.</p>
+          <h3 class="card-title">Our Mission</h3>
+          <p class="card-text">
+            To create a platform that makes planning trips quick and efficient, enabling more to explore
+            the wonders of Singapore. ExploreLah! has been committed to solving travelers' various problems when
+            planning trips from what to eat to what kind of weather travelers will experience during their trip.</p>
         </div>
       </div>
     </div>
     <div class="col">
-      <div class="card h-100 text-center p-5">
+      <div class="card h-100 text-center p-5" style="border-color:#174877;border:solid 2px;color:#174877">
         <div class="card-body">
-          <h5 class="card-title">Our Vision</h5>
-          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+          <h3 class="card-title">Our Vision</h3>
+          <p class="card-text">To effectively promote inbound tourism for Singapore so more are able to explore what our
+            country has to offer.</p>
+        </div>
+        <div class="mx-auto">
+          <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_swnrn2oy.json" background="transparent"
+            speed="1" style="width: 300px; height: 300px" hover loop autoplay>
+          </lottie-player>
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@
   <div class="tripcard border-0 w-100">
     <div style="position:relative">
       <img src="../../assets/img/mbs.jpg" class="card-img-top rounded">
-      <button @click=like() id="like-btn" class="btn border-0 "
+      <button @click=like() id="like-btn" class="btn border-0"
         style="position:absolute; top:0; right:0; color:#FF8397"><i class="bi bi-heart"></i></button>
     </div>
     <div class="card-body">
