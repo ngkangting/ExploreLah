@@ -36,7 +36,7 @@
           <p class="card-text">
             To create a platform that makes planning trips quick and efficient, enabling more to explore
             the wonders of Singapore. ExploreLah! has been committed to solving travelers' various problems when
-            planning trips from what to eat to what kind of weather travelers will experience during their trip.</p>
+            planning trips from what to eat to preparing for the weather travelers will encounter during their trip.</p>
         </div>
       </div>
     </div>
@@ -45,7 +45,8 @@
         <div class="card-body">
           <h3 class="card-title">Our Vision</h3>
           <p class="card-text">To effectively promote inbound tourism for Singapore so more are able to explore what our
-            country has to offer.</p>
+            beautiful
+            city has to offer.</p>
         </div>
         <div class="mx-auto">
           <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_swnrn2oy.json" background="transparent"
