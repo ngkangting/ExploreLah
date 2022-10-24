@@ -4,6 +4,8 @@ import HomeView from "../views/HomeView.vue";
 import LoginView from "../views/auth/LoginView.vue";
 import SignUpView from "../views/auth/SignUpView.vue";
 import ForgotPasswordView from "../views/auth/ForgotPasswordView.vue";
+import PlanNow from "../views/PlanNow.vue";
+import ResultPage from "../views/ResultPage.vue";
 import Plan from "../views/Plan.vue";
 import MyTrips from "../views/MyTrips.vue";
 import Result from "../views/ResultView.vue";
@@ -44,16 +46,21 @@ const router = createRouter({
     {
       path: "/plan",
       name: "Plan",
-      component: Plan,
+      component: PlanNow,
+    },
+    {
+      path: "/result",
+      name: "Result",
+      component: Result,
     },
     {
       path: "/mytrips",
-      name: "mytrips",
+      name: "My Trips",
       component: MyTrips,
     },
     {
       path: "/aboutus",
-      name: "aboutus",
+      name: "About Us",
       component: AboutUs,
     },
     {

@@ -15,7 +15,7 @@
 
 <script>
 import { useAuthStore } from "@/stores/auth";
-
+import { useItineraryStore } from "@/stores/itinerary";
 import NavBar from "@/components/layout/NavBar.vue";
 
 export default {
@@ -28,8 +28,8 @@ export default {
   },
   setup() {
     const authStore = useAuthStore();
-
-    return { authStore };
+    const itineraryStore = useItineraryStore();
+    return { authStore, itineraryStore };
   },
   beforeMount() {
     this.authStore.fetchUser();
