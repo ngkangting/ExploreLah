@@ -68,108 +68,31 @@
           role="tablist"
           aria-orientation="vertical"
         >
-          <div class="d-flex align-items-center my-3">
-            <button
-              class="nav-link nav-link-color active"
-              id="v-pills-home-tab"
-              data-bs-toggle="pill"
-              data-bs-target="#v-pills-home"
-              role="tab"
-              aria-controls="v-pills-home"
-              aria-selected="true"
-            >
-              <i class="bi bi-circle-fill"></i>
-            </button>
-            <div
-              class="card border-0 py-4 px-4 w-100"
-              style="transform: scale(0.85); transform-origin: left center"
-            >
-              <h4>Mueseum of Old</h4>
-              <p>Arts & Culture</p>
-              <div class="d-flex justify-content-between">
-                <span>Arrival Time: 12:00</span>
-                <span>Depature Time: 15:00</span>
-              </div>
-            </div>
-          </div>
+          <PillTab
+            v-for="index in 3"
+            :key="index"
+            :index="index"
+            :isSelected="false"
+            :isLast="false"
+            :place="'Mueseum of Old'"
+            :type="'Arts & Culture'"
+            :arrivalTime="'12:00'"
+            :departureTime="'15:00'"
+            :name="`pill-tab-${index}`"
+            :style="{ '--pillTabHeight': `${pillTabHeight}px` }"
+          />
 
-          <div class="d-flex align-items-center my-3">
-            <button
-              class="nav-link"
-              id="v-pills-profile-tab"
-              data-bs-toggle="pill"
-              data-bs-target="#v-pills-profile"
-              type="button"
-              role="tab"
-              aria-controls="v-pills-profile"
-              aria-selected="false"
-            >
-              <i class="bi bi-circle-fill"></i>
-            </button>
-            <div
-              class="card border-0 py-4 px-4 w-100"
-              style="transform: scale(0.75); transform-origin: left center"
-            >
-              <h5>Mueseum of Old</h5>
-              <p>Arts & Culture</p>
-              <div class="d-flex justify-content-between">
-                <span>Arrival Time: 12:00</span>
-                <span>Depature Time: 15:00</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="d-flex align-items-center my-3">
-            <button
-              class="nav-link"
-              id="v-pills-messages-tab"
-              data-bs-toggle="pill"
-              data-bs-target="#v-pills-messages"
-              type="button"
-              role="tab"
-              aria-controls="v-pills-messages"
-              aria-selected="false"
-            >
-              <i class="bi bi-circle-fill"></i>
-            </button>
-            <div
-              class="card border-0 py-4 px-4 w-100"
-              style="transform: scale(0.75); transform-origin: left center"
-            >
-              <h5>Mueseum of Old</h5>
-              <p>Arts & Culture</p>
-              <div class="d-flex justify-content-between">
-                <span>Arrival Time: 12:00</span>
-                <span>Depature Time: 15:00</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="d-flex align-items-center my-3">
-            <button
-              class="nav-link"
-              id="v-pills-settings-tab"
-              data-bs-toggle="pill"
-              data-bs-target="#v-pills-settings"
-              type="button"
-              role="tab"
-              aria-controls="v-pills-settings"
-              aria-selected="false"
-            >
-              <i class="bi bi-circle-fill"></i>
-            </button>
-            <div
-              class="card border-0 py-4 px-4 w-100"
-              style="transform: scale(0.75); transform-origin: left center"
-            >
-              <h5>Mueseum of Old</h5>
-              <p>Arts & Culture</p>
-              <div class="d-flex justify-content-between">
-                <span>Arrival Time: 12:00</span>
-                <span>Depature Time: 15:00</span>
-              </div>
-            </div>
-          </div>
+          <PillTab
+            :index="0"
+            :isSelected="true"
+            :isLast="false"
+            :place="'Mueseum of Old'"
+            :type="'Arts & Culture'"
+            :arrivalTime="'12:00'"
+            :departureTime="'15:00'"
+            ref="pillTab"
+            :style="{ '--pillTabHeight': `${pillTabHeight}px` }"
+          />
         </div>
       </div>
     </div>
@@ -177,10 +100,20 @@
 </template>
 
 <script>
+import PillTab from "@/components/result/PillTab.vue";
+
 export default {
   name: "ResultView",
+  components: {
+    PillTab,
+  },
   data() {
-    return {};
+    return {
+      pillTabHeight: 0,
+    };
+  },
+  mounted() {
+    this.pillTabHeight = this.$refs.pillTab.$el.clientHeight;
   },
   methods: {
     getUser() {},
@@ -188,4 +121,4 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss"></style>

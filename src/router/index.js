@@ -12,12 +12,12 @@ const router = createRouter({
   routes: [
     {
       path: "/",
-      name: "home",
+      name: "Home",
       component: HomeView,
     },
     {
       path: "/login",
-      name: "login",
+      name: "Login",
       component: LoginView,
       meta: {
         hideNavBar: true,
@@ -25,7 +25,7 @@ const router = createRouter({
     },
     {
       path: "/signup",
-      name: "signup",
+      name: "Sign Up",
       component: SignUpView,
       meta: {
         hideNavBar: true,
@@ -33,7 +33,7 @@ const router = createRouter({
     },
     {
       path: "/forgotpassword",
-      name: "forgotpassword",
+      name: "Forgot Password",
       component: ForgotPasswordView,
       meta: {
         hideNavBar: true,
@@ -41,15 +41,20 @@ const router = createRouter({
     },
     {
       path: "/plan",
-      name: "plan",
+      name: "Plan",
       component: Plan,
     },
     {
       path: "/result",
-      name: "result",
+      name: "Result",
       component: Result,
     },
   ],
+});
+
+router.beforeEach((to, from, next) => {
+  to.name ? (document.title = `ExploreLah | ${to.name}`) : "ExploreLah";
+  next();
 });
 
 export default router;
