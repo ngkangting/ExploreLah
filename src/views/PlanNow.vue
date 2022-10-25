@@ -230,7 +230,7 @@ export default {
         },
         redirect() {
             this.$router.push({
-                name: "result",
+                name: "Result",
             });
         },
         goToNextStep() {
