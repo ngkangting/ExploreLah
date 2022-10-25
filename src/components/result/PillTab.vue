@@ -1,22 +1,23 @@
 <template>
-  <div class="d-flex align-items-center my-3">
-    <button
-      class="nav-link p-0 me-4 position-relative tab-icon"
-      :class="[isSelected ? 'line-active active' : '', !isLast ? 'line' : '']"
-      :id="`v-pills-${index}-tab`"
-      data-bs-toggle="pill"
-      :data-bs-target="`#v-pills-${index}`"
-      role="tab"
-      :aria-controls="`v-pills-${index}`"
-      aria-selected="true"
-      tabindex="0"
-      :ref="name"
-    >
-      <i class="bi bi-circle-fill" style="font-size: 1.2rem"></i>
-    </button>
+  <div class="d-flex align-items-center">
+    <div class="h-100 d-flex align-items-start position-relative tab me-4">
+      <button
+        class="nav-link p-0"
+        :class="[!isLast ? 'line' : '']"
+        :id="`v-pills-${index}-tab`"
+        data-bs-toggle="pill"
+        :data-bs-target="`#v-pills-${index}`"
+        role="tab"
+        :aria-controls="`v-pills-${index}`"
+        @click="onClick($event)"
+        ref="tab"
+      >
+        <i class="bi bi-circle-fill" style="font-size: 1.2rem"></i>
+      </button>
+    </div>
     <div
-      class="card border-0 py-4 px-4 w-100"
-      style="transform-origin: left center"
+      class="card border-0 p-4"
+      style="transform-origin: left top"
       :style="[
         isSelected
           ? { transform: 'scale(0.85)' }
@@ -30,7 +31,6 @@
         <span>Depature Time: {{ departureTime }}</span>
       </div>
     </div>
-    {{ test }}
   </div>
 </template>
 
@@ -72,27 +72,34 @@ export default {
     },
   },
   data() {
-    return {
-      isMounted: false,
-    };
-  },
-  computed: {
-    test() {
-      if (!this.isMounted) {
-        return;
-      }
-
-      return this.$refs[`pill-tab-${this.index}`].getAttribute("role");
-    },
+    return {};
   },
   mounted() {
-    this.isMounted = true;
+    this.$watch(
+      () => {
+        console.log(this.$refs.tab.getAttribute("aria-selected"));
+        console.log(this.$refs.tab.getAttribute("aria-selected"));
+      },
+      (val) => {
+        alert("HELLO");
+      }
+    );
+  },
+  methods: {
+    onClick(event) {
+      // console.log(this.$refs.tab.getAttribute("aria-selected"));
+      // event.delegateTarget.classList.add("line-active");
+      // console.log(event.delegateTarget.classList);
+      // console.log(target.$el);
+      // target.$el.classList.add("line-active");
+      // console.log(target.$el.classList);
+    },
   },
 };
 </script>
 
 <style lang="scss">
-.tab-icon {
+.tab {
   z-index: 1;
 }
 
@@ -101,13 +108,13 @@ export default {
     content: "";
     position: absolute;
     z-index: -1;
-    top: 1rem;
+    top: 4%;
     left: 0;
     right: 0;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    height: calc(var(--pillTabHeight) + 1.5rem);
+    height: 100%;
     width: 5px;
     border-radius: 10px;
     background-color: #e9ecef;
