@@ -63,7 +63,7 @@
       <!-- Locations -->
       <div class="col col-lg-4">
         <div
-          class="nav flex-column nav-pills me-3"
+          class="nav nav-pills me-3"
           id="v-pills-tab"
           role="tablist"
           aria-orientation="vertical"
@@ -79,19 +79,16 @@
             :arrivalTime="'12:00'"
             :departureTime="'15:00'"
             :name="`pill-tab-${index}`"
-            :style="{ '--pillTabHeight': `${pillTabHeight}px` }"
           />
 
           <PillTab
             :index="0"
             :isSelected="true"
-            :isLast="false"
+            :isLast="true"
             :place="'Mueseum of Old'"
             :type="'Arts & Culture'"
             :arrivalTime="'12:00'"
             :departureTime="'15:00'"
-            ref="pillTab"
-            :style="{ '--pillTabHeight': `${pillTabHeight}px` }"
           />
         </div>
       </div>
@@ -108,12 +105,7 @@ export default {
     PillTab,
   },
   data() {
-    return {
-      pillTabHeight: 0,
-    };
-  },
-  mounted() {
-    this.pillTabHeight = this.$refs.pillTab.$el.clientHeight;
+    return {};
   },
   methods: {
     getUser() {},
