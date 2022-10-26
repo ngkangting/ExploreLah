@@ -484,16 +484,15 @@ span.btn-special:hover {
 
 .description {
   position: absolute;
-  bottom: 0;
-  background: rgba(255,255,255,0);
+  background: rgba(255,255,255,0) !important;
   bottom: 0;
   right: 0;
   left: 0;
   top:0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
 }
 
 </style>
