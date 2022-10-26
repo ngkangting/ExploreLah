@@ -45,6 +45,8 @@ $nav-pills-border-radius: $border-radius;
 $nav-pills-link-active-color: $gray-600;
 $nav-pills-link-active-bg: transparent;
 
+$btn-close-width: 1rem;
+
 @import "bootstrap/scss/bootstrap";
 
 html,
@@ -127,7 +129,6 @@ body,
   );
 }
 
-.icon-pink{
-  color:#ff8397; 
+.icon-pink {
+  color: #ff8397;
 }
-

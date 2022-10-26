@@ -19,19 +19,6 @@ pinia.use(({ store }) => {
   store.$router = markRaw(router);
 });
 
-//Persistance in localstorage
-// console.log(localStorage.getItem("state"));
-// if (localStorage.getItem("state")) {
-//   pinia.state.value.foodReco = localStorage.getItem("foodReco");
-// };
-
-// watch (
-//   pinia.state,
-//   (foodReco) => {
-//     localStorage.setItem("foodReco", JSON.stringify(foodReco))
-//   }
-// )
-
 app.use(pinia);
 app.use(router);
 app.use(MotionPlugin);
