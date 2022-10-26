@@ -22,8 +22,13 @@
         id="offcanvasNavbar"
         aria-labelledby="offcanvasNavbarLabel"
       >
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">ExploreLah!</h5>
+        <div class="offcanvas-header p-4">
+          <img
+            id="offcanvasNavbarLabel"
+            src="../../assets/img/logo.png"
+            alt="Logo"
+            height="34"
+          />
           <button
             type="button"
             class="btn-close"
@@ -31,28 +36,34 @@
             aria-label="Close"
           ></button>
         </div>
-        <div class="offcanvas-body">
-          <ul class="navbar-nav flex-grow-1 pe-3 align-items-center">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Discover</a>
+        <div class="offcanvas-body py-0 px-4 px-lg-0">
+          <ul class="navbar-nav flex-grow-1 pe-3">
+            <li class="nav-item navbar-item">
+              <router-link to="#" class="nav-link">Discover</router-link>
             </li>
-            <li class="nav-item">
+            <li class="nav-item navbar-item">
               <router-link to="/aboutus" class="nav-link">About Us</router-link>
+            </li>
+            <li class="nav-item navbar-item" v-if="this.authStore.isLoggedIn">
+              <router-link to="/mytrips" class="nav-link">My Trips</router-link>
             </li>
           </ul>
           <ul
-            class="navbar-nav flex-grow-1 justify-content-end align-items-center"
+            class="navbar-nav flex-grow-1 justify-content-end"
             v-if="!this.authStore.isLoggedIn"
           >
-            <li class="nav-item me-2">
+            <li class="nav-item me-2 d-none d-lg-block">
               <router-link to="/plan" class="btn btn-pink"
                 >Plan Now</router-link
               >
             </li>
-            <li class="nav-item me-2">
+            <li class="nav-item navbar-item me-2 d-block d-lg-none">
+              <router-link to="/plan" class="nav-link">Plan Now</router-link>
+            </li>
+            <li class="nav-item navbar-item me-2">
               <router-link to="/signup" class="nav-link">Sign Up</router-link>
             </li>
-            <li class="nav-item me-2">
+            <li class="nav-item navbar-item me-2">
               <router-link to="/login" class="nav-link">Login</router-link>
             </li>
           </ul>
@@ -137,4 +148,10 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+@media only screen and (max-width: 991px) {
+  .navbar-item {
+    font-size: 1.4rem;
+  }
+}
+</style>
