@@ -115,7 +115,7 @@ export default {
     margin-right: auto;
     text-align: center;
     height: 100%;
-    width: 5px;
+    width: 4px;
     border-radius: 10px;
     background-color: #e9ecef;
   }

@@ -485,7 +485,7 @@ span.btn-special:hover {
 .description {
   position: absolute;
   bottom: 0;
-  background: rgba(255,255,255,0); /* Black background with 0.5 opacity */
+  background: rgba(255,255,255,0);
   bottom: 0;
   right: 0;
   left: 0;

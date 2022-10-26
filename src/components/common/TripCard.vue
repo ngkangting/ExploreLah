@@ -1,25 +1,24 @@
 <template>
   <div class="trip-card p-4 col-12 col-md-6 col-lg-4 col-xl-3 ">
-    <div class="effect-image-1 zoom-effect-1">
+    <!-- <div class="effect-image-1 zoom-effect-1"> -->
       <img src="../../assets/img/tripcard.jpg" class="w-100"/>
-    </div>
-    
-    <div class="overlay text-white d-flex justify-content-center align-items-center m-4 text-center">
-      <div>
-        <h3>Trip Name</h3>
-        <p>2 Oct 2022 - 22 Oct 2022</p>
-        <a href="" class="link-light">See More</a>
+      <div class="overlay text-white d-flex justify-content-center align-items-center m-4 text-center">
+        <div>
+          <h3>Trip Name</h3>
+          <p>2 Oct 2022 - 22 Oct 2022</p>
+          <a href="" class="link-light">See More</a>
+        </div>
       </div>
-    </div>
-    <div class="description text-dark-blue px-3 m-4">
-      <p class="m-0 w-100">
-        <b>Accommodation:</b> XXX Hotel
-        <br>
-        <b>Preference:</b> Shopping, Outdoor, Adventure
-        <br>
-        <b>Transportation Method:</b> By Car
-      </p>
-    </div>
+      <div class="description text-dark-blue px-3 m-4">
+        <p class="m-0 w-100">
+          <b>Accommodation:</b> XXX Hotel
+          <br>
+          <b>Preference:</b> Shopping, Outdoor, Adventure
+          <br>
+          <b>Transportation Method:</b> By Car
+        </p>
+      </div>
+    <!-- </div> -->
   </div>
 
 
@@ -129,6 +128,7 @@ export default {
   -moz-transition: all .4s linear;
   -o-transition: all .4s linear;
 }
+
 /* .tripcard {
   position: relative;
   min-width: 300px;
