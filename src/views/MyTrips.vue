@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
-    <div class="row mb-5 mt-5">
-      <h1 class="text-center mb-5 fw-bold">Relive your trips!</h1>
+    <div class="row mb-5 pb-5 pt-5 bg-dark-blue">
+      <h1 class="text-center mb-5 fw-bold text-white">Relive your trips!</h1>
 
       <form class="search d-flex mx-auto align-items-center rounded-5" style="width: 35%" role="search">
         <i class="bi bi-search mr-5 text-dark-blue"></i>
