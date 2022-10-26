@@ -5,7 +5,7 @@ import LoginView from "../views/auth/LoginView.vue";
 import SignUpView from "../views/auth/SignUpView.vue";
 import ForgotPasswordView from "../views/auth/ForgotPasswordView.vue";
 import PlanNow from "../views/PlanNow.vue";
-import ResultPage from "../views/ResultPage.vue";
+import ResultFood from "../views/ResultPage.vue";
 import Plan from "../views/Plan.vue";
 import MyTrips from "../views/MyTrips.vue";
 import Result from "../views/ResultView.vue";
@@ -54,6 +54,11 @@ const router = createRouter({
       component: Result,
     },
     {
+      path:"/resultfood",
+      name: "Food Recommendation",
+      component: ResultFood,
+    },
+    {
       path: "/mytrips",
       name: "My Trips",
       component: MyTrips,
@@ -62,11 +67,6 @@ const router = createRouter({
       path: "/aboutus",
       name: "About Us",
       component: AboutUs,
-    },
-    {
-      path: "/result",
-      name: "Result",
-      component: Result,
     },
   ],
 });
