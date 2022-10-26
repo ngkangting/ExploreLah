@@ -8,6 +8,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@lottiefiles/vue-lottie-player": "^1.0.9",
     "@popperjs/core": "^2.11.6",
     "@vueuse/motion": "^2.0.0-beta.12",
     "axios": "^0.27.2",
