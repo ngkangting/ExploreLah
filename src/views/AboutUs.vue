@@ -46,7 +46,7 @@
 
   <div
     v-motion-slide-visible-once-left
-    class="row row-cols-1 row-cols-md-2 mx-5"
+    class="row row-cols-1 row-cols-md-2 mx-5 mb-5"
   >
     <div class="col">
       <div
@@ -105,17 +105,12 @@
       </div>
     </div>
   </div>
-  <Footer class="mt-5"></Footer>
 </template>
 
 <script>
-import Footer from "@/components/layout/Footer.vue";
-
 export default {
   name: "AboutUs",
-  components: {
-    Footer,
-  },
+  components: {},
   data() {},
 
   methods: {},
