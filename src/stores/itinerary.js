@@ -12,7 +12,8 @@ export const useItineraryStore = defineStore("itinerary", {
     actions: {
         async fetchItinerary(formInfo) {
                 console.log(formInfo);
-                const path = "http://127.0.0.1:5000";
+                // const path = "http://127.0.0.1:5000"; // LocalHost Path
+                const path = "https://wad2-explorelah.as.r.appspot.com/"; // LocalHost Path
                 axios.post(path, formInfo)
                 .then((res) => {
                     console.log(res.data);

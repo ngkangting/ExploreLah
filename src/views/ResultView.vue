@@ -94,6 +94,9 @@
       </div>
     </div>
   </div>
+  <div>
+    <button @click="redirectToFood()">Go to Food Reco</button>
+  </div>
 </template>
 
 <script>
@@ -109,6 +112,11 @@ export default {
   },
   methods: {
     getUser() {},
+    redirectToFood(){
+      this.$router.push({
+        name:"Food Recommendation"
+      })
+    }
   },
 };
 </script>
