@@ -29,7 +29,9 @@
       <div class="d-flex justify-content-between">
         <span>Arrival Time: {{ arrivalTime }}</span>
         <span>Depature Time: {{ departureTime }}</span>
+        <p>Forecast: {{forecast}}</p>
       </div>
+      {{travelTimeToThis}}
     </div>
   </div>
 </template>
@@ -59,17 +61,31 @@ export default {
       default: null,
     },
     arrivalTime: {
-      type: String,
+      type: Number,
       default: null,
     },
     departureTime: {
-      type: String,
+      type: Number,
       default: null,
     },
     name: {
       type: String,
       default: null,
     },
+    forecast: {
+      type: String,
+      default: "Currently Unavailable",
+    },
+    duration: {
+      type: String,
+      default: null,
+    },
+    travelTimeToThis: {
+      type: Number,
+      default: null,
+    },
+
+    
   },
   data() {
     return {};

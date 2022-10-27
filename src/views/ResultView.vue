@@ -165,6 +165,9 @@
             :type="'Arts & Culture'"
             :arrivalTime="activity.arriveTime"
             :departureTime="activity.endTime"
+            :forecast="activity.status"
+            :duration="activity.dur"
+            :travelTimeToThis="activity.travelTimeTo"
             :name="`pill-tab-${index}`"
           />
           <!-- <div v-for="activity in currentDayData">
