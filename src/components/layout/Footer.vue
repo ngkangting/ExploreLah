@@ -165,7 +165,10 @@
       <div
         class="col-12 col-md-6 order-2 order-md-1 p-0 d-flex justify-content-start align-items-center"
       >
-        <span class="opacity-75">© 2022 ExploreLah!. All rights reserved.</span>
+        <span class="opacity-75"
+          >© {{ new Date().getFullYear() }} ExploreLah! All rights
+          reserved.</span
+        >
       </div>
       <div
         class="col-12 col-md-6 order-1 order-md-2 p-0 d-flex justify-content-start justify-content-md-end mb-2 mb-md-0"
