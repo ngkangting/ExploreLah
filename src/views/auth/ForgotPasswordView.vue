@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid h-100 px-0">
+  <div class="container-fluid h-100">
     <div class="row min-vh-100 justify-content-around">
       <FixedAlert
         :variant="variant"

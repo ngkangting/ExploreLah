@@ -1,7 +1,7 @@
 <template>
-  <div class="container-fluid px-0 d-flex">
+  <div class="container-fluid d-flex position-relative">
     <div
-      class="bg-dark-blue w-100 position-absolute"
+      class="bg-dark-blue w-100 mx-0 px-0 position-absolute"
       style="height: 250px"
     ></div>
     <div class="row d-flex flex-grow-1 justify-content-center my-5">
