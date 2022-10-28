@@ -75,12 +75,12 @@ export default {
   box-sizing: border-box;
   overflow: hidden;
   z-index: 1;
-  border-radius: 30px;
+  border-radius: 10px;
 }
 
 .landmark img {
   transition: 0.5s all ease-in-out;
-  border-radius: 30px;
+  border-radius: 10px;
 }
 
 .landmark:hover img {
