@@ -1,5 +1,5 @@
 <template>
-  <div class="trip-card p-4 col-12 col-sm-6 col-lg-4 col-xl-3 ">
+  <div class="trip-card p-4 col-md-6 col-lg-4 col-xl-3 ">
     <div class="effect-image-1 zoom-effect-1">
       <img src="../../assets/img/tripcard.jpg" class="w-100"/>
       <div class="overlay text-white d-flex justify-content-center align-items-center text-center">
@@ -9,7 +9,7 @@
         </div>
       </div>
       <div class="description text-dark-blue px-3">
-        <p class="m-0 w-100">
+        <p class="m-0 w-100 ">
           <b>Accommodation:</b> XXX Hotel
           <br>
           <b>Preference:</b> Shopping, Outdoor, Adventure
@@ -42,6 +42,7 @@ export default {
   border-radius: 30px;
 }
 
+
 .overlay {
   position: absolute;
   border-top-left-radius: 30px;
@@ -63,6 +64,7 @@ export default {
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
   top: 60%;
+  bottom: 0;
   right: 0;
   left: 0;
   background: rgba(255, 255, 255, 0.925);
@@ -96,9 +98,9 @@ export default {
   -moz-transition: all .4s linear;
   -o-transition: all .4s linear;
 }
+
 .tripcard {
   position: relative;
-  min-width: 300px;
   height: auto;
   overflow: hidden;
   margin: 0 auto;

@@ -20,21 +20,32 @@
 
     <div class="mt-5 mb-5 mx-5">
       <h3 class="fw-bold px-3 mt-4 ">Upcoming Trips (1)</h3>
-      <div class="row">
-      <TripCard/>
+      <div class="row d-none d-sm-none d-md-block">
+        <TripCard/>
+      </div>
+      <div class="row d-md-none d-lg-none d-xl-none">
+        <PhoneTripCard/>
       </div>
     </div>
 
     <div class="mx-5 mb-5">
       <h3 class="fw-bold px-3">Past Trips</h3>
-      <div class="row">
-      <TripCard/>
-      <TripCard/>
-      <TripCard/>
-      <TripCard/>
-      <TripCard/>
-      <TripCard/>
-      <TripCard/>
+      <div class="row d-none d-sm-none d-md-block">
+        <TripCard/>
+        <TripCard/>
+        <TripCard/>
+        <TripCard/>
+        <TripCard/>
+        <TripCard/>
+        <TripCard/>
+      </div>
+      <div class="row d-md-none d-lg-none d-xl-none">
+        <PhoneTripCard/>
+        <PhoneTripCard/>
+        <PhoneTripCard/>
+        <PhoneTripCard/>
+        <PhoneTripCard/>
+        <PhoneTripCard/>
       </div>
     </div>
   </div>
@@ -45,14 +56,16 @@
 <script>
 import TripCard from "@/components/common/TripCard.vue";
 import Footer from "@/components/layout/Footer.vue";
+import PhoneTripCard from "@/components/common/PhoneTripCard.vue";
 
 export default {
   name: "MyTrips",
   data() { },
   components: {
     TripCard,
-    Footer
-  },
+    Footer,
+    PhoneTripCard
+},
   methods: {},
 };
 </script>

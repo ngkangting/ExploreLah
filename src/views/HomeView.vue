@@ -6,12 +6,27 @@
         </h1>     
     </div>
     
-    <div class="row d-block d-sm-none">
-      <div class="col-10">
+    <div class="row d-md-none d-lg-none d-xl-none justify-content-center">
+      <div class="col-5 pt-5 pb-0 d-">
+        <div class="sm bg-light-pink p-1 d-flex justify-content-center align-items-center">
+          <img class="h-75 w-75" src="../assets/img/small-1.png" alt="cloud forest and flower dome"/>
+        </div>
+        <div class="med bg-blue p-1 d-flex justify-content-center align-items-center">
+          <img class="h-100" src="../assets/img/med-2.png" alt="supertree at garden by the bay"/>
+        </div>
+      </div>
+      <div class="col-5 pt-5 pb-0">
+        <div class="med bg-light-blue p-1 d-flex justify-content-center align-items-center">
+          <img class="h-100" src="../assets/img/med-3.png" alt="ferris wheel"/>
+        </div>
+        <div class="sm bg-dark-blue p-1 d-flex justify-content-center align-items-center">
+          <img class="h-100" src="../assets/img/small-2.png" alt="art science museum"/>
+        </div>
       </div>
     </div>
+
     <div class="d-flex justify-content-center">
-      <h6 class="d-flex justify-content align-items-center btn-special-blue text-center d-block d-sm-none m-2">
+      <h6 class="d-flex justify-content align-items-center btn-special-blue text-center d-md-none d-lg-none d-xl-none m-2">
         Start Planning!
       </h6>
     </div>
@@ -74,7 +89,7 @@
       </div>
     </div>
 
-    <div class="d-none d-lg-block d-xl-block">
+    <div class="d-none d-md-block d-lg-block d-xl-block">
       <span class="d-flex justify-content-center me-5 pe-5">
         <lottie-player class="car" src="https://assets4.lottiefiles.com/packages/lf20_JOHmpu.json"  background="transparent"  speed="0.6"  style="width: 700px; height: 60px;"  loop  autoplay></lottie-player>
         <h6 class="d-flex justify-content align-items-center btn-special-blue text-center me-5">
@@ -83,9 +98,6 @@
       </span>
     </div>
   </div>
-  
-  
-
 
   <div class="mx-5">
     <h1 class="fw-bold text-center mt-5 py-5">
@@ -157,7 +169,7 @@
     </h1>
 
     <div class="row justify-content-center">
-      <div class="col-5 bg-pink d-flex justify-content-center align-items-center py-3 rounded-5 d-none d-sm-block d-md-block d-lg-block d-xl-block">
+      <div class="col-5 bg-pink d-flex justify-content-center align-items-center py-3 rounded-4 d-none d-sm-block d-md-block d-lg-block d-xl-block">
         <lottie-player src="https://lottie.host/712cd913-eaae-47e7-b808-a59e233c96f4/t26HzyDftD.json" background="transparent" speed="1" style="width: 150px; height: 150px;" loop autoplay></lottie-player>
       </div>
       <div class="col-12 col-sm-5 d-flex justify-content-center align-items-center">
@@ -185,13 +197,13 @@
           </div>
         </div>
       </div>
-      <div class="col-5 bg-light-pink d-flex justify-content-center align-items-center rounded-5 d-none d-sm-block d-md-block d-lg-block d-xl-block">
+      <div class="col-5 bg-light-pink d-flex justify-content-center align-items-center rounded-4 d-none d-sm-block d-md-block d-lg-block d-xl-block">
         <lottie-player src="https://lottie.host/048ba3f9-a020-4b50-bdc6-8b83e1756fee/YkvCh1R331.json" background="transparent" speed="1" style="width: 180px; height: 180px;" loop autoplay></lottie-player>
       </div>
     </div>
 
     <div class="row justify-content-center">
-      <div class="col-5 bg-light-blue d-flex justify-content-center align-items-center rounded-5 d-none d-sm-block d-md-block d-lg-block d-xl-block">
+      <div class="col-5 bg-light-blue d-flex justify-content-center align-items-center rounded-4 d-none d-sm-block d-md-block d-lg-block d-xl-block">
         <lottie-player src="https://lottie.host/68c62294-996a-42ad-adb4-9d32e0f9d46a/uJcTvqPOAh.json" background="transparent" speed="1" style="width: 190px; height: 190px;" loop autoplay></lottie-player>
       </div>
       <div class="col-12 col-sm-5 d-flex justify-content-center align-items-center">
@@ -219,118 +231,11 @@
           </div>
         </div>
       </div>
-      <div class="col-5 bg-blue d-flex justify-content-center align-items-center py-3 rounded-5 d-none d-sm-block d-md-block d-lg-block d-xl-block">
+      <div class="col-5 bg-blue d-flex justify-content-center align-items-center py-3 rounded-4 d-none d-sm-block d-md-block d-lg-block d-xl-block">
         <lottie-player src="https://lottie.host/4dc34aa3-8885-4abd-b4f6-420193871a48/MNifFgZ0g3.json" background="transparent" speed="1" style="width: 150px; height: 150px;" loop autoplay></lottie-player>
       </div>
     </div>
   </div>
-
-  <div class="m-5">
-    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-      <div v-for="review in reviewArray" :key="review" class="carousel-inner">
-        <div class="carousel-item">
-          <div>
-            <p class="py-2">
-              <i class="bi bi-quote border border-0 rounded-circle p-2 bg-dark-blue text-white"></i>
-            </p>
-            <p class="fw-bold text-dark-blue">
-              {{ review.reviewName }}
-            </p>
-            <p class="text-dark-blue">
-              {{ review.reviewText }}
-            </p>
-          </div>
-          <h3 class="text-pink">
-            {{ review.stars }}
-          </h3>
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-  </div>
-
-  <!-- <div>
-    <h1 class="text-center mt-5 fw-bold py-5">What do users think?</h1>
-
-    <div class="my-auto justify-content-center">
-      <div id="carouselExample" class="carousel carousel-dark m-3" data-interval="false">
-        <div class="carousel-inner row" role="listbox">
-            <div v-for="review in reviewArray" :key="review" class="carousel-item">
-              <div class="card mx-auto col-4 p-3 bg-light border-0">
-                <div class="card-body">
-                    <p class="card-title fw-bold text-dark-blue">{{ review.name }}</p>
-                    <p class="card-text text-dark-blue">{{ review.reviewText }}</p>
-                </div>
-                <h3 class="d-flex flex-row mt-auto p-3 text-pink">{{ review.stars }}</h3>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <button @click="updatePrev()" class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button @click="updateNext()" class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-    </div> -->
-
-  <!-- <div class="m-5">
-    <h1 class="text-center mt-5 fw-bold py-5">Don't just take our word for it</h1>
-    <vueper-slides
-    class="no-shadow m-5"
-    :visible-slides="3"
-    :gap="3"
-    :slide-ratio="1 / 4"
-    :dragging-distance="200"
-    :breakpoints="{ 992: { visibleSlides: 2 },  576: { visibleSlides: 1 } }"
-    :infinite="true"
-    :arrows-outside="true"
-    bullets-outside
-    autoplay
-    >
-      <template #arrow-left>
-        <i class="bi bi-arrow-left-circle display-6 text-dark-blue"></i>
-      </template>
-
-      <template #arrow-right>
-        <i class="bi bi-arrow-right-circle display-6 text-dark-blue"></i>
-      </template>
-      <vueper-slide 
-      class="p-4 rounded-5"
-      v-for="(slide, i) in slides" 
-      :key="i" 
-      style="background-color: #f8f9fa;"
-      >
-        <template #content>
-          <div style="min-height: 150px">
-            <p class="py-2">
-              <i class="bi bi-quote border border-0 rounded-circle p-2 bg-dark-blue text-white"></i>
-            </p>
-            <p class="fw-bold text-dark-blue">
-              {{ slide.title }}
-            </p>
-            <p class="text-dark-blue">
-              {{ slide.content }}
-            </p>
-          </div>
-          <h3 class="text-pink">
-            {{ slide.stars}}
-          </h3>
-        </template>
-      </vueper-slide>
-    </vueper-slides>
-  </div> -->
 
   <div>
     <h1 class="type d-flex justify-content-center fw-bold text-center mt-5 py-5">
