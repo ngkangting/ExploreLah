@@ -16,14 +16,21 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div
         class="offcanvas offcanvas-end w-100"
         tabindex="-1"
         id="offcanvasNavbar"
         aria-labelledby="offcanvasNavbarLabel"
       >
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">ExploreLah!</h5>
+        <div class="offcanvas-header py-4 pb-2 px-4">
+          <img
+            id="offcanvasNavbarLabel"
+            src="../../assets/img/logo.png"
+            alt="Logo"
+            height="34"
+          />
+
           <button
             type="button"
             class="btn-close"
@@ -31,41 +38,67 @@
             aria-label="Close"
           ></button>
         </div>
-        <div class="offcanvas-body">
-          <ul class="navbar-nav flex-grow-1 pe-3 align-items-center">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Discover</a>
+        <hr class="d-block d-lg-none mx-4 text-secondary" />
+        <div class="offcanvas-body align-items-center py-0 px-4 px-lg-0">
+          <ul class="navbar-nav flex-grow-1 pe-3">
+            <li
+              class="nav-item navbar-item d-block d-lg-none"
+              data-bs-dismiss="offcanvas"
+            >
+              <router-link to="/" class="nav-link">Home</router-link>
             </li>
-            <li class="nav-item">
+            <li class="nav-item navbar-item" data-bs-dismiss="offcanvas">
+              <router-link to="#" class="nav-link">Discover</router-link>
+            </li>
+            <li class="nav-item navbar-item" data-bs-dismiss="offcanvas">
               <router-link to="/aboutus" class="nav-link">About Us</router-link>
+            </li>
+            <li
+              class="nav-item navbar-item"
+              data-bs-dismiss="offcanvas"
+              v-if="this.authStore.isLoggedIn"
+            >
+              <router-link to="/mytrips" class="nav-link">My Trips</router-link>
             </li>
           </ul>
           <ul
-            class="navbar-nav flex-grow-1 justify-content-end align-items-center"
+            class="navbar-nav flex-grow-1 justify-content-end align-items-lg-center"
             v-if="!this.authStore.isLoggedIn"
           >
-            <li class="nav-item me-2">
+            <li class="nav-item me-2 d-none d-lg-block">
               <router-link to="/plan" class="btn btn-pink"
                 >Plan Now</router-link
               >
             </li>
-            <li class="nav-item me-2">
+            <li
+              class="nav-item navbar-item me-2 d-block d-lg-none"
+              data-bs-dismiss="offcanvas"
+            >
+              <router-link to="/plan" class="nav-link">Plan Now</router-link>
+            </li>
+            <li class="nav-item navbar-item me-2" data-bs-dismiss="offcanvas">
               <router-link to="/signup" class="nav-link">Sign Up</router-link>
             </li>
-            <li class="nav-item me-2">
+            <li class="nav-item navbar-item me-2" data-bs-dismiss="offcanvas">
               <router-link to="/login" class="nav-link">Login</router-link>
             </li>
           </ul>
           <ul
-            class="navbar-nav flex-grow-1 justify-content-end align-items-center"
+            class="navbar-nav flex-grow-1 justify-content-end align-items-lg-center"
             v-else
           >
-            <li class="nav-item me-2">
+            <li class="nav-item me-2 d-none d-lg-block">
               <router-link to="/plan" class="btn btn-pink"
                 >Plan Now</router-link
               >
             </li>
-            <li class="nav-item dropdown me-4">
+            <li
+              class="nav-item navbar-item me-2 d-block d-lg-none"
+              data-bs-dismiss="offcanvas"
+            >
+              <router-link to="/plan" class="nav-link">Plan Now</router-link>
+            </li>
+            <li class="nav-item dropdown me-4 d-none d-lg-block">
               <a
                 class="nav-link d-flex justify-content-center align-items-center"
                 href="#"
@@ -74,27 +107,13 @@
                 aria-expanded="false"
               >
                 <div
-                  class="bg-secondary rounded-circle text-white d-flex justify-content-center align-items-center me-2"
+                  class="bg-dark-blue rounded-circle text-white d-flex justify-content-center align-items-center me-2"
                   style="width: 40px; height: 40px"
                 >
                   {{ this.authStore.user.email.charAt(0).toUpperCase() }}
                 </div>
-                {{ this.authStore.user.email }}
               </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a class="dropdown-item" href="#"
-                    ><i class="bi bi-geo-alt"></i> My Trips</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#"
-                    ><i class="bi bi-gear"></i> Settings</a
-                  >
-                </li>
-                <li>
-                  <hr class="dropdown-divider" />
-                </li>
+              <ul class="dropdown-menu dropdown-menu-end py-3">
                 <li>
                   <router-link
                     to="/"
@@ -104,6 +123,14 @@
                   >
                 </li>
               </ul>
+            </li>
+            <li
+              class="nav-item navbar-item me-2 d-block d-lg-none"
+              data-bs-dismiss="offcanvas"
+            >
+              <router-link to="/" class="nav-link" @click="logoutUser()"
+                >Logout</router-link
+              >
             </li>
           </ul>
         </div>
@@ -137,4 +164,10 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+@media only screen and (max-width: 991px) {
+  .navbar-item {
+    font-size: 1.4rem;
+  }
+}
+</style>

@@ -10,6 +10,7 @@ import Plan from "../views/Plan.vue";
 import MyTrips from "../views/MyTrips.vue";
 import Result from "../views/ResultView.vue";
 import AboutUs from "../views/AboutUs.vue";
+import PageNotFound from "../views/PageNotFound.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -54,7 +55,7 @@ const router = createRouter({
       component: Result,
     },
     {
-      path:"/resultfood",
+      path: "/resultfood",
       name: "Food Recommendation",
       component: ResultFood,
     },
@@ -67,6 +68,11 @@ const router = createRouter({
       path: "/aboutus",
       name: "About Us",
       component: AboutUs,
+    },
+    {
+      path: "/:pathMatch(.*)*",
+      name: "Page Not Found",
+      component: PageNotFound,
     },
   ],
 });
