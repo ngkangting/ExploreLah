@@ -44,7 +44,6 @@
               <div class="column col-6 rounded-3 px-3 py-3">
               
                 <h4 class="pb-2 fw-bold">The Shoppes at Marina Bay Sands</h4>
-
                 <p class="mb-4">
                   <span class="tag bg-grey rounded-2 p-1 px-2 text-dark-blue">Luxury Shopping</span>
                   <span class="tag bg-grey rounded-2 p-1 px-2 text-dark-blue ms-2">Night Life</span>
@@ -133,7 +132,7 @@
           role="tablist"
           aria-orientation="vertical"
         >
-          <PillTab
+          <!-- <PillTab
             v-for="index in 3"
             :key="index"
             :index="index"
@@ -154,8 +153,41 @@
             :type="'Arts & Culture'"
             :arrivalTime="'12:00'"
             :departureTime="'15:00'"
+          /> -->
+
+          <PillTab
+            v-for="activity,index in currentDayData"
+            :key="index"
+            :index="index"
+            :isSelected="false"
+            :isLast="false"
+            :place="activity.name"
+            :type="'Arts & Culture'"
+            :arrivalTime="activity.arriveTime"
+            :departureTime="activity.endTime"
+            :forecast="activity.status"
+            :duration="activity.dur"
+            :travelTimeToThis="activity.travelTimeTo"
+            :name="`pill-tab-${index}`"
           />
+          <!-- <div v-for="activity in currentDayData">
+            <h2>{{activity.order}}.{{activity.name}}</h2>
+            <p>Arrival Time: {{activity["arriveTime"]}}</p>
+            <p>Time Spent: {{activity["dur"]}}</p>
+            <p>Leave At: {{activity["endTime"]}}</p>
+            <p>Estimated travel time from previous place to this:{{activity["travelTimeTo"]}}min</p>
+            <p>Weather Forecast: {{activity["status"]}}</p>
+          </div> -->
+          
         </div>
+        <!-- Next buttons -->
+        <div class="row">
+            <div class="col-6">
+              <button @click="goPrevDay">Prev</button>
+              {{currDay}}
+              <button @click="goNextDay">Next</button>
+            </div>
+          </div>
       </div>
     </div>
   </div>
@@ -165,6 +197,10 @@
 </template>
 
 <script>
+import { useAuthStore } from "@/stores/auth";
+import {useItineraryStore} from "@/stores/itinerary";
+import { GoogleMap, Marker, CustomMarker } from "vue3-google-map";
+
 import PillTab from "@/components/result/PillTab.vue";
 
 export default {
@@ -173,7 +209,20 @@ export default {
     PillTab,
   },
   data() {
-    return {};
+    return {
+      currDay:1
+    };
+  },
+  setup(){
+    const authStore = useAuthStore();
+    const itineraryStore = useItineraryStore();
+    const center = {lat: 1.290270 ,lng: 103.851959};
+    return { authStore,itineraryStore, center };
+  },
+  computed:{
+    currentDayData(){
+      return this.itineraryStore.itineraryList[this.currDay]["itinerary"]
+    }
   },
   methods: {
     getUser() {},
@@ -181,7 +230,16 @@ export default {
       this.$router.push({
         name:"Food Recommendation"
       })
-    }
+    },goPrevDay(){
+        if (this.currDay != 1) {
+          this.currDay -= 1;
+        }
+      },
+      goNextDay(){
+        if (this.currDay != this.itineraryStore.itineraryList.length-1) {
+          this.currDay += 1
+        }
+      },
   },
 };
 </script>

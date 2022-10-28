@@ -1,11 +1,14 @@
-<template>
-  
+<template>         
+ <ProgressPin1/>
+
+    <div id="background" class="bg-dark-blue">
+    </div>
   <div class="d-flex justify-content-center">
-    <div class="col-lg-6 card mt-3 h-25">
-      <div class="card-body">
-        <div class="progress">
+    <div class="col-lg-6 card mt-5 pt-5 pb-5 h-25">
+      <div class="progress">
           <div class="progress-bar bg-pink" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" :style=progressCompleted></div>
         </div>
+      <div class="card-body">
         <h5 class=" card-title text-center mt-4">
           Build Your Own Customised Itinerary Now!
         </h5>
@@ -166,6 +169,7 @@
           </div>
           </template>
         </form>
+        
       </div>
     </div>
   </div>
@@ -177,11 +181,17 @@
 import {useItineraryStore} from "@/stores/itinerary";
 import MerlionMascot from "../components/common/MerlionMascot.vue"
 
+//Importing SVG
+import ProgressPin1 from '../assets/svg/google.svg?sfc';
+
 export default {
     name: "PlanNow",
     setup() {
         const itineraryStore = useItineraryStore();
         return { itineraryStore };
+    },
+    components:{
+      ProgressPin1, MerlionMascot
     },
     data() {
         return {
@@ -259,6 +269,12 @@ export default {
     height: 8px !important;
     margin-top: -17px !important;
     
+  }
+  
+  #background{
+    height:200px;
+    position:absolute;
+    width: 100vw;
   }
 
 </style>
