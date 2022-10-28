@@ -1,7 +1,7 @@
 <template>
-  <div class="container-fluid d-flex">
+  <div class="container-fluid d-flex pb-5">
     <div class="px-5">
-      <h1 class="fw-bold text-center mt-5 py-5">
+      <h1 class="fw-bold text-center mt-4 py-5">
         Iconic Landmarks in Singapore
       </h1>
       <div class="row justify-content-center">
