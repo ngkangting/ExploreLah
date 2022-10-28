@@ -1,29 +1,45 @@
 <template>
-  <div class="container-fluid d-flex">
-    <div class="row d-flex flex-grow-1 relative">
-      <div class="bg-dark-blue w-100 absolute" style="height: 200px"></div>
-
-      <div class="col-lg-6 card">
-        <div class="progress">
-          <div
-            class="progress-bar bg-pink"
-            role="progressbar"
-            aria-label="Basic example"
-            aria-valuenow="0"
-            aria-valuemin="0"
-            aria-valuemax="100"
-            :style="progressCompleted"
-          ></div>
+  <div class="container-fluid px-0 d-flex">
+    <div
+      class="bg-dark-blue w-100 position-absolute"
+      style="height: 250px"
+    ></div>
+    <div class="row d-flex flex-grow-1 justify-content-center my-5">
+      <div class="col-lg-6 card border-0 shadow-sm h-100 p-0">
+        <div class="d-stepper mt-4">
+          <div class="d-stepper-header d-flex justify-content-around mt-2">
+            <div
+              class="step-number-content text-center"
+              :class="{ active: step == i }"
+              v-for="(stepItem, i) in steps"
+              :key="i"
+            >
+              <div
+                class="step-number align-items-center justify-content-center mx-auto"
+                :class="stepNumberClasses(i)"
+                style="font-size: 1.2rem"
+              >
+                <div
+                  class="m-0 p-0 h-100 m-auto d-flex justify-content-center align-items-center"
+                  v-html="stepItem.icon"
+                ></div>
+              </div>
+              <div class="mt-1 small fw-bold text-secondary">
+                {{ stepItem.name }}
+              </div>
+            </div>
+          </div>
         </div>
+
         <div class="card-body">
-          <h5 class="card-title text-center mt-4">
-            Build Your Own Customised Itinerary Now!
-          </h5>
-          <p class="text-center">
-            <!-- Catered to your personal preferences, find the best possible travel
-          route! -->
-            {{ headerText[activePhase] }}
-          </p>
+          <div class="mb-5">
+            <h5 class="card-title text-center fs-2 fw-bolder mt-4">
+              {{ headerText[activePhase].heading }}
+            </h5>
+            <p class="text-center fs-4 text-secondary">
+              {{ headerText[activePhase].secondaryHeading }}
+            </p>
+          </div>
           <form
             @submit.prevent="generateItinerary()"
             class="needs-validation"
@@ -32,17 +48,17 @@
             <!-- Form Part 1 -->
             <template v-if="activePhase === 0">
               <div class="col-lg-8 offset-lg-2 mb-4">
-                <label for="location" class="form-label">Location</label>
+                <label for="location" class="form-label fs-5">Location</label>
                 <input
                   type="text"
                   class="form-control"
                   id="location"
-                  placeholder="Where are you staying?"
+                  placeholder="Enter location"
                   v-model="location"
                   required
                 />
-                <div v-if="!isLocationValid" class="text-danger">
-                  MAKE ME A SLOT PLEASE Empty Field
+                <div v-if="!isLocationValid" class="text-danger mt-1">
+                  Please enter a location
                 </div>
               </div>
               <div class="text-center">
@@ -198,15 +214,15 @@
       </div>
     </div>
   </div>
-  <!-- <MerlionMascot positionX="0" positionY="-150"></MerlionMascot> -->
 </template>
 
 <script>
 import { useItineraryStore } from "@/stores/itinerary";
-import MerlionMascot from "../components/common/MerlionMascot.vue";
 
-//Importing SVG
-import ProgressPin1 from "../assets/svg/google.svg?sfc";
+import Location from "../assets/svg/location.svg?raw";
+import Clock from "../assets/svg/clock.svg?raw";
+import Shop from "../assets/svg/shop.svg?raw";
+import Transport from "../assets/svg/transport.svg?raw";
 
 export default {
   name: "Plan",
@@ -215,8 +231,10 @@ export default {
     return { itineraryStore };
   },
   components: {
-    ProgressPin1,
-    MerlionMascot,
+    Location,
+    Clock,
+    Shop,
+    Transport,
   },
   data() {
     return {
@@ -232,19 +250,43 @@ export default {
       activePhase: 0,
       checkLocation: false,
       headerText: [
-        "Where do you want to start from?",
-        "How many days will this trip be?",
-        "What type of activities are you interested in?",
-        "Lastly, how are you planning on travelling?",
+        { heading: "Location", secondaryHeading: "Where will you be staying?" },
+        {
+          heading: "Duration",
+          secondaryHeading: "How many days will this trip be?",
+        },
+        {
+          heading: "Activities",
+          secondaryHeading: "What type of activities are you interested in?",
+        },
+        {
+          heading: "Transportation",
+          secondaryHeading: "Lastly, how are you planning on travelling?",
+        },
       ],
+      steps: [
+        { name: "Location", icon: Location },
+        { name: "Duration", icon: Clock },
+        { name: "Activities", icon: Shop },
+        { name: "Transportation", icon: Transport },
+      ],
+      step: 0,
     };
   },
   computed: {
-    progressCompleted() {
-      return `width:${this.activePhase * 33.33}%`;
-    },
     isLocationValid() {
       return this.location || !this.checkLocation;
+    },
+    activeStep() {
+      return this.steps[this.step];
+    },
+    stepComponent() {
+      return this.steps[this.step].component;
+    },
+    iconClasses() {
+      if (!this.activeStep.icon) return "";
+      else if (/\s/.test(this.activeStep.icon)) return this.activeStep.icon;
+      return `fas ${this.activeStep.icon}`;
     },
   },
   methods: {
@@ -284,19 +326,49 @@ export default {
     goToPrevStep() {
       this.activePhase -= 1;
     },
+    stepNumberClasses(i) {
+      return {
+        "bg-pink text-white": this.step === i && !this.fatalError,
+        "bg-dark-blue text-white": this.step > i && !this.fatalerror,
+        "bg-danger text-white": this.fatalError && this.step === i,
+        "text-secondary-light": this.step < i,
+      };
+    },
   },
   created() {
     console.log(this.activePhase);
   },
-  components: { MerlionMascot },
 };
 </script>
 
 <style>
-@import "../assets/breakpoints_ref.css";
+.d-stepper .d-stepper-header {
+  margin: 0 auto;
+  position: relative;
+}
 
-.progress {
-  height: 8px !important;
-  margin-top: -17px !important;
+.d-stepper .d-stepper-header::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  background-color: #ddd;
+  top: 17px;
+  left: 0;
+}
+
+.d-stepper .step-number {
+  display: flex;
+  height: 40px;
+  width: 40px;
+  background-color: #e9e9e9;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.d-stepper .step-number-content {
+  transition: transform 0.2s;
+  z-index: 2;
+  width: 100%;
 }
 </style>

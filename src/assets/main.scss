@@ -66,11 +66,11 @@ body,
 }
 
 .bg-dark-blue {
-  background-color: #174877;
+  background-color: #174877 !important;
 }
 
 .text-dark-blue {
-  color: #174877;
+  color: #174877 !important;
 }
 
 .btn-dark-blue {
@@ -78,19 +78,19 @@ body,
 }
 
 .bg-blue {
-  background-color: #8dd1e9;
+  background-color: #8dd1e9 !important;
 }
 
 .text-blue {
-  color: #8dd1e9;
+  color: #8dd1e9 !important;
 }
 
 .bg-light-blue {
-  background-color: #d6f4ff;
+  background-color: #d6f4ff !important;
 }
 
 .text-light-blue {
-  color: #d6f4ff;
+  color: #d6f4ff !important;
 }
 
 .btn-light-gray {
@@ -108,11 +108,11 @@ body,
 }
 
 .bg-pink {
-  background-color: #ff8397;
+  background-color: #ff8397 !important;
 }
 
 .text-pink {
-  color: #ff8397;
+  color: #ff8397 !important;
 }
 
 .btn-pink {
@@ -130,5 +130,9 @@ body,
 }
 
 .icon-pink {
-  color: #ff8397;
+  color: #ff8397 !important;
+}
+
+.text-secondary-light {
+  color: #a5a5a5 !important;
 }
