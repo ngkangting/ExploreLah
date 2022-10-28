@@ -1,24 +1,90 @@
 <template>
-  <div class="p-4 bg-dark-blue">
-    <div class="row top container-fluid p-5 text-white">
-      <div class="top-words col-12 col-lg-6 bg-dark-blue p-5">
-        <h1 class="fw-bold pb-2">Singapore is yours to explore!</h1>
-        <h5>
-          Planning your itinerary has never been easier with ExploreLah!
-        </h5>
-        <span class="btn-special my-3">Start Planning!</span>
+  <div class="mb-0 pb-2 bg-light">
+    <div class="d-flex justify-content-center align-items-center">
+        <h1 class="d-flex fw-bold justify-content-center pt-4 px-3 text-center"> 
+          Singapore is yours to EXPLORE!
+        </h1>     
+    </div>
+    
+    <div class="row d-block d-sm-none">
+      <div class="col-10">
       </div>
-      <div class="train col-lg-6 d-none d-lg-block d-xl-block mb-5 pb-5">
-        <div class="sliding-container pt-1">
-          <div class="sliding-background"></div>
+    </div>
+    <div class="d-flex justify-content-center">
+      <h6 class="d-flex justify-content align-items-center btn-special-blue text-center d-block d-sm-none m-2">
+        Start Planning!
+      </h6>
+    </div>
+    
+
+    <div class="row justify-content-center mx-5">
+      <div class="col-lg-2 d-none d-lg-block d-xl-block pb-0 ">
+        <div class="px-2 mb-0 pb-0">
+          <div>
+            <i class="bi bi-quote border border-0 rounded-circle p-1 mb-4 bg-mid-pink text-white small"></i>
+          </div>
+          <div class="m-0 p-0">
+            <p class="type p-0 m-0">
+                Oh, the places you'll go!
+            </p>
+            <p class="type text-secondary font-italic fst-italic fw-lighter small m-0 py-0 ps-3 ">
+              <span>
+                - Dr. Seuss
+              </span>
+            </p>
+          </div>
         </div>
-        <img
-          class="train-pic"
-          src="../assets/img/train.png"
-          alt="train">
+        <div class="med bg-dark-blue p-1 d-flex justify-content-center align-items-center">
+          <img class="w-75" src="../assets/img/med-1.png" alt="marina bay"/>
+        </div>
       </div>
+
+      <div class="col-md-3 col-lg-2 pt-5 pb-0 d-none d-md-block d-lg-block d-xl-block">
+        <div class="sm bg-light-pink p-1 d-flex justify-content-center align-items-center">
+          <img class="h-75 w-75" src="../assets/img/small-1.png" alt="cloud forest and flower dome"/>
+        </div>
+        <div class="med bg-blue p-1 d-flex justify-content-center align-items-center">
+          <img class="h-100" src="../assets/img/med-2.png" alt="supertree at garden by the bay"/>
+        </div>
       </div>
+
+      <div class="col-md-3 col-lg-2 pt-2 pb-0 d-none d-md-block d-lg-block d-xl-block">
+        <div class="lg bg-mid-pink p-1 d-flex justify-content-center align-items-center">
+          <img class="h-75 w-75" src="../assets/img/large.png" alt="merlion"/>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-lg-2 pt-5 pb-0 d-none d-md-block d-lg-block d-xl-block">
+        <div class="med bg-light-blue p-1 d-flex justify-content-center align-items-center">
+          <img class="h-100" src="../assets/img/med-3.png" alt="ferris wheel"/>
+        </div>
+        <div class="sm bg-dark-blue p-1 d-flex justify-content-center align-items-center">
+          <img class="h-100" src="../assets/img/small-2.png" alt="art science museum"/>
+        </div>
+      </div>
+
+      <div class="col-lg-2 d-none d-lg-block d-xl-block pb-0 ">
+        <div class="sm d-flex justify-content-center align-items-center position-relative">
+          <img class="w-25 " src="../assets/img/compass.gif" alt="icon"/>
+          <img class="explore-icon w-50" src="../assets/img/circle-explore-icon.png" alt="icon"/>
+        </div>
+        <div class="med bg-light-pink p-1 d-flex justify-content-center align-items-center">
+          <img class="h-100" src="../assets/img/med-4.png" alt="pagoda"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-none d-lg-block d-xl-block">
+      <span class="d-flex justify-content-center me-5 pe-5">
+        <lottie-player class="car" src="https://assets4.lottiefiles.com/packages/lf20_JOHmpu.json"  background="transparent"  speed="0.6"  style="width: 700px; height: 60px;"  loop  autoplay></lottie-player>
+        <h6 class="d-flex justify-content align-items-center btn-special-blue text-center me-5">
+          Start Planning!
+        </h6>
+      </span>
+    </div>
   </div>
+  
+  
 
 
   <div class="mx-5">
@@ -50,19 +116,6 @@
         <p class="text-secondary">
           Be fully prepared for your amazing day with equipment of your choice
           (e.g umbrella, sunblock).
-        </p>
-      </div>
-      <div class="feature col-12 col-sm-6 col-lg-4 p-3">
-        <div class="row picture align-items-center">
-          <img
-            class="w-25 p-2 mx-auto"
-            src="../assets/img/feature4.png"
-            alt="feature4"
-          />
-        </div>
-        <h4>Check live traffic conditions</h4>
-        <p class="text-secondary">
-          Planning to travel by car? Traffic can be tough sometimes.
         </p>
       </div>
 
@@ -104,10 +157,10 @@
     </h1>
 
     <div class="row justify-content-center">
-      <div class="col-5 bg-pink d-flex justify-content-center align-items-center py-3 rounded-5">
+      <div class="col-5 bg-pink d-flex justify-content-center align-items-center py-3 rounded-5 d-none d-sm-block d-md-block d-lg-block d-xl-block">
         <lottie-player src="https://lottie.host/712cd913-eaae-47e7-b808-a59e233c96f4/t26HzyDftD.json" background="transparent" speed="1" style="width: 150px; height: 150px;" loop autoplay></lottie-player>
       </div>
-      <div class="col-5 d-flex justify-content-center align-items-center">
+      <div class="col-12 col-sm-5 d-flex justify-content-center align-items-center">
         <div class="m-4">
           <h2>
             <i class="bi bi-1-circle"></i>
@@ -121,7 +174,7 @@
     </div>
 
     <div class="row justify-content-center">
-      <div class="col-5 d-flex justify-content-center align-items-center">
+      <div class="col-12 col-sm-5 d-flex justify-content-center align-items-center">
         <div class="m-4">
           <h2>
             <i class="bi bi-2-circle"></i>
@@ -132,16 +185,16 @@
           </div>
         </div>
       </div>
-      <div class="col-5 bg-light-pink d-flex justify-content-center align-items-center rounded-5">
+      <div class="col-5 bg-light-pink d-flex justify-content-center align-items-center rounded-5 d-none d-sm-block d-md-block d-lg-block d-xl-block">
         <lottie-player src="https://lottie.host/048ba3f9-a020-4b50-bdc6-8b83e1756fee/YkvCh1R331.json" background="transparent" speed="1" style="width: 180px; height: 180px;" loop autoplay></lottie-player>
       </div>
     </div>
 
     <div class="row justify-content-center">
-      <div class="col-5 bg-light-blue d-flex justify-content-center align-items-center rounded-5">
+      <div class="col-5 bg-light-blue d-flex justify-content-center align-items-center rounded-5 d-none d-sm-block d-md-block d-lg-block d-xl-block">
         <lottie-player src="https://lottie.host/68c62294-996a-42ad-adb4-9d32e0f9d46a/uJcTvqPOAh.json" background="transparent" speed="1" style="width: 190px; height: 190px;" loop autoplay></lottie-player>
       </div>
-      <div class="col-5 d-flex justify-content-center align-items-center">
+      <div class="col-12 col-sm-5 d-flex justify-content-center align-items-center">
         <div class="m-4">
           <h2>
             <i class="bi bi-3-circle"></i>
@@ -166,88 +219,73 @@
           </div>
         </div>
       </div>
-      <div class="col-5 bg-blue d-flex justify-content-center align-items-center py-3 rounded-5">
+      <div class="col-5 bg-blue d-flex justify-content-center align-items-center py-3 rounded-5 d-none d-sm-block d-md-block d-lg-block d-xl-block">
         <lottie-player src="https://lottie.host/4dc34aa3-8885-4abd-b4f6-420193871a48/MNifFgZ0g3.json" background="transparent" speed="1" style="width: 150px; height: 150px;" loop autoplay></lottie-player>
       </div>
     </div>
   </div>
 
-
-  <div class="m-5 px-5">
-    <h1 class="fw-bold text-center mt-5 py-5">
-      Iconic Landmarks in Singapore
-    </h1>
-    <div class="row justify-content-center">
-      <div class="landmark p-2 col-12 col-md-12 col-lg-8">
-        <img 
-          class="w-100"
-          src="../assets/img/Landmark1.jpg" 
-          alt="Landmark1"
-        />
-        <div class="description p-3 text-white fw-bolder">
-          <h2>GARDENS BY THE BAY</h2>
-        </div>
-      </div>
-      <div class="landmark p-2 col-12 col-md-6 col-lg-4">
-        <img 
-          class="w-100"
-          src="../assets/img/Landmark2.jpg" 
-          alt="Landmark2"
-        />
-        <div class="description p-3 text-white fw-bolder">
-          <h2>S.E.A AQUARIUM</h2>
-        </div>
-      </div>
-      <div class="landmark p-2 col-12 col-md-6 col-lg-4">
-        <img 
-          class="w-100"
-          src="../assets/img/Landmark3.jpg" 
-          alt="Landmark3"
-        />
-        <div class="description p-3 text-white fw-bolder">
-          <h2>HAJI LANE</h2>
-        </div>
-      </div>
-      <div class="p-2 col-12 col-md-12 col-lg-4">
-        <div class="d-flex justify-content-center align-items-center bg-light-blue h-100 w-100 text-center p-5 rounded-5">
-          <div class="h3 fw-bold w-90">258</div>&nbsp;&nbsp;&nbsp;
-          <div>trips planned in the last hour</div>
-        </div>
-      </div>
-      <div class="landmark p-2 col-12 col-md-6 col-lg-4">
-        <img 
-          class="w-100"
-          src="../assets/img/Landmark4.jpg" 
-          alt="Landmark4"
-        />
-        <div class="description p-3 text-white fw-bolder">
-          <h2>JEWEL CHANGI AIRPORT</h2>
-        </div>
-      </div>
-      <div class="landmark p-2 col-12 col-md-6 col-lg-4">
-        <img 
-          class="w-100"
-          src="../assets/img/Landmark5.jpg" 
-          alt="Landmark5"
-        />
-        <div class="description p-3 text-white fw-bolder">
-          <h2>MASJID SULTAN</h2>
-        </div>
-      </div>
-      <div class="landmark p-2 col-12 col-md-12 col-lg-8">
-        <img 
-          class="w-100"
-          src="../assets/img/Landmark6.jpg" 
-          alt="Landmark6"
-        />
-        <div class="description p-3 text-white fw-bolder">
-          <h2>MARINA BAY SANDS</h2>
-        </div>
-      </div>
-    </div>
-  </div> 
-
   <div class="m-5">
+    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+      <div v-for="review in reviewArray" :key="review" class="carousel-inner">
+        <div class="carousel-item">
+          <div>
+            <p class="py-2">
+              <i class="bi bi-quote border border-0 rounded-circle p-2 bg-dark-blue text-white"></i>
+            </p>
+            <p class="fw-bold text-dark-blue">
+              {{ review.reviewName }}
+            </p>
+            <p class="text-dark-blue">
+              {{ review.reviewText }}
+            </p>
+          </div>
+          <h3 class="text-pink">
+            {{ review.stars }}
+          </h3>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- <div>
+    <h1 class="text-center mt-5 fw-bold py-5">What do users think?</h1>
+
+    <div class="my-auto justify-content-center">
+      <div id="carouselExample" class="carousel carousel-dark m-3" data-interval="false">
+        <div class="carousel-inner row" role="listbox">
+            <div v-for="review in reviewArray" :key="review" class="carousel-item">
+              <div class="card mx-auto col-4 p-3 bg-light border-0">
+                <div class="card-body">
+                    <p class="card-title fw-bold text-dark-blue">{{ review.name }}</p>
+                    <p class="card-text text-dark-blue">{{ review.reviewText }}</p>
+                </div>
+                <h3 class="d-flex flex-row mt-auto p-3 text-pink">{{ review.stars }}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button @click="updatePrev()" class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button @click="updateNext()" class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div> -->
+
+  <!-- <div class="m-5">
     <h1 class="text-center mt-5 fw-bold py-5">Don't just take our word for it</h1>
     <vueper-slides
     class="no-shadow m-5"
@@ -292,12 +330,18 @@
         </template>
       </vueper-slide>
     </vueper-slides>
-  </div>
+  </div> -->
 
   <div>
-    <h1 class="fw-bold text-center mt-5 py-5">Ready to plan your trip in half the time?</h1>
+    <h1 class="type d-flex justify-content-center fw-bold text-center mt-5 py-5">
+      <span>
+        Ready to plan your trip in half the time?
+      </span>
+    </h1>
     <div class="d-flex justify-content-center">
-      <h4 class="btn-special">Plan Now</h4>
+      <h4 class="btn-special">
+        Plan Now
+      </h4>
     </div>
   </div>
 
@@ -315,53 +359,49 @@
 
 <script>
 import { useAuthStore } from "@/stores/auth";
-import { VueperSlides, VueperSlide } from "vueperslides";
-import "vueperslides/dist/vueperslides.css";
 import Footer from "@/components/layout/Footer.vue";
 
 export default {
   name: "HomeView",
   components: {
     Footer,
-    VueperSlides,
-    VueperSlide,
   },
   data() {
     return {
       initialActiveCards: 0,
-      slides: [
+      reviewArray: [
           {
-            title: "John",
-            content:
+            reviewName: "John",
+            reviewText:
               "ExploreLah makes planning activities really easy! Highly recommend.",
             stars: "★★★★★",
           },
           {
-            title: "Derrick",
-            content:
+            reviewName: "Derrick",
+            reviewText:
               "Easy to use and convenient! Wish I had something like this for overseas too.",
             stars: "★★★★☆",
           },
-          { title: "Prof Mok", 
-          content: 
+          { reviewName: "Prof Mok", 
+            reviewText: 
               "Amazing app! A+!", 
             stars: "★★★★★" 
           },
           {
-            title: "Nicole",
-            content:
+            reviewName: "Nicole",
+            reviewText:
               "Great app that saved me a lot of time while I was travelling",
             stars: "★★★★☆",
           },
           {
-            title: "Instructor Jason",
-            content: 
+            reviewName: "Instructor Jason",
+            reviewText: 
               "Aesthetically pleasing and really user friendly!",
             stars: "★★★★★",
           },
           {
-            title: "TA Chen",
-            content: 
+            reviewName: "TA Chen",
+            reviewText: 
               "App is so useful! Will never stop using it",
             stars: "★★★★★",
           },
@@ -372,6 +412,10 @@ export default {
     const authStore = useAuthStore();
     return { authStore };
   },
+
+  mounted() {
+      this.initialActiveCards = document.querySelector(".carousel-item").classList.add("active");
+    },
 
   methods: {
     async logoutUser() {
@@ -386,39 +430,56 @@ export default {
 </script>
 
 <style lang="scss">
-
-@keyframes slide {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-  100% {
-    transform: translate3d(-1200px, 0, 0); /* The image width */
-  }
+@keyframes t{
+  90%,100% {width:100%}
 }
 
-.sliding-background {
-  background: url("../assets/img/slidingBackground.png") repeat-x;
-  height: 350px;
-  width: 1800px; /* The image width times 2 */
-  animation: slide 60s linear infinite;
+.type {
+  display:inline-flex;
 }
 
-.sliding-container {
+.type span {
+  word-break: break-all;
+  height: 1.2em;
+  width:0%;
   overflow: hidden;
+  animation:t 2s linear infinite alternate; /*to be fixed*/
 }
 
-.train {
-  position: relative;
+.type span:before {
+  content:" ";
+  display:inline-block;
 }
 
-.train-pic {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  width:100%;
-  height:auto;
+.sm, .med, .lg {
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.sm {
+  height: 70px;
+}
+
+.med {
+  height: 130px;
+}
+
+.lg {
+  height: 300px;
+}
+
+.explore-icon {
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  margin:auto;
+}
+
+.bg-mid-pink {
+  background-color: #ffafbc;
 }
 
 .btn-special {
@@ -442,15 +503,25 @@ span.btn-special:hover {
   box-shadow: 127px 0 0 0 #f44a66 inset, -127px 0 0 0 #f44a66 inset;
 }
 
-.vueperslides__bullet .default {
-  border-color: #174877;
-  box-shadow: none;
-  width: 13px;
-  height: 13px;
+.btn-special-blue {
+  cursor: pointer;
+  clear: both;
+  border-radius: 5px;
+  padding: 7px 12px 7px 12px;
+  display: inline-block;
+  transition: all 0.8s, color 0.3s 0.3s;
+  cursor: pointer;
+  background: #5bb7d8;
+  color: #fff;
 }
 
-.vueperslides__bullet--active .default {
-  background-color: #174877;
+a.btn-special-blue:hover,
+span.btn-special:hover {
+  color: #fff;
+}
+
+.btn-special-blue:hover {
+  box-shadow: 127px 0 0 0 #174877 inset, -127px 0 0 0 #174877 inset;
 }
 
 .feature {
@@ -465,34 +536,7 @@ span.btn-special:hover {
   background-color: #ffdee1!important;
 }
 
-.landmark {
-  position: relative;
-  box-sizing:border-box;
-  overflow: hidden;
-  z-index:1;
-  border-radius: 30px;
+.card {
+  width: 500px;
 }
-
-.landmark img{
-  transition: 0.5s all ease-in-out;
-  border-radius: 30px;
-}
-
-.landmark:hover img {
-  transform: scale(1.5);
-}
-
-.description {
-  position: absolute;
-  background: rgba(255,255,255,0) !important;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  top:0;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  text-align: center !important;
-}
-
 </style>
