@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="navbar navbar-expand-lg bg-white shadow-sm sticky-top"
+    class="navbar navbar-expand-lg bg-white shadow-sm sticky-top w-100"
     style="height: 75px"
   >
     <div class="container-fluid mx-4">
