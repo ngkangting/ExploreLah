@@ -3,13 +3,20 @@
     <div class="row d-flex align-items-center justify-content-center mb-5" style="background-color: #d6f4ff"
       :style="{ height: 'calc(100vh - 75px)' }">
       <div class="col-lg-6">
-        <h1 class="display-4 fw-bold lh-1 text-center ps-5">
+        <div class="col-lg-6 d-flex justify-content-center p-5 d-lg-nonegi">
+          <lottie-player class="w-75" src="https://assets3.lottiefiles.com/private_files/lf30_5i5tlydx.json"
+            background="transparent" speed="1" hover loop autoplay></lottie-player>
+        </div>
+        <h1 class="display-3 fw-bold lh-1 text-center p-5">
           We help you make exploring Singapore easier than ever.
         </h1>
+        <h3 class="lh-1 text-center px-5 text-muted">The all-in-one planning platform to plan, and explore
+          Singapore.
+        </h3>
       </div>
-      <div class="col-lg-6 d-flex justify-content-center pe-5">
-        <lottie-player src="https://assets3.lottiefiles.com/private_files/lf30_5i5tlydx.json" background="transparent"
-          speed="1" style="width: 400px; height: 400px" hover loop autoplay></lottie-player>
+      <div class="col-lg-6 d-flex justify-content-center p-5 d-none d-lg-block">
+        <lottie-player class="w-75" src="https://assets3.lottiefiles.com/private_files/lf30_5i5tlydx.json"
+          background="transparent" speed="1" hover loop autoplay></lottie-player>
       </div>
     </div>
     <div v-motion :initial="{ opacity: 0, y: 100 }" :enter="{ opacity: 1, y: 0 }"
