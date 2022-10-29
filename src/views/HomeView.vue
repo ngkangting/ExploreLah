@@ -103,7 +103,7 @@
     <h1 class="fw-bold text-center mt-5 py-5">
       Features to replace all your other tools
     </h1>
-    <div class="row text-center justify-content-center">
+    <div v-motion-pop-visible class="row text-center justify-content-center ">
       <div class="feature col-12 col-sm-6 col-lg-4 p-3">
         <div class="row picture align-items-center">
           <img
@@ -169,8 +169,8 @@
     </h1>
 
     <div class="row justify-content-center">
-      <div class="col-5 bg-pink d-flex justify-content-center align-items-center py-3 rounded-4 d-none d-sm-block d-md-block d-lg-block d-xl-block">
-        <lottie-player src="https://lottie.host/712cd913-eaae-47e7-b808-a59e233c96f4/t26HzyDftD.json" background="transparent" speed="1" style="width: 150px; height: 150px;" loop autoplay></lottie-player>
+      <div class="col-5 d-flex justify-content-center align-items-center py-3 rounded-4 d-none d-sm-block d-md-block d-lg-block d-xl-block" style="background-color: #ff8397;">
+        <img src="../assets/img/gif1.gif" alt="gif1" class="px-auto w-75"/>
       </div>
       <div class="col-12 col-sm-5 d-flex justify-content-center align-items-center">
         <div class="m-4">
@@ -197,14 +197,14 @@
           </div>
         </div>
       </div>
-      <div class="col-5 bg-light-pink d-flex justify-content-center align-items-center rounded-4 d-none d-sm-block d-md-block d-lg-block d-xl-block">
-        <lottie-player src="https://lottie.host/048ba3f9-a020-4b50-bdc6-8b83e1756fee/YkvCh1R331.json" background="transparent" speed="1" style="width: 180px; height: 180px;" loop autoplay></lottie-player>
+      <div class="col-5 bg-newlightpink d-flex justify-content-center align-items-center rounded-4 d-none d-sm-block d-md-block d-lg-block d-xl-block">
+        <img src="../assets/img/gif2.gif" alt="gif2" class="w-50"/>
       </div>
     </div>
 
     <div class="row justify-content-center">
       <div class="col-5 bg-light-blue d-flex justify-content-center align-items-center rounded-4 d-none d-sm-block d-md-block d-lg-block d-xl-block">
-        <lottie-player src="https://lottie.host/68c62294-996a-42ad-adb4-9d32e0f9d46a/uJcTvqPOAh.json" background="transparent" speed="1" style="width: 190px; height: 190px;" loop autoplay></lottie-player>
+        <img src="../assets/img/gif3.gif" alt="gif3" class="w-75"/>
       </div>
       <div class="col-12 col-sm-5 d-flex justify-content-center align-items-center">
         <div class="m-4">
@@ -232,9 +232,16 @@
         </div>
       </div>
       <div class="col-5 bg-blue d-flex justify-content-center align-items-center py-3 rounded-4 d-none d-sm-block d-md-block d-lg-block d-xl-block">
-        <lottie-player src="https://lottie.host/4dc34aa3-8885-4abd-b4f6-420193871a48/MNifFgZ0g3.json" background="transparent" speed="1" style="width: 150px; height: 150px;" loop autoplay></lottie-player>
+        <img src="../assets/img/gif4.gif" alt="gif4" class="w-75"/>
       </div>
     </div>
+  </div>
+
+  <div class="mx-5">
+    <h1 class="fw-bold text-center mt-5 py-5">
+      Don't just take our word for it
+    </h1>
+    
   </div>
 
   <div>
@@ -249,7 +256,6 @@
       </h4>
     </div>
   </div>
-
   
   <div>
     <img
@@ -443,5 +449,11 @@ span.btn-special:hover {
 
 .card {
   width: 500px;
+}
+.bg-newpink {
+  background-color: #ff8397
+}
+.bg-newlightpink {
+  background-color: #ffdee1;
 }
 </style>
