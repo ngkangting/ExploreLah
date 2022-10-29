@@ -8,6 +8,7 @@ import Plan from "../views/Plan.vue";
 import ResultFood from "../views/ResultPage.vue";
 import MyTrips from "../views/MyTrips.vue";
 import Result from "../views/ResultView.vue";
+import Discover from "../views/Discover.vue";
 import AboutUs from "../views/AboutUs.vue";
 import PageNotFound from "../views/PageNotFound.vue";
 
@@ -62,6 +63,11 @@ const router = createRouter({
       path: "/mytrips",
       name: "My Trips",
       component: MyTrips,
+    },
+    {
+      path: "/discover",
+      name: "Discover",
+      component: Discover,
     },
     {
       path: "/aboutus",
