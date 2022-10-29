@@ -164,9 +164,7 @@
   </div>
 
   <div class="mx-5">
-    <h1 class="fw-bold text-center mt-5 py-5">
-      How It Works
-    </h1>
+    <h1 class="fw-bold text-center mt-5 py-5">How It Works</h1>
 
     <div class="row fixed justify-content-center">
       <div class="col-5 d-flex rounded-4 d-none d-sm-block d-md-block d-lg-block d-xl-block" style="background-color: #ff8397;">
@@ -179,7 +177,8 @@
             Location
           </h2>
           <div>
-            Let us know where you're currently staying so we have an idea of whats near you!
+            Let us know where you're currently staying so we have an idea of
+            whats near you!
           </div>
         </div>
       </div>
@@ -192,9 +191,7 @@
             <i class="bi bi-2-circle"></i>
             Duration
           </h2>
-          <div>
-            Tell us how long you plan on hanging around Singapore!
-          </div>
+          <div>Tell us how long you plan on hanging around Singapore!</div>
         </div>
       </div>
       <div class="col-5 bg-light-pink d-flex py-1 rounded-4 d-none d-sm-block d-md-block d-lg-block d-xl-block">
@@ -218,7 +215,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="row justify-content-center">
       <div class="col-12 col-sm-5 d-flex justify-content-center align-items-center">
         <div class="m-4">
@@ -227,7 +224,8 @@
             Transportation
           </h2>
           <div>
-            Whether you're taking the MRT, bus or private transport, we will plan the best route for you!
+            Whether you're taking the MRT, bus or private transport, we will
+            plan the best route for you!
           </div>
         </div>
       </div>
@@ -321,8 +319,6 @@
       alt="Skyline Image"
     />
   </div>
-
-  <Footer></Footer>
 </template>
 
 <script>
@@ -459,7 +455,7 @@ span.btn-special:hover {
 }
 
 .bg-light-pink {
-  background-color: #ffdee1!important;
+  background-color: #ffdee1 !important;
 }
 
 .card {

@@ -14,13 +14,13 @@
             </div>
             <div class="col-6">
                 <div class="row">
-                  <div class="col-6">
+                  <div>
                     <button @click="toggleState" :class="lunchStyle">Lunch</button>
                     <button @click="toggleState" :class="dinnerStyle">Dinner</button>
                   </div>
                 </div>  
                 <div class="row">
-                  <div class="col-6">
+                  <div>
                     <FoodLocation :data="shownFoodReco"></FoodLocation>
                     <!-- {{shownFoodReco}} -->
                   </div>
@@ -74,15 +74,16 @@ import FoodLocation from "../components/resultpage/FoodLocation.vue";
       },
       lunchStyle(){
         if (this.state) {
-          return "text-dark-blue display-3 mx-5"
+          // return "text-dark-blue display-3 mx-5"
+          return "selected-style text-dark-blue"
         } 
-        return //Add in unclicked button
+        return "unselected-style" //Add in unclicked button
       },
       dinnerStyle(){
         if (!this.state){
-          return "text-dark-blue display-3 mx-5"
+          return "selected-style text-dark-blue"
         } 
-        return //Add in unclicked button
+        return "unselected-style" //Add in unclicked button
       },
       shownFoodReco(){
         if (this.state) {
@@ -123,6 +124,19 @@ import FoodLocation from "../components/resultpage/FoodLocation.vue";
   </script>
   
   <style lang="scss">
+  .selected-style{
+    font-weight: bold;
+    border: none;
+    background-color: transparent;
+    font-size: 4rem;
+  }
+
+  .unselected-style{
+    border:none;
+    background-color: transparent;
+    color: grey;
+    font-size: 2rem;
+  }
 
   </style>
   

@@ -12,12 +12,15 @@
         @click="onClick($event)"
         ref="tab"
       >
-        <i class="bi bi-circle-fill text-dark-blue" style="font-size: 1.2rem"></i>
+        <i
+          class="bi bi-circle-fill text-dark-blue"
+          style="font-size: 1.2rem"
+        ></i>
       </button>
     </div>
     <div
       class="card border-0 p-4"
-      style="transform-origin: left top; width: 350px;"
+      style="transform-origin: left top; width: 350px"
       :style="[
         isSelected
           ? { transform: 'scale(0.85)' }
@@ -30,19 +33,19 @@
       </p>
       <div class="d-flex justify-content-between">
         <span class="p-3">
-          <b>Arrival Time:</b> 
+          <b>Arrival Time:</b>
           {{ arrivalTime }}
         </span>
         <span class="p-3">
-          <b>Departure Time:</b> 
+          <b>Departure Time:</b>
           {{ departureTime }}
         </span>
         <span class="m-0 p-3">
-          <b>Forecast:</b> 
-          {{forecast}}
+          <b>Forecast:</b>
+          {{ forecast }}
         </span>
       </div>
-      {{travelTimeToThis}}
+      {{ travelTimeToThis }}
     </div>
   </div>
 </template>
@@ -95,8 +98,6 @@ export default {
       type: Number,
       default: null,
     },
-
-    
   },
   data() {
     return {};
@@ -151,6 +152,4 @@ export default {
     background-color: #ff8397;
   }
 }
-
-
 </style>
