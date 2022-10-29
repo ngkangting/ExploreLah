@@ -69,9 +69,9 @@
 
   <div v-motion-slide-visible-once-left class="p-5">
     <h1 class="text-center mb-5" style="color: #ff8397; font-weight: bold">Learn more about Us</h1>
-    <div class="row mx-auto align-items-center">
+    <div class="row mx-auto">
       <AboutCard v-for="(card, index) in cards" :key="index" :icon="card.icon" :title="card.title"
-        :content="card.content">
+        :subtitle="card.subtitle" :content="card.content">
       </AboutCard>
     </div>
   </div>
@@ -91,9 +91,11 @@ export default {
   data() {
     return {
       cards: [
-        { icon: "bi bi-people", title: "Our Team", content: "hi" },
-        { icon: "bi bi-book", title: "Our Story", content: "bye" },
-        { icon: "bi bi-code-slash", title: "How we do it", content: "hi" }
+        { icon: "bi bi-people", title: "Our Team", subtitle: "SMU Y2 Information System Students", content: "Some of us have had no prior web application design experience, while others have strong background in programming. We  would like to think of ourselves as explorers who try to create new things like this web app, ExploreLah!" },
+
+        { icon: "bi bi-book", title: "Our Story", subtitle: "How did we get here?", content: "Our shared WAD2 class brought us together to bring ExploreLah! to life. ExploreLah! saw many setbacks and obstacles that we overcame to bring you a platform commited to solving travellers' various problems when it comes to planning trips in Singapore." },
+
+        { icon: "bi bi-code-slash", subtitle: "The magic behind ExploreLah!", title: "How we do it", content: "Our algorithm does all the research for you and compiles the best destinations into one place. Drawing from a database of over 260 attractions, Explorelah! makes planning trips easy, intuitive and enjoyable." }
       ]
     }
   },
