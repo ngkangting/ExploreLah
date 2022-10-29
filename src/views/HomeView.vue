@@ -99,12 +99,12 @@
     </div>
   </div>
 
-  <div class="mx-5">
+  <div class="mx-5 px-5">
     <h1 class="fw-bold text-center mt-5 py-5">
       Features to replace all your other tools
     </h1>
-    <div v-motion-pop-visible class="row text-center justify-content-center ">
-      <div class="feature col-12 col-sm-6 col-lg-4 p-3">
+    <div class="row text-center justify-content-center ">
+      <div class="feature col-12 col-md-6 col-lg-3 p-4">
         <div class="row picture align-items-center">
           <img
             class="w-50 p-2 mx-auto"
@@ -116,7 +116,7 @@
         <p class="text-secondary">Minimise travel time. Maximise fun.</p>
       </div>
 
-      <div class="feature col-12 col-sm-6 col-lg-4 p-3">
+      <div class="feature col-12 col-md-6 col-lg-3 p-4">
         <div class="row picture align-items-center">
           <img
             class="w-25 p-2 mx-auto"
@@ -131,7 +131,7 @@
         </p>
       </div>
 
-      <div class="feature col-12 col-sm-6 col-lg-4 p-3">
+      <div class="feature col-12 col-md-6 col-lg-3 p-4">
         <div class="row picture align-items-center">
           <img
             class="w-25 p-2 mx-auto"
@@ -146,7 +146,7 @@
         </p>
       </div>
 
-      <div class="feature col-12 col-sm-6 col-lg-4 p-3">
+      <div class="feature col-12 col-md-6 col-lg-3 p-4">
         <div class="row picture align-items-center">
           <img
             class="w-25 p-2 mx-auto"
@@ -220,7 +220,7 @@
     </div>
     
     <div class="row justify-content-center">
-      <div class="col-5 d-flex justify-content-center align-items-center">
+      <div class="col-12 col-sm-5 d-flex justify-content-center align-items-center">
         <div class="m-4">
           <h2>
             <i class="bi bi-4-circle"></i>
@@ -241,7 +241,64 @@
     <h1 class="fw-bold text-center mt-5 py-5">
       Don't just take our word for it
     </h1>
-    
+    <div class="row justify-content-center">
+      <div class="col-5 col-md-3 justify-content-center">
+        <div class="p-2">
+          <div class="py-2">
+            <h4 class="text-pink py-2">
+              ★★★★★
+            </h4>
+            <p>
+              Amazing app! It is so easy to use and the planning feature is so cool. A+!
+            </p>
+            <p class="text-muted">
+              - Professor Mok
+            </p>
+          </div>
+          <div class="py-2">
+            <h4 class="text-pink py-2">
+              ★★★★★
+            </h4>
+            <p>
+              ExploreLah makes planning activities really easy! Highly recommend.
+            </p>
+            <p class="text-muted">
+              - Instructor Jason
+            </p>
+          </div>
+        </div>
+        
+      </div>
+      <div class="col-md-4 d-none d-md-block d-lg-block d-xl-block d-flex justify-content-center align-items-center">
+        <img src="../assets/img/merlionReview.gif" alt="merlion gif" class="w-100"/>
+      </div>
+      <div class="col-5 col-md-3 justify-content-center">
+        <div class="p-2">
+          <div class="py-2">
+            <h4 class="text-pink py-2">
+              ★★★★★
+            </h4>
+            <p>
+              Great app that saved me a lot of time while I was travelling
+            </p>
+            <p class="text-muted">
+              - TA Chen
+            </p>
+          </div>
+          <div class="py-2">
+            <h4 class="text-pink py-2">
+              ★★★★★
+            </h4>
+            <p>
+              Easy to use and convenient! Wish I had something like this for overseas too.
+            </p>
+            <p class="text-muted">
+              - Derrick Tan
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div>
@@ -279,54 +336,12 @@ export default {
   },
   data() {
     return {
-      initialActiveCards: 0,
-      reviewArray: [
-          {
-            reviewName: "John",
-            reviewText:
-              "ExploreLah makes planning activities really easy! Highly recommend.",
-            stars: "★★★★★",
-          },
-          {
-            reviewName: "Derrick",
-            reviewText:
-              "Easy to use and convenient! Wish I had something like this for overseas too.",
-            stars: "★★★★☆",
-          },
-          { reviewName: "Prof Mok", 
-            reviewText: 
-              "Amazing app! A+!", 
-            stars: "★★★★★" 
-          },
-          {
-            reviewName: "Nicole",
-            reviewText:
-              "Great app that saved me a lot of time while I was travelling",
-            stars: "★★★★☆",
-          },
-          {
-            reviewName: "Instructor Jason",
-            reviewText: 
-              "Aesthetically pleasing and really user friendly!",
-            stars: "★★★★★",
-          },
-          {
-            reviewName: "TA Chen",
-            reviewText: 
-              "App is so useful! Will never stop using it",
-            stars: "★★★★★",
-          },
-      ],
     };
   },
   setup() {
     const authStore = useAuthStore();
     return { authStore };
   },
-
-  mounted() {
-      this.initialActiveCards = document.querySelector(".carousel-item").classList.add("active");
-    },
 
   methods: {
     async logoutUser() {

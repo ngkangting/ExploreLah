@@ -20,7 +20,7 @@
 
     <div class="mt-5 mb-5 mx-5">
       <h3 class="fw-bold px-3 mt-4 ">Upcoming Trips (1)</h3>
-      <div class="row d-none d-sm-none d-md-block">
+      <div class="row d-none d-sm-none d-md-flex">
         <TripCard/>
       </div>
       <div class="row d-md-none d-lg-none d-xl-none">
@@ -30,7 +30,7 @@
 
     <div class="mx-5 mb-5">
       <h3 class="fw-bold px-3">Past Trips</h3>
-      <div class="row d-none d-sm-none d-md-block">
+      <div class="row d-none d-sm-none d-md-flex">
         <TripCard/>
         <TripCard/>
         <TripCard/>
