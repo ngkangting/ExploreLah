@@ -6,22 +6,28 @@
       </h1>
       <div class="row justify-content-center">
         <div class="landmark p-2 col-12 col-md-12 col-lg-8">
-          <img class="w-100" src="../assets/img/Landmark1.jpg" alt="Landmark1" />
-          <div class="description p-3 text-white fw-bolder">
-            <h2>GARDENS BY THE BAY</h2>
-          </div>
+          <a href="https://www.gardensbythebay.com.sg/" target="__blank">
+            <img class="w-100" src="../assets/img/Landmark1.jpg" alt="Landmark1" />
+            <div class="description p-3 text-white fw-bolder">
+              <h2>Gardens By The Bay</h2>
+            </div>
+          </a>
         </div>
         <div class="landmark p-2 col-12 col-md-6 col-lg-4">
-          <img class="w-100" src="../assets/img/Landmark2.jpg" alt="Landmark2" />
-          <div class="description p-3 text-white fw-bolder">
-            <h2>S.E.A AQUARIUM</h2>
-          </div>
+          <a href="https://www.rwsentosa.com/en/attractions/sea-aquarium" target="__blank">
+            <img class="w-100" src="../assets/img/Landmark2.jpg" alt="Landmark2" />
+            <div class="description p-3 text-white fw-bolder">
+              <h2>S.E.A Aquarium</h2>
+            </div>
+          </a>
         </div>
         <div class="landmark p-2 col-12 col-md-6 col-lg-4">
-          <img class="w-100" src="../assets/img/Landmark3.jpg" alt="Landmark3" />
-          <div class="description p-3 text-white fw-bolder">
-            <h2>HAJI LANE</h2>
-          </div>
+          <a href="https://visitkamponggelam.com.sg/street/haji-lane/" target="__blank">
+            <img class="w-100" src="../assets/img/Landmark3.jpg" alt="Landmark3" />
+            <div class="description p-3 text-white fw-bolder">
+              <h2>Haji Lane</h2>
+            </div>
+          </a>
         </div>
         <div class="p-2 col-12 col-md-12 col-lg-4">
           <div
@@ -35,22 +41,28 @@
           </div>
         </div>
         <div class="landmark p-2 col-12 col-md-6 col-lg-4">
-          <img class="w-100" src="../assets/img/Landmark4.jpg" alt="Landmark4" />
-          <div class="description p-3 text-white fw-bolder">
-            <h2>JEWEL CHANGI AIRPORT</h2>
-          </div>
+          <a href="https://www.jewelchangiairport.com/en.html" target="__blank">
+            <img class="w-100" src="../assets/img/Landmark4.jpg" alt="Landmark4" />
+            <div class="description p-3 text-white fw-bolder">
+              <h2>Jewel Changi Airport</h2>
+            </div>
+          </a>
         </div>
         <div class="landmark p-2 col-12 col-md-6 col-lg-4">
-          <img class="w-100" src="../assets/img/Landmark5.jpg" alt="Landmark5" />
-          <div class="description p-3 text-white fw-bolder">
-            <h2>MASJID SULTAN</h2>
-          </div>
+          <a href="https://sultanmosque.sg/" target="__blank">
+            <img class="w-100" src="../assets/img/Landmark5.jpg" alt="Landmark5" />
+            <div class="description p-3 text-white fw-bolder">
+              <h2>Masjid Sultan</h2>
+            </div>
+          </a>
         </div>
         <div class="landmark p-2 col-12 col-md-12 col-lg-8">
-          <img class="w-100" src="../assets/img/Landmark6.jpg" alt="Landmark6" />
-          <div class="description p-3 text-white fw-bolder">
-            <h2>MARINA BAY SANDS</h2>
-          </div>
+          <a href="https://www.marinabaysands.com/" target="__blank">
+            <img class="w-100" src="../assets/img/Landmark6.jpg" alt="Landmark6" />
+            <div class="description p-3 text-white fw-bolder">
+              <h2>Marina Bay Sands</h2>
+            </div>
+          </a>
         </div>
       </div>
     </div>
@@ -89,7 +101,7 @@ export default {
 
 .description {
   position: absolute;
-  background: rgba(255, 255, 255, 0) !important;
+  background: rgba(98, 96, 96, 0) !important;
   bottom: 0;
   right: 0;
   left: 0;
