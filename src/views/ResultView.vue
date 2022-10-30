@@ -162,7 +162,7 @@
             :isSelected="false"
             :isLast="false"
             :place="activity.name"
-            :type="'Arts & Culture'"
+            :type="activity.tags"
             :arrivalTime="activity.arriveTime"
             :departureTime="activity.endTime"
             :forecast="activity.status"

@@ -31,7 +31,7 @@
         <span>Depature Time: {{ departureTime }}</span>
         <p>Forecast: {{forecast}}</p>
       </div>
-      {{travelTimeToThis}}
+      Estimated {{travelTimeToThis}} mins to get to here from previous place.
     </div>
   </div>
 </template>
@@ -57,7 +57,7 @@ export default {
       default: null,
     },
     type: {
-      type: String,
+      type: Object,
       default: null,
     },
     arrivalTime: {
@@ -77,15 +77,13 @@ export default {
       default: "Currently Unavailable",
     },
     duration: {
-      type: String,
+      type: Number,
       default: null,
     },
     travelTimeToThis: {
       type: Number,
       default: null,
-    },
-
-    
+    },   
   },
   data() {
     return {};
