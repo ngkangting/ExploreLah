@@ -130,7 +130,6 @@ export default {
 
     return { authStore };
   },
-  created() {},
   methods: {
     async loginWithEmail() {
       this.isLoading = true;
