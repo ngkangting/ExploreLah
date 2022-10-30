@@ -186,14 +186,6 @@
             :travelTimeToThis="activity.travelTimeTo"
             :name="`pill-tab-${index}`"
           />
-          <!-- <div v-for="activity in currentDayData">
-            <h2>{{activity.order}}.{{activity.name}}</h2>
-            <p>Arrival Time: {{activity["arriveTime"]}}</p>
-            <p>Time Spent: {{activity["dur"]}}</p>
-            <p>Leave At: {{activity["endTime"]}}</p>
-            <p>Estimated travel time from previous place to this:{{activity["travelTimeTo"]}}min</p>
-            <p>Weather Forecast: {{activity["status"]}}</p>
-          </div> -->
         </div>
         <!-- Next buttons -->
         <div class="row">
@@ -203,6 +195,7 @@
             <button @click="goNextDay()">Next</button>
           </div>
         </div>
+        <button @click="goToFoodPage">Go to Food Page</button>
       </div>
     </div>
   </div>
@@ -246,6 +239,11 @@ export default {
       if (this.currDay != this.itineraryStore.itineraryList.length) {
         this.currDay += 1        
       }
+    },
+    goToFoodPage(){
+      this.$router.push({
+        path: "/resultfood",
+      });
     }
 
   },
