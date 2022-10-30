@@ -32,6 +32,9 @@
                     <button @click="goNextDay">Next</button>
                   </div>
                 </div>
+                <div>
+                  <button class="btn btn-pink" @click="saveItineraryToDb">Save Itinerary</button>
+                </div>
 
            
             </div>
@@ -43,10 +46,16 @@
 
 </template>
   
-  <script>
+<script>
+import {getAuth, onAuthStateChanged} from "firebase/auth";
+import  {getDatabase, ref, get, set, child, update, remove}  from "firebase/database/";
+import {getFirestore, collection, addDoc} from "firebase/firestore";
+import firebaseApp from "../firebaseConfig";
+
 import { useAuthStore } from "@/stores/auth";
 import {useItineraryStore} from "@/stores/itinerary";
 import { GoogleMap, Marker, CustomMarker } from "vue3-google-map";
+
 
 import FoodLocation from "../components/resultpage/FoodLocation.vue";
 
@@ -63,12 +72,16 @@ import FoodLocation from "../components/resultpage/FoodLocation.vue";
       };
     },
     setup(){
+      const auth = getAuth();
+      const db = getFirestore(firebaseApp);
       const authStore = useAuthStore();
       const itineraryStore = useItineraryStore();
       const center = {lat: 1.290270 ,lng: 103.851959};
-      return { authStore,itineraryStore, center };
+      // console.log(`UID Passed is this ${uid}`); //Runs first
+      return { authStore,itineraryStore, center,db, auth};
     },
     computed:{
+
       foodReco(){
         return this.itineraryStore.foodReco;
       },
@@ -115,8 +128,25 @@ import FoodLocation from "../components/resultpage/FoodLocation.vue";
         if(this.currDay!= Object.keys(this.foodReco).length){
           this.currDay += 1
         }
-      }
-
+      },
+      async saveItineraryToDb(){
+        //Write to DB
+        let userID = this.auth.currentUser.uid;
+        let itineraryList = this.itineraryStore.itineraryList;
+        let foodReco = this.itineraryStore.foodReco;
+        let itineraryInput = this.itineraryStore.itineraryInput;
+    
+        try {
+            const docRef = await addDoc(collection(this.db, userID), {
+              itinerary : JSON.stringify(itineraryList),
+              food : JSON.stringify(foodReco),
+              input : JSON.stringify(itineraryInput)
+            });
+            console.log("Document written with ID: ", docRef.id);
+          } catch (e) {
+            console.error("Error adding document: ", e);
+          }
+      },
       },
       
   

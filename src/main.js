@@ -13,7 +13,8 @@ import "./assets/main.scss";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "@vuepic/vue-datepicker/dist/main.css";
 
-initializeApp(firebaseConfig);
+// initializeApp(firebaseConfig);
+
 
 const app = createApp(App);
 const pinia = createPinia();
@@ -31,3 +32,4 @@ app.use(Datepicker);
 app.mount("#app");
 
 import "bootstrap/dist/js/bootstrap.js";
+

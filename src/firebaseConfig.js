@@ -1,3 +1,6 @@
+import { initializeApp } from "firebase/app";
+
+//Benji Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyB-M80XbLeaoPAED0Us69bGRlDppnflYt4",
   authDomain: "explorelah-71887.firebaseapp.com",
@@ -8,4 +11,8 @@ const firebaseConfig = {
   measurementId: "G-C2QX2J80E5",
 };
 
-export default firebaseConfig;
+const firebaseApp = initializeApp(firebaseConfig)
+// export default firebaseConfig;
+// const db = firebaseApp.firestore();
+
+export default firebaseApp
