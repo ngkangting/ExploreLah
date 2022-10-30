@@ -194,7 +194,7 @@
           <div>Tell us how long you plan on hanging around Singapore!</div>
         </div>
       </div>
-      <div class="col-5 bg-light-pink d-flex py-1 rounded-4 d-none d-sm-block d-md-block d-lg-block d-xl-block">
+      <div class="col-5 bg-newlightpink d-flex py-1 rounded-4 d-none d-sm-block d-md-block d-lg-block d-xl-block">
         <img src="../assets/img/gif2.gif" alt="gif2" class="d-block mx-auto w-50"/>
       </div>
     </div>
@@ -461,10 +461,8 @@ span.btn-special:hover {
 .card {
   width: 500px;
 }
-.bg-newpink {
-  background-color: #ff8397
-}
+
 .bg-newlightpink {
-  background-color: #ffdee1;
+  background-color: #fad9e0;
 }
 </style>
