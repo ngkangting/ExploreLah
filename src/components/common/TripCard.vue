@@ -37,12 +37,9 @@ export default {
 .trip-card {
   position: relative;
 }
-
 .trip-card img{
   border-radius: 30px;
 }
-
-
 .overlay {
   position: absolute;
   border-top-left-radius: 30px;
@@ -53,7 +50,6 @@ export default {
   left: 0;
   background: rgba(66, 66, 66, 0.525);
 }
-
 .description{
   position: absolute;
   font-size: smaller;
@@ -70,26 +66,25 @@ export default {
   background: rgba(255, 255, 255, 0.925);
 }
 
-/*zoom does not work when there is overlay*/
 .zoom-effect-1{
- overflow: hidden;
+  overflow: hidden;
 }
 
 .zoom-effect-1 img{
   border-radius: 30px;
- transform: scale(1);
- -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transform: scale(1);
 }
 
 .zoom-effect-1:hover img{
- transform: scale(1.1);
- -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
 }
 
 .effect-image-1{
   border-radius: 30px;
- position: relative;
- display: block;
+  position: relative;
+  display: block;
 }
 
 .zoom-effect-1 img{
