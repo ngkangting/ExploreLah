@@ -1,5 +1,5 @@
 <template>
-  <div class="col-12 col-lg-4">
+  <div class="col-12 col-lg-4 mt-4 mt-lg-0">
     <div class="card bg-transparent border-0 w-100 px-2">
       <div class="card-body">
         <div
@@ -10,7 +10,7 @@
         </div>
         <h3 class="card-title mt-3">{{ title }}</h3>
         <h5 class="card-text mt-2 text-muted">{{ subtitle }}</h5>
-        <p class="card-text">{{ content }}</p>
+        <p class="card-text mt-3">{{ content }}</p>
       </div>
     </div>
   </div>

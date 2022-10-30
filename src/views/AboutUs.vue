@@ -3,10 +3,10 @@
     <div
       class="row d-flex align-items-center justify-content-center mb-5"
       style="background-color: #d6f4ff"
-      :style="{ height: 'calc(100vh - 75px)' }"
+      :style="{ minHeight: 'calc(100vh - 75px)' }"
     >
-      <div class="col-lg-6">
-        <h1 class="display-3 fw-bold lh-1 text-center p-5">
+      <div class="col-12 col-lg-6">
+        <h1 class="display-4 fw-bold lh-1 text-center p-5">
           We help you make exploring Singapore easier than ever!
         </h1>
         <h3 class="lh-1 text-center px-5 text-muted w-75 mx-auto">
@@ -14,7 +14,7 @@
         </h3>
       </div>
       <div
-        class="col-lg-6 d-flex justify-content-center align-items-center p-5"
+        class="col-12 col-lg-6 d-flex justify-content-center align-items-center p-5"
       >
         <lottie-player
           class="w-75 mx-auto"
@@ -27,21 +27,21 @@
       </div>
     </div>
 
-    <div v-motion-slide-visible-once-left class="row py-4">
+    <div v-motion-slide-visible-once-left class="row pt-4 pb-4">
       <div class="col-12">
-        <div class="px-5 text-center mb-5">
+        <div class="text-center mb-5">
           <h1 style="color: #ff8397; font-weight: bold">About Us</h1>
           <h3 style="color: #174877">Creating a community of explorers</h3>
-          <p class="lead w-50 mx-auto pt-3">
+          <p class="about-description lead mx-auto pt-3">
             ExploreLah! enables you to quickly and easily explore Singapore's
             offerings and create personalized itineraries by utilizing local
             expertise and cutting-edge artificial intelligence
           </p>
           <div
-            class="d-flex justify-content-center align-items-center w-50 mx-auto pb-5"
+            class="d-flex justify-content-center align-items-center w-50 mx-auto"
           >
             <lottie-player
-              class="w-75 mx-auto"
+              class="about-animation mx-auto"
               src="https://assets9.lottiefiles.com/packages/lf20_jmuq5aha.json"
               background="transparent"
               speed="1"
@@ -55,11 +55,11 @@
 
     <div
       v-motion-slide-visible-once-left
-      class="row d-flex justify-content-center mx-5 py-4"
+      class="row d-flex justify-content-center py-4 mx-3 mx-sm-4 mx-md-5"
     >
-      <div class="col-12 col-lg-6 d-flex justify-content-center">
+      <div class="col-12 col-lg-6 d-flex justify-content-center mb-5 mb-lg-0">
         <div
-          class="card text-center h-100 w-100 ms-5 me-4 p-5"
+          class="card text-center h-100 w-100 p-4 me-lg-2"
           style="background-color: #174877; border: none; color: white"
         >
           <div class="mx-auto d-flex justify-content-center">
@@ -88,7 +88,7 @@
       </div>
       <div class="col-12 col-lg-6 d-flex justify-content-center">
         <div
-          class="card text-center h-100 w-100 ms-4 me-5 p-5"
+          class="card text-center h-100 w-100 p-4 ms-lg-2"
           style="border-color: #174877; border: solid 2px; color: #174877"
         >
           <div class="card-body">
@@ -119,10 +119,13 @@
 
     <div
       v-motion-slide-visible-once-left
-      class="row d-flex justify-content-center p-5"
+      class="row d-flex justify-content-center py-5 px-2 px-sm-3 px-md-4 px-lg-5"
     >
-      <h1 class="text-center mb-5" style="color: #ff8397; font-weight: bold">
-        Learn more about Us
+      <h1
+        class="text-center mb-2 mb-lg-5"
+        style="color: #ff8397; font-weight: bold"
+      >
+        Learn more about us
       </h1>
       <AboutCard
         v-for="(card, index) in cards"
@@ -177,4 +180,34 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss">
+.about-description {
+  width: 75%;
+}
+
+.about-animation {
+  width: 100%;
+}
+
+@media only screen and (min-width: 576px) {
+  .about-animation {
+    width: 90%;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .about-animation {
+    width: 75%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .about-description {
+    width: 50%;
+  }
+
+  .about-animation {
+    width: 75%;
+  }
+}
+</style>
