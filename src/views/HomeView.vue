@@ -108,6 +108,17 @@
     <div v-motion-slide-visible-once-left class="row text-center justify-content-center ">
       <div class="feature col-12 col-md-6 col-lg-3 p-4">
         <div class="row picture align-items-center">
+          <img class="w-25 p-2 mx-auto" src="../assets/img/feature1.jpg" alt="feature1" />
+        </div>
+        <h4>Personalise your itinerary with just a few clicks</h4>
+        <p class="text-secondary">
+          Plan your best trip based on your travel preferences in the easiest
+          possible way.
+        </p>
+      </div>
+
+      <div class="feature col-12 col-md-6 col-lg-3 p-4">
+        <div class="row picture align-items-center">
           <img class="w-50 p-2 mx-auto" src="../assets/img/feature2.png" alt="feature2" />
         </div>
         <h4>Optimise your route</h4>
@@ -122,17 +133,6 @@
         <p class="text-secondary">
           Be fully prepared for your amazing day with equipment of your choice
           (e.g umbrella, sunblock).
-        </p>
-      </div>
-
-      <div class="feature col-12 col-md-6 col-lg-3 p-4">
-        <div class="row picture align-items-center">
-          <img class="w-25 p-2 mx-auto" src="../assets/img/feature1.jpg" alt="feature1" />
-        </div>
-        <h4>Personalise your itinerary with just a few clicks</h4>
-        <p class="text-secondary">
-          Plan your best trip based on your travel preferences in the easiest
-          possible way.
         </p>
       </div>
 
