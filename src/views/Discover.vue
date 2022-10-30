@@ -31,13 +31,13 @@
         </div>
         <div class="p-2 col-12 col-md-12 col-lg-4">
           <div
-            class="d-flex justify-content-center align-items-center bg-light-blue h-100 w-100 text-center p-5 rounded-4">
-            <h1 class=" fw-bold w-90">258</h1>&nbsp;&nbsp;&nbsp;
-            <div>
+            class="d-flex justify-content-center align-items-center bg-light-blue h-100 w-100 text-center p-3 py-5 rounded-4">
+            <div class=" fw-bold w-90 display-5">258</div>&nbsp;&nbsp;&nbsp;
+            <h5>
               trips planned in
               <br>
               the last hour
-            </div>
+            </h5>
           </div>
         </div>
         <div class="landmark p-2 col-12 col-md-6 col-lg-4">
@@ -93,7 +93,7 @@ export default {
     return {
       cards: [
               {
-                imgLink: "../assets/img/LocalFood.jpg",
+                imgLink: "ExploreLah\src\assets\img\LocalFood.jpg",
                 title: "Eat like a local in Singapore: An epic list of authentic local food and drinks",
                 subtitle: "Honeycombers",
                 link: "https://thehoneycombers.com/singapore/best-local-food-singapore/"

@@ -1,7 +1,7 @@
 <template>
-    <div class="card col-10 col-sm-5 col-lg-3 m-4 bg-light border-0" >
+    <div class="card col-10 col-sm-5 col-lg-3 mx-4 my-3 bg-light border-0" >
         <div class="zoom-effect-1 effect-image-1">
-            <img :src='imgLink' class="card-img-top"/>
+            <img :src="imgLink" class="card-img-top"/>
         </div>
         <div class="card-body">
             <h5 class="card-title">
@@ -14,6 +14,7 @@
                 Read More
             </a>
         </div>
+        {{ imgLink }}
     </div>
 </template>
 
