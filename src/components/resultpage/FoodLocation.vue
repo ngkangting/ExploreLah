@@ -1,19 +1,26 @@
 <template>
-    Because you will be near {{Object.keys(data)[0]}} during lunch, you can head to:
-    <div v-for="places in data[Object.keys(data)[0]]">
-        <!-- {{places}} -->
-        <div class="card">
-            <div class="card-body">
-                <p>{{places[0]}}</p>
-                <p>{{places[1]}}</p>
-                <p>Ratings</p>
-                
-                <!-- <span v-for="index in getRandomNumber()" class="bi bi-star-fill icon-pink" ></span> -->
-                <div v-html="starRating"></div>
-                
+    <!-- Because you will be near {{Object.keys(data)[0]}} during lunch, you can head to: -->
+    <div>
+        <div class="m-3">
+            For some highly rated food places around Singapore, you can head to:
+        </div>
+
+        <div v-for="places in data[Object.keys(data)[0]]">
+            <!-- {{places}} -->
+            <div class="card m-3 bg-light" style="width: 90%">
+                <div class="card-body">
+                    <h6 class="fw-bold">{{places[0]}}</h6>
+                    <!-- <p>{{places[1]}}</p> -->
+                    <span>Ratings: </span>
+                    <!-- <span v-for="index in getRandomNumber()" class="bi bi-star-fill icon-pink" ></span> -->
+                    <span class="ms-1" v-html="starRating"></span>
+                    
+                </div>
             </div>
         </div>
     </div>
+    
+    
 </template>
   
 <script>

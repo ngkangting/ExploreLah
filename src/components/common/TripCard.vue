@@ -5,11 +5,11 @@
       <div class="overlay text-white d-flex justify-content-center align-items-center text-center">
         <div>
           <h3>Trip Name</h3>
-          <p>2 Oct 2022 - 22 Oct 2022</p>
+          <div>2 Oct 2022 - 22 Oct 2022</div>
         </div>
       </div>
-      <div class="description text-dark-blue px-3">
-        <p class="m-0 w-100 ">
+      <div class="d-flex description bg-white text-dark-blue px-3">
+        <p class="m-0 w-100">
           <b>Accommodation:</b> XXX Hotel
           <br>
           <b>Preference:</b> Shopping, Outdoor, Adventure
@@ -38,14 +38,14 @@ export default {
   position: relative;
 }
 .trip-card img{
-  border-radius: 30px;
+  border-radius: 30px !important;
 }
 .overlay {
   position: absolute;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
+  border-top-left-radius: 30px !important;
+  border-top-right-radius: 30px !important;
   top:0;
-  bottom: 25%;
+  bottom: 25% !important;
   right: 0;
   left: 0;
   background: rgba(66, 66, 66, 0.525);
@@ -59,11 +59,11 @@ export default {
   text-align: left;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
-  top: 60%;
+  top: 60% !important;
   bottom: 0;
   right: 0;
   left: 0;
-  background: rgba(255, 255, 255, 0.925);
+  opacity:90%;
 }
 
 .zoom-effect-1{
@@ -71,7 +71,7 @@ export default {
 }
 
 .zoom-effect-1 img{
-  border-radius: 30px;
+  border-radius: 30px !important;
   transform: scale(1);
   -webkit-transform: scale(1);
 }
@@ -82,7 +82,7 @@ export default {
 }
 
 .effect-image-1{
-  border-radius: 30px;
+  border-radius: 30px !important;
   position: relative;
   display: block;
 }
