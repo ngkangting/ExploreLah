@@ -267,7 +267,7 @@
         </div>
         
       </div>
-      <div class="col-md-4 d-none d-md-block d-lg-block d-xl-block d-flex justify-content-center align-items-center">
+      <div class="col-md-3 d-none d-md-flex d-lg-flex d-xl-flex d-flex justify-content-center align-items-center">
         <img src="../assets/img/merlionReview.gif" alt="merlion gif" class="w-100"/>
       </div>
       <div class="col-5 col-md-3 justify-content-center">
