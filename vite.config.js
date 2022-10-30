@@ -2,7 +2,7 @@ import { fileURLToPath, URL } from "node:url";
 
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
-import svgSfc from "vite-plugin-svg-sfc";
+import svgLoader from "vite-svg-loader";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -14,7 +14,7 @@ export default defineConfig({
         },
       },
     }),
-    svgSfc(),
+    svgLoader(),
   ],
   resolve: {
     alias: {

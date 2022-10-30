@@ -1,12 +1,14 @@
 <template>
   <div class="container-fluid">
-    <div class="row">
+    <div class="row d-flex">
       <!-- Result -->
-      <div class="col col-lg-8">
+      <div
+        class="col-md-6 col-lg-8 order-2 order-sm-2 order-md-1 order-lg-1 order-xl-1"
+      >
         <div class="card w-100 border-0">
           <div class="card-body">
             <div class="row mb-3">
-              <div class="col-8">
+              <div class="col-12 col-lg-8">
                 <img
                   class="w-100 rounded"
                   src="../assets/img/mbs-4.jpg"
@@ -14,7 +16,9 @@
                   height="350"
                 />
               </div>
-              <div class="col-4 d-flex flex-column justify-content-between">
+              <div
+                class="col-4 d-none d-lg-flex flex-column justify-content-between"
+              >
                 <div class="row">
                   <div class="col-12">
                     <img
@@ -38,22 +42,32 @@
               </div>
             </div>
             <div class="row">
-              <div>
-                
+              <div class="col-12 pt-2">
+                <h3 class="pb-1 fw-bold">The Shoppes at Marina Bay Sands</h3>
               </div>
-              <div class="column col-6 rounded-3 px-3 py-3">
-              
-                <h4 class="pb-2 fw-bold">The Shoppes at Marina Bay Sands</h4>
+
+              <div class="column col-12 col-lg-6 rounded-3 px-3 py-3">
                 <p class="mb-4">
-                  <span class="tag bg-grey rounded-2 p-1 px-2 text-dark-blue">Luxury Shopping</span>
-                  <span class="tag bg-grey rounded-2 p-1 px-2 text-dark-blue ms-2">Night Life</span>
-                  <span class="tag bg-grey rounded-2 p-1 px-2 text-dark-blue ms-2">Casino</span>
-                  <span class="tag bg-grey rounded-2 p-1 px-2 text-dark-blue ms-2">Museum</span>
+                  <!--to add color -->
+                  <span class="tag bg-grey rounded-2 p-1 px-2"
+                    >Luxury Shopping</span
+                  >
+                  <span class="tag bg-grey rounded-2 p-1 px-2 ms-2"
+                    >Night Life</span
+                  >
+                  <span class="tag bg-grey rounded-2 p-1 px-2 ms-2"
+                    >Casino</span
+                  >
+                  <span class="tag bg-grey rounded-2 p-1 px-2 ms-2"
+                    >Museum</span
+                  >
                 </p>
-                
+
                 <p>
                   <span>
-                    <i class="bg-grey bi bi-star-fill rounded-circle p-2 text-dark-blue"></i>
+                    <i
+                      class="bg-grey bi bi-star-fill rounded-circle p-2 text-dark-blue"
+                    ></i>
                   </span>
                   <span class="mx-2">
                     4.3 #4 of 339 in Shopping In Singapore
@@ -61,37 +75,39 @@
                 </p>
                 <p>
                   <span>
-                    <i class="bg-grey bi bi-pin-map-fill rounded-circle p-2 text-dark-blue"></i>
+                    <i
+                      class="bg-grey bi bi-pin-map-fill rounded-circle p-2 text-dark-blue"
+                    ></i>
                   </span>
-                  <span class="mx-2">
-                    10 Bayfront Ave, Singapore 018956
-                  </span>
+                  <span class="mx-2"> 10 Bayfront Ave, Singapore 018956 </span>
                 </p>
                 <p>
                   <span>
-                    <i class="bg-grey bi bi-clouds-fill rounded-circle p-2 text-dark-blue"></i>
+                    <i
+                      class="bg-grey bi bi-clouds-fill rounded-circle p-2 text-dark-blue"
+                    ></i>
                   </span>
-                  <span class="mx-2">
-                    Cloudy Day
-                  </span>
+                  <span class="mx-2"> Cloudy Day </span>
                 </p>
                 <p>
                   <span>
-                    <i class="bg-grey bi bi-currency-dollar rounded-circle p-2 text-dark-blue"></i>
+                    <i
+                      class="bg-grey bi bi-currency-dollar rounded-circle p-2 text-dark-blue"
+                    ></i>
                   </span>
-                  <span class="mx-2">
-                    Luxury Shopping
-                  </span>
+                  <span class="mx-2"> Luxury Shopping </span>
                 </p>
               </div>
 
-              <div class="column col-6 rounded px-2 py-3">
-                <h6>
-                  Highlights
-                </h6>
+              <div class="column col-12 col-lg-6 rounded px-3 py-3">
+                <h6>Highlights</h6>
                 <ul>
-                  <li class="py-1">Shop at luxury brands such as Balenciga, Chanel, Dior</li>
-                  <li class="py-1">Award winning restaurants such as db Bistro & Oyster Bar</li>
+                  <li class="py-1">
+                    Shop at luxury brands such as Balenciga, Chanel, Dior
+                  </li>
+                  <li class="py-1">
+                    Award winning restaurants such as db Bistro & Oyster Bar
+                  </li>
                   <li class="py-1">SkyPark Observation Deck</li>
                   <li class="py-1">Digital Light Canvas & Sampan Rides</li>
                   <li class="py-1">Arts & Science Museum</li>
@@ -99,8 +115,6 @@
                   <li class="py-1">Marquee Nightclub</li>
                 </ul>
               </div>
-
-
               <!--address, weather, ratings, price range, summary, highlights-->
               <!-- <div class="col-5">
                 <div class="bg-light p-2 h-100 rounded">Test</div>
@@ -125,7 +139,9 @@
       </div>
 
       <!-- Locations -->
-      <div class="col col-lg-4">
+      <div
+        class="col col-md-6 col-lg-4 order-1 order-sm-1 order-md-2 order-lg-2 order-xl-2"
+      >
         <div
           class="nav nav-pills me-3"
           id="v-pills-tab"
@@ -156,7 +172,7 @@
           /> -->
 
           <PillTab
-            v-for="activity,index in currentDayData"
+            v-for="(activity, index) in currentDayData"
             :key="index"
             :index="index"
             :isSelected="false"
@@ -178,27 +194,23 @@
             <p>Estimated travel time from previous place to this:{{activity["travelTimeTo"]}}min</p>
             <p>Weather Forecast: {{activity["status"]}}</p>
           </div> -->
-          
         </div>
         <!-- Next buttons -->
         <div class="row">
-            <div class="col-6">
-              <button @click="goPrevDay">Prev</button>
-              {{currDay}}
-              <button @click="goNextDay">Next</button>
-            </div>
+          <div class="col-6">
+            <button @click="goPrevDay">Prev</button>
+            {{currDay}}
+            <button @click="goNextDay()">Next</button>
           </div>
+        </div>
       </div>
     </div>
-  </div>
-  <div>
-    <button @click="redirectToFood()">Go to Food Reco</button>
   </div>
 </template>
 
 <script>
 import { useAuthStore } from "@/stores/auth";
-import {useItineraryStore} from "@/stores/itinerary";
+import { useItineraryStore } from "@/stores/itinerary";
 import { GoogleMap, Marker, CustomMarker } from "vue3-google-map";
 
 import PillTab from "@/components/result/PillTab.vue";
@@ -210,42 +222,37 @@ export default {
   },
   data() {
     return {
-      currDay:1
+      currDay: 1,
     };
   },
-  setup(){
+  setup() {
     const authStore = useAuthStore();
     const itineraryStore = useItineraryStore();
-    const center = {lat: 1.290270 ,lng: 103.851959};
-    return { authStore,itineraryStore, center };
+    const center = { lat: 1.29027, lng: 103.851959 };
+    return { authStore, itineraryStore, center };
   },
-  computed:{
-    currentDayData(){
-      return this.itineraryStore.itineraryList[this.currDay]["itinerary"]
-    }
+  computed: {
+    currentDayData() {
+      return this.itineraryStore.itineraryList[this.currDay-1]["itinerary"];
+    },
   },
   methods: {
-    getUser() {},
-    redirectToFood(){
-      this.$router.push({
-        name:"Food Recommendation"
-      })
-    },goPrevDay(){
-        if (this.currDay != 1) {
-          this.currDay -= 1;
-        }
-      },
-      goNextDay(){
-        if (this.currDay != this.itineraryStore.itineraryList.length-1) {
-          this.currDay += 1
-        }
-      },
+    goPrevDay(){
+      if (this.currDay != 1) {
+        this.currDay -= 1;
+      }
+    },
+    goNextDay(){
+      if (this.currDay != this.itineraryStore.itineraryList.length) {
+        this.currDay += 1        
+      }
+    }
+
   },
 };
 </script>
 
 <style lang="scss">
-
 .column {
   font-size: smaller;
 }

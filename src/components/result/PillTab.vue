@@ -12,26 +12,40 @@
         @click="onClick($event)"
         ref="tab"
       >
-        <i class="bi bi-circle-fill" style="font-size: 1.2rem"></i>
+        <i
+          class="bi bi-circle-fill text-dark-blue"
+          style="font-size: 1.2rem"
+        ></i>
       </button>
     </div>
     <div
       class="card border-0 p-4"
-      style="transform-origin: left top"
+      style="transform-origin: left top; width: 350px"
       :style="[
         isSelected
           ? { transform: 'scale(0.85)' }
           : { transform: 'scale(0.75)' },
       ]"
     >
-      <h4>{{ place }}</h4>
-      <p>{{ type }}</p>
+      <h4 class="ps-3">{{ place }}</h4>
+      <p class="pt-2">
+        <span class="tag bg-grey rounded-2 p-1 px-2 ms-3 mb-0">{{ type }}</span>
+      </p>
       <div class="d-flex justify-content-between">
-        <span>Arrival Time: {{ arrivalTime }}</span>
-        <span>Depature Time: {{ departureTime }}</span>
-        <p>Forecast: {{forecast}}</p>
+        <span class="p-3">
+          <b>Arrival Time:</b>
+          {{ arrivalTime }}
+        </span>
+        <span class="p-3">
+          <b>Departure Time:</b>
+          {{ departureTime }}
+        </span>
+        <span class="m-0 p-3">
+          <b>Forecast:</b>
+          {{ forecast }}
+        </span>
       </div>
-      Estimated {{travelTimeToThis}} mins to get to here from previous place.
+      {{ travelTimeToThis }}
     </div>
   </div>
 </template>
@@ -83,7 +97,7 @@ export default {
     travelTimeToThis: {
       type: Number,
       default: null,
-    },   
+    },
   },
   data() {
     return {};
@@ -91,8 +105,8 @@ export default {
   mounted() {
     this.$watch(
       () => {
-        console.log(this.$refs.tab.getAttribute("aria-selected"));
-        console.log(this.$refs.tab.getAttribute("aria-selected"));
+        // console.log(this.$refs.tab.getAttribute("aria-selected"));
+        // console.log(this.$refs.tab.getAttribute("aria-selected"));
       },
       (val) => {
         alert("HELLO");
@@ -131,11 +145,11 @@ export default {
     height: 100%;
     width: 4px;
     border-radius: 10px;
-    background-color: #e9ecef;
+    background-color: #dfdfdf;
   }
 
   &-active::after {
-    background-color: #adb5bd;
+    background-color: #ff8397;
   }
 }
 </style>

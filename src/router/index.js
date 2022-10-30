@@ -4,11 +4,11 @@ import HomeView from "../views/HomeView.vue";
 import LoginView from "../views/auth/LoginView.vue";
 import SignUpView from "../views/auth/SignUpView.vue";
 import ForgotPasswordView from "../views/auth/ForgotPasswordView.vue";
-import PlanNow from "../views/PlanNow.vue";
-import ResultFood from "../views/ResultPage.vue";
 import Plan from "../views/Plan.vue";
+import ResultFood from "../views/ResultPage.vue";
 import MyTrips from "../views/MyTrips.vue";
 import Result from "../views/ResultView.vue";
+import Discover from "../views/Discover.vue";
 import AboutUs from "../views/AboutUs.vue";
 import PageNotFound from "../views/PageNotFound.vue";
 
@@ -47,7 +47,7 @@ const router = createRouter({
     {
       path: "/plan",
       name: "Plan",
-      component: PlanNow,
+      component: Plan,
     },
     {
       path: "/result",
@@ -63,6 +63,11 @@ const router = createRouter({
       path: "/mytrips",
       name: "My Trips",
       component: MyTrips,
+    },
+    {
+      path: "/discover",
+      name: "Discover",
+      component: Discover,
     },
     {
       path: "/aboutus",
