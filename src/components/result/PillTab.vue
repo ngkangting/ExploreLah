@@ -71,7 +71,7 @@ export default {
       default: null,
     },
     type: {
-      type: String,
+      type: Object,
       default: null,
     },
     arrivalTime: {
@@ -91,7 +91,7 @@ export default {
       default: "Currently Unavailable",
     },
     duration: {
-      type: String,
+      type: Number,
       default: null,
     },
     travelTimeToThis: {
@@ -105,8 +105,8 @@ export default {
   mounted() {
     this.$watch(
       () => {
-        console.log(this.$refs.tab.getAttribute("aria-selected"));
-        console.log(this.$refs.tab.getAttribute("aria-selected"));
+        // console.log(this.$refs.tab.getAttribute("aria-selected"));
+        // console.log(this.$refs.tab.getAttribute("aria-selected"));
       },
       (val) => {
         alert("HELLO");

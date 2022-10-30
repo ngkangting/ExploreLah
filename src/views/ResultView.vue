@@ -178,7 +178,7 @@
             :isSelected="false"
             :isLast="false"
             :place="activity.name"
-            :type="'Arts & Culture'"
+            :type="activity.tags"
             :arrivalTime="activity.arriveTime"
             :departureTime="activity.endTime"
             :forecast="activity.status"
@@ -186,23 +186,16 @@
             :travelTimeToThis="activity.travelTimeTo"
             :name="`pill-tab-${index}`"
           />
-          <!-- <div v-for="activity in currentDayData">
-            <h2>{{activity.order}}.{{activity.name}}</h2>
-            <p>Arrival Time: {{activity["arriveTime"]}}</p>
-            <p>Time Spent: {{activity["dur"]}}</p>
-            <p>Leave At: {{activity["endTime"]}}</p>
-            <p>Estimated travel time from previous place to this:{{activity["travelTimeTo"]}}min</p>
-            <p>Weather Forecast: {{activity["status"]}}</p>
-          </div> -->
         </div>
         <!-- Next buttons -->
         <div class="row">
           <div class="col-6">
             <button @click="goPrevDay">Prev</button>
-            {{ currDay }}
-            <button @click="goNextDay">Next</button>
+            {{currDay}}
+            <button @click="goNextDay()">Next</button>
           </div>
         </div>
+        <button @click="goToFoodPage">Go to Food Page</button>
       </div>
     </div>
   </div>
@@ -233,11 +226,26 @@ export default {
   },
   computed: {
     currentDayData() {
-      return this.itineraryStore.itineraryList[this.currDay]["itinerary"];
+      return this.itineraryStore.itineraryList[this.currDay-1]["itinerary"];
     },
   },
   methods: {
-    getUser() {},
+    goPrevDay(){
+      if (this.currDay != 1) {
+        this.currDay -= 1;
+      }
+    },
+    goNextDay(){
+      if (this.currDay != this.itineraryStore.itineraryList.length) {
+        this.currDay += 1        
+      }
+    },
+    goToFoodPage(){
+      this.$router.push({
+        path: "/resultfood",
+      });
+    }
+
   },
 };
 </script>
