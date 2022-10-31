@@ -29,6 +29,7 @@ app.use(MotionPlugin);
 app.use(LottieVuePlayer);
 app.use(Datepicker);
 
+
 app.mount("#app");
 
 import "bootstrap/dist/js/bootstrap.js";
