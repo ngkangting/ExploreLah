@@ -62,13 +62,13 @@
                 <label for="locationInput" class="form-label"
                   >Location<span class="text-danger">*</span></label
                 >
-                <input
-                  type="text"
-                  class="form-control"
+                <TypeaheadInput
                   id="locationInput"
-                  placeholder="Enter location"
+                  class="typeahead-input"
+                  :items="validLocations"
                   v-model="location"
-                  required
+                  :emptyMessage="typeaheadMessage"
+                  placeholder="Enter location"
                 />
                 <div v-if="!isLocationValid" class="text-danger mt-1">
                   Please enter a location!
@@ -318,6 +318,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 import { useItineraryStore } from "@/stores/itinerary";
 
 import Location from "../assets/svg/location.svg?raw";
@@ -326,6 +328,7 @@ import Shop from "../assets/svg/shop.svg?raw";
 import Transport from "../assets/svg/transport.svg?raw";
 
 import Datepicker from "@vuepic/vue-datepicker";
+import TypeaheadInput from "vue3-typeahead-input";
 
 export default {
   name: "Plan",
@@ -335,9 +338,12 @@ export default {
     Shop,
     Transport,
     Datepicker,
+    TypeaheadInput,
   },
   data() {
     return {
+      validLocations: [],
+      typeaheadMessage: "Location not found!",
       location: "",
       date: [],
       shopping: 3,
@@ -380,6 +386,13 @@ export default {
     };
   },
   computed: {
+    resultQuery() {
+      if (this.location) {
+        return this.validLocations.filter((item) => {
+          return item.toLowerCase().startsWith(this.location);
+        });
+      }
+    },
     isLocationValid() {
       return this.location || !this.checkLocation;
     },
@@ -391,7 +404,20 @@ export default {
     const itineraryStore = useItineraryStore();
     return { itineraryStore };
   },
+  created() {
+    this.getValidLocations();
+  },
   methods: {
+    getValidLocations() {
+      const apiUrl = "https://wad2-explorelah.as.r.appspot.com/validlocations";
+
+      axios
+        .get(apiUrl)
+        .then((response) => {
+          this.validLocations = response.data;
+        })
+        .catch((error) => {});
+    },
     generateItinerary() {
       let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
@@ -491,5 +517,9 @@ export default {
 
 .d-stepper .step-number-content {
   z-index: 2;
+}
+
+.typeahead-input::placeholder {
+  opacity: 0.4;
 }
 </style>

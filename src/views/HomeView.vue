@@ -1,5 +1,9 @@
 <template>
-  <div v-motion-pop class="mb-0 pb-2 bg-light">
+  <div
+    v-motion-pop
+    class="mb-0 pb-2 bg-light pt-5"
+    :style="{ minHeight: 'calc(100vh - 75px)' }"
+  >
     <div class="d-flex justify-content-center align-items-center">
       <h1 class="d-flex fw-bold justify-content-center pt-4 px-3 text-center">
         Singapore is yours to EXPLORE!
@@ -8,83 +12,141 @@
 
     <div class="row d-md-none d-lg-none d-xl-none justify-content-center">
       <div class="col-5 pt-5 pb-0 d-">
-        <div class="sm bg-light-pink p-1 d-flex justify-content-center align-items-center">
-          <img class="h-75 w-75" src="../assets/img/small-1.png" alt="cloud forest and flower dome" />
+        <div
+          class="sm bg-light-pink p-1 d-flex justify-content-center align-items-center"
+        >
+          <img
+            class="h-75 w-75"
+            src="../assets/img/small-1.png"
+            alt="cloud forest and flower dome"
+          />
         </div>
-        <div class="med bg-blue p-1 d-flex justify-content-center align-items-center">
-          <img class="h-100" src="../assets/img/med-2.png" alt="supertree at garden by the bay" />
+        <div
+          class="med bg-blue p-1 d-flex justify-content-center align-items-center"
+        >
+          <img
+            class="h-100"
+            src="../assets/img/med-2.png"
+            alt="supertree at garden by the bay"
+          />
         </div>
       </div>
       <div class="col-5 pt-5 pb-0">
-        <div class="med bg-light-blue p-1 d-flex justify-content-center align-items-center">
+        <div
+          class="med bg-light-blue p-1 d-flex justify-content-center align-items-center"
+        >
           <img class="h-100" src="../assets/img/med-3.png" alt="ferris wheel" />
         </div>
-        <div class="sm bg-dark-blue p-1 d-flex justify-content-center align-items-center">
-          <img class="h-100" src="../assets/img/small-2.png" alt="art science museum" />
+        <div
+          class="sm bg-dark-blue p-1 d-flex justify-content-center align-items-center"
+        >
+          <img
+            class="h-100"
+            src="../assets/img/small-2.png"
+            alt="art science museum"
+          />
         </div>
       </div>
     </div>
 
     <div class="d-flex justify-content-center">
       <h6
-        class="d-flex justify-content align-items-center btn-special-blue text-center d-md-none d-lg-none d-xl-none m-2">
+        class="d-flex justify-content align-items-center btn-special-blue text-center d-md-none d-lg-none d-xl-none m-2"
+      >
         Start Planning!
       </h6>
     </div>
 
-
     <div class="row justify-content-center mx-5">
-      <div class="col-lg-2 d-none d-lg-block d-xl-block pb-0 ">
+      <div class="col-lg-2 d-none d-lg-block d-xl-block pb-0">
         <div class="px-2 mb-0 pb-0">
           <div>
-            <i class="bi bi-quote border border-0 rounded-circle p-1 mb-4 bg-mid-pink text-white small"></i>
+            <i
+              class="bi bi-quote border border-0 rounded-circle p-1 mb-4 bg-mid-pink text-white small"
+            ></i>
           </div>
           <div class="m-0 p-0">
-            <p class="type p-0 m-0">
-              Oh, the places you'll go!
-            </p>
-            <p class="type text-secondary font-italic fst-italic fw-lighter small m-0 py-0 ps-3 ">
-              <span>
-                - Dr. Seuss
-              </span>
+            <p class="type p-0 m-0">Oh, the places you'll go!</p>
+            <p
+              class="type text-secondary font-italic fst-italic fw-lighter small m-0 py-0 ps-3"
+            >
+              <span> - Dr. Seuss </span>
             </p>
           </div>
         </div>
-        <div class="med bg-dark-blue p-1 d-flex justify-content-center align-items-center">
+        <div
+          class="med bg-dark-blue p-1 d-flex justify-content-center align-items-center"
+        >
           <img class="w-75" src="../assets/img/med-1.png" alt="marina bay" />
         </div>
       </div>
 
-      <div class="col-md-3 col-lg-2 pt-5 pb-0 d-none d-md-block d-lg-block d-xl-block">
-        <div class="sm bg-light-pink p-1 d-flex justify-content-center align-items-center">
-          <img class="h-75 w-75" src="../assets/img/small-1.png" alt="cloud forest and flower dome" />
+      <div
+        class="col-md-3 col-lg-2 pt-5 pb-0 d-none d-md-block d-lg-block d-xl-block"
+      >
+        <div
+          class="sm bg-light-pink p-1 d-flex justify-content-center align-items-center"
+        >
+          <img
+            class="h-75 w-75"
+            src="../assets/img/small-1.png"
+            alt="cloud forest and flower dome"
+          />
         </div>
-        <div class="med bg-blue p-1 d-flex justify-content-center align-items-center">
-          <img class="h-100" src="../assets/img/med-2.png" alt="supertree at garden by the bay" />
+        <div
+          class="med bg-blue p-1 d-flex justify-content-center align-items-center"
+        >
+          <img
+            class="h-100"
+            src="../assets/img/med-2.png"
+            alt="supertree at garden by the bay"
+          />
         </div>
       </div>
 
-      <div class="col-md-3 col-lg-2 pt-2 pb-0 d-none d-md-block d-lg-block d-xl-block">
-        <div class="lg bg-mid-pink p-1 d-flex justify-content-center align-items-center">
+      <div
+        class="col-md-3 col-lg-2 pt-2 pb-0 d-none d-md-block d-lg-block d-xl-block"
+      >
+        <div
+          class="lg bg-mid-pink p-1 d-flex justify-content-center align-items-center"
+        >
           <img class="h-75 w-75" src="../assets/img/large.png" alt="merlion" />
         </div>
       </div>
 
-      <div class="col-md-3 col-lg-2 pt-5 pb-0 d-none d-md-block d-lg-block d-xl-block">
-        <div class="med bg-light-blue p-1 d-flex justify-content-center align-items-center">
+      <div
+        class="col-md-3 col-lg-2 pt-5 pb-0 d-none d-md-block d-lg-block d-xl-block"
+      >
+        <div
+          class="med bg-light-blue p-1 d-flex justify-content-center align-items-center"
+        >
           <img class="h-100" src="../assets/img/med-3.png" alt="ferris wheel" />
         </div>
-        <div class="sm bg-dark-blue p-1 d-flex justify-content-center align-items-center">
-          <img class="h-100" src="../assets/img/small-2.png" alt="art science museum" />
+        <div
+          class="sm bg-dark-blue p-1 d-flex justify-content-center align-items-center"
+        >
+          <img
+            class="h-100"
+            src="../assets/img/small-2.png"
+            alt="art science museum"
+          />
         </div>
       </div>
 
-      <div class="col-lg-2 d-none d-lg-block d-xl-block pb-0 ">
-        <div class="sm d-flex justify-content-center align-items-center position-relative">
-          <img class="w-25 " src="../assets/img/compass.gif" alt="icon" />
-          <img class="explore-icon w-50" src="../assets/img/circle-explore-icon.png" alt="icon" />
+      <div class="col-lg-2 d-none d-lg-block d-xl-block pb-0">
+        <div
+          class="sm d-flex justify-content-center align-items-center position-relative"
+        >
+          <img class="w-25" src="../assets/img/compass.gif" alt="icon" />
+          <img
+            class="explore-icon w-50"
+            src="../assets/img/circle-explore-icon.png"
+            alt="icon"
+          />
         </div>
-        <div class="med bg-light-pink p-1 d-flex justify-content-center align-items-center">
+        <div
+          class="med bg-light-pink p-1 d-flex justify-content-center align-items-center"
+        >
           <img class="h-100" src="../assets/img/med-4.png" alt="pagoda" />
         </div>
       </div>
@@ -92,9 +154,18 @@
 
     <div class="d-none d-md-block d-lg-block d-xl-block">
       <span class="d-flex justify-content-center me-5 pe-5">
-        <lottie-player class="car" src="https://assets4.lottiefiles.com/packages/lf20_JOHmpu.json"
-          background="transparent" speed="0.6" style="width: 700px; height: 60px;" loop autoplay></lottie-player>
-        <h6 class="d-flex justify-content align-items-center btn-special-blue text-center me-5">
+        <lottie-player
+          class="car"
+          src="https://assets4.lottiefiles.com/packages/lf20_JOHmpu.json"
+          background="transparent"
+          speed="0.6"
+          style="width: 700px; height: 60px"
+          loop
+          autoplay
+        ></lottie-player>
+        <h6
+          class="d-flex justify-content align-items-center btn-special-blue text-center me-5"
+        >
           Start Planning!
         </h6>
       </span>
@@ -105,10 +176,17 @@
     <h1 class="fw-bold text-center mt-5 py-5">
       Features to replace all your other tools
     </h1>
-    <div v-motion-slide-visible-once-left class="row text-center justify-content-center ">
+    <div
+      v-motion-slide-visible-once-left
+      class="row text-center justify-content-center"
+    >
       <div class="feature col-12 col-md-6 col-lg-3 p-4">
         <div class="row picture align-items-center">
-          <img class="w-25 p-2 mx-auto" src="../assets/img/feature1.jpg" alt="feature1" />
+          <img
+            class="w-25 p-2 mx-auto"
+            src="../assets/img/feature1.jpg"
+            alt="feature1"
+          />
         </div>
         <h4>Personalise your itinerary with just a few clicks</h4>
         <p class="text-secondary">
@@ -119,7 +197,11 @@
 
       <div class="feature col-12 col-md-6 col-lg-3 p-4">
         <div class="row picture align-items-center">
-          <img class="w-50 p-2 mx-auto" src="../assets/img/feature2.png" alt="feature2" />
+          <img
+            class="w-50 p-2 mx-auto"
+            src="../assets/img/feature2.png"
+            alt="feature2"
+          />
         </div>
         <h4>Optimise your route</h4>
         <p class="text-secondary">Minimise travel time. Maximise fun.</p>
@@ -127,7 +209,11 @@
 
       <div class="feature col-12 col-md-6 col-lg-3 p-4">
         <div class="row picture align-items-center">
-          <img class="w-25 p-2 mx-auto" src="../assets/img/feature3.png" alt="feature3" />
+          <img
+            class="w-25 p-2 mx-auto"
+            src="../assets/img/feature3.png"
+            alt="feature3"
+          />
         </div>
         <h4>Check weather forecast</h4>
         <p class="text-secondary">
@@ -138,7 +224,11 @@
 
       <div class="feature col-12 col-md-6 col-lg-3 p-4">
         <div class="row picture align-items-center">
-          <img class="w-25 p-2 mx-auto" src="../assets/img/feature5.png" alt="feature5" />
+          <img
+            class="w-25 p-2 mx-auto"
+            src="../assets/img/feature5.png"
+            alt="feature5"
+          />
         </div>
         <h4>Download your itinerary to your phone</h4>
         <p class="text-secondary">
@@ -153,11 +243,19 @@
     <h1 class="fw-bold text-center mt-5 py-5">How It Works</h1>
 
     <div class="row fixed justify-content-center">
-      <div class="col-5 d-flex rounded-4 d-none d-sm-block d-md-block d-lg-block d-xl-block"
-        style="background-color: #ff8397;">
-        <img src="../assets/img/gif1.gif" alt="gif1" class="d-block mx-auto w-75" />
+      <div
+        class="col-5 d-flex rounded-4 d-none d-sm-block d-md-block d-lg-block d-xl-block"
+        style="background-color: #ff8397"
+      >
+        <img
+          src="../assets/img/gif1.gif"
+          alt="gif1"
+          class="d-block mx-auto w-75"
+        />
       </div>
-      <div class="col-12 col-sm-5 d-flex justify-content-center align-items-center">
+      <div
+        class="col-12 col-sm-5 d-flex justify-content-center align-items-center"
+      >
         <div class="m-4">
           <h2>
             <i class="bi bi-1-circle"></i>
@@ -172,7 +270,9 @@
     </div>
 
     <div class="row justify-content-center">
-      <div class="col-12 col-sm-5 d-flex justify-content-center align-items-center">
+      <div
+        class="col-12 col-sm-5 d-flex justify-content-center align-items-center"
+      >
         <div class="m-4">
           <h2>
             <i class="bi bi-2-circle"></i>
@@ -181,16 +281,30 @@
           <div>Tell us how long you plan on hanging around Singapore!</div>
         </div>
       </div>
-      <div class="col-5 bg-newlightpink d-flex py-1 rounded-4 d-none d-sm-block d-md-block d-lg-block d-xl-block">
-        <img src="../assets/img/gif2.gif" alt="gif2" class="d-block mx-auto w-50" />
+      <div
+        class="col-5 bg-newlightpink d-flex py-1 rounded-4 d-none d-sm-block d-md-block d-lg-block d-xl-block"
+      >
+        <img
+          src="../assets/img/gif2.gif"
+          alt="gif2"
+          class="d-block mx-auto w-50"
+        />
       </div>
     </div>
 
     <div class="row justify-content-center">
-      <div class="col-5 bg-light-blue py-4 d-flex rounded-4 d-none d-sm-block d-md-block d-lg-block d-xl-block">
-        <img src="../assets/img/gif3.gif" alt="gif3" class="w-50 d-block mx-auto" />
+      <div
+        class="col-5 bg-light-blue py-4 d-flex rounded-4 d-none d-sm-block d-md-block d-lg-block d-xl-block"
+      >
+        <img
+          src="../assets/img/gif3.gif"
+          alt="gif3"
+          class="w-50 d-block mx-auto"
+        />
       </div>
-      <div class="col-12 col-sm-5 d-flex justify-content-center align-items-center">
+      <div
+        class="col-12 col-sm-5 d-flex justify-content-center align-items-center"
+      >
         <div class="m-4">
           <h2>
             <i class="bi bi-3-circle"></i>
@@ -204,7 +318,9 @@
     </div>
 
     <div class="row justify-content-center">
-      <div class="col-12 col-sm-5 d-flex justify-content-center align-items-center">
+      <div
+        class="col-12 col-sm-5 d-flex justify-content-center align-items-center"
+      >
         <div class="m-4">
           <h2>
             <i class="bi bi-4-circle"></i>
@@ -216,8 +332,14 @@
           </div>
         </div>
       </div>
-      <div class="col-5 bg-blue d-flex rounded-4 d-none d-sm-block d-md-block d-lg-block d-xl-block">
-        <img src="../assets/img/gif4.gif" alt="gif4" class="d-block mx-auto w-50" />
+      <div
+        class="col-5 bg-blue d-flex rounded-4 d-none d-sm-block d-md-block d-lg-block d-xl-block"
+      >
+        <img
+          src="../assets/img/gif4.gif"
+          alt="gif4"
+          class="d-block mx-auto w-50"
+        />
       </div>
     </div>
   </div>
@@ -230,56 +352,46 @@
       <div class="col-5 col-md-3 justify-content-center">
         <div class="p-2">
           <div class="py-2">
-            <h4 class="text-pink py-2">
-              ★★★★★
-            </h4>
+            <h4 class="text-pink py-2">★★★★★</h4>
             <p>
-              Amazing app! It is so easy to use and the planning feature is so cool. A+!
+              Amazing app! It is so easy to use and the planning feature is so
+              cool. A+!
             </p>
-            <p class="text-muted">
-              - Professor Mok
-            </p>
+            <p class="text-muted">- Professor Mok</p>
           </div>
           <div class="py-2">
-            <h4 class="text-pink py-2">
-              ★★★★★
-            </h4>
+            <h4 class="text-pink py-2">★★★★★</h4>
             <p>
-              ExploreLah makes planning activities really easy! Highly recommend.
+              ExploreLah makes planning activities really easy! Highly
+              recommend.
             </p>
-            <p class="text-muted">
-              - Instructor Jason
-            </p>
+            <p class="text-muted">- Instructor Jason</p>
           </div>
         </div>
-
       </div>
-      <div class="col-md-3 d-none d-md-flex d-lg-flex d-xl-flex d-flex justify-content-center align-items-center">
-        <img src="../assets/img/merlionReview.gif" alt="merlion gif" class="w-100" />
+      <div
+        class="col-md-3 d-none d-md-flex d-lg-flex d-xl-flex d-flex justify-content-center align-items-center"
+      >
+        <img
+          src="../assets/img/merlionReview.gif"
+          alt="merlion gif"
+          class="w-100"
+        />
       </div>
       <div class="col-5 col-md-3 justify-content-center">
         <div class="p-2">
           <div class="py-2">
-            <h4 class="text-pink py-2">
-              ★★★★★
-            </h4>
-            <p>
-              Great app that saved me a lot of time while I was travelling
-            </p>
-            <p class="text-muted">
-              - TA Chen
-            </p>
+            <h4 class="text-pink py-2">★★★★★</h4>
+            <p>Great app that saved me a lot of time while I was travelling</p>
+            <p class="text-muted">- TA Chen</p>
           </div>
           <div class="py-2">
-            <h4 class="text-pink py-2">
-              ★★★★★
-            </h4>
+            <h4 class="text-pink py-2">★★★★★</h4>
             <p>
-              Easy to use and convenient! Wish I had something like this for overseas too.
+              Easy to use and convenient! Wish I had something like this for
+              overseas too.
             </p>
-            <p class="text-muted">
-              - Derrick Tan
-            </p>
+            <p class="text-muted">- Derrick Tan</p>
           </div>
         </div>
       </div>
@@ -287,20 +399,22 @@
   </div>
 
   <div>
-    <h1 class="type d-flex justify-content-center fw-bold text-center mt-5 py-5">
-      <span>
-        Ready to plan your trip in half the time?
-      </span>
+    <h1
+      class="type d-flex justify-content-center fw-bold text-center mt-5 py-5"
+    >
+      <span> Ready to plan your trip in half the time? </span>
     </h1>
     <div class="d-flex justify-content-center">
-      <h4 class="btn-special">
-        Plan Now
-      </h4>
+      <h4 class="btn-special">Plan Now</h4>
     </div>
   </div>
 
   <div>
-    <img class="w-100 mx-auto d-block" src="../assets/img/skyline.png" alt="Skyline Image" />
+    <img
+      class="w-100 mx-auto d-block"
+      src="../assets/img/skyline.png"
+      alt="Skyline Image"
+    />
   </div>
 </template>
 
@@ -314,8 +428,7 @@ export default {
     Footer,
   },
   data() {
-    return {
-    };
+    return {};
   },
   setup() {
     const authStore = useAuthStore();
@@ -336,10 +449,9 @@ export default {
 
 <style lang="scss">
 @keyframes t {
-
   90%,
   100% {
-    width: 100%
+    width: 100%;
   }
 }
 
