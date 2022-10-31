@@ -47,10 +47,11 @@
 </template>
   
 <script>
-import {getAuth, onAuthStateChanged} from "firebase/auth";
-import  {getDatabase, ref, get, set, child, update, remove}  from "firebase/database/";
 import {getFirestore, collection, addDoc} from "firebase/firestore";
 import firebaseApp from "../firebaseConfig";
+import {ref} from "vue";
+import {Modal} from 'usemodal-vue3';
+
 
 import { useAuthStore } from "@/stores/auth";
 import {useItineraryStore} from "@/stores/itinerary";
@@ -60,113 +61,112 @@ import { GoogleMap, Marker, CustomMarker } from "vue3-google-map";
 import FoodLocation from "../components/resultpage/FoodLocation.vue";
 
 
-  export default {
-    name: "ResultPage",
-    components: {
-      GoogleMap, Marker, FoodLocation,CustomMarker
-    },
-    data() {
-      return {
-        state:1, //O for lunch, 1 for dinner
-        currDay:1,
-      };
-    },
-    setup(){
-      const auth = getAuth();
-      const db = getFirestore(firebaseApp);
-      const authStore = useAuthStore();
-      const itineraryStore = useItineraryStore();
-      const center = {lat: 1.290270 ,lng: 103.851959};
-      // console.log(`UID Passed is this ${uid}`); //Runs first
-      return { authStore,itineraryStore, center,db, auth};
-    },
-    computed:{
+export default {
+  name: "ResultPage",
+  components: {
+    GoogleMap, Marker, FoodLocation,CustomMarker
+  },
+  data() {
+    return {
+      state:1, //O for lunch, 1 for dinner
+      currDay:1,
+    };
+  },
+  setup(){
+    const db = getFirestore(firebaseApp);
+    const authStore = useAuthStore();
+    const itineraryStore = useItineraryStore();
+    const center = {lat: 1.290270 ,lng: 103.851959};
+    // console.log(`UID Passed is this ${uid}`); //Runs first
+    return { authStore,itineraryStore, center,db};
+  },
+  computed:{
 
-      foodReco(){
-        return this.itineraryStore.foodReco;
-      },
-      lunchStyle(){
-        if (this.state) {
-          // return "text-dark-blue display-3 mx-5"
-          return "selected-style text-dark-blue"
-        } 
-        return "unselected-style" //Add in unclicked button
-      },
-      dinnerStyle(){
-        if (!this.state){
-          return "selected-style text-dark-blue"
-        } 
-        return "unselected-style" //Add in unclicked button
-      },
-      shownFoodReco(){
-        if (this.state) {
-          //Show lunch reco
-          return this.foodReco[this.currDay-1]["lunch"]
-        } 
-        return this.foodReco[this.currDay-1]["dinner"]
-      },
-      markers(){
-        if(this.state) {
-          console.log(this.foodReco[this.currDay-1]["lunchPin"][0])
-          return this.foodReco[this.currDay-1]["lunchPin"]
-        }
-        return this.foodReco[this.currDay-1]["dinnerPin"]
+    foodReco(){
+      return this.itineraryStore.foodReco;
+    },
+    lunchStyle(){
+      if (this.state) {
+        // return "text-dark-blue display-3 mx-5"
+        return "selected-style text-dark-blue"
+      } 
+      return "unselected-style" //Add in unclicked button
+    },
+    dinnerStyle(){
+      if (!this.state){
+        return "selected-style text-dark-blue"
+      } 
+      return "unselected-style" //Add in unclicked button
+    },
+    shownFoodReco(){
+      if (this.state) {
+        //Show lunch reco
+        return this.foodReco[this.currDay-1]["lunch"]
+      } 
+      return this.foodReco[this.currDay-1]["dinner"]
+    },
+    markers(){
+      if(this.state) {
+        console.log(this.foodReco[this.currDay-1]["lunchPin"][0])
+        return this.foodReco[this.currDay-1]["lunchPin"]
+      }
+      return this.foodReco[this.currDay-1]["dinnerPin"]
 
+    }
+  },
+
+  methods: {
+    toggleState(){
+      this.state = !this.state;
+    },
+    goPrevDay(){
+      if (this.currDay != 1) {
+        this.currDay -= 1;
       }
     },
-
-    methods: {
-      toggleState(){
-        this.state = !this.state;
-      },
-      goPrevDay(){
-        if (this.currDay != 1) {
-          this.currDay -= 1;
-        }
-      },
-      goNextDay(){
-        if(this.currDay!= Object.keys(this.foodReco).length){
-          this.currDay += 1
-        }
-      },
-      async saveItineraryToDb(){
-        //Write to DB
-        let userID = this.auth.currentUser.uid;
-        let itineraryList = this.itineraryStore.itineraryList;
-        let foodReco = this.itineraryStore.foodReco;
-        let itineraryInput = this.itineraryStore.itineraryInput;
+    goNextDay(){
+      if(this.currDay!= Object.keys(this.foodReco).length){
+        this.currDay += 1
+      }
+    },
+    async saveItineraryToDb(){
+      //Write to DB
+      let userID = this.authStore.user.uid;
+      let itineraryList = this.itineraryStore.itineraryList;
+      let foodReco = this.itineraryStore.foodReco;
+      let itineraryInput = this.itineraryStore.itineraryInput;
+      console.log(this.authStore.user.uid);
+      // try {
+      //     const docRef = await addDoc(collection(this.db, userID), {
+      //       itinerary : JSON.stringify(itineraryList),
+      //       food : JSON.stringify(foodReco),
+      //       input : JSON.stringify(itineraryInput)
+      //     });
+      //     console.log("Document written with ID: ", docRef.id);
+      //   } catch (e) {
+      //     console.error("Error adding document: ", e);
+      //   }
+    },
+    },
     
-        try {
-            const docRef = await addDoc(collection(this.db, userID), {
-              itinerary : JSON.stringify(itineraryList),
-              food : JSON.stringify(foodReco),
-              input : JSON.stringify(itineraryInput)
-            });
-            console.log("Document written with ID: ", docRef.id);
-          } catch (e) {
-            console.error("Error adding document: ", e);
-          }
-      },
-      },
-      
-  
-  };
-  </script>
-  
-  <style lang="scss">
-  .selected-style{
-    font-weight: bold;
-    border: none;
-    background-color: transparent;
-    font-size: 4rem;
-  }
 
-  .unselected-style{
-    border:none;
-    background-color: transparent;
-    color: grey;
-    font-size: 2rem;
-  }
+};
+</script>
 
-  </style>
+<style lang="scss">
+.selected-style{
+  font-weight: bold;
+  border: none;
+  background-color: transparent;
+  font-size: 4rem;
+}
+
+.unselected-style{
+  border:none;
+  background-color: transparent;
+  color: grey;
+  font-size: 2rem;
+}
+
+</style>
   
