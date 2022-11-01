@@ -51,6 +51,32 @@
                   Next
                 </button>
               </div>
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-pink" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Save Itinerary
+              </button>
+
+              <!-- Modal -->
+              <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Give this trip a name!</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <input class="form-control" type="text" v-model="inputName" placeholder="Exciting day trip!">
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-pink" @click="saveItineraryToDb">Save Trip</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
             </div>
           </div>
         </div>
@@ -63,6 +89,8 @@
 import { useAuthStore } from "@/stores/auth";
 import {useItineraryStore} from "@/stores/itinerary";
 import { GoogleMap, Marker, CustomMarker } from "vue3-google-map";
+import {getFirestore, collection, addDoc} from "firebase/firestore";
+import firebaseApp from "../firebaseConfig";
 
 import FoodLocation from "../components/resultpage/FoodLocation.vue";
 
@@ -76,13 +104,16 @@ export default {
     return {
       state:1, //O for lunch, 1 for dinner
       currDay:1,
+      inputName:null,
     };
   },
   setup(){
+    const db = getFirestore(firebaseApp);
     const authStore = useAuthStore();
     const itineraryStore = useItineraryStore();
     const center = {lat: 1.290270 ,lng: 103.851959};
-    return { authStore,itineraryStore, center };
+    // console.log(`UID Passed is this ${uid}`); //Runs first
+    return { authStore,itineraryStore, center,db};
   },
   computed:{
     foodReco(){
@@ -131,7 +162,26 @@ export default {
       if(this.currDay!= Object.keys(this.foodReco).length){
         this.currDay += 1
       }
-    }
+    },
+    async saveItineraryToDb(){
+        //Write to DB
+        let userID = this.authStore.user.uid;
+        let itineraryList = this.itineraryStore.itineraryList;
+        let foodReco = this.itineraryStore.foodReco;
+        let itineraryInput = this.itineraryStore.itineraryInput;
+        console.log(this.authStore.user.uid);
+        console.log(this.inputName);
+        // try {
+        //     const docRef = await addDoc(collection(this.db, userID), {
+        //       itinerary : JSON.stringify(itineraryList),
+        //       food : JSON.stringify(foodReco),
+        //       input : JSON.stringify(itineraryInput)
+        //     });
+        //     console.log("Document written with ID: ", docRef.id);
+        //   } catch (e) {
+        //     console.error("Error adding document: ", e);
+        //   }
+      },
 
     },
     
