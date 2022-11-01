@@ -32,9 +32,33 @@
                     <button @click="goNextDay">Next</button>
                   </div>
                 </div>
-                <div>
+                <!-- <div>
                   <button class="btn btn-pink" @click="saveItineraryToDb">Save Itinerary</button>
+                </div> -->
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-pink" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  Save Itinerary
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Give this trip a name!</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <input class="form-control" type="text" v-model="inputName" placeholder="Exciting day trip!">
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-pink" @click="saveItineraryToDb">Save</button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+                
 
   
       
@@ -59,19 +83,21 @@ import { GoogleMap, Marker, CustomMarker } from "vue3-google-map";
 
 
 import FoodLocation from "../components/resultpage/FoodLocation.vue";
+import GiveNameModal from "../components/common/Modal.vue";
 
 
 
 export default {
   name: "ResultPage",
   components: {
-    GoogleMap, Marker, FoodLocation,CustomMarker
+    GoogleMap, Marker, FoodLocation,CustomMarker, GiveNameModal,
   },
   data() {
     return {
       state:1, //O for lunch, 1 for dinner
       currDay:1,
       isModalOpen:false,
+      inputName:null,
     };
   },
   setup(){
@@ -138,7 +164,7 @@ export default {
         let foodReco = this.itineraryStore.foodReco;
         let itineraryInput = this.itineraryStore.itineraryInput;
         console.log(this.authStore.user.uid);
-        this.showModal = !this.showModal;
+        console.log(this.inputName);
         // try {
         //     const docRef = await addDoc(collection(this.db, userID), {
         //       itinerary : JSON.stringify(itineraryList),
@@ -171,24 +197,6 @@ export default {
   color: grey;
   font-size: 2rem;
 }
-.modal-bg{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
 
-  background-color: rgba($color: #000000, $alpha: 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.modal{
-  background : white;
-  padding: 50px 100px;
-  border-radius: 5px;
-  box-shadow: 0px 10px 5px 2px rgba(0,0,0,0.1);
-}
 </style>
 
