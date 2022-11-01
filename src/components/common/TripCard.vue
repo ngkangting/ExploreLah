@@ -4,7 +4,7 @@
       <img src="../../assets/img/tripcard.jpg" class="w-100"/>
       <div class="overlay text-white d-flex justify-content-center align-items-center text-center">
         <div>
-          <h3>Trip Name</h3>
+          <h3>{{dayData.name}}</h3>
           <div>2 Oct 2022 - 22 Oct 2022</div>
         </div>
       </div>
@@ -26,10 +26,22 @@
 export default {
   name: "TripCard",
   props: {
+    dayData:null,
   },
   data() {
     return {};
   },
+  created(){
+  },
+  mounted(){
+    console.log(this.dayData);
+    let itinerary = JSON.parse(this.dayData["itinerary"]);
+    console.log(itinerary);
+    let food = JSON.parse(this.dayData["food"]);
+    console.log(food);
+    let input = JSON.parse(this.dayData["input"]);
+    console.log(input);
+  }
 };
 </script>
 

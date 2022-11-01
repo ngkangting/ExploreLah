@@ -5,6 +5,7 @@
         <h1 class="type my-5 fw-bold text-white display-4">
           <span> Relive your trips </span>
         </h1>
+        <button @click="getData">Get Data</button>
       </div>
       <div>
         <form
@@ -24,9 +25,9 @@
 
     <div class="mt-5 mb-5 mx-5">
       <h3 class="fw-bold px-3 mt-4">Upcoming Trips (1)</h3>
-      <div class="row d-none d-sm-none d-md-flex">
+      <!-- <div class="row d-none d-sm-none d-md-flex">
         <TripCard />
-      </div>
+      </div> -->
       <div class="row d-md-none d-lg-none d-xl-none">
         <PhoneTripCard />
       </div>
@@ -35,13 +36,8 @@
     <div class="mx-5 mb-5">
       <h3 class="fw-bold px-3">Past Trips</h3>
       <div class="row d-none d-sm-none d-md-flex">
-        <TripCard />
-        <TripCard />
-        <TripCard />
-        <TripCard />
-        <TripCard />
-        <TripCard />
-        <TripCard />
+        <TripCard v-for="info in this.data" 
+              :dayData="info"/>
       </div>
       <div class="row d-md-none d-lg-none d-xl-none">
         <PhoneTripCard />
@@ -60,15 +56,45 @@ import TripCard from "@/components/common/TripCard.vue";
 import Footer from "@/components/layout/Footer.vue";
 import PhoneTripCard from "@/components/common/PhoneTripCard.vue";
 
+import { useAuthStore } from "@/stores/auth";
+import {getFirestore, collection, query, where, getDocs} from "firebase/firestore";
+import firebaseApp from "../firebaseConfig";
+
 export default {
   name: "MyTrips",
-  data() {},
+  data() {
+    return {
+      data: {},
+    }
+  },
   components: {
     TripCard,
     Footer,
     PhoneTripCard,
   },
-  methods: {},
+  setup(){
+    const db = getFirestore(firebaseApp);
+    const authStore = useAuthStore();
+    return { authStore,db};
+  },
+  
+  mounted(){
+    
+
+  },
+  methods: {
+    async getData(){
+      const q = query(collection(this.db,this.authStore.user.uid));
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        this.data[doc.id] = doc.data();
+        // console.log(doc.id, " => ", doc.data());
+      });
+
+
+    },
+  },
 };
 </script>
 

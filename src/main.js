@@ -13,7 +13,8 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import "@vuepic/vue-datepicker/dist/main.css";
 import "vue3-typeahead-input/dist/style.css";
 
-initializeApp(firebaseConfig);
+// initializeApp(firebaseConfig);
+
 
 const app = createApp(App);
 const pinia = createPinia();
@@ -27,6 +28,8 @@ app.use(router);
 app.use(MotionPlugin);
 app.use(LottieVuePlayer);
 
+
 app.mount("#app");
 
 import "bootstrap/dist/js/bootstrap.js";
+
