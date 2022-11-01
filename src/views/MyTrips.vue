@@ -25,9 +25,9 @@
 
     <div class="mt-5 mb-5 mx-5">
       <h3 class="fw-bold px-3 mt-4">Upcoming Trips (1)</h3>
-      <div class="row d-none d-sm-none d-md-flex">
+      <!-- <div class="row d-none d-sm-none d-md-flex">
         <TripCard />
-      </div>
+      </div> -->
       <div class="row d-md-none d-lg-none d-xl-none">
         <PhoneTripCard />
       </div>
@@ -36,13 +36,8 @@
     <div class="mx-5 mb-5">
       <h3 class="fw-bold px-3">Past Trips</h3>
       <div class="row d-none d-sm-none d-md-flex">
-        <TripCard />
-        <TripCard />
-        <TripCard />
-        <TripCard />
-        <TripCard />
-        <TripCard />
-        <TripCard />
+        <TripCard v-for="info in this.data" 
+              :dayData="info"/>
       </div>
       <div class="row d-md-none d-lg-none d-xl-none">
         <PhoneTripCard />
@@ -67,7 +62,11 @@ import firebaseApp from "../firebaseConfig";
 
 export default {
   name: "MyTrips",
-  data() {},
+  data() {
+    return {
+      data: {},
+    }
+  },
   components: {
     TripCard,
     Footer,
@@ -77,10 +76,10 @@ export default {
     const db = getFirestore(firebaseApp);
     const authStore = useAuthStore();
     return { authStore,db};
-
   },
   
   mounted(){
+    
 
   },
   methods: {
@@ -89,19 +88,12 @@ export default {
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, " => ", doc.data());
+        this.data[doc.id] = doc.data();
+        // console.log(doc.id, " => ", doc.data());
       });
 
-    }
-    // async getData(){
-    //   console.log("Work bitch");
-    //   const docRef = doc(this.db, this.authStore.user.uid);
-    //   const docSnap = await getDoc(docRef);
-    //   if (docSnap.exists()) {
-    //     console.log(docSnap.data())
-    //   }
 
-    // }
+    },
   },
 };
 </script>
