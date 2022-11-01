@@ -69,7 +69,7 @@
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-pink" @click="saveItineraryToDb">Save Trip</button>
+                      <button type="button" class="btn btn-pink" @click="saveItineraryToDb" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Save Trip</button>
                     </div>
                   </div>
                 </div>
@@ -169,18 +169,20 @@ export default {
         let itineraryList = this.itineraryStore.itineraryList;
         let foodReco = this.itineraryStore.foodReco;
         let itineraryInput = this.itineraryStore.itineraryInput;
-        console.log(this.authStore.user.uid);
-        console.log(this.inputName);
-        // try {
-        //     const docRef = await addDoc(collection(this.db, userID), {
-        //       itinerary : JSON.stringify(itineraryList),
-        //       food : JSON.stringify(foodReco),
-        //       input : JSON.stringify(itineraryInput)
-        //     });
-        //     console.log("Document written with ID: ", docRef.id);
-        //   } catch (e) {
-        //     console.error("Error adding document: ", e);
-        //   }
+        try {
+            const docRef = await addDoc(collection(this.db, userID), {
+              name: JSON.stringify(this.inputName),
+              itinerary : JSON.stringify(itineraryList),
+              food : JSON.stringify(foodReco),
+              input : JSON.stringify(itineraryInput),
+            });
+            console.log("Document written with ID: ", docRef.id);
+            this.$router.push({
+              path: "/mytrips",
+            });
+          } catch (e) {
+            console.error("Error adding document: ", e);
+          }
       },
 
     },

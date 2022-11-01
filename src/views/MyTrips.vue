@@ -5,6 +5,7 @@
         <h1 class="type my-5 fw-bold text-white display-4">
           <span> Relive your trips </span>
         </h1>
+        <button @click="getData">Get Data</button>
       </div>
       <div>
         <form
@@ -60,6 +61,10 @@ import TripCard from "@/components/common/TripCard.vue";
 import Footer from "@/components/layout/Footer.vue";
 import PhoneTripCard from "@/components/common/PhoneTripCard.vue";
 
+import { useAuthStore } from "@/stores/auth";
+import {getFirestore, collection, query, where, getDocs} from "firebase/firestore";
+import firebaseApp from "../firebaseConfig";
+
 export default {
   name: "MyTrips",
   data() {},
@@ -68,7 +73,36 @@ export default {
     Footer,
     PhoneTripCard,
   },
-  methods: {},
+  setup(){
+    const db = getFirestore(firebaseApp);
+    const authStore = useAuthStore();
+    return { authStore,db};
+
+  },
+  
+  mounted(){
+
+  },
+  methods: {
+    async getData(){
+      const q = query(collection(this.db,this.authStore.user.uid));
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, " => ", doc.data());
+      });
+
+    }
+    // async getData(){
+    //   console.log("Work bitch");
+    //   const docRef = doc(this.db, this.authStore.user.uid);
+    //   const docSnap = await getDoc(docRef);
+    //   if (docSnap.exists()) {
+    //     console.log(docSnap.data())
+    //   }
+
+    // }
+  },
 };
 </script>
 
