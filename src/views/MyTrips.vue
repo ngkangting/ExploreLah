@@ -72,14 +72,25 @@ export default {
     Footer,
     PhoneTripCard,
   },
-  setup(){
+  async setup(){
     const db = getFirestore(firebaseApp);
     const authStore = useAuthStore();
-    return { authStore,db};
+    
+    return { authStore,db}
   },
   
-  mounted(){
-    
+  async created(){
+    console.log(this.authStore.user.uid);
+    const q =  await query(collection(this.db,this.authStore.user.uid));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      this.data[doc.id] = doc.data();
+      // console.log(doc.id, " => ", doc.data());
+    });
+    console.log("This works");
+    console.log(this.data)
+   
 
   },
   methods: {
@@ -91,8 +102,6 @@ export default {
         this.data[doc.id] = doc.data();
         // console.log(doc.id, " => ", doc.data());
       });
-
-
     },
   },
 };

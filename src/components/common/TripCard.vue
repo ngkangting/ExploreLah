@@ -34,7 +34,6 @@ export default {
   created(){
   },
   mounted(){
-    console.log(this.dayData);
     let itinerary = JSON.parse(this.dayData["itinerary"]);
     console.log(itinerary);
     let food = JSON.parse(this.dayData["food"]);
