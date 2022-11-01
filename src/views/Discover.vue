@@ -31,13 +31,14 @@
         </div>
         <div class="p-2 col-12 col-md-12 col-lg-4">
           <div
-            class="d-flex justify-content-center align-items-center bg-light-blue h-100 w-100 text-center p-5 rounded-4">
-            <h1 class=" fw-bold w-90">258</h1>&nbsp;&nbsp;&nbsp;
-            <div>
+            class="d-flex justify-content-center align-items-center bg-light-blue h-100 w-100 text-center p-3 py-5 rounded-4">
+            <div class="fw-bold w-90 display-5">258</div>
+            &nbsp;&nbsp;&nbsp;
+            <h5>
               trips planned in
-              <br>
+              <br />
               the last hour
-            </div>
+            </h5>
           </div>
         </div>
         <div class="landmark p-2 col-12 col-md-6 col-lg-4">
@@ -69,68 +70,76 @@
   </div>
 
   <div class="px-5">
-    <h1 class="fw-bold text-center mt-4 py-5">
-      Amazing Guides to Singapore
-    </h1>
+    <h1 class="fw-bold text-center mt-4 py-5">Amazing Guides to Singapore</h1>
 
-    <div class="row justify-content-center">
-      <BlogCard v-for="(card, index) in cards" :key="index" :imgLink="card.imgLink" :title="card.title" :subtitle="card.subtitle" :link="card.link">
+    <div class="row justify-content-center mb-5">
+      <BlogCard v-for="(card, index) in cards" :key="index" :img="card.img" :title="card.title"
+        :subtitle="card.subtitle" :link="card.link">
       </BlogCard>
     </div>
   </div>
-
 </template>
 
 <script>
 import BlogCard from "@/components/common/BlogCard.vue";
+import LocalFood from "../assets/img/LocalFood.jpg";
+import NightLife from "../assets/img/Nightlife.jpg";
+import Attractions from "../assets/img/Attractions.jpg";
+import Culture from "../assets/img/culture.jpg";
+import FunActivities from "../assets/img/FunActivities.jpg";
+import Shopping from "../assets/img/shopping.jpg";
 
 export default {
   name: "Discover",
   components: {
-    BlogCard
+    BlogCard,
+    LocalFood,
+    NightLife,
   },
-  data() { 
+  data() {
     return {
       cards: [
-              {
-                imgLink: "../assets/img/LocalFood.jpg",
-                title: "Eat like a local in Singapore: An epic list of authentic local food and drinks",
-                subtitle: "Honeycombers",
-                link: "https://thehoneycombers.com/singapore/best-local-food-singapore/"
-              },
-              {
-                imgLink: "../assets/img/Nightlife.jpg",
-                title: "Singapore Nightlife Guide: 14 Best Things to Do at Night",
-                subtitle: "Klook ANZ",
-                link: "https://www.klook.com/en-AU/blog/singapore-nightlife-guide/"
-              },
-              {
-                imgLink: "../assets/img/Attractions.jpg",
-                title: "Must-Visit Attractions in Singapore",
-                subtitle: "Tarandip Kaur",
-                link: "https://theculturetrip.com/asia/singapore/articles/20-must-visit-attractions-in-singapore/"
-              },
-              {
-                imgLink: "../assets/img/culture.jpg",
-                title: "20 ways to get cultured in Singapore",
-                subtitle: "Timeout",
-                link: "https://www.timeout.com/singapore/art/things-to-do-in-singapore-arts-culture"
-              },
-              {
-                imgLink: "../assets/img/FunActivities.jpg",
-                title: "55 Best Things To Do In Singapore",
-                subtitle: "Expat Living",
-                link: "https://expatliving.sg/things-to-do-in-singapore-this-weekend-fun-activities-top-places/"
-              },
-              {
-                imgLink: "../assets/img/shopping.jpg",
-                title: "Shopping In Singapore: 19 Places For Buying The Best Handbags, Electronics & More",
-                subtitle: "Reema Arora",
-                link: "https://traveltriangle.com/blog/shopping-in-singapore/"
-              }   
-            ]
-        }
-    },
+        {
+          img: LocalFood,
+          title:
+            "Eat like a local in Singapore: An epic list of authentic local food and drinks",
+          subtitle: "Honeycombers",
+          link: "https://thehoneycombers.com/singapore/best-local-food-singapore/",
+        },
+        {
+          img: NightLife,
+          title: "Singapore Nightlife Guide: 14 Best Things to Do at Night",
+          subtitle: "Klook ANZ",
+          link: "https://www.klook.com/en-AU/blog/singapore-nightlife-guide/",
+        },
+        {
+          img: Attractions,
+          title: "Must-Visit Attractions in Singapore",
+          subtitle: "Tarandip Kaur",
+          link: "https://theculturetrip.com/asia/singapore/articles/20-must-visit-attractions-in-singapore/",
+        },
+        {
+          img: Culture,
+          title: "20 ways to get cultured in Singapore",
+          subtitle: "Timeout",
+          link: "https://www.timeout.com/singapore/art/things-to-do-in-singapore-arts-culture",
+        },
+        {
+          img: FunActivities,
+          title: "55 Best Things To Do In Singapore",
+          subtitle: "Expat Living",
+          link: "https://expatliving.sg/things-to-do-in-singapore-this-weekend-fun-activities-top-places/",
+        },
+        {
+          img: Shopping,
+          title:
+            "Shopping In Singapore: 19 Places For Buying The Best Handbags, Electronics & More",
+          subtitle: "Reema Arora",
+          link: "https://traveltriangle.com/blog/shopping-in-singapore/",
+        },
+      ],
+    };
+  },
 
   methods: {},
 };

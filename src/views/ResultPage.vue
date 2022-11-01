@@ -1,8 +1,14 @@
 <template>
-    <div class="container-fluid">
-      <h3 class="text-center fw-semibold mb-4">Result</h3> 
-      <div class="col-10 offset-1 card">
+    <div class="container-fluid pb-5"> 
+      <h1 class="text-center fw-semibold p-4">
+        Recommended Food Places
+      </h1> 
+      <div class="col-10 offset-1 card border-0 p-3 rounded-4">
         <div class="card-body">
+          <h2 class="mb-4 py-2 fw-bold d-flex justify-content-center text-white bg-dark-blue">
+            Day {{currDay}}
+          </h2>
+
           <div class="row">
             <div class="col-6">
               <GoogleMap api-key="AIzaSyA__JlBf_-nIjvNRUNSpM4gdrygcyDenm0" style="width: 100%; height: 85vh; background-color: azure;" :center="center" :zoom="15">
@@ -11,120 +17,89 @@
                     <img src="../../public/ico/food.ico" width="32" height="32" style="margin-top: 8px" />
                 </CustomMarker>
               </GoogleMap> 
-            </div>
+            </div> 
+            
             <div class="col-6">
-                <div class="row">
-                  <div>
-                    <button @click="toggleState" :class="lunchStyle">Lunch</button>
-                    <button @click="toggleState" :class="dinnerStyle">Dinner</button>
-                  </div>
-                </div>  
-                <div class="row">
-                  <div>
-                    <FoodLocation :data="shownFoodReco"></FoodLocation>
-                    <!-- {{shownFoodReco}} -->
-                  </div>
+              <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <button @click="toggleState" class="nav-link" :class="lunchStyle">
+                    Lunch
+                  </button>
+                </li>
+                <li class="nav-item">
+                  <button @click="toggleState" class="nav-link" :class="dinnerStyle">
+                    Dinner
+                  </button>
+                </li>
+              </ul>
+
+              <div class="row">
+                <div>
+                  <FoodLocation :data="shownFoodReco"></FoodLocation>
+                  <!-- {{shownFoodReco}} -->
                 </div>
-                <div class="row">
-                  <div class="col-6">
-                    <button @click="goPrevDay">Prev</button>
-                    {{currDay}}
-                    <button @click="goNextDay">Next</button>
-                  </div>
-                </div>
-                <!-- <div>
-                  <button class="btn btn-pink" @click="saveItineraryToDb">Save Itinerary</button>
-                </div> -->
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-pink" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                  Save Itinerary
+              </div>
+
+              <div class="d-flex justify-content-center py-2">
+                <button @click="goPrevDay" class="rounded bg-dark-blue border-0 p-2 px-3 text-white">
+                  Prev
                 </button>
-
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Give this trip a name!</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                        <input class="form-control" type="text" v-model="inputName" placeholder="Exciting day trip!">
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-pink" @click="saveItineraryToDb">Save</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-
-  
-      
-    
-           
+                <span class="mx-3 d-flex justify-content-center align-items-center">
+                  Day {{currDay}}
+                </span>
+                <button @click="goNextDay" class="rounded bg-dark-blue border-0 py-1 px-3 text-white">
+                  Next
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-
     </div>
 
 </template>
   
-<script>
-import {getFirestore, collection, addDoc} from "firebase/firestore";
-import firebaseApp from "../firebaseConfig";
-
+  <script>
 import { useAuthStore } from "@/stores/auth";
 import {useItineraryStore} from "@/stores/itinerary";
 import { GoogleMap, Marker, CustomMarker } from "vue3-google-map";
 
-
 import FoodLocation from "../components/resultpage/FoodLocation.vue";
-import GiveNameModal from "../components/common/Modal.vue";
-
 
 
 export default {
   name: "ResultPage",
   components: {
-    GoogleMap, Marker, FoodLocation,CustomMarker, GiveNameModal,
+    GoogleMap, Marker, FoodLocation,CustomMarker
   },
   data() {
     return {
       state:1, //O for lunch, 1 for dinner
       currDay:1,
-      isModalOpen:false,
-      inputName:null,
     };
   },
   setup(){
-    const db = getFirestore(firebaseApp);
     const authStore = useAuthStore();
     const itineraryStore = useItineraryStore();
     const center = {lat: 1.290270 ,lng: 103.851959};
-    // console.log(`UID Passed is this ${uid}`); //Runs first
-    return { authStore,itineraryStore, center,db};
+    return { authStore,itineraryStore, center };
   },
   computed:{
-
     foodReco(){
       return this.itineraryStore.foodReco;
     },
     lunchStyle(){
       if (this.state) {
         // return "text-dark-blue display-3 mx-5"
-        return "selected-style text-dark-blue"
+        return "selected-style text-white bg-blue"
       } 
-      return "unselected-style" //Add in unclicked button
+      return "unselected-style text-secondary"
     },
     dinnerStyle(){
       if (!this.state){
-        return "selected-style text-dark-blue"
+        return "selected-style text-white bg-blue"
       } 
-      return "unselected-style" //Add in unclicked button
+      return "unselected-style text-secondary"
     },
     shownFoodReco(){
       if (this.state) {
@@ -144,38 +119,19 @@ export default {
   },
 
   methods: {
-      toggleState(){
-        this.state = !this.state;
-      },
-      goPrevDay(){
-        if (this.currDay != 1) {
-          this.currDay -= 1;
-        }
-      },
-      goNextDay(){
-        if(this.currDay!= Object.keys(this.foodReco).length){
-          this.currDay += 1
-        }
-      },
-      async saveItineraryToDb(){
-        //Write to DB
-        let userID = this.authStore.user.uid;
-        let itineraryList = this.itineraryStore.itineraryList;
-        let foodReco = this.itineraryStore.foodReco;
-        let itineraryInput = this.itineraryStore.itineraryInput;
-        console.log(this.authStore.user.uid);
-        console.log(this.inputName);
-        // try {
-        //     const docRef = await addDoc(collection(this.db, userID), {
-        //       itinerary : JSON.stringify(itineraryList),
-        //       food : JSON.stringify(foodReco),
-        //       input : JSON.stringify(itineraryInput)
-        //     });
-        //     console.log("Document written with ID: ", docRef.id);
-        //   } catch (e) {
-        //     console.error("Error adding document: ", e);
-        //   }
-      },
+    toggleState(){
+      this.state = !this.state;
+    },
+    goPrevDay(){
+      if (this.currDay != 1) {
+        this.currDay -= 1;
+      }
+    },
+    goNextDay(){
+      if(this.currDay!= Object.keys(this.foodReco).length){
+        this.currDay += 1
+      }
+    }
 
     },
     
@@ -184,19 +140,9 @@ export default {
 </script>
 
 <style lang="scss">
-.selected-style{
-  font-weight: bold;
-  border: none;
-  background-color: transparent;
-  font-size: 4rem;
-}
-
-.unselected-style{
-  border:none;
-  background-color: transparent;
-  color: grey;
-  font-size: 2rem;
+.selected-style, .unselected-style {
+  font-weight:bold;
 }
 
 </style>
-
+  
