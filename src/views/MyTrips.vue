@@ -33,19 +33,25 @@
       </div>
       <div class="mx-5 mb-5">
         <h3 class="fw-bold px-3">Past Trips</h3>
-        <div class="row d-none d-sm-none d-md-flex">
-          
-          <TripCard v-for="info in this.data" 
-                :dayData="info"/>
+        <div v-if="!loaded" class="text-center">
+          <div  class="spinner-border" role="status" style="width: 5rem; height: 5rem;stroke-width:;">
+              <!-- <span class="sr-only">Loading...</span> -->
+          </div>
         </div>
-        <div class="row d-md-none d-lg-none d-xl-none">
-          <PhoneTripCard />
-          <PhoneTripCard />
-          <PhoneTripCard />
-          <PhoneTripCard />
-          <PhoneTripCard />
-          <PhoneTripCard />
-        </div>
+
+
+          <div  class="row d-none d-sm-none d-md-flex">
+            <TripCard v-for="info in this.data" 
+                  :dayData="info"/>
+          </div>
+          <div class="row d-md-none d-lg-none d-xl-none">
+            <PhoneTripCard />
+            <PhoneTripCard />
+            <PhoneTripCard />
+            <PhoneTripCard />
+            <PhoneTripCard />
+            <PhoneTripCard />
+          </div>
       </div>
 
   </div>
@@ -66,6 +72,7 @@ export default {
     return {
       data: {},
       triggerWatcher:0,
+      loaded:false,
     }
   },
   components: {
@@ -85,7 +92,8 @@ export default {
     async userUid(){
       let uid = await this.authStore.getUid;
       return uid;
-    }
+    },
+
   },
   watch:{
     async triggerWatcher(){
@@ -97,6 +105,7 @@ export default {
         this.data[doc.id] = doc.data();
         // console.log(doc.id, " => ", doc.data());
       });
+      this.loaded = true;
     }
   },
   methods: {
