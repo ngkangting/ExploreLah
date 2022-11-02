@@ -28,7 +28,7 @@
               <router-link to="/aboutus" class="nav-link">About Us</router-link>
             </li>
             <li class="nav-item navbar-item" data-bs-dismiss="offcanvas" v-if="this.authStore.isLoggedIn">
-              <router-link to="/mytrips" class="nav-link">My Trips</router-link>
+              <router-link to="/mytrips" class="nav-link" >My Trips</router-link>
             </li>
           </ul>
           <ul class="navbar-nav flex-grow-1 justify-content-end align-items-lg-center"

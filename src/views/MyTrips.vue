@@ -22,32 +22,35 @@
         </form>
       </div>
     </div>
+    <div v-if="triggerWatcher">
+      <div class="mt-5 mb-5 mx-5">
+        <h3 class="fw-bold px-3 mt-4">Upcoming Trips (1)</h3>
+        <!-- <div class="row d-none d-sm-none d-md-flex">
+          <TripCard />
+        </div> -->
+        <div class="row d-md-none d-lg-none d-xl-none">
+          <PhoneTripCard />
+        </div>
+      </div>
+      <div class="mx-5 mb-5">
+        <h3 class="fw-bold px-3">Past Trips</h3>
+        <div class="row d-none d-sm-none d-md-flex">
+          
+          <TripCard v-for="info in this.data" 
+                :dayData="info"/>
+        </div>
+        <div class="row d-md-none d-lg-none d-xl-none">
+          <PhoneTripCard />
+          <PhoneTripCard />
+          <PhoneTripCard />
+          <PhoneTripCard />
+          <PhoneTripCard />
+          <PhoneTripCard />
+        </div>
+      </div>
+    </div> 
+    <!-- <p v-if="userUid">{{userUid}}</p> -->
 
-    <div class="mt-5 mb-5 mx-5">
-      <h3 class="fw-bold px-3 mt-4">Upcoming Trips (1)</h3>
-      <!-- <div class="row d-none d-sm-none d-md-flex">
-        <TripCard />
-      </div> -->
-      <div class="row d-md-none d-lg-none d-xl-none">
-        <PhoneTripCard />
-      </div>
-    </div>
-
-    <div class="mx-5 mb-5">
-      <h3 class="fw-bold px-3">Past Trips</h3>
-      <div class="row d-none d-sm-none d-md-flex">
-        <TripCard v-for="info in this.data" 
-              :dayData="info"/>
-      </div>
-      <div class="row d-md-none d-lg-none d-xl-none">
-        <PhoneTripCard />
-        <PhoneTripCard />
-        <PhoneTripCard />
-        <PhoneTripCard />
-        <PhoneTripCard />
-        <PhoneTripCard />
-      </div>
-    </div>
   </div>
 </template>
 
@@ -65,6 +68,7 @@ export default {
   data() {
     return {
       data: {},
+      triggerWatcher:0,
     }
   },
   components: {
@@ -72,37 +76,53 @@ export default {
     Footer,
     PhoneTripCard,
   },
-  async setup(){
+  setup(){
     const db = getFirestore(firebaseApp);
-    const authStore = useAuthStore();
     
-    return { authStore,db}
-  },
-  
-  async created(){
-    console.log(this.authStore.user.uid);
-    const q =  await query(collection(this.db,this.authStore.user.uid));
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      this.data[doc.id] = doc.data();
-      // console.log(doc.id, " => ", doc.data());
-    });
-    console.log("This works");
-    console.log(this.data)
-   
+    const authStore = useAuthStore();
 
+    return { authStore, db}
+  },
+  mounted(){
+    this.triggerWatcher += 1;
+    console.log(`+1 ${this.triggerWatcher}`)
+  },
+  computed: {
+    async userUid(){
+      let uid = await this.authStore.getUid;
+      console.log("This is from computed")
+      console.log(uid) //Value
+      return uid;
+    }
   },
   methods: {
-    async getData(){
+    // async getData(){
+    //   console.log(this.db);
+    //   const q = query(collection(this.db,this.authStore.getUid));
+    //   const querySnapshot = await getDocs(q);
+    //   querySnapshot.forEach((doc) => {
+    //     // doc.data() is never undefined for query doc snapshots
+    //     this.data[doc.id] = doc.data();
+    //     console.log(doc.id, " => ", doc.data());
+    //   });
+    // },
+    getData(){
+      console.log(this.authStore.getUid);
+    }
+  },
+  watch:{
+    async triggerWatcher(){
+      console.log(`Watcher works, ${this.userUid}`) //Returns promise
+      console.log(`Watcher works, ${this.authStore.user.uid}`)
       const q = query(collection(this.db,this.authStore.user.uid));
       const querySnapshot = await getDocs(q);
+      console.log(querySnapshot);
       querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
         this.data[doc.id] = doc.data();
-        // console.log(doc.id, " => ", doc.data());
+        console.log(doc.id, " => ", doc.data());
       });
-    },
+    }
   },
 };
 </script>
