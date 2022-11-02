@@ -112,7 +112,6 @@ export default {
     const authStore = useAuthStore();
     const itineraryStore = useItineraryStore();
     const center = {lat: 1.290270 ,lng: 103.851959};
-    // console.log(`UID Passed is this ${uid}`); //Runs first
     return { authStore,itineraryStore, center,db};
   },
   computed:{

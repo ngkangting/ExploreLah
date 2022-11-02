@@ -1,5 +1,4 @@
 import { initializeApp } from "firebase/app";
-import {getFirestore} from "firebase/firestore";
 
 //Benji Firebase
 const firebaseConfig = {
@@ -13,11 +12,7 @@ const firebaseConfig = {
 };
 
 const firebaseApp = initializeApp(firebaseConfig)
-// export default firebaseConfig;
-// const db = firebaseApp.firestore();
 
 export default firebaseApp
 
-//Could not get the bottom two exports to work, so mytrips creates its own db
-// const db = getFirestore(firebaseApp);
-// export default firebaseApp
+

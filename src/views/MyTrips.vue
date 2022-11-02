@@ -22,7 +22,6 @@
         </form>
       </div>
     </div>
-    <div v-if="triggerWatcher">
       <div class="mt-5 mb-5 mx-5">
         <h3 class="fw-bold px-3 mt-4">Upcoming Trips (1)</h3>
         <!-- <div class="row d-none d-sm-none d-md-flex">
@@ -48,8 +47,6 @@
           <PhoneTripCard />
         </div>
       </div>
-    </div> 
-    <!-- <p v-if="userUid">{{userUid}}</p> -->
 
   </div>
 </template>
@@ -78,51 +75,31 @@ export default {
   },
   setup(){
     const db = getFirestore(firebaseApp);
-    
     const authStore = useAuthStore();
-
     return { authStore, db}
   },
   mounted(){
     this.triggerWatcher += 1;
-    console.log(`+1 ${this.triggerWatcher}`)
   },
   computed: {
     async userUid(){
       let uid = await this.authStore.getUid;
-      console.log("This is from computed")
-      console.log(uid) //Value
       return uid;
-    }
-  },
-  methods: {
-    // async getData(){
-    //   console.log(this.db);
-    //   const q = query(collection(this.db,this.authStore.getUid));
-    //   const querySnapshot = await getDocs(q);
-    //   querySnapshot.forEach((doc) => {
-    //     // doc.data() is never undefined for query doc snapshots
-    //     this.data[doc.id] = doc.data();
-    //     console.log(doc.id, " => ", doc.data());
-    //   });
-    // },
-    getData(){
-      console.log(this.authStore.getUid);
     }
   },
   watch:{
     async triggerWatcher(){
-      console.log(`Watcher works, ${this.userUid}`) //Returns promise
-      console.log(`Watcher works, ${this.authStore.user.uid}`)
       const q = query(collection(this.db,this.authStore.user.uid));
       const querySnapshot = await getDocs(q);
       console.log(querySnapshot);
       querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
         this.data[doc.id] = doc.data();
-        console.log(doc.id, " => ", doc.data());
+        // console.log(doc.id, " => ", doc.data());
       });
     }
+  },
+  methods: {
   },
 };
 </script>
