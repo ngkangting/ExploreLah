@@ -7,7 +7,8 @@ export const useItineraryStore = defineStore("itinerary", {
     state: () => ({
         foodReco:null,
         itineraryList:null,
-        itineraryInput:null
+        itineraryInput:null,
+        isLoading:true,
     }),
     actions: {
         async fetchItinerary(formInfo) {
@@ -24,8 +25,11 @@ export const useItineraryStore = defineStore("itinerary", {
                     // localStorage.setItem("itineraryList",JSON.parse(res.data.itinerary));
                     // localStorage.setItem("itineraryInput",res.data["user"]);
                     // localStorage.setItem("foodReco", res.data.foodReco);
+                    
+                    this.isLoading = false;
             }).catch( (err) => {
                 console.error(err);
+                this.isLoading = true;
             })
             },
         
