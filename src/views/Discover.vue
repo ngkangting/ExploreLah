@@ -1,80 +1,122 @@
 <template>
   <div class="container-fluid d-flex pb-5">
-    <div class="px-5">
-      <h1 class="fw-bold text-center mt-4 py-5">
+    <div class="row px-5">
+      <h1 class="fw-bold text-center mt-3 py-5">
         Iconic Landmarks in Singapore
       </h1>
-      <div class="row justify-content-center">
-        <div class="landmark p-2 col-12 col-md-12 col-lg-8">
-          <a href="https://www.gardensbythebay.com.sg/" target="__blank">
-            <img class="w-100" src="../assets/img/Landmark1.jpg" alt="Landmark1" />
-            <div class="description p-3 text-white fw-bolder">
-              <h2>Gardens By The Bay</h2>
-            </div>
-          </a>
-        </div>
-        <div class="landmark p-2 col-12 col-md-6 col-lg-4">
-          <a href="https://www.rwsentosa.com/en/attractions/sea-aquarium" target="__blank">
-            <img class="w-100" src="../assets/img/Landmark2.jpg" alt="Landmark2" />
-            <div class="description p-3 text-white fw-bolder">
-              <h2>S.E.A Aquarium</h2>
-            </div>
-          </a>
-        </div>
-        <div class="landmark p-2 col-12 col-md-6 col-lg-4">
-          <a href="https://visitkamponggelam.com.sg/street/haji-lane/" target="__blank">
-            <img class="w-100" src="../assets/img/Landmark3.jpg" alt="Landmark3" />
-            <div class="description p-3 text-white fw-bolder">
-              <h2>Haji Lane</h2>
-            </div>
-          </a>
-        </div>
-        <div class="p-2 col-12 col-md-12 col-lg-4">
-          <div
-            class="d-flex justify-content-center align-items-center bg-light-blue h-100 w-100 text-center p-3 py-5 rounded-4">
-            <div class="fw-bold w-90 display-5">258</div>
-            &nbsp;&nbsp;&nbsp;
-            <h5>
-              trips planned in
-              <br />
-              the last hour
-            </h5>
+
+      <div class="landmark p-2 col-12 col-md-12 col-lg-8 flex-column">
+        <a href="https://www.gardensbythebay.com.sg/" target="__blank">
+          <img
+            class="w-100 h-100"
+            src="../assets/img/Landmark1.jpg"
+            alt="Landmark1"
+          />
+          <div class="description p-3 text-white fw-bolder">
+            <h2>Gardens By The Bay</h2>
           </div>
+        </a>
+      </div>
+
+      <div class="landmark p-2 col-12 col-md-6 col-lg-4">
+        <a
+          href="https://www.rwsentosa.com/en/attractions/sea-aquarium"
+          target="__blank"
+        >
+          <img
+            class="w-100 h-100"
+            src="../assets/img/Landmark2.jpg"
+            alt="Landmark2"
+          />
+          <div class="description p-3 text-white fw-bolder">
+            <h2>S.E.A Aquarium</h2>
+          </div>
+        </a>
+      </div>
+
+      <div class="landmark p-2 col-12 col-md-6 col-lg-4">
+        <a
+          href="https://visitkamponggelam.com.sg/street/haji-lane/"
+          target="__blank"
+        >
+          <img
+            class="w-100 h-100"
+            src="../assets/img/Landmark3.jpg"
+            alt="Landmark3"
+          />
+          <div class="description p-3 text-white fw-bolder">
+            <h2>Haji Lane</h2>
+          </div>
+        </a>
+      </div>
+
+      <div class="p-2 col-12 col-md-12 col-lg-4">
+        <div
+          class="d-flex justify-content-center align-items-center bg-light-blue h-100 w-100 text-center p-3 py-5 rounded-4"
+        >
+          <div class="fw-bold w-90 display-5">258</div>
+          &nbsp;&nbsp;&nbsp;
+          <h5>
+            trips planned in
+            <br />
+            the last hour
+          </h5>
         </div>
-        <div class="landmark p-2 col-12 col-md-6 col-lg-4">
-          <a href="https://www.jewelchangiairport.com/en.html" target="__blank">
-            <img class="w-100" src="../assets/img/Landmark4.jpg" alt="Landmark4" />
-            <div class="description p-3 text-white fw-bolder">
-              <h2>Jewel Changi Airport</h2>
-            </div>
-          </a>
-        </div>
-        <div class="landmark p-2 col-12 col-md-6 col-lg-4">
-          <a href="https://sultanmosque.sg/" target="__blank">
-            <img class="w-100" src="../assets/img/Landmark5.jpg" alt="Landmark5" />
-            <div class="description p-3 text-white fw-bolder">
-              <h2>Masjid Sultan</h2>
-            </div>
-          </a>
-        </div>
-        <div class="landmark p-2 col-12 col-md-12 col-lg-8">
-          <a href="https://www.marinabaysands.com/" target="__blank">
-            <img class="w-100" src="../assets/img/Landmark6.jpg" alt="Landmark6" />
-            <div class="description p-3 text-white fw-bolder">
-              <h2>Marina Bay Sands</h2>
-            </div>
-          </a>
-        </div>
+      </div>
+
+      <div class="landmark p-2 col-12 col-md-6 col-lg-4">
+        <a href="https://www.jewelchangiairport.com/en.html" target="__blank">
+          <img
+            class="w-100 h-100"
+            src="../assets/img/Landmark4.jpg"
+            alt="Landmark4"
+          />
+          <div class="description p-3 text-white fw-bolder">
+            <h2>Jewel Changi Airport</h2>
+          </div>
+        </a>
+      </div>
+
+      <div class="landmark p-2 col-12 col-md-6 col-lg-4">
+        <a href="https://sultanmosque.sg/" target="__blank">
+          <img
+            class="w-100 h-100"
+            src="../assets/img/Landmark5.jpg"
+            alt="Landmark5"
+          />
+          <div class="description p-3 text-white fw-bolder">
+            <h2>Masjid Sultan</h2>
+          </div>
+        </a>
+      </div>
+
+      <div class="landmark p-2 col-12 col-md-12 col-lg-8">
+        <a href="https://www.marinabaysands.com/" target="__blank">
+          <img
+            class="w-100 h-100"
+            src="../assets/img/Landmark6.jpg"
+            alt="Landmark6"
+          />
+          <div class="description p-3 text-white fw-bolder">
+            <h2>Marina Bay Sands</h2>
+          </div>
+        </a>
       </div>
     </div>
   </div>
 
   <div class="px-5">
-    <h1 class="fw-bold text-center mt-4 py-5">Amazing Guides to Singapore</h1>
+    <h1 class="fw-bold text-center pt-4 pb-5">Amazing Guides to Singapore</h1>
 
     <div class="row justify-content-center mb-5">
-      <BlogCard v-for="(card, index) in cards" :key="index" :img="card.img" :title="card.title"
-        :subtitle="card.subtitle" :link="card.link">
+      <BlogCard
+        v-for="(card, index) in cards"
+        :key="index"
+        :img="card.img"
+        :title="card.title"
+        :subtitle="card.subtitle"
+        :link="card.link"
+      >
       </BlogCard>
     </div>
   </div>
@@ -148,8 +190,8 @@ export default {
 <style>
 .landmark {
   position: relative;
-  box-sizing: border-box;
   overflow: hidden;
+  box-sizing: border-box;
   z-index: 1;
   border-radius: 10px;
 }
@@ -157,6 +199,8 @@ export default {
 .landmark img {
   transition: 0.5s all ease-in-out;
   border-radius: 10px;
+  object-fit: cover;
+  width: 100%;
 }
 
 .landmark:hover img {

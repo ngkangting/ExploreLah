@@ -60,7 +60,7 @@
     <div class="row justify-content-center mx-5">
       <div class="col-lg-2 d-none d-lg-block d-xl-block pb-0">
         <div class="px-2 mb-0 pb-0">
-          <div>
+          <div class="pb-2">
             <i
               class="bi bi-quote border border-0 rounded-circle p-1 mb-4 bg-mid-pink text-white small"
             ></i>
@@ -352,7 +352,28 @@
       <div class="col-5 col-md-3 justify-content-center">
         <div class="p-2">
           <div class="py-2">
-            <h4 class="text-pink py-2">★★★★★</h4>
+            <div class="py-2 d-flex">
+              <i
+                class="bi bi-star-fill text-pink me-1"
+                style="font-size: 1.4rem"
+              ></i>
+              <i
+                class="bi bi-star-fill text-pink me-1"
+                style="font-size: 1.4rem"
+              ></i>
+              <i
+                class="bi bi-star-fill text-pink me-1"
+                style="font-size: 1.4rem"
+              ></i>
+              <i
+                class="bi bi-star-fill text-pink me-1"
+                style="font-size: 1.4rem"
+              ></i>
+              <i
+                class="bi bi-star-fill text-pink"
+                style="font-size: 1.4rem"
+              ></i>
+            </div>
             <p>
               Amazing app! It is so easy to use and the planning feature is so
               cool. A+!
@@ -360,7 +381,28 @@
             <p class="text-muted">- Professor Mok</p>
           </div>
           <div class="py-2">
-            <h4 class="text-pink py-2">★★★★★</h4>
+            <div class="py-2 d-flex">
+              <i
+                class="bi bi-star-fill text-pink me-1"
+                style="font-size: 1.4rem"
+              ></i>
+              <i
+                class="bi bi-star-fill text-pink me-1"
+                style="font-size: 1.4rem"
+              ></i>
+              <i
+                class="bi bi-star-fill text-pink me-1"
+                style="font-size: 1.4rem"
+              ></i>
+              <i
+                class="bi bi-star-fill text-pink me-1"
+                style="font-size: 1.4rem"
+              ></i>
+              <i
+                class="bi bi-star-fill text-pink"
+                style="font-size: 1.4rem"
+              ></i>
+            </div>
             <p>
               ExploreLah makes planning activities really easy! Highly
               recommend.
@@ -381,12 +423,54 @@
       <div class="col-5 col-md-3 justify-content-center">
         <div class="p-2">
           <div class="py-2">
-            <h4 class="text-pink py-2">★★★★★</h4>
+            <div class="py-2 d-flex">
+              <i
+                class="bi bi-star-fill text-pink me-1"
+                style="font-size: 1.4rem"
+              ></i>
+              <i
+                class="bi bi-star-fill text-pink me-1"
+                style="font-size: 1.4rem"
+              ></i>
+              <i
+                class="bi bi-star-fill text-pink me-1"
+                style="font-size: 1.4rem"
+              ></i>
+              <i
+                class="bi bi-star-fill text-pink me-1"
+                style="font-size: 1.4rem"
+              ></i>
+              <i
+                class="bi bi-star-fill text-pink"
+                style="font-size: 1.4rem"
+              ></i>
+            </div>
             <p>Great app that saved me a lot of time while I was travelling</p>
             <p class="text-muted">- TA Chen</p>
           </div>
           <div class="py-2">
-            <h4 class="text-pink py-2">★★★★★</h4>
+            <div class="py-2 d-flex">
+              <i
+                class="bi bi-star-fill text-pink me-1"
+                style="font-size: 1.4rem"
+              ></i>
+              <i
+                class="bi bi-star-fill text-pink me-1"
+                style="font-size: 1.4rem"
+              ></i>
+              <i
+                class="bi bi-star-fill text-pink me-1"
+                style="font-size: 1.4rem"
+              ></i>
+              <i
+                class="bi bi-star-fill text-pink me-1"
+                style="font-size: 1.4rem"
+              ></i>
+              <i
+                class="bi bi-star-fill text-pink"
+                style="font-size: 1.4rem"
+              ></i>
+            </div>
             <p>
               Easy to use and convenient! Wish I had something like this for
               overseas too.
