@@ -434,6 +434,7 @@ export default {
           adventure: parseInt(this.adventure),
           nightlife: parseInt(this.nightlife),
         },
+        date: this.date,
       };
 
       this.itineraryStore.fetchItinerary(userInfo);
