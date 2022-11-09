@@ -1,8 +1,7 @@
 <template > 
   <div class="container-fluid">
     
-  <div v-if="!isLoading" class="bg-pink">
-    <h1>Skeleton Loaders </h1>
+  <div v-if="isLoading">
     <div class="row d-flex">
       <!-- Result -->
       <div
@@ -15,8 +14,7 @@
                 <div class="col-12 col-lg-8">
                   <div
                   class="w-100 rounded skeleton"
-                  alt="..."
-                  height="350"
+                  style="height:350px"
                   ></div>
                 </div>
                 <div
@@ -43,75 +41,78 @@
               </div>
               <div class="row">
                 <div class="col-12 pt-2">
-                  <h3 class="pb-1 fw-bold">The Shoppes at Marina Bay Sands</h3>
+                  <div class="skeleton skeleton-text" style="height:25px; width:45%"></div>
+                  <div class="skeleton skeleton-text" style="height:.7rem; width:45%"></div>
+                  <div class="skeleton skeleton-text"></div>
                 </div>
                 
                 <div class="column col-12 col-lg-6 rounded-3 px-3 py-3">
                   <p class="mb-4">
                     <!--to add color -->
-                    <span class="tag bg-grey rounded-2 p-1 px-2"
-                    >Luxury Shopping</span
-                    >
-                    <span class="tag bg-grey rounded-2 p-1 px-2 ms-2"
-                    >Night Life</span
-                    >
-                    <span class="tag bg-grey rounded-2 p-1 px-2 ms-2"
-                    >Casino</span
-                    >
-                    <span class="tag bg-grey rounded-2 p-1 px-2 ms-2"
-                    >Museum</span
-                    >
+                    <div class="mx-2 d-inline skeleton skeleton-text "> 
+                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    </div>
+                    <div class="mx-2 d-inline skeleton skeleton-text "> 
+                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    </div>
+                    <div class="mx-2 d-inline skeleton skeleton-text "> 
+                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    </div>
+                    <div class="mx-2 d-inline skeleton skeleton-text "> 
+                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    </div>
                   </p>                 
                   <p>
-                    <span>
+                    <div class="d-inline">
                       <i
                       class="bg-grey bi bi-star-fill rounded-circle p-2 text-dark-blue"
                       ></i>
-                    </span>
-                    <span class="mx-2">
-                      4.3 #4 of 339 in Shopping In Singapore
-                    </span>
+                    </div >
+                    <div class="mx-2 skeleton skeleton-text d-inline">
+                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    </div>
                   </p>
                   <p>
-                    <span>
+                    <div class="d-inline">
                       <i
                       class="bg-grey bi bi-pin-map-fill rounded-circle p-2 text-dark-blue"
                       ></i>
-                    </span>
-                    <span class="mx-2"> 10 Bayfront Ave, Singapore 018956 </span>
+                    </div>
+                    <div class="mx-2 d-inline skeleton skeleton-text "> 
+                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    </div>
                   </p>
                   <p>
-                    <span>
+                    <div class="d-inline">
                       <i
                       class="bg-grey bi bi-clouds-fill rounded-circle p-2 text-dark-blue"
                       ></i>
-                    </span>
-                    <span class="mx-2"> Cloudy Day </span>
+                    </div>
+                    <div class="mx-2 d-inline skeleton skeleton-text "> 
+                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    </div>
                   </p>
                   <p>
-                    <span>
+                    <div class="d-inline">
                       <i
                       class="bg-grey bi bi-currency-dollar rounded-circle p-2 text-dark-blue"
                       ></i>
-                    </span>
-                    <span class="mx-2"> Luxury Shopping </span>
+                    </div>
+                    <div class="mx-2 d-inline skeleton skeleton-text "> 
+                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    </div>
                   </p>
                 </div>
                 <div class="column col-12 col-lg-6 rounded px-3 py-3">
                   <h6>Highlights</h6>
-                  <ul>
-                    <li class="py-1">
-                      Shop at luxury brands such as Balenciga, Chanel, Dior
-                    </li>
-                    <li class="py-1">
-                      Award winning restaurants such as db Bistro & Oyster Bar
-                    </li>
-                    <li class="py-1">SkyPark Observation Deck</li>
-                    <li class="py-1">Digital Light Canvas & Sampan Rides</li>
-                    <li class="py-1">Arts & Science Museum</li>
-                    <li class="py-1">Casino</li>
-                    <li class="py-1">Marquee Nightclub</li>
-                  </ul>
+                  <div class="mx-2 skeleton skeleton-text" style="height:15px;width:65%"> 
+                  </div>
+                  <div class="mx-2 skeleton skeleton-text" style="height:15px;width:65%"> 
+                  </div>
+                  <div class="mx-2 skeleton skeleton-text" style="height:15px;width:35%"> 
+                  </div>
+     
                 </div>
               </div>
             </div>
@@ -134,7 +135,7 @@
         >
         
         <PillTab
-        v-for="(activity, index) in currentDayData"
+        v-for="(activity, index) in 3"
         :key="index"
         :index="index"
         :isSelected="false"
@@ -152,16 +153,16 @@
       <!-- Next buttons -->
       <div class="row">
         <div class="col-6">
-          <button @click="goPrevDay">Prev</button>
+          <button class="btn btn-secondary" @click="goPrevDay">Prev</button>
           {{currDay}}
-          <button @click="goNextDay()">Next</button>
+          <button class="btn btn-primary" @click="goNextDay()">Next</button>
         </div>
       </div>
-      <button @click="goToFoodPage">Go to Food Page</button>
+      <button class="btn btn-pink" @click="goToFoodPage">Go to Food Page</button>
     </div>
   </div>
   </div>
-
+<div v-else>
     <div class="row d-flex">
       <!-- Result -->
       <div
@@ -315,14 +316,15 @@
       <!-- Next buttons -->
       <div class="row">
         <div class="col-6">
-          <button @click="goPrevDay">Prev</button>
+          <button class="btn btn-secondary" @click="goPrevDay">Prev</button>
           {{currDay}}
-          <button @click="goNextDay()">Next</button>
+          <button class="btn btn-primary" @click="goNextDay()">Next</button>
         </div>
       </div>
-      <button @click="goToFoodPage">Go to Food Page</button>
+      <button class="btn btn-pink" @click="goToFoodPage">Go to Food Page</button>
     </div>
   </div>
+</div>
 </div>
 </template>
 
@@ -413,5 +415,17 @@ export default {
   100% {
     background-color: hsl(200,20%, 95%);
   }
+}
+
+.skeleton-text{
+  width:100%;
+  height:.5em;
+  margin-bottom: 1rem;
+  border-radius: .125rem;
+}
+
+.skeleton-text:last-child{
+  margin-bottom: 0px;
+  width:80%
 }
 </style>
