@@ -112,7 +112,6 @@ export default {
     const authStore = useAuthStore();
     const itineraryStore = useItineraryStore();
     const center = {lat: 1.290270 ,lng: 103.851959};
-    // console.log(`UID Passed is this ${uid}`); //Runs first
     return { authStore,itineraryStore, center,db};
   },
   computed:{
@@ -156,11 +155,15 @@ export default {
     goPrevDay(){
       if (this.currDay != 1) {
         this.currDay -= 1;
+        console.log("hi")
+        console.log(this.itineraryStore.details)
       }
     },
     goNextDay(){
       if(this.currDay!= Object.keys(this.foodReco).length){
         this.currDay += 1
+        console.log("hi")
+        console.log(this.itineraryStore.details)
       }
     },
     async saveItineraryToDb(){

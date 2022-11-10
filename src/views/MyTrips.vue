@@ -1,4 +1,4 @@
-<template>
+4jcYrtYH2Qca4REE2zW6TuIzkTr2<template>
   <div class="container-fluid bg-image p-0">
     <div class="background parallax">
       <div class="d-flex justify-content-center my-5">
@@ -22,32 +22,40 @@
         </form>
       </div>
     </div>
+      <div class="mt-5 mb-5 mx-5">
+        <h3 class="fw-bold px-3 mt-4">Upcoming & Current Trips ({{upcomingTrips.length}})</h3>
+        <div class="row d-none d-sm-none d-md-flex">
+           <TripCard v-for="info in this.upcomingTrips" 
+                  :dayData="info"/> 
+        </div>
+        <div class="row d-md-none d-lg-none d-xl-none">
+          <PhoneTripCard />
+        </div>
+      </div>
+      <div class="mx-5 mb-5">
+        <h3 class="fw-bold px-3">Past Trips ({{pastTrips.length}})</h3>
+        <div v-if="!loaded" class="text-center">
+          <div  class="spinner-border" role="status" style="width: 5rem; height: 5rem;stroke-width:;">
+              <!-- <span class="sr-only">Loading...</span> -->
+          </div>
+        </div>
 
-    <div class="mt-5 mb-5 mx-5">
-      <h3 class="fw-bold px-3 mt-4">Upcoming Trips (1)</h3>
-      <!-- <div class="row d-none d-sm-none d-md-flex">
-        <TripCard />
-      </div> -->
-      <div class="row d-md-none d-lg-none d-xl-none">
-        <PhoneTripCard />
-      </div>
-    </div>
 
-    <div class="mx-5 mb-5">
-      <h3 class="fw-bold px-3">Past Trips</h3>
-      <div class="row d-none d-sm-none d-md-flex">
-        <TripCard v-for="info in this.data" 
-              :dayData="info"/>
+          <div  class="row d-none d-sm-none d-md-flex">
+            <TripCard v-for="info in this.pastTrips" 
+                  :dayData="info"/> 
+
+          </div>
+          <div class="row d-md-none d-lg-none d-xl-none">
+            <PhoneTripCard />
+            <PhoneTripCard />
+            <PhoneTripCard />
+            <PhoneTripCard />
+            <PhoneTripCard />
+            <PhoneTripCard />
+          </div>
       </div>
-      <div class="row d-md-none d-lg-none d-xl-none">
-        <PhoneTripCard />
-        <PhoneTripCard />
-        <PhoneTripCard />
-        <PhoneTripCard />
-        <PhoneTripCard />
-        <PhoneTripCard />
-      </div>
-    </div>
+
   </div>
 </template>
 
@@ -65,6 +73,10 @@ export default {
   data() {
     return {
       data: {},
+      triggerWatcher:0,
+      loaded:false,
+      upcomingTrips:[],
+      pastTrips:[]
     }
   },
   components: {
@@ -75,24 +87,49 @@ export default {
   setup(){
     const db = getFirestore(firebaseApp);
     const authStore = useAuthStore();
-    return { authStore,db};
+    return { authStore, db}
   },
-  
   mounted(){
-    
-
+    this.triggerWatcher += 1;
   },
-  methods: {
-    async getData(){
+  computed: {
+    async userUid(){
+      let uid = await this.authStore.getUid;
+      return uid;
+    },
+    
+  },
+  watch:{
+    async triggerWatcher(){
       const q = query(collection(this.db,this.authStore.user.uid));
       const querySnapshot = await getDocs(q);
+      // console.log(querySnapshot);
       querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
         this.data[doc.id] = doc.data();
         // console.log(doc.id, " => ", doc.data());
-      });
-
-
+      })
+      this.loaded = true;
+      this.parseTrips();
+      
+    }
+  },
+  methods: {
+    parseTrips(){
+      for(var info in this.data){
+        let tempData =  JSON.parse(this.data[info]["input"]);
+        let tripDate = new Date(tempData.dates[1]);
+        let todayDate = new Date();
+        console.log(todayDate);
+        todayDate.setDate(todayDate.getDate() + 1);
+        console.log(todayDate);
+        if (tripDate > todayDate ){
+          this.upcomingTrips.push(this.data[info])
+        } else {
+          this.pastTrips.push(this.data[info])
+        }  
+      }
+      return null
     },
   },
 };

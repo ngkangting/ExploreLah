@@ -5,21 +5,22 @@
       <div class="overlay text-white d-flex justify-content-center align-items-center text-center">
         <div>
           <h3>{{dayData.name}}</h3>
-          <div>2 Oct 2022 - 22 Oct 2022</div>
+          <div>{{startDate}} - {{endDate}}</div>
         </div>
       </div>
       <div class="d-flex description bg-white text-dark-blue px-3">
         <p class="m-0 w-100">
-          <b>Accommodation:</b> XXX Hotel
+          <b>Accommodation:</b> 
+          <br>{{input.startLoc}}
           <br>
-          <b>Preference:</b> Shopping, Outdoor, Adventure
+          <b>Preference:</b> 
           <br>
-          <b>Transportation Method:</b> By Car
+          <b>Transportation Method:</b> {{byCar}}
         </p>
       </div>
     </div> 
   </div>
-
+  
 </template>
 
 <script>
@@ -29,19 +30,35 @@ export default {
     dayData:null,
   },
   data() {
-    return {};
+    return {
+      numToMonth: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+      itinerary: JSON.parse(this.dayData["itinerary"]),
+      food: JSON.parse(this.dayData["food"]),
+      input: JSON.parse(this.dayData["input"])
+    };
+  },
+  computed:{
+    startDate(){
+      let startDate = new Date(this.input['dates'][0].toString());
+      let outputStr =  startDate.getDate() + " " + this.numToMonth[startDate.getMonth()];
+      return outputStr;
+    },
+    endDate(){
+      let endDate = new Date(this.input['dates'][1].toString());
+      let outputStr =  endDate.getDate() + " " + this.numToMonth[endDate.getMonth()];
+      return outputStr;
+    },
+    byCar(){
+      if (this.input.byCar){
+        return "Private Transport";
+      } 
+      return "Public Transport";
+    },
   },
   created(){
+    let currDate = new Date();
+    console.log(`Current date is ${currDate}`)
   },
-  mounted(){
-    console.log(this.dayData);
-    let itinerary = JSON.parse(this.dayData["itinerary"]);
-    console.log(itinerary);
-    let food = JSON.parse(this.dayData["food"]);
-    console.log(food);
-    let input = JSON.parse(this.dayData["input"]);
-    console.log(input);
-  }
 };
 </script>
 
