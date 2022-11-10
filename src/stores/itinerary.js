@@ -22,7 +22,6 @@ export const useItineraryStore = defineStore("itinerary", {
                     this.foodReco = res.data.foodReco;
                     this.itineraryInput = res.data["user"];
                     this.details = res.data["details"];
-                    console.log(typeof res.data["details"]);
                     //Setting to localstorage
                     // localStorage.setItem("itineraryList",JSON.parse(res.data.itinerary));
                     // localStorage.setItem("itineraryInput",res.data["user"]);
@@ -36,10 +35,11 @@ export const useItineraryStore = defineStore("itinerary", {
             },
         setItinerary(dayData){
             //Takes in a json dump and sets the info
-            this.itineraryList = dayDate["itinerary"];
+            this.itineraryList = dayData["itinerary"];
             this.foodReco = dayData['food'];
-            this.itineraryInput = dayData['input']
-            this.details = res.data["details"];
+            this.itineraryInput = dayData['input'];
+            this.details = dayData['details'];
+            this.name = dayData['name'];
         }
         
 

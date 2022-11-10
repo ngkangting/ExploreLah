@@ -27,6 +27,8 @@
 </template>
 
 <script>
+import { useItineraryStore } from "@/stores/itinerary";
+
 export default {
   name: "TripCard",
   props: {
@@ -62,12 +64,20 @@ export default {
     let currDate = new Date();
     console.log(`Current date is ${currDate}`)
   },
+  setup(){
+    const itineraryStore = useItineraryStore();
+    console.log("Store has been set up");
+    return {itineraryStore};
+  },
   methods:{
     viewItinerary(){
-      console.log("Hello");
-      console.log(this.dayData);
-      console.log(Object.keys(this.dayData))
       //Set this to be the defacto inside intinerary store
+      this.itineraryStore.setItinerary(this.dayData);
+      console.log(`The setted itinerary name is ${this.itineraryStore.name} `);
+      //Redirect
+      this.$router.push({
+          path: "/viewresult",
+        });
     }
   },
 };

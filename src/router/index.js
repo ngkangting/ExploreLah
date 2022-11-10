@@ -11,6 +11,7 @@ import Result from "../views/ResultView.vue";
 import Discover from "../views/Discover.vue";
 import AboutUs from "../views/AboutUs.vue";
 import PageNotFound from "../views/PageNotFound.vue";
+import ViewResultView from "../views/ViewResultView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -73,6 +74,11 @@ const router = createRouter({
       path: "/aboutus",
       name: "About Us",
       component: AboutUs,
+    },
+    {
+      path: "/viewresult",
+      name: "View Result",
+      component: ViewResultView,
     },
     {
       path: "/:pathMatch(.*)*",
