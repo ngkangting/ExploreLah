@@ -216,6 +216,7 @@
               <div class="row">
                 <div class="col-12 pt-2">
                   <h3 class="pb-1 fw-bold">The Shoppes at Marina Bay Sands</h3>
+                  {{currentDayDetails}}
                 </div>
                 
                 <div class="column col-12 col-lg-6 rounded-3 px-3 py-3">
@@ -373,6 +374,14 @@ export default {
         return false
       }
     },
+    currentDayDetails(){
+      try {
+        return this.itineraryStore.details[this.currDay-1];
+      }
+      catch(err){
+        return false;
+      }
+    },
     isLoading(){
       return this.itineraryStore.isLoading;
     }
@@ -386,7 +395,7 @@ export default {
     },
     goNextDay(){
       if (this.currDay != this.itineraryStore.itineraryList.length) {
-        this.currDay += 1        
+        this.currDay += 1;
       }
     },
     goToFoodPage(){

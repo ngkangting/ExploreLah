@@ -155,11 +155,15 @@ export default {
     goPrevDay(){
       if (this.currDay != 1) {
         this.currDay -= 1;
+        console.log("hi")
+        console.log(this.itineraryStore.details)
       }
     },
     goNextDay(){
       if(this.currDay!= Object.keys(this.foodReco).length){
         this.currDay += 1
+        console.log("hi")
+        console.log(this.itineraryStore.details)
       }
     },
     async saveItineraryToDb(){

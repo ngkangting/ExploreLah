@@ -9,6 +9,7 @@ export const useItineraryStore = defineStore("itinerary", {
         itineraryList:null,
         itineraryInput:null,
         isLoading:true,
+        details:null,
     }),
     actions: {
         async fetchItinerary(formInfo) {
@@ -20,6 +21,8 @@ export const useItineraryStore = defineStore("itinerary", {
                     this.itineraryList = JSON.parse(res.data.itinerary);
                     this.foodReco = res.data.foodReco;
                     this.itineraryInput = res.data["user"];
+                    this.details = res.data["details"];
+                    console.log(typeof res.data["details"]);
                     //Setting to localstorage
                     // localStorage.setItem("itineraryList",JSON.parse(res.data.itinerary));
                     // localStorage.setItem("itineraryInput",res.data["user"]);
