@@ -5,13 +5,15 @@
   <div>
       <div class="row d-flex">
         <!-- Result -->
-        <div
-          class="col-md-6 col-lg-8 order-2 order-sm-2 order-md-1 order-lg-1 order-xl-1"
-        >
-  
-            <div class="card w-100 border-0 mt-4 ms-3" >
-              <div class="card-body">
-                <div class="row mb-3">
+        <div class="col-md-6 col-lg-8 order-2 order-sm-2 order-md-1 order-lg-1 order-xl-1">
+          <div class="card w-100 border-0 mt-4 ms-3" >
+            <div class="card-body">
+              <div class="row mb-3">
+                  <div class="card-title">
+                    <h3 class="text-secondary">
+                      You are viewing: <span class="text-dark fw-bold">{{itineraryStore.name}}</span>
+                    </h3> 
+                  </div>  
                   <div class="col-12 col-lg-8">
                     <img
                     class="w-100 rounded"
@@ -23,14 +25,6 @@
                   <div
                   class="col-4 d-none d-lg-flex flex-column justify-content-between"
                   >
-                  <!-- <div class="col-12">
-                    <GoogleMap api-key="AIzaSyA__JlBf_-nIjvNRUNSpM4gdrygcyDenm0" style="width: 100%; height: 38vh; background-color: azure;" :center="center" :zoom="15">
-                      <Marker v-for="(pos, index) in markers" :options="{ position: pos }" :icon="{url:('../../public/ico/food.ico'), size: {width:30, height:30}}" />
-                      <CustomMarker v-for="(pos, index) in markers" :options="{ position: pos}">
-                          <img src="../../public/ico/food.ico" width="32" height="32" style="margin-top: 8px" />
-                      </CustomMarker>
-                    </GoogleMap> 
-                  </div>  -->
                   <div class="row">
                     <div class="col-12">
                       <img
@@ -116,22 +110,6 @@
                       <span class="mx-2"> Luxury Shopping </span>
                     </p>
                   </div>
-                  <!-- <div class="column col-12 col-lg-6 rounded px-3 py-3">
-                    <h6>Highlights</h6>
-                    <ul>
-                      <li class="py-1">
-                        Shop at luxury brands such as Balenciga, Chanel, Dior
-                      </li>
-                      <li class="py-1">
-                        Award winning restaurants such as db Bistro & Oyster Bar
-                      </li>
-                      <li class="py-1">SkyPark Observation Deck</li>
-                      <li class="py-1">Digital Light Canvas & Sampan Rides</li>
-                      <li class="py-1">Arts & Science Museum</li>
-                      <li class="py-1">Casino</li>
-                      <li class="py-1">Marquee Nightclub</li>
-                    </ul>
-                  </div> -->
                 </div>
               </div>
             </div>
@@ -250,7 +228,7 @@
       },
       goToFoodPage(){
         this.$router.push({
-          path: "/resultfood",
+          path: "/viewfood",
         });
       }
   
