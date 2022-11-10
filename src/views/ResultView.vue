@@ -183,15 +183,15 @@
                 <div
                 class="col-4 d-none d-lg-flex flex-column justify-content-between"
                 >
-                <div class="col-12">
+                <!-- <div class="col-12">
                   <GoogleMap api-key="AIzaSyA__JlBf_-nIjvNRUNSpM4gdrygcyDenm0" style="width: 100%; height: 38vh; background-color: azure;" :center="center" :zoom="15">
-                    <!-- <Marker v-for="(pos, index) in markers" :options="{ position: pos }" :icon="{url:('../../public/ico/food.ico'), size: {width:30, height:30}}" /> -->
-                    <!-- <CustomMarker v-for="(pos, index) in markers" :options="{ position: pos}">
+                    <Marker v-for="(pos, index) in markers" :options="{ position: pos }" :icon="{url:('../../public/ico/food.ico'), size: {width:30, height:30}}" />
+                    <CustomMarker v-for="(pos, index) in markers" :options="{ position: pos}">
                         <img src="../../public/ico/food.ico" width="32" height="32" style="margin-top: 8px" />
-                    </CustomMarker> -->
+                    </CustomMarker>
                   </GoogleMap> 
-                </div> 
-                <!-- <div class="row">
+                </div>  -->
+                <div class="row">
                   <div class="col-12">
                     <img
                     class="w-100 rounded"
@@ -200,8 +200,8 @@
                     height="165"
                     />
                   </div>
-                  </div> -->
-                  <!-- <div class="row">
+                  </div> 
+                   <div class="row">
                     <div class="col-12">
                       <img
                       class="w-100 rounded"
@@ -210,16 +210,22 @@
                       height="165"
                       />
                     </div>
-                  </div> -->
+                  </div> 
                 </div>
               </div>
               <div class="row">
-                <div class="col-12 pt-2">
-                  <h3 class="pb-1 fw-bold">The Shoppes at Marina Bay Sands</h3>
-                  {{currentDayDetails}}
+                <div class="column col-6 col-lg-6 rounded-3 px-3 py-3">
+                  <GoogleMap api-key="AIzaSyA__JlBf_-nIjvNRUNSpM4gdrygcyDenm0" style="width: 100%; height:500px; background-color: azure;" :center="center" :zoom="15">
+                    <!-- <Marker v-for="(pos, index) in markers" :options="{ position: pos }" :icon="{url:('../../public/ico/food.ico'), size: {width:30, height:30}}" />
+                    <CustomMarker v-for="(pos, index) in markers" :options="{ position: pos}">
+                        <img src="../../public/ico/food.ico" width="32" height="32" style="margin-top: 8px" />
+                    </CustomMarker> -->
+                  </GoogleMap> 
                 </div>
-                
-                <div class="column col-12 col-lg-6 rounded-3 px-3 py-3">
+
+                <div class="column col-6 col-lg-6 rounded-3 px-3 py-3">
+                  <h3 class="pb-1 fw-bold">The Shoppes at Marina Bay Sands</h3>
+
                   <p class="mb-4">
                     <!--to add color -->
                     <span class="tag bg-grey rounded-2 p-1 px-2"
@@ -270,7 +276,7 @@
                     <span class="mx-2"> Luxury Shopping </span>
                   </p>
                 </div>
-                <div class="column col-12 col-lg-6 rounded px-3 py-3">
+                <!-- <div class="column col-12 col-lg-6 rounded px-3 py-3">
                   <h6>Highlights</h6>
                   <ul>
                     <li class="py-1">
@@ -285,7 +291,7 @@
                     <li class="py-1">Casino</li>
                     <li class="py-1">Marquee Nightclub</li>
                   </ul>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
@@ -382,6 +388,10 @@ export default {
         return false;
       }
     },
+    currentDayMarkers(){
+      return this.itineraryStore.itineraryList[this.currDay-1]["pinInfoList"];
+    },
+
     isLoading(){
       return this.itineraryStore.isLoading;
     }

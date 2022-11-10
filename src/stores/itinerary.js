@@ -34,6 +34,13 @@ export const useItineraryStore = defineStore("itinerary", {
                 this.isLoading = true;
             })
             },
+        setItinerary(dayData){
+            //Takes in a json dump and sets the info
+            this.itineraryList = dayDate["itinerary"];
+            this.foodReco = dayData['food'];
+            this.itineraryInput = dayData['input']
+            this.details = res.data["details"];
+        }
         
 
         },

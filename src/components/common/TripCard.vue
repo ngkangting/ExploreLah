@@ -19,6 +19,9 @@
         </p>
       </div>
     </div> 
+    <div>
+      <input  type="button" value="View Trip" @click="viewItinerary"/>
+    </div>
   </div>
   
 </template>
@@ -58,6 +61,14 @@ export default {
   created(){
     let currDate = new Date();
     console.log(`Current date is ${currDate}`)
+  },
+  methods:{
+    viewItinerary(){
+      console.log("Hello");
+      console.log(this.dayData);
+      console.log(Object.keys(this.dayData))
+      //Set this to be the defacto inside intinerary store
+    }
   },
 };
 </script>

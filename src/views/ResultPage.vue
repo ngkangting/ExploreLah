@@ -172,12 +172,14 @@ export default {
         let itineraryList = this.itineraryStore.itineraryList;
         let foodReco = this.itineraryStore.foodReco;
         let itineraryInput = this.itineraryStore.itineraryInput;
+        let details = this.itineraryStore.details;
         try {
             const docRef = await addDoc(collection(this.db, userID), {
               name: JSON.stringify(this.inputName),
               itinerary : JSON.stringify(itineraryList),
               food : JSON.stringify(foodReco),
               input : JSON.stringify(itineraryInput),
+              details: JSON.stringify(details),
             });
             console.log("Document written with ID: ", docRef.id);
             this.$router.push({

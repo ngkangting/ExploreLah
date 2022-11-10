@@ -5,7 +5,6 @@
         <h1 class="type my-5 fw-bold text-white display-4">
           <span> Relive your trips </span>
         </h1>
-        <button @click="getData">Get Data</button>
       </div>
       <div>
         <form
