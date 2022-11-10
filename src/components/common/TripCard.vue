@@ -40,12 +40,12 @@ export default {
   computed:{
     startDate(){
       let startDate = new Date(this.input['dates'][0].toString());
-      let outputStr =  startDate.getDay() + " " + this.numToMonth[startDate.getMonth()+1];
+      let outputStr =  startDate.getDate() + " " + this.numToMonth[startDate.getMonth()];
       return outputStr;
     },
     endDate(){
       let endDate = new Date(this.input['dates'][1].toString());
-      let outputStr =  endDate.getDay() + " " + this.numToMonth[endDate.getMonth()+1];
+      let outputStr =  endDate.getDate() + " " + this.numToMonth[endDate.getMonth()];
       return outputStr;
     },
     byCar(){
@@ -56,6 +56,8 @@ export default {
     },
   },
   created(){
+    let currDate = new Date();
+    console.log(`Current date is ${currDate}`)
   },
 };
 </script>

@@ -23,7 +23,7 @@
       </div>
     </div>
       <div class="mt-5 mb-5 mx-5">
-        <h3 class="fw-bold px-3 mt-4">Upcoming Trips ({{upcomingTrips.length}})</h3>
+        <h3 class="fw-bold px-3 mt-4">Upcoming & Current Trips ({{upcomingTrips.length}})</h3>
         <div class="row d-none d-sm-none d-md-flex">
            <TripCard v-for="info in this.upcomingTrips" 
                   :dayData="info"/> 
@@ -118,9 +118,12 @@ export default {
     parseTrips(){
       for(var info in this.data){
         let tempData =  JSON.parse(this.data[info]["input"]);
-        let tripDate = new Date(tempData.dates[0]);
+        let tripDate = new Date(tempData.dates[1]);
         let todayDate = new Date();
-        if (tripDate >= todayDate){
+        console.log(todayDate);
+        todayDate.setDate(todayDate.getDate() + 1);
+        console.log(todayDate);
+        if (tripDate > todayDate ){
           this.upcomingTrips.push(this.data[info])
         } else {
           this.pastTrips.push(this.data[info])
