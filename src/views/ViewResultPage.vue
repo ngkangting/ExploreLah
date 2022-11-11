@@ -3,7 +3,11 @@
       <h1 class="text-center fw-semibold p-4">
         Recommended Food Places
       </h1> 
-      <div class="col-10 offset-1 card border-0 p-3 rounded-4">
+      <div class="col-10 offset-1 card border-0 p-3 rounded-4">                  <div class="card-title">
+                    <h3 class="text-secondary">
+                      You are viewing: <span class="text-dark fw-bold">{{itineraryStore.name}}</span>
+                    </h3> 
+                  </div> 
         <div class="card-body">
           <h2 class="mb-4 py-2 fw-bold d-flex justify-content-center text-white bg-dark-blue">
             Day {{currDay}}
@@ -41,7 +45,7 @@
               </div>
 
               <div class="d-flex justify-content-center py-2">
-                <button @click="goPrevDay" class="rounded bg-secondary border-0 p-2 px-3 text-white">
+                <button @click="goPrevDay" class="rounded bg-dark-blue border-0 p-2 px-3 text-white">
                   Prev
                 </button>
                 <span class="mx-3 d-flex justify-content-center align-items-center">
@@ -52,32 +56,9 @@
                 </button>
               </div>
               <!-- Button trigger modal -->
-              <div class="d-flex justify-content-center px-5 py-3">
-                <!-- <button type="button" -->
-                <button type="button" class="btn btn-pink" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                  Save Itinerary
-                </button>
-              </div>
-
-              <!-- Modal -->
-              <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Give this trip a name!</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      <input class="form-control" type="text" v-model="inputName" placeholder="Exciting day trip!">
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-pink" @click="saveItineraryToDb" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Save Trip</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
+              <button type="button" class="btn btn-pink" @click="redirectToMyTrips">
+                Back to My Trips
+              </button>
 
 
             </div>
@@ -92,7 +73,7 @@
 import { useAuthStore } from "@/stores/auth";
 import {useItineraryStore} from "@/stores/itinerary";
 import { GoogleMap, Marker, CustomMarker } from "vue3-google-map";
-import {getFirestore, collection, addDoc} from "firebase/firestore";
+import {getFirestore} from "firebase/firestore";
 import firebaseApp from "../firebaseConfig";
 
 import FoodLocation from "../components/resultpage/FoodLocation.vue";
@@ -143,7 +124,6 @@ export default {
     },
     markers(){
       if(this.state) {
-        console.log(this.foodReco[this.currDay-1]["lunchPin"][0])
         return this.foodReco[this.currDay-1]["lunchPin"]
       }
       return this.foodReco[this.currDay-1]["dinnerPin"]
@@ -158,40 +138,19 @@ export default {
     goPrevDay(){
       if (this.currDay != 1) {
         this.currDay -= 1;
-        console.log("hi")
-        console.log(this.itineraryStore.details)
       }
     },
     goNextDay(){
       if(this.currDay!= Object.keys(this.foodReco).length){
         this.currDay += 1
-        console.log("hi")
-        console.log(this.itineraryStore.details)
       }
     },
-    async saveItineraryToDb(){
-        //Write to DB
-        let userID = this.authStore.user.uid;
-        let itineraryList = this.itineraryStore.itineraryList;
-        let foodReco = this.itineraryStore.foodReco;
-        let itineraryInput = this.itineraryStore.itineraryInput;
-        let details = this.itineraryStore.details;
-        try {
-            const docRef = await addDoc(collection(this.db, userID), {
-              name: JSON.stringify(this.inputName),
-              itinerary : JSON.stringify(itineraryList),
-              food : JSON.stringify(foodReco),
-              input : JSON.stringify(itineraryInput),
-              details: JSON.stringify(details),
-            });
-            console.log("Document written with ID: ", docRef.id);
-            this.$router.push({
-              path: "/mytrips",
-            });
-          } catch (e) {
-            console.error("Error adding document: ", e);
-          }
-      },
+    redirectToMyTrips(){
+        this.$router.push({
+          path: "/mytrips",
+        });
+    }
+
 
     },
     
