@@ -134,19 +134,10 @@
           aria-orientation="vertical"
         >
         
-        <PillTab
+        <PillTabSkeleton
         v-for="(activity, index) in 3"
         :key="index"
         :index="index"
-        :isSelected="false"
-        :isLast="false"
-        :place="activity.name"
-        :type="activity.tags"
-        :arrivalTime="activity.arriveTime"
-        :departureTime="activity.endTime"
-        :forecast="activity.status"
-        :duration="activity.dur"
-        :travelTimeToThis="activity.travelTimeTo"
         :name="`pill-tab-${index}`"
         />
       </div>
@@ -349,11 +340,13 @@ import { useAuthStore } from "@/stores/auth";
 import { useItineraryStore } from "@/stores/itinerary";
 import { GoogleMap, Marker, CustomMarker } from "vue3-google-map";
 
+import PillTabSkeleton from "@/components/result/PillTabSkeleton.vue";
 import PillTab from "@/components/result/PillTab.vue";
 
 export default {
   name: "ResultView",
   components: {
+    PillTabSkeleton,
     PillTab,
     GoogleMap,
     Marker,
