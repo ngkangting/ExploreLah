@@ -49,12 +49,22 @@
       </div>
     </div>
 
-    <div class="d-flex justify-content-center">
-      <h6
-        class="d-flex justify-content align-items-center btn-special-blue text-center d-md-none d-lg-none d-xl-none m-2"
-      >
-        Start Planning!
-      </h6>
+    <div class="d-md-none d-lg-none d-xl-none">
+      <lottie-player
+        class="car"
+        src="https://assets4.lottiefiles.com/packages/lf20_JOHmpu.json"
+        background="transparent"
+        speed="0.6"
+        style="width: auto; height: 100px;"
+        loop
+        autoplay
+      ></lottie-player>
+      <div class="d-flex justify-content-center">
+        <h6
+        class="d-flex justify-content align-items-center btn-special-blue text-center ">
+          Start Planning!
+        </h6>
+      </div>
     </div>
 
     <div class="row justify-content-center mx-5">
@@ -351,7 +361,7 @@
     <div class="row justify-content-center">
       <div class="col-5 col-md-3 justify-content-center">
         <div class="p-2">
-          <div class="py-2">
+          <div class="py-2 review">
             <div class="py-2 d-flex">
               <i
                 class="bi bi-star-fill text-pink me-1"
@@ -380,7 +390,7 @@
             </p>
             <p class="text-muted">- Professor Mok</p>
           </div>
-          <div class="py-2">
+          <div class="py-2 review">
             <div class="py-2 d-flex">
               <i
                 class="bi bi-star-fill text-pink me-1"
@@ -422,7 +432,7 @@
       </div>
       <div class="col-5 col-md-3 justify-content-center">
         <div class="p-2">
-          <div class="py-2">
+          <div class="py-2 review">
             <div class="py-2 d-flex">
               <i
                 class="bi bi-star-fill text-pink me-1"
@@ -448,7 +458,7 @@
             <p>Great app that saved me a lot of time while I was travelling</p>
             <p class="text-muted">- TA Chen</p>
           </div>
-          <div class="py-2">
+          <div class="py-2 review">
             <div class="py-2 d-flex">
               <i
                 class="bi bi-star-fill text-pink me-1"
@@ -486,7 +496,7 @@
     <h1
       class="type d-flex justify-content-center fw-bold text-center mt-5 py-5"
     >
-      <span> Ready to plan your trip in half the time? </span>
+      <span> Ready to plan your trip now? </span>
     </h1>
     <div class="d-flex justify-content-center">
       <h4 class="btn-special">Plan Now</h4>
@@ -650,5 +660,9 @@ span.btn-special:hover {
 
 .bg-newlightpink {
   background-color: #fad9e0;
+}
+
+.review {
+  min-height: 300px;
 }
 </style>
