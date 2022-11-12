@@ -3,7 +3,7 @@
     <div class="background parallax">
       <div class="d-flex justify-content-center my-5">
         <h1 class="type my-5 fw-bold text-white display-4">
-          <span> Relive your trips </span>
+          <span> Relive your trips </span> 
         </h1>
       </div>
       <div>
@@ -78,6 +78,7 @@ import PhoneTripCard from "@/components/common/PhoneTripCard.vue";
 import { useAuthStore } from "@/stores/auth";
 import {getFirestore, collection, query, where, getDocs} from "firebase/firestore";
 import firebaseApp from "../firebaseConfig";
+import { useItineraryStore } from "../stores/itinerary";
 
 export default {
   name: "MyTrips",
@@ -99,7 +100,8 @@ export default {
   setup(){
     const db = getFirestore(firebaseApp);
     const authStore = useAuthStore();
-    return { authStore, db}
+    const itineraryStore = useItineraryStore();
+    return { authStore, db, itineraryStore}
   },
   mounted(){
     this.triggerWatcher += 1;
@@ -110,8 +112,7 @@ export default {
         return uid
       });
       return null;
-    },
-    
+    },  
   },
   watch:{
     async triggerWatcher(){
@@ -145,6 +146,11 @@ export default {
       }
       return null
     },
+    getFromLocal(){
+      console.log("Triggered");
+      this.itineraryStore.getFromLocalStorage();
+      
+    }
   },
 };
 </script>
