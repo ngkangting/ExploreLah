@@ -21,7 +21,6 @@
         </form>
       </div>
     </div>
-    <button @click="getFromLocal"> Fetch from localstorage </button>
       <div class="mt-5 mb-5 mx-5">
         <h3 class="fw-bold px-3 mt-4">Upcoming & Current Trips ({{upcomingTrips.length}})</h3>
         <div v-if="!loaded" class="text-center">

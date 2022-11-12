@@ -334,6 +334,8 @@ import { GoogleMap, Marker, CustomMarker } from "vue3-google-map";
 import PillTabSkeleton from "@/components/result/PillTabSkeleton.vue";
 import PillTab from "@/components/result/PillTab.vue";
 
+
+
 export default {
   name: "ResultView",
   components: {
@@ -400,6 +402,8 @@ export default {
     }
 
   },
+  
+  
 };
 </script>
 

@@ -11,7 +11,7 @@
               <div class="row mb-3">
                   <div class="card-title">
                     <h3 class="text-secondary">
-                      You are viewing: <span class="text-dark fw-bold">{{itineraryStore.name}}</span>
+                      HiYou are viewing: <span class="text-dark fw-bold">{{itineraryStore.name}}</span>
                     </h3> 
                   </div>  
                   <div class="col-12 col-lg-8">
