@@ -17,6 +17,9 @@
                     <br>
                     <b>Transportation Method:</b> By Car
                 </p>
+                <button type="btn" class="btn bg-pink text-white btn-sm my-2">
+                        Download as PDF
+                </button>
             </div>
             </div>
         </div>

@@ -41,7 +41,7 @@
               </div>
 
               <div class="d-flex justify-content-center py-2">
-                <button @click="goPrevDay" class="rounded bg-dark-blue border-0 p-2 px-3 text-white">
+                <button @click="goPrevDay" class="rounded bg-secondary border-0 p-2 px-3 text-white">
                   Prev
                 </button>
                 <span class="mx-3 d-flex justify-content-center align-items-center">
@@ -52,9 +52,12 @@
                 </button>
               </div>
               <!-- Button trigger modal -->
-              <button type="button" class="btn btn-pink" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                Save Itinerary
-              </button>
+              <div class="d-flex justify-content-center px-5 py-3">
+                <!-- <button type="button" -->
+                <button type="button" class="btn btn-pink" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                  Save Itinerary
+                </button>
+              </div>
 
               <!-- Modal -->
               <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
