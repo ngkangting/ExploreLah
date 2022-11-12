@@ -1,15 +1,18 @@
 <template>
-    <img id ="anchor"  src="../../assets/img/merlion/merlionBaseWEye.png" :style='merlionStyle'/>
-    <div id="eyes" @mouseenter="mouseEnter" @mousemove="mousemove">
+    <div class="mask" ref="merlion">
+        <img id ="anchor"  src="../../assets/img/merlion/merlionBaseWEye.png"  />
+    </div>
+
+    <!-- <div id="eyes" @mouseenter="mouseEnter" @mousemove="mousemove">
         <img class="mascot" src="../../assets/img/merlion/merlionEye.png" :style='leftEyeStyle'/>
         <img class="mascot" src="../../assets/img/merlion/merlionEye.png" :style='rightEyeStyle'/> 
-    </div>
+    </div> -->
     <!-- <img class="mascot" src="../../assets/img/merlion/merlionHand.png"/> -->
 
 </template>
   
 <script>
-const element = document.getElementById("anchor");
+import { useMouseDistanceFromElement } from "vue-composable";
 
   export default {
     name: "MerlionMascot",
@@ -24,25 +27,27 @@ const element = document.getElementById("anchor");
           anchorX: 0,
           anchorY: 0,
           eyeRotation: null,
-
+  
       };
     },
     methods : {
-        calculateDistance(elem, mouseX, mouseY){
-            // return Math.floor(Math.sqrt(Math.pow(mouseX - (.left+(elem.width()/2)), 2) + Math.pow(mouseY - (elem.offset().top+(elem.height()/2)), 2)));
-        },
+        calculateDistance(mouseX, mouseY) {
+            //element.getBoundingClientRect().left
+            return Math.floor(Math.sqrt(Math.pow(mouseX - this.left, 2) + Math.pow(mouseY - this.top, 2)));      
+         },
         mouseMove(event) {
+
             // this.getAngle(event.clientX, event.clientY, this.anchorX, this.anchorY)
             this.mouseX = event.clientX;
             this.mouseY = event.clientY;
-     
-            let rad = Math.atan2(event.clientY - this.anchorY, event.clientX - this.anchorX);
-            let deg = rad * 180 / Math.PI;
-            this.eyeRotation = deg;
+            // console.log(this.$refs.merlion);
+            // console.log(this.mouseX, this.mouseY);
+            // console.log(element)
 
-            console.log(this.calculateDistance(element, this.mouseX, this.mouseY))
+            // console.log(this.calculateDistance(this.mouseX, this.mouseY))
             
         },
+
     },
     computed : {
         leftEyeStyle(){
@@ -53,30 +58,48 @@ const element = document.getElementById("anchor");
         },
         merlionStyle(){
             return `position:absolute;bottom:${this.positionY}px;left:${this.positionX}`
+        },
+        left(){
+            return this.$refs.merlion.getBoundingClientRect().x;
+        },
+        top(){
+            return this.$refs.merlion.getBoundingClientRect().y;
+
         }
 
+        
+
     },
-    mounted(){
+    mounted(){  
+        
         window.addEventListener('mousemove', this.mouseMove);
         const anchor = document.getElementById("anchor");
         const rekt = anchor.getBoundingClientRect();
         const anchorX = rekt.left + rekt.width / 2;
         const anchorY = rekt.top + rekt.height / 2;
+
+        //Trying get X and Y of merlion...
+        console.log("Please fucking work")
+        console.log(this.$refs.merlion)
+        console.log(this.$refs.merlion.getBoundingClientRect().left);
+        console.log(this.$refs.merlion.getBoundingClientRect().top);
     }
   };
 </script>
   
 <style lang="scss">
 
-#anchor::before{
-    top: 50px;
-    right: 50px;
+
+
+.mask{
+    background-color: red;
+    height:250px;
+    width:250px;
+    position: fixed;
 
 }
 
-#eyes, #eyes img {
-    position: absolute;
-}
+
 
 </style>
   
