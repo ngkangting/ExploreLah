@@ -461,7 +461,7 @@
 
           <div class="position-absolute bottom-0 end-0 p-3">
             <router-link
-              to="/resultfood"
+              to="/foodview"
               class="text-decoration-none text-secondary"
             >
               <span class="ps-1"> See Food Recommendations </span>
