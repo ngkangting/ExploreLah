@@ -1,8 +1,8 @@
 <template>
-  <div v-if="showTripCard">
-    <button @click="deleteTrip">Delete Me!</button>
-    <div class="trip-card p-4 col-md-6 col-lg-4 col-xl-3" @click="viewItinerary">
-      <div class="effect-image-1 zoom-effect-1">
+  <!-- <div v-if="showTripCard"> -->
+    <div v-if="showTripCard" class="trip-card p-4 col-md-6 col-lg-4 col-xl-3">
+      <button @click="deleteTrip">Delete Me!</button>
+      <div class="effect-image-1 zoom-effect-1" @click="viewItinerary">    
         <img src="../../assets/img/tripcard.jpg" class="w-100" />
         <div
           class="overlay text-white d-flex justify-content-center align-items-center text-center"
@@ -32,7 +32,7 @@
           </p>
         </div>
       </div>
-    </div>
+    <!-- </div> -->
     <!-- <vue3-html2pdf
       :show-layout="false"
       :float-layout="true"
@@ -224,6 +224,11 @@ export default {
       let docID = this.dayData["docID"];
       let userID = this.authStore.user.uid;
       const docRef = doc(this.db, userID, docID);
+      //Start date
+      let startDate = new Date(this.input["dates"][0].toString());
+      console.log(`Emitted is ${startDate}`)
+      this.$emit("tripDeleted",startDate);
+
       this.showTripCard = false;
       await updateDoc(docRef, {
         "deleted":true
@@ -235,6 +240,7 @@ export default {
 
     }
   },
+  emits: ["tripDeleted"]
 };
 </script>
 
