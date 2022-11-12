@@ -1,5 +1,5 @@
 <template>
-    <div class="card m-4 col-10 ps-0 border border-blue">
+    <div class="card m-4 col-10 ps-0 border border-blue" @click="viewItinerary">
         <div class="row g-0">
             <div class="col-4">
                 <img src="../../assets/img/tripcard.jpg" class="img-fluid rounded-start h-100">
