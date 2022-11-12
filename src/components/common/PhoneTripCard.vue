@@ -4,7 +4,7 @@
             <div class="col-4">
                 <img src="../../assets/img/tripcard.jpg" class="img-fluid rounded-start h-100">
             </div>
-            <div class="col-8" @click="viewItinerary">
+            <div class="col-8">
             <div class="card-body p-4">
                 <p class="card-title">
                     <h3>{{ dayData.name.slice(1, -1) }}</h3>
