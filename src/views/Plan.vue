@@ -4,23 +4,40 @@
       <div class="bg-dark-blue" style="height: 250px"></div>
     </div>
     <div class="row pt-5 pb-1">
-      <h1 class="fs-3 text-center text-secondary-lighter d-sm-none" style="z-index: 0">
+      <h1
+        class="fs-3 text-center text-secondary-lighter d-sm-none"
+        style="z-index: 0"
+      >
         Build Your Own Customised Itinerary Now!
       </h1>
-      <h1 class="fs-2 text-center text-secondary-lighter d-none d-sm-block" style="z-index: 0">
+      <h1
+        class="fs-2 text-center text-secondary-lighter d-none d-sm-block"
+        style="z-index: 0"
+      >
         Build Your Own Customised Itinerary Now!
       </h1>
     </div>
     <div class="row d-flex flex-grow-1 justify-content-center pt-4 pb-5">
-      <div class="plan col-12 col-sm-10 col-md-8 col-lg-6 card border-0 h-100 p-0">
+      <div
+        class="plan col-12 col-sm-10 col-md-8 col-lg-6 card border-0 h-100 p-0"
+      >
         <div class="d-stepper mt-4">
           <div class="d-stepper-header d-flex justify-content-around mt-2">
-            <div class="step-number-content text-center" :class="{ active: activePhase == i }"
-              v-for="(stepItem, i) in steps" :key="i">
-              <div class="step-number align-items-center justify-content-center mx-auto" :class="stepNumberClasses(i)"
-                style="font-size: 1.2rem">
-                <div class="m-0 p-0 h-100 m-auto d-flex justify-content-center align-items-center"
-                  v-html="stepItem.icon"></div>
+            <div
+              class="step-number-content text-center"
+              :class="{ active: activePhase == i }"
+              v-for="(stepItem, i) in steps"
+              :key="i"
+            >
+              <div
+                class="step-number align-items-center justify-content-center mx-auto"
+                :class="stepNumberClasses(i)"
+                style="font-size: 1.2rem"
+              >
+                <div
+                  class="m-0 p-0 h-100 m-auto d-flex justify-content-center align-items-center"
+                  v-html="stepItem.icon"
+                ></div>
               </div>
               <div class="mt-1 small fw-bold text-secondary">
                 {{ stepItem.name }}
@@ -42,9 +59,17 @@
             <!-- Form Part 1 -->
             <template v-if="activePhase === 0">
               <div class="col-10 col-sm-8 offset-1 offset-sm-2 mb-4">
-                <label for="locationInput" class="form-label">Location<span class="text-danger">*</span></label>
-                <TypeaheadInput id="locationInput" class="typeahead-input" :items="validLocations" v-model="location"
-                  :emptyMessage="typeaheadMessage" placeholder="Enter location" />
+                <label for="locationInput" class="form-label"
+                  >Location<span class="text-danger">*</span></label
+                >
+                <TypeaheadInput
+                  id="locationInput"
+                  class="typeahead-input"
+                  :items="validLocations"
+                  v-model="location"
+                  :emptyMessage="typeaheadMessage"
+                  placeholder="Enter location"
+                />
                 <div v-if="!isLocationValid" class="text-danger mt-1">
                   Please enter a location!
                 </div>
@@ -53,13 +78,26 @@
 
             <!-- Form Part 2 -->
             <template v-if="activePhase === 1">
-              <div class="col-10 col-sm-8 offset-1 offset-sm-2 mb-4 mb-3 form-floating">
+              <div
+                class="col-10 col-sm-8 offset-1 offset-sm-2 mb-4 mb-3 form-floating"
+              >
                 <div class="mb-2">
                   Trip Dates<span class="text-danger">*</span>
                 </div>
-                <Datepicker v-model="date" modelAuto range placeholder="Select dates" :enableTimePicker="false"
-                  :partialRange="false" :minDate="new Date()" maxRange="5" />
-                <div class="text-secondary-light mt-1" style="font-size: 0.8rem">
+                <Datepicker
+                  v-model="date"
+                  modelAuto
+                  range
+                  placeholder="Select dates"
+                  :enableTimePicker="false"
+                  :partialRange="false"
+                  :minDate="new Date()"
+                  maxRange="5"
+                />
+                <div
+                  class="text-secondary-light mt-1"
+                  style="font-size: 0.8rem"
+                >
                   Please select trip dates within a range of 7 days
                 </div>
                 <div v-if="!isDurationValid" class="text-danger mt-1">
@@ -73,29 +111,55 @@
               <div class="col-8 col-sm-6 offset-2 offset-sm-3 mb-4">
                 <div class="mb-3 position-relative">
                   <label for="shopping" class="form-label">Shopping</label>
-                  <input type="range" class="form-range" min="1" max="5" id="shopping" v-model="shopping" />
-                  <span class="position-absolute text-secondary"
-                    style="left: -2rem; top: 50%; transform: translateY(-50%)"><i class="bi bi-emoji-frown"
-                      style="font-size: 1.4rem"></i>
+                  <input
+                    type="range"
+                    class="form-range"
+                    min="1"
+                    max="5"
+                    id="shopping"
+                    v-model="shopping"
+                  />
+                  <span
+                    class="position-absolute text-secondary"
+                    style="left: -2rem; top: 50%; transform: translateY(-50%)"
+                    ><i class="bi bi-emoji-frown" style="font-size: 1.4rem"></i>
                   </span>
-                  <span class="position-absolute text-secondary"
-                    style="right: -2rem; top: 50%; transform: translateY(-50%)"><i class="bi bi-emoji-laughing"
-                      style="font-size: 1.4rem"></i>
+                  <span
+                    class="position-absolute text-secondary"
+                    style="right: -2rem; top: 50%; transform: translateY(-50%)"
+                    ><i
+                      class="bi bi-emoji-laughing"
+                      style="font-size: 1.4rem"
+                    ></i>
                   </span>
                   <p class="text-center text-secondary">
                     {{ rangeState[shopping] }}
                   </p>
                 </div>
                 <div class="mb-3 position-relative">
-                  <label for="arts-culture" class="form-label">Arts & Culture</label>
-                  <input type="range" class="form-range" min="1" max="5" id="arts-culture" v-model="arts" />
-                  <span class="position-absolute text-secondary"
-                    style="left: -2rem; top: 50%; transform: translateY(-50%)"><i class="bi bi-emoji-frown"
-                      style="font-size: 1.4rem"></i>
+                  <label for="arts-culture" class="form-label"
+                    >Arts & Culture</label
+                  >
+                  <input
+                    type="range"
+                    class="form-range"
+                    min="1"
+                    max="5"
+                    id="arts-culture"
+                    v-model="arts"
+                  />
+                  <span
+                    class="position-absolute text-secondary"
+                    style="left: -2rem; top: 50%; transform: translateY(-50%)"
+                    ><i class="bi bi-emoji-frown" style="font-size: 1.4rem"></i>
                   </span>
-                  <span class="position-absolute text-secondary"
-                    style="right: -2rem; top: 50%; transform: translateY(-50%)"><i class="bi bi-emoji-laughing"
-                      style="font-size: 1.4rem"></i>
+                  <span
+                    class="position-absolute text-secondary"
+                    style="right: -2rem; top: 50%; transform: translateY(-50%)"
+                    ><i
+                      class="bi bi-emoji-laughing"
+                      style="font-size: 1.4rem"
+                    ></i>
                   </span>
                   <p class="text-center text-secondary">
                     {{ rangeState[arts] }}
@@ -103,14 +167,27 @@
                 </div>
                 <div class="mb-3 position-relative">
                   <label for="outdoor" class="form-label">Outdoor</label>
-                  <input type="range" class="form-range" min="1" max="5" default="3" id="outdoor" v-model="outdoor" />
-                  <span class="position-absolute text-secondary"
-                    style="left: -2rem; top: 50%; transform: translateY(-50%)"><i class="bi bi-emoji-frown"
-                      style="font-size: 1.4rem"></i>
+                  <input
+                    type="range"
+                    class="form-range"
+                    min="1"
+                    max="5"
+                    default="3"
+                    id="outdoor"
+                    v-model="outdoor"
+                  />
+                  <span
+                    class="position-absolute text-secondary"
+                    style="left: -2rem; top: 50%; transform: translateY(-50%)"
+                    ><i class="bi bi-emoji-frown" style="font-size: 1.4rem"></i>
                   </span>
-                  <span class="position-absolute text-secondary"
-                    style="right: -2rem; top: 50%; transform: translateY(-50%)"><i class="bi bi-emoji-laughing"
-                      style="font-size: 1.4rem"></i>
+                  <span
+                    class="position-absolute text-secondary"
+                    style="right: -2rem; top: 50%; transform: translateY(-50%)"
+                    ><i
+                      class="bi bi-emoji-laughing"
+                      style="font-size: 1.4rem"
+                    ></i>
                   </span>
                   <p class="text-center text-secondary">
                     {{ rangeState[outdoor] }}
@@ -118,14 +195,26 @@
                 </div>
                 <div class="mb-3 position-relative">
                   <label for="adventure" class="form-label">Adventure</label>
-                  <input type="range" class="form-range" min="1" max="5" id="adventure" v-model="adventure" />
-                  <span class="position-absolute text-secondary"
-                    style="left: -2rem; top: 50%; transform: translateY(-50%)"><i class="bi bi-emoji-frown"
-                      style="font-size: 1.4rem"></i>
+                  <input
+                    type="range"
+                    class="form-range"
+                    min="1"
+                    max="5"
+                    id="adventure"
+                    v-model="adventure"
+                  />
+                  <span
+                    class="position-absolute text-secondary"
+                    style="left: -2rem; top: 50%; transform: translateY(-50%)"
+                    ><i class="bi bi-emoji-frown" style="font-size: 1.4rem"></i>
                   </span>
-                  <span class="position-absolute text-secondary"
-                    style="right: -2rem; top: 50%; transform: translateY(-50%)"><i class="bi bi-emoji-laughing"
-                      style="font-size: 1.4rem"></i>
+                  <span
+                    class="position-absolute text-secondary"
+                    style="right: -2rem; top: 50%; transform: translateY(-50%)"
+                    ><i
+                      class="bi bi-emoji-laughing"
+                      style="font-size: 1.4rem"
+                    ></i>
                   </span>
                   <p class="text-center text-secondary">
                     {{ rangeState[adventure] }}
@@ -133,14 +222,26 @@
                 </div>
                 <div class="mb-3 position-relative">
                   <label for="nightlife" class="form-label">Nightlife</label>
-                  <input type="range" class="form-range" min="1" max="5" id="nightlife" v-model="nightlife" />
-                  <span class="position-absolute text-secondary"
-                    style="left: -2rem; top: 50%; transform: translateY(-50%)"><i class="bi bi-emoji-frown"
-                      style="font-size: 1.4rem"></i>
+                  <input
+                    type="range"
+                    class="form-range"
+                    min="1"
+                    max="5"
+                    id="nightlife"
+                    v-model="nightlife"
+                  />
+                  <span
+                    class="position-absolute text-secondary"
+                    style="left: -2rem; top: 50%; transform: translateY(-50%)"
+                    ><i class="bi bi-emoji-frown" style="font-size: 1.4rem"></i>
                   </span>
-                  <span class="position-absolute text-secondary"
-                    style="right: -2rem; top: 50%; transform: translateY(-50%)"><i class="bi bi-emoji-laughing"
-                      style="font-size: 1.4rem"></i>
+                  <span
+                    class="position-absolute text-secondary"
+                    style="right: -2rem; top: 50%; transform: translateY(-50%)"
+                    ><i
+                      class="bi bi-emoji-laughing"
+                      style="font-size: 1.4rem"
+                    ></i>
                   </span>
                   <p class="text-center text-secondary">
                     {{ rangeState[nightlife] }}
@@ -153,16 +254,29 @@
               <div class="col-8 col-sm-6 offset-2 offset-sm-3 mb-4">
                 <div class="d-flex justify-content-between">
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="public-transport" id="public-transport"
-                      value="public" v-model="transportation" checked />
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="public-transport"
+                      id="public-transport"
+                      value="public"
+                      v-model="transportation"
+                      checked
+                    />
                     <label class="form-check-label" for="flexRadioDefault1">
                       Public Transport
                     </label>
                   </div>
 
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="private-transport" id="private-transport"
-                      value="private" v-model="transportation" />
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="private-transport"
+                      id="private-transport"
+                      value="private"
+                      v-model="transportation"
+                    />
                     <label class="form-check-label" for="private-transport">
                       Private Transport
                     </label>
@@ -172,15 +286,27 @@
             </template>
 
             <div class="text-center my-3">
-              <button class="btn btn-gray px-4 py-2 mx-2" v-if="activePhase != 0" @click.prevent="goToPrevStep()">
+              <button
+                class="btn btn-gray px-4 py-2 mx-2"
+                v-if="activePhase != 0"
+                @click.prevent="goToPrevStep()"
+              >
                 Back
               </button>
 
-              <button class="btn btn-pink px-4 py-2 mx-2" v-if="activePhase != 3" @click.prevent="goToNextStep()">
+              <button
+                class="btn btn-pink px-4 py-2 mx-2"
+                v-if="activePhase != 3"
+                @click.prevent="goToNextStep()"
+              >
                 Next
               </button>
 
-              <button type="submit" class="btn btn-pink mx-2" v-if="activePhase == 3">
+              <button
+                type="submit"
+                class="btn btn-pink mx-2"
+                v-if="activePhase == 3"
+              >
                 Plan Now!
               </button>
             </div>
@@ -236,7 +362,10 @@ export default {
         { name: "Transportation", icon: Transport },
       ],
       headerText: [
-        { heading: "Location", secondaryHeading: "Where will you be starting your trip from?" },
+        {
+          heading: "Location",
+          secondaryHeading: "Where will you be starting your trip from?",
+        },
         {
           heading: "Duration",
           secondaryHeading: "When will this trip be?",
@@ -290,7 +419,7 @@ export default {
         .then((response) => {
           this.validLocations = response.data;
         })
-        .catch((error) => { });
+        .catch((error) => {});
     },
     generateItinerary() {
       let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -328,9 +457,11 @@ export default {
       }
 
       this.activePhase += 1;
+      window.scrollTo({ top: 0, behavior: "smooth" });
     },
     goToPrevStep() {
       this.activePhase -= 1;
+      window.scrollTo({ top: 0, behavior: "smooth" });
     },
     stepNumberClasses(i) {
       return {
