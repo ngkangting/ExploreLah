@@ -9,6 +9,7 @@ export const useItineraryStore = defineStore("itinerary", {
     itineraryInput: useStorage("itineraryInput", {}),
     isLoading: true,
     details: useStorage("details", {}),
+    viewingTrip: false,
   }),
 
   mounted() {
@@ -31,6 +32,7 @@ export const useItineraryStore = defineStore("itinerary", {
           this.itineraryInput = res.data["user"];
           this.details = res.data["details"];
           this.isLoading = false;
+          this.viewingTrip = false;
         })
         .catch((err) => {
           console.error(err);

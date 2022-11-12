@@ -7,15 +7,13 @@
             <div class="col-8">
             <div class="card-body p-4">
                 <p class="card-title">
-                    <h3>Trip Name</h3>
-                    <p>2 Oct 2022 - 22 Oct 2022</p>
+                    <h3>{{ dayData.name.slice(1, -1) }}</h3>
+                    <p>{{ startDate }} - {{ endDate }}</p>
                 </p>
                 <p class="card-text d-none d-sm-block text-dark-blue">
-                    <b>Accommodation:</b> XXX Hotel
+                    <b>Starting Location:</b> {{ input.startLoc }}
                     <br>
-                    <b>Preference:</b> Shopping, Outdoor, Adventure
-                    <br>
-                    <b>Transportation Method:</b> By Car
+                    <b>Transportation Method:</b> {{ byCar }}
                 </p>
                 <button type="btn" class="btn bg-pink text-white btn-sm my-2">
                         Download as PDF
@@ -87,25 +85,81 @@
 </template>
   
 <script>
+import { useItineraryStore } from "@/stores/itinerary";
+
 // import Vue3Html2pdf from 'vue3-html2pdf';
 
 export default {
     name: "PhoneTripCard",
+    setup() {
+        const itineraryStore = useItineraryStore();
+        return { itineraryStore };
+    },
     props: {
+        dayData:null,
     },
     components: {
         // Vue3Html2pdf
     },
+    created() {
+        let currDate = new Date();
+    },
+    computed: {
+        startDate() {
+        let startDate = new Date(this.input["dates"][0].toString());
+        let outputStr =
+            startDate.getDate() + " " + this.numToMonth[startDate.getMonth()];
+        return outputStr;
+        },
+        endDate() {
+        let endDate = new Date(this.input["dates"][1].toString());
+        let outputStr =
+            endDate.getDate() + " " + this.numToMonth[endDate.getMonth()];
+        return outputStr;
+        },
+        byCar() {
+        if (this.input.byCar) {
+            return "Private Transport";
+        }
+        return "Public Transport";
+        },
+    },
     data() {
         return {
-
+            numToMonth: [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "Jun",
+                    "Jul",
+                    "Aug",
+                    "Sep",
+                    "Oct",
+                    "Nov",
+                    "Dec",
+                ],
+            itinerary: JSON.parse(this.dayData["itinerary"]),
+            food: JSON.parse(this.dayData["food"]),
+            input: JSON.parse(this.dayData["input"]),
         };
     },
-    methods(){
-        //error
-        // generateReport () {
-        //         this.$refs.html2Pdf.generatePdf(document.getElementById("pdf-content"))
-        // },
+    
+    methods:{
+        viewItinerary() {
+        //Set this to be the defacto inside intinerary store
+        this.itineraryStore.setItinerary(this.dayData);
+        this.itineraryStore.viewingTrip = true;
+        this.itineraryStore.isLoading = false;
+        //Redirect
+        this.$router.push({
+            path: "/result",
+        });
+        },
+        generateReport() {
+        // this.$refs.html2Pdf.generatePdf(document.getElementById("pdf-content"));
+        },        
     },
 };
 </script>

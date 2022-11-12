@@ -97,9 +97,11 @@ export default {
     viewItinerary() {
       //Set this to be the defacto inside intinerary store
       this.itineraryStore.setItinerary(this.dayData);
+      this.itineraryStore.viewingTrip = true;
+      this.itineraryStore.isLoading = false;
       //Redirect
       this.$router.push({
-        path: "/viewresult",
+        path: "/result",
       });
     },
 
