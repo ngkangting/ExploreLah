@@ -1,35 +1,38 @@
 <template>
-  <div class="trip-card p-4 col-md-6 col-lg-4 col-xl-3" @click="viewItinerary">
-    <div class="effect-image-1 zoom-effect-1">
-      <img src="../../assets/img/tripcard.jpg" class="w-100" />
-      <div
-        class="overlay text-white d-flex justify-content-center align-items-center text-center"
-        style="bottom: 45% !important"
-      >
-        <div>
-          <h3>{{ dayData.name.slice(1, -1) }}</h3>
-          <div>{{ startDate }} - {{ endDate }}</div>
+  <div v-if="showTripCard">
+    <button @click="deleteTrip">Delete Me!</button>
+    <div class="trip-card p-4 col-md-6 col-lg-4 col-xl-3" @click="viewItinerary">
+      <div class="effect-image-1 zoom-effect-1">
+        <img src="../../assets/img/tripcard.jpg" class="w-100" />
+        <div
+          class="overlay text-white d-flex justify-content-center align-items-center text-center"
+          style="bottom: 45% !important"
+        >
+          <div>
+            <h3>{{ dayData.name.slice(1, -1) }}</h3>
+            <div>{{ startDate }} - {{ endDate }}</div>
+          </div>
+        </div>
+        <div
+          class="d-flex description bg-white text-dark-blue px-3"
+          style="top: 45% !important"
+        >
+          <p class="m-0 w-100">
+            <b>Starting Location:</b> {{ input.startLoc }}
+            <br />
+            <b>Transportation Method:</b> {{ byCar }}
+            <br />
+            <button
+              @click="generateReport"
+              type="btn"
+              class="btn bg-pink text-white btn-sm my-2"
+            >
+              Download as PDF
+            </button>
+          </p>
         </div>
       </div>
-      <div
-        class="d-flex description bg-white text-dark-blue px-3"
-        style="top: 45% !important"
-      >
-        <p class="m-0 w-100">
-          <b>Starting Location:</b> {{ input.startLoc }}
-          <br />
-          <b>Transportation Method:</b> {{ byCar }}
-          <br />
-          <button
-            @click="generateReport"
-            type="btn"
-            class="btn bg-pink text-white btn-sm my-2"
-          >
-            Download as PDF
-          </button>
-        </p>
-      </div>
-    </div>
+  </div>
     <!-- <vue3-html2pdf
       :show-layout="false"
       :float-layout="true"
@@ -98,6 +101,14 @@
 
 <script>
 import { useItineraryStore } from "@/stores/itinerary";
+import {useAuthStore} from "@/stores/auth";
+import {
+  getFirestore,
+  doc,
+  updateDoc,
+  collection
+} from "firebase/firestore";
+import firebaseApp from "../../firebaseConfig";
 // import Vue3Html2pdf from "vue3-html2pdf";
 
 export default {
@@ -127,7 +138,11 @@ export default {
       itinerary: JSON.parse(this.dayData["itinerary"]),
       food: JSON.parse(this.dayData["food"]),
       input: JSON.parse(this.dayData["input"]),
+      showTripCard:true,
     };
+  },
+  mounted(){
+    
   },
   computed: {
     startDate() {
@@ -154,7 +169,10 @@ export default {
   },
   setup() {
     const itineraryStore = useItineraryStore();
-    return { itineraryStore };
+    const authStore = useAuthStore();
+    const db = getFirestore(firebaseApp);
+    return {db, itineraryStore, authStore };
+  
   },
   methods: {
     viewItinerary() {
@@ -170,6 +188,20 @@ export default {
     generateReport() {
       // this.$refs.html2Pdf.generatePdf(document.getElementById("pdf-content"));
     },
+    async deleteTrip(){
+      let docID = this.dayData["docID"];
+      let userID = this.authStore.user.uid;
+      const docRef = doc(this.db, userID, docID);
+      this.showTripCard = false;
+      await updateDoc(docRef, {
+        "deleted":true
+      });
+      
+      
+
+   
+
+    }
   },
 };
 </script>

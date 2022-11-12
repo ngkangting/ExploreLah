@@ -70,6 +70,8 @@ import {
   query,
   where,
   getDocs,
+  deleteDoc,
+  doc
 } from "firebase/firestore";
 import firebaseApp from "../firebaseConfig";
 import { useItineraryStore } from "../stores/itinerary";
@@ -119,6 +121,7 @@ export default {
           this.data[doc.id] = doc.data();
           // console.log(doc.id, " => ", doc.data());
         });
+        //Write to
         this.loaded = true;
         this.parseTrips();
       }
@@ -131,18 +134,22 @@ export default {
         let tripDate = new Date(tempData.dates[1]);
         let todayDate = new Date();
         todayDate.setDate(todayDate.getDate() + 1);
-        if (tripDate > todayDate) {
+        if (this.data[info]["deleted"] == true) {
+          //pass
+        } else if (tripDate > todayDate) {
+          //Adding in the unique document ID 
+          this.data[info]["docID"] = info;
           this.upcomingTrips.push(this.data[info]);
+          //Write to itinerary store
         } else {
+          this.data[info]["docID"] = info;
           this.pastTrips.push(this.data[info]);
+
         }
       }
       return null;
     },
-    getFromLocal() {
-      console.log("Triggered");
-      this.itineraryStore.getFromLocalStorage();
-    },
+
   },
 };
 </script>
@@ -167,7 +174,7 @@ input.form-control:focus {
   background-image: url("../assets/img/mytripsbg.png");
 
   /* Set a specific height */
-  min-height: 500px;
+  min-height: 40vh;
   width: 100%;
   overflow: hidden;
 
