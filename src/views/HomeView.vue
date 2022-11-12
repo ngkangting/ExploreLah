@@ -270,7 +270,7 @@
         />
       </div>
       <div
-        class="col-12 col-md-5 d-flex justify-content-center align-items-center"
+        class="col-12 col-md-5 d-flex align-items-center"
       >
         <div class="m-4">
           <h2>

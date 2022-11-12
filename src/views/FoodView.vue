@@ -15,13 +15,9 @@ desiree, [13 Nov 2022 at 02:50:50]:
 
         <div class="row">
           <div class="col-md-6 pb-4">
-            <GoogleMap api-key="AIzaSyA__JlBf_-nIjvNRUNSpM4gdrygcyDenm0"
-              style="width: 100%; height: 85vh; background-color: azure" :center="center" :zoom="15">
-              <!-- <Marker v-for="(pos, index) in markers" :options="{ position: pos }" :icon="{url:('../../public/ico/food.ico'), size: {width:30, height:30}}" /> -->
-              <CustomMarker v-for="(pos, index) in markers" :options="{ position: pos }">
-                <img src="../../public/ico/food.ico" width="32" height="32" style="margin-top: 8px" />
-              </CustomMarker>
-            </GoogleMap>
+            <GoogleMapWPinsForFood :pinsInfo="markers"/>
+
+     
           </div>
 
           <div class="col-md-6">
@@ -106,7 +102,7 @@ import firebaseApp from "../firebaseConfig";
 
 import FoodLocation from "../components/resultpage/FoodLocation.vue";
 import FoodCard from "../components/resultpage/FoodCard.vue";
-
+import GoogleMapWPinsForFood from "../components/common/GoogleMapWPinsForFood.vue";
 export default {
   name: "FoodView",
   components: {
@@ -115,6 +111,8 @@ export default {
     FoodLocation,
     CustomMarker,
     FoodCard,
+    GoogleMapWPinsForFood
+
   },
   data() {
     return {
