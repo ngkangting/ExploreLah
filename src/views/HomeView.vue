@@ -258,19 +258,19 @@
   <div class="mx-5">
     <h1 class="fw-bold text-center mt-5 py-5">How It Works</h1>
 
-    <div class="row fixed justify-content-center">
+    <div class="row fixed justify-content-center h-100">
       <div
-        class="col-5 rounded-4 d-none d-sm-block d-md-block d-lg-block d-xl-block"
+        class="col-5 rounded-4 d-none d-sm-none d-md-block d-lg-block d-xl-block p-5"
         style="background-color: #ff8397"
       >
         <img
           src="../assets/img/gif1.gif"
           alt="gif1"
-          class="d-block mx-auto w-75"
+          class="d-block mx-auto w-100 h-100 p-3"
         />
       </div>
       <div
-        class="col-12 col-sm-5 d-flex justify-content-center align-items-center"
+        class="col-12 col-md-5 d-flex justify-content-center align-items-center"
       >
         <div class="m-4">
           <h2>
@@ -285,9 +285,9 @@
       </div>
     </div>
 
-    <div class="row justify-content-center">
+    <div class="row justify-content-center h-100">
       <div
-        class="col-12 col-sm-5 d-flex justify-content-center align-items-center"
+        class="col-12 col-md-5 d-flex align-items-center"
       >
         <div class="m-4">
           <h2>
@@ -298,28 +298,28 @@
         </div>
       </div>
       <div
-        class="col-5 bg-newlightpink d-flex py-1 rounded-4 d-none d-sm-block d-md-block d-lg-block d-xl-block"
+        class="col-5 bg-newlightpink d-flex py-1 rounded-4 d-none d-sm-none d-md-block d-lg-block d-xl-block p-5"
       >
         <img
           src="../assets/img/gif2.gif"
           alt="gif2"
-          class="d-block mx-auto w-50"
+          class="d-block mx-auto w-75 h-100 p-3"
         />
       </div>
     </div>
 
-    <div class="row justify-content-center">
+    <div class="row justify-content-center h-100">
       <div
-        class="col-5 bg-light-blue py-4 d-flex rounded-4 d-none d-sm-block d-md-block d-lg-block d-xl-block"
+        class="col-5 bg-light-blue py-4 d-flex rounded-4 d-none d-sm-none d-md-block d-lg-block d-xl-block p-5"
       >
         <img
           src="../assets/img/gif3.gif"
           alt="gif3"
-          class="w-50 d-block mx-auto"
+          class="w-50 d-block mx-auto h-100 w-100 p-3" 
         />
       </div>
       <div
-        class="col-12 col-sm-5 d-flex justify-content-center align-items-center"
+        class="col-12 col-md-5 d-flex align-items-center"
       >
         <div class="m-4">
           <h2>
@@ -333,9 +333,9 @@
       </div>
     </div>
 
-    <div class="row justify-content-center">
+    <div class="row justify-content-center h-100">
       <div
-        class="col-12 col-sm-5 d-flex justify-content-center align-items-center"
+        class="col-12 col-md-5 d-flex align-items-center"
       >
         <div class="m-4">
           <h2>
@@ -349,12 +349,12 @@
         </div>
       </div>
       <div
-        class="col-5 bg-blue d-flex rounded-4 d-none d-sm-block d-md-block d-lg-block d-xl-block"
+        class="col-5 bg-blue d-flex rounded-4 d-none d-sm-none d-md-block d-lg-block d-xl-block p-5"
       >
         <img
           src="../assets/img/gif4.gif"
           alt="gif4"
-          class="d-block mx-auto w-50"
+          class="d-block w-100 h-100"
         />
       </div>
     </div>
@@ -659,7 +659,7 @@ span.btn-special:hover {
 }
 
 .picture {
-  min-height: 150px;
+  min-height: 280px;
 }
 
 .bg-light-pink {
