@@ -19,11 +19,16 @@
         </p>
       </div>
     </div> 
+    <div>
+      <input  type="button" value="View Trip" @click="viewItinerary"/>
+    </div>
   </div>
   
 </template>
 
 <script>
+import { useItineraryStore } from "@/stores/itinerary";
+
 export default {
   name: "TripCard",
   props: {
@@ -57,7 +62,20 @@ export default {
   },
   created(){
     let currDate = new Date();
-    console.log(`Current date is ${currDate}`)
+  },
+  setup(){
+    const itineraryStore = useItineraryStore();
+    return {itineraryStore};
+  },
+  methods:{
+    viewItinerary(){
+      //Set this to be the defacto inside intinerary store
+      this.itineraryStore.setItinerary(this.dayData);
+      //Redirect
+      this.$router.push({
+          path: "/viewresult",
+        });
+    }
   },
 };
 </script>

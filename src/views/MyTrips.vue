@@ -5,7 +5,6 @@
         <h1 class="type my-5 fw-bold text-white display-4">
           <span> Relive your trips </span>
         </h1>
-        <button @click="getData">Get Data</button>
       </div>
       <div>
         <form
@@ -24,7 +23,15 @@
     </div>
       <div class="mt-5 mb-5 mx-5">
         <h3 class="fw-bold px-3 mt-4">Upcoming & Current Trips ({{upcomingTrips.length}})</h3>
-        <div class="row d-none d-sm-none d-md-flex">
+        <div v-if="!loaded" class="text-center">
+          <!-- <div  class="spinner-border" role="status" style="width: 5rem; height: 5rem;stroke-width:;">
+          </div>           -->
+          <div  class="row d-none d-sm-none d-md-flex">
+            <TripCardSkeleton v-for="info in 3" 
+            /> 
+          </div>
+        </div>
+        <div v-else class="row d-none d-sm-none d-md-flex">
            <TripCard v-for="info in this.upcomingTrips" 
                   :dayData="info"/> 
         </div>
@@ -35,13 +42,16 @@
       <div class="mx-5 mb-5">
         <h3 class="fw-bold px-3">Past Trips ({{pastTrips.length}})</h3>
         <div v-if="!loaded" class="text-center">
-          <div  class="spinner-border" role="status" style="width: 5rem; height: 5rem;stroke-width:;">
-              <!-- <span class="sr-only">Loading...</span> -->
+          <!-- <div  class="spinner-border" role="status" style="width: 5rem; height: 5rem;stroke-width:;">
+          </div>           -->
+          <div  class="row d-none d-sm-none d-md-flex">
+            <TripCardSkeleton v-for="info in 1" 
+                  /> 
           </div>
         </div>
 
 
-          <div  class="row d-none d-sm-none d-md-flex">
+          <div v-else class="row d-none d-sm-none d-md-flex">
             <TripCard v-for="info in this.pastTrips" 
                   :dayData="info"/> 
 
@@ -61,6 +71,7 @@
 
 <script>
 import TripCard from "@/components/common/TripCard.vue";
+import TripCardSkeleton from "@/components/common/TripCardSkeleton.vue";
 import Footer from "@/components/layout/Footer.vue";
 import PhoneTripCard from "@/components/common/PhoneTripCard.vue";
 
@@ -81,6 +92,7 @@ export default {
   },
   components: {
     TripCard,
+    TripCardSkeleton,
     Footer,
     PhoneTripCard,
   },
@@ -94,23 +106,27 @@ export default {
   },
   computed: {
     async userUid(){
-      let uid = await this.authStore.getUid;
-      return uid;
+      await this.authStore.getUid.then(uid => {
+        return uid
+      });
+      return null;
     },
     
   },
   watch:{
     async triggerWatcher(){
-      const q = query(collection(this.db,this.authStore.user.uid));
-      const querySnapshot = await getDocs(q);
-      // console.log(querySnapshot);
-      querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-        this.data[doc.id] = doc.data();
-        // console.log(doc.id, " => ", doc.data());
-      })
-      this.loaded = true;
-      this.parseTrips();
+      if (this.authStore.user != null) {
+        const q = query(collection(this.db,this.authStore.user.uid));
+        const querySnapshot = await getDocs(q);
+        // console.log(querySnapshot);
+        querySnapshot.forEach((doc) => {
+          // doc.data() is never undefined for query doc snapshots
+          this.data[doc.id] = doc.data();
+          // console.log(doc.id, " => ", doc.data());
+        })
+        this.loaded = true;
+        this.parseTrips();
+      }
       
     }
   },
@@ -120,9 +136,7 @@ export default {
         let tempData =  JSON.parse(this.data[info]["input"]);
         let tripDate = new Date(tempData.dates[1]);
         let todayDate = new Date();
-        console.log(todayDate);
         todayDate.setDate(todayDate.getDate() + 1);
-        console.log(todayDate);
         if (tripDate > todayDate ){
           this.upcomingTrips.push(this.data[info])
         } else {

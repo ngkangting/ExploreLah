@@ -1,9 +1,10 @@
 <template>
   <div
-    v-motion-pop
-    class="mb-0 pb-2 bg-light pt-5"
-    :style="{ minHeight: 'calc(100vh - 75px)' }"
+  v-motion-pop
+  class="mb-0 pb-2 bg-light pt-5"
+  :style="{ minHeight: 'calc(100vh - 75px)' }"
   >
+  <MerlionMascot :posX=250 :posY=685></MerlionMascot>
     <div class="d-flex justify-content-center align-items-center">
       <h1 class="d-flex fw-bold justify-content-center pt-4 px-3 text-center">
         Singapore is yours to EXPLORE!
@@ -505,10 +506,12 @@
 <script>
 import { useAuthStore } from "@/stores/auth";
 import Footer from "@/components/layout/Footer.vue";
+import MerlionMascot from "@/components/common/MerlionMascot.vue";
 
 export default {
   name: "HomeView",
   components: {
+    MerlionMascot,
     Footer,
   },
   data() {
