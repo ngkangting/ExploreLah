@@ -94,7 +94,7 @@
               </button>
             </div>
             <!-- Button trigger modal -->
-            <div class="d-flex justify-content-end">
+            <div v-if="authStore.isLoggedIn" class="d-flex justify-content-end">
               <button
                 type="button"
                 class="btn btn-pink"
@@ -104,6 +104,12 @@
                 Save Itinerary
               </button>
             </div>
+
+            <!-- <div v-else>
+              <button @click="generatePDF" type="btn" class="btn bg-pink text-white btn-sm my-2">
+                Download as PDF
+              </button>
+            </div> -->
 
             <!-- Modal -->
             <div
@@ -175,6 +181,7 @@ import firebaseApp from "../firebaseConfig";
 import FoodLocation from "../components/resultpage/FoodLocation.vue";
 import FoodCard from "../components/resultpage/FoodCard.vue";
 import GoogleMapWPinsForFood from "../components/common/GoogleMapWPinsForFood.vue";
+
 export default {
   name: "FoodView",
   components: {
@@ -191,6 +198,8 @@ export default {
       currDay: 1,
       inputName: null,
       generatedOrder: [],
+      // itinerary: JSON.parse(this.dayData["itinerary"]),
+      // input: JSON.parse(this.dayData["input"]),
     };
   },
   setup() {
@@ -300,6 +309,40 @@ export default {
         console.error("Error adding document: ", e);
       }
     },
+    // generatePDF() {
+    //   var dayCounter = 1;
+    //   var activityCounter = 1;
+    //   var docDefinition = {
+    //     content: [
+    //       "Trip Name: " + this.dayData.name.slice(1, -1),
+    //       "Starting Location: " + this.input.startLoc,
+    //       " ",
+    //     ],
+    //   };
+    //   for (let day of this.itinerary) {
+    //     docDefinition.content.push("Day" + dayCounter);
+    //     docDefinition.content.push(" ");
+    //     dayCounter += 1;
+
+    //     for (let activity of day.itinerary) {
+    //       docDefinition.content.push("Activity" + activityCounter);
+    //       docDefinition.content.push("Location: " + activity.name);
+    //       docDefinition.content.push("Start Time: " + activity.arriveTime);
+    //       docDefinition.content.push("End Time: " + activity.endTime);
+    //       docDefinition.content.push("Duration of Activity: " + activity.dur);
+    //       docDefinition.content.push(
+    //         "Travel Time to Location: " + activity.travelTimeTo
+    //       );
+    //       docDefinition.content.push("Weather: " + activity.status);
+    //       docDefinition.content.push(" ");
+    //       activityCounter += 1;
+    //     }
+    //     docDefinition.content.push(" ");
+    //     activityCounter = 1;
+    //   }
+
+    //   pdfMake.createPdf(docDefinition).download();
+    // },
   },
 };
 </script>
