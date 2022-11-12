@@ -1,12 +1,21 @@
 <template>
   <div class="container-fluid h-100">
     <div class="row min-vh-100 pt-5 pt-lg-0 justify-content-around">
-      <FixedAlert :variant="variant" :alertContent="alertContent" v-if="isAlert" />
-      <div class="col-12 col-lg-5 offset-lg-1 my-auto px-5">
-        <RoundLink class="position-absolute top-0 start-0 mt-4 ms-3 mt-lg-4 ms-lg-4" :path="'/'" :height="50"
-          :width="50">
+      <FixedAlert
+        :variant="variant"
+        :alertContent="alertContent"
+        v-if="isAlert"
+      />
+      <div class="col-12 col-lg-5 offset-lg-1 my-auto mt-5 px-5">
+        <RoundLink
+          class="position-absolute top-0 start-0 mt-4 ms-3 mt-lg-4 ms-lg-4"
+          :path="'/'"
+          :height="50"
+          :width="50"
+        >
           <i class="bi-chevron-left text-secondary" style="font-size: 1rem"></i>
-        </RoundLink> Back to Itinerary
+        </RoundLink>
+        Back to Itinerary
         <div class="mb-5">
           <h1 class="text-dark-blue">Sign Up</h1>
           <p class="text-black-50">
@@ -15,39 +24,69 @@
         </div>
         <form @submit.prevent="registerUser()">
           <div class="mb-3">
-            <label for="emailInput" class="form-label">Email address<span class="text-danger">*</span></label>
-            <input type="email" class="form-control" id="emailInput" aria-describedby="emailInput"
-              placeholder="Enter email address" v-model="email" required />
+            <label for="emailInput" class="form-label"
+              >Email address<span class="text-danger">*</span></label
+            >
+            <input
+              type="email"
+              class="form-control"
+              id="emailInput"
+              aria-describedby="emailInput"
+              placeholder="Enter email address"
+              v-model="email"
+              required
+            />
           </div>
           <div class="mb-3">
-            <label for="passwordInput" class="form-label">Password<span class="text-danger">*</span></label>
-            <input type="password" class="form-control" id="passwordInput" placeholder="Enter password"
-              v-model="password" required />
+            <label for="passwordInput" class="form-label"
+              >Password<span class="text-danger">*</span></label
+            >
+            <input
+              type="password"
+              class="form-control"
+              id="passwordInput"
+              placeholder="Enter password"
+              v-model="password"
+              required
+            />
           </div>
           <div class="mb-3 d-flex justify-content-between">
             <div class="form-check">
               <input type="checkbox" class="form-check-input" id="termsCheck" />
-              <label class="form-check-label text-secondary" for="termsCheck">I have read and agree to the
-                <router-link to="/signup" class="text-decoration-none">Terms of Service</router-link>
+              <label class="form-check-label text-secondary" for="termsCheck"
+                >I have read and agree to the
+                <router-link to="/signup" class="text-decoration-none"
+                  >Terms of Service</router-link
+                >
               </label>
             </div>
           </div>
           <div class="text-center">
-            <button type="submit" class="btn btn-pink w-100" :disabled="isLoading">
+            <button
+              type="submit"
+              class="btn btn-pink w-100"
+              :disabled="isLoading"
+            >
               Sign Up
             </button>
           </div>
         </form>
         <LineText content="or" />
         <div class="mb-5">
-          <button type="button" class="btn btn-light-gray w-100 d-flex align-items-center justify-content-center"
-            @click="loginWithGoogle()" :disabled="isLoading">
+          <button
+            type="button"
+            class="btn btn-light-gray w-100 d-flex align-items-center justify-content-center"
+            @click="loginWithGoogle()"
+            :disabled="isLoading"
+          >
             <GoogleIcon class="me-2" /> Sign Up with Google
           </button>
         </div>
         <div class="text-center">
           <span class="text-secondary">Already have an account? </span>
-          <router-link to="/login" class="text-decoration-none">Login</router-link>
+          <router-link to="/login" class="text-decoration-none"
+            >Login</router-link
+          >
         </div>
       </div>
       <AuthHero />
@@ -137,6 +176,4 @@ export default {
 };
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>

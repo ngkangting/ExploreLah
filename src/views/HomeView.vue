@@ -4,6 +4,7 @@
     class="mb-0 pb-2 bg-light pt-5"
     :style="{ minHeight: 'calc(100vh - 75px)' }"
   >
+    <MerlionMascot :posX="50" :posY="-64" :isMovable="true" />
     <div class="d-flex justify-content-center align-items-center">
       <h1 class="d-flex fw-bold justify-content-center pt-4 px-3 text-center">
         Singapore is yours to EXPLORE!
@@ -49,12 +50,23 @@
       </div>
     </div>
 
-    <div class="d-flex justify-content-center">
-      <h6
-        class="d-flex justify-content align-items-center btn-special-blue text-center d-md-none d-lg-none d-xl-none m-2"
-      >
-        Start Planning!
-      </h6>
+    <div class="d-md-none d-lg-none d-xl-none">
+      <lottie-player
+        class="car"
+        src="https://assets4.lottiefiles.com/packages/lf20_JOHmpu.json"
+        background="transparent"
+        speed="0.6"
+        style="width: auto; height: 100px"
+        loop
+        autoplay
+      ></lottie-player>
+      <div class="d-flex justify-content-center">
+        <h6>
+          <router-link to="/plan" class="btn-special-blue text-decoration-none">
+            Start Planning!
+          </router-link>
+        </h6>
+      </div>
     </div>
 
     <div class="row justify-content-center mx-5">
@@ -163,11 +175,14 @@
           loop
           autoplay
         ></lottie-player>
-        <h6
-          class="d-flex justify-content align-items-center btn-special-blue text-center me-5"
-        >
-          Start Planning!
-        </h6>
+        <h4>
+          <router-link
+            to="/plan"
+            class="d-flex justify-content align-items-center btn-special-blue text-center me-5 text-decoration-none"
+          >
+            Start Planning
+          </router-link>
+        </h4>
       </span>
     </div>
   </div>
@@ -183,7 +198,7 @@
       <div class="feature col-12 col-md-6 col-lg-3 p-4">
         <div class="row picture align-items-center">
           <img
-            class="w-25 p-2 mx-auto"
+            class="w-50 p-2 mx-auto"
             src="../assets/img/feature1.jpg"
             alt="feature1"
           />
@@ -198,7 +213,7 @@
       <div class="feature col-12 col-md-6 col-lg-3 p-4">
         <div class="row picture align-items-center">
           <img
-            class="w-50 p-2 mx-auto"
+            class="w-75 p-2 mx-auto"
             src="../assets/img/feature2.png"
             alt="feature2"
           />
@@ -210,7 +225,7 @@
       <div class="feature col-12 col-md-6 col-lg-3 p-4">
         <div class="row picture align-items-center">
           <img
-            class="w-25 p-2 mx-auto"
+            class="w-50 p-2 mx-auto"
             src="../assets/img/feature3.png"
             alt="feature3"
           />
@@ -225,7 +240,7 @@
       <div class="feature col-12 col-md-6 col-lg-3 p-4">
         <div class="row picture align-items-center">
           <img
-            class="w-25 p-2 mx-auto"
+            class="w-50 p-2 mx-auto"
             src="../assets/img/feature5.png"
             alt="feature5"
           />
@@ -244,7 +259,7 @@
 
     <div class="row fixed justify-content-center">
       <div
-        class="col-5 d-flex rounded-4 d-none d-sm-block d-md-block d-lg-block d-xl-block"
+        class="col-5 rounded-4 d-none d-sm-block d-md-block d-lg-block d-xl-block"
         style="background-color: #ff8397"
       >
         <img
@@ -258,12 +273,12 @@
       >
         <div class="m-4">
           <h2>
-            <i class="bi bi-1-circle"></i>
+            <i class="bi bi-1-circle text-pink"></i>
             Location
           </h2>
           <div>
-            Let us know where you're currently staying so we have an idea of
-            whats near you!
+            Let us know where you want to start from so we have an idea of whats
+            near you!
           </div>
         </div>
       </div>
@@ -275,7 +290,7 @@
       >
         <div class="m-4">
           <h2>
-            <i class="bi bi-2-circle"></i>
+            <i class="bi bi-2-circle text-newlightpink"></i>
             Duration
           </h2>
           <div>Tell us how long you plan on hanging around Singapore!</div>
@@ -307,7 +322,7 @@
       >
         <div class="m-4">
           <h2>
-            <i class="bi bi-3-circle"></i>
+            <i class="bi bi-3-circle text-light-blue"></i>
             Preferences
           </h2>
           <div>
@@ -323,7 +338,7 @@
       >
         <div class="m-4">
           <h2>
-            <i class="bi bi-4-circle"></i>
+            <i class="bi bi-4-circle text-blue"></i>
             Transportation
           </h2>
           <div>
@@ -351,7 +366,7 @@
     <div class="row justify-content-center">
       <div class="col-5 col-md-3 justify-content-center">
         <div class="p-2">
-          <div class="py-2">
+          <div class="py-2 review">
             <div class="py-2 d-flex">
               <i
                 class="bi bi-star-fill text-pink me-1"
@@ -380,7 +395,7 @@
             </p>
             <p class="text-muted">- Professor Mok</p>
           </div>
-          <div class="py-2">
+          <div class="py-2 review">
             <div class="py-2 d-flex">
               <i
                 class="bi bi-star-fill text-pink me-1"
@@ -422,7 +437,7 @@
       </div>
       <div class="col-5 col-md-3 justify-content-center">
         <div class="p-2">
-          <div class="py-2">
+          <div class="py-2 review">
             <div class="py-2 d-flex">
               <i
                 class="bi bi-star-fill text-pink me-1"
@@ -448,7 +463,7 @@
             <p>Great app that saved me a lot of time while I was travelling</p>
             <p class="text-muted">- TA Chen</p>
           </div>
-          <div class="py-2">
+          <div class="py-2 review">
             <div class="py-2 d-flex">
               <i
                 class="bi bi-star-fill text-pink me-1"
@@ -475,7 +490,7 @@
               Easy to use and convenient! Wish I had something like this for
               overseas too.
             </p>
-            <p class="text-muted">- Derrick Tan</p>
+            <p class="text-muted">- Prof Kyong</p>
           </div>
         </div>
       </div>
@@ -486,10 +501,14 @@
     <h1
       class="type d-flex justify-content-center fw-bold text-center mt-5 py-5"
     >
-      <span> Ready to plan your trip in half the time? </span>
+      <span> Ready to plan your trip now? </span>
     </h1>
     <div class="d-flex justify-content-center">
-      <h4 class="btn-special">Plan Now</h4>
+      <h4>
+        <router-link to="/plan" class="btn-special text-decoration-none">
+          Plan Now
+        </router-link>
+      </h4>
     </div>
   </div>
 
@@ -505,10 +524,12 @@
 <script>
 import { useAuthStore } from "@/stores/auth";
 import Footer from "@/components/layout/Footer.vue";
+import MerlionMascot from "@/components/common/MerlionMascot.vue";
 
 export default {
   name: "HomeView",
   components: {
+    MerlionMascot,
     Footer,
   },
   data() {
@@ -650,5 +671,13 @@ span.btn-special:hover {
 
 .bg-newlightpink {
   background-color: #fad9e0;
+}
+
+.text-newlightpink {
+  color: #fad9e0;
+}
+
+.review {
+  min-height: 300px;
 }
 </style>

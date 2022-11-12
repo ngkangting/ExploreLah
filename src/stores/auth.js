@@ -1,7 +1,4 @@
 import { defineStore } from "pinia";
-import {getFirestore, collection, query, where, getDocs} from "firebase/firestore";
-import db from "../firebaseConfig.js";
-
 
 import {
   getAuth,
@@ -22,10 +19,9 @@ export const useAuthStore = defineStore("auth", {
     isLoggedIn(state) {
       return !(state.user === undefined || state.user === null);
     },
-    getUid(state){
+    getUid(state) {
       return state.user.uid;
     },
-
   },
   actions: {
     async fetchUser() {
@@ -167,6 +163,5 @@ export const useAuthStore = defineStore("auth", {
         });
       return isSuccess;
     },
-
   },
 });

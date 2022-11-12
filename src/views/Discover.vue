@@ -54,11 +54,10 @@
         <div
           class="d-flex justify-content-center align-items-center bg-light-blue h-100 w-100 text-center p-3 py-5 rounded-4"
         >
-          <div class="fw-bold w-90 display-5">258</div>
-          &nbsp;&nbsp;&nbsp;
+          <div class="fw-bold w-90 display-5 me-3">258</div>
           <h5>
             trips planned in
-            <br />
+            <br/>
             the last hour
           </h5>
         </div>

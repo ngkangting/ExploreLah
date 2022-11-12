@@ -50,28 +50,28 @@
           </li>
           <li class="my-2">
             <router-link
-              to="#team"
+              to="/PageNotFound"
               class="opacity-75 text-white text-decoration-none footer-link"
               >Our Team</router-link
             >
           </li>
           <li class="my-2">
             <router-link
-              to="#partner"
+              to="/PageNotFound"
               class="opacity-75 text-white text-decoration-none footer-link"
               >Partner Program</router-link
             >
           </li>
           <li class="my-2">
             <router-link
-              to="#investors"
+              to="/PageNotFound"
               class="opacity-75 text-white text-decoration-none footer-link"
               >Investors</router-link
             >
           </li>
           <li class="my-2">
             <router-link
-              to="#careers"
+              to="/PageNotFound"
               class="opacity-75 text-white text-decoration-none footer-link"
               >Careers</router-link
             >
@@ -89,21 +89,21 @@
         <ul class="list-unstyled mb-3">
           <li class="my-2">
             <router-link
-              to="#discover"
+              to="/discover"
               class="opacity-75 text-white text-decoration-none footer-link"
               >Discover</router-link
             >
           </li>
           <li class="my-2">
             <router-link
-              to="#plan"
+              to="/plan"
               class="opacity-75 text-white text-decoration-none footer-link"
               >Plan Now</router-link
             >
           </li>
           <li class="my-2">
             <router-link
-              to="#mytrips"
+              to="/mytrips"
               class="opacity-75 text-white text-decoration-none footer-link"
               >My Trips</router-link
             >
@@ -122,35 +122,35 @@
         <ul class="list-unstyled mb-3">
           <li class="my-2">
             <router-link
-              to="#support"
+              to="/PageNotFound"
               class="opacity-75 text-white text-decoration-none footer-link"
               >24/7 Support</router-link
             >
           </li>
           <li class="my-2">
             <router-link
-              to="#community"
+              to="/PageNotFound"
               class="opacity-75 text-white text-decoration-none footer-link"
               >Community</router-link
             >
           </li>
           <li class="my-2">
             <router-link
-              to="#events"
+              to="/PageNotFound"
               class="opacity-75 text-white text-decoration-none footer-link"
               >Events</router-link
             >
           </li>
           <li class="my-2">
             <router-link
-              to="#blog"
+              to="/PageNotFound"
               class="opacity-75 text-white text-decoration-none footer-link"
               >Blog</router-link
             >
           </li>
           <li class="my-2">
             <router-link
-              to="#api"
+              to="/PageNotFound"
               class="opacity-75 text-white text-decoration-none footer-link"
               >APIs</router-link
             >
@@ -175,12 +175,12 @@
       >
         <div class="d-flex justify-content-between">
           <router-link
-            to="#terms"
+            to="/PageNotFound"
             class="opacity-75 text-white footer-link text-decoration-none me-3"
             >Terms of Service</router-link
           >
           <router-link
-            to="#privacy"
+            to="/PageNotFound"
             class="opacity-75 text-white footer-link text-decoration-none"
             >Privacy Policy</router-link
           >
