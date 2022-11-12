@@ -15,8 +15,7 @@
         >
           <i class="bi-chevron-left text-secondary" style="font-size: 1rem"></i>
         </RoundLink>
-        Back to Itinerary
-        <div class="mb-5">
+        <div class="my-5">
           <h1 class="text-dark-blue">Sign Up</h1>
           <p class="text-black-50">
             Create an account to take your trip planning to the next level!

@@ -38,14 +38,14 @@
       </div>
 
       <!-- Description -->
-      <div class="d-flex flex-column p-1">
+      <div class="d-flex flex-column">
         <div
           class="skeleton skeleton-text rounded"
-          style="height: 22px; width: 250px"
+          style="height: 22px; width: 200px"
         ></div>
         <div
           class="skeleton skeleton-text rounded"
-          style="height: 22px; width: 250px"
+          style="height: 22px; width: 200px"
         ></div>
       </div>
     </div>
