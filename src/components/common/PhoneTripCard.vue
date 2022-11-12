@@ -21,7 +21,7 @@
                         Download as PDF
                 </button>
             </div>
-            <vue3-html2pdf
+            <!--<vue3-html2pdf
                 :show-layout="false"
                 :float-layout="true"
                 :enable-download="true"
@@ -79,7 +79,7 @@
                     </div>
                 </span>
                 </template>
-            </vue3-html2pdf>  
+            </vue3-html2pdf>   -->
             </div>
         </div>
     </div>
@@ -87,14 +87,14 @@
 </template>
   
 <script>
-import Vue3Html2pdf from 'vue3-html2pdf';
+// import Vue3Html2pdf from 'vue3-html2pdf';
 
 export default {
     name: "PhoneTripCard",
     props: {
     },
     components: {
-        Vue3Html2pdf
+        // Vue3Html2pdf
     },
     data() {
         return {
