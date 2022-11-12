@@ -189,14 +189,14 @@
   </div>
 
   <div class="mx-5 px-5">
-    <h1 class="fw-bold text-center mt-5 py-5">
+    <h1 class="fw-bold text-center mt-5 pt-5">
       Features to replace all your other tools
     </h1>
     <div
       v-motion-slide-visible-once-left
       class="row text-center justify-content-center"
     >
-      <div class="feature col-12 col-md-6 col-lg-3 p-4">
+      <div class="feature col-12 col-sm-6 col-lg-3 p-4">
         <div class="row picture align-items-center">
           <img
             class="w-50 p-2 mx-auto"
@@ -211,7 +211,7 @@
         </p>
       </div>
 
-      <div class="feature col-12 col-md-6 col-lg-3 p-4">
+      <div class="feature col-12 col-sm-6 col-lg-3 p-4">
         <div class="row picture align-items-center">
           <img
             class="w-75 p-2 mx-auto"
@@ -223,7 +223,7 @@
         <p class="text-secondary">Minimise travel time. Maximise fun.</p>
       </div>
 
-      <div class="feature col-12 col-md-6 col-lg-3 p-4">
+      <div class="feature col-12 col-sm-6 col-lg-3 p-4">
         <div class="row picture align-items-center">
           <img
             class="w-50 p-2 mx-auto"
@@ -238,7 +238,7 @@
         </p>
       </div>
 
-      <div class="feature col-12 col-md-6 col-lg-3 p-4">
+      <div class="feature col-12 col-sm-6 col-lg-3 p-4">
         <div class="row picture align-items-center">
           <img
             class="w-50 p-2 mx-auto"
