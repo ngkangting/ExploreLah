@@ -2,15 +2,16 @@
   <!-- <div v-if="showTripCard"> -->
     <div v-if="showTripCard" class="trip-card p-4 col-md-6 col-lg-4 col-xl-3">
       <button @click="deleteTrip">Delete Me!</button>
-      <div class="effect-image-1 zoom-effect-1" @click="viewItinerary">    
+      <div class="effect-image-1 zoom-effect-1" @click="viewItinerary" @mouseenter="revealText = true" @mouseleave = "revealText = false">   
         <img src="../../assets/img/tripcard.jpg" class="w-100" />
         <div
           class="overlay text-white d-flex justify-content-center align-items-center text-center"
           style="bottom: 45% !important"
-        >
-          <div>
-            <h3>{{ dayData.name.slice(1, -1) }}</h3>
-            <div>{{ startDate }} - {{ endDate }}</div>
+        > 
+        <div>
+          <h3>{{ dayData.name.slice(1, -1) }}</h3>
+          <div>{{ startDate }} - {{ endDate }}</div>
+          <span v-if="revealText" class="revealText">Click to view details!</span>
           </div>
         </div>
         <div
@@ -139,6 +140,7 @@ export default {
       food: JSON.parse(this.dayData["food"]),
       input: JSON.parse(this.dayData["input"]),
       showTripCard:true,
+      revealText:false,
     };
   },
   mounted(){
@@ -326,5 +328,10 @@ export default {
   background: rgba(255, 255, 255, 0.1);
   z-index: 1;
   transform: skewY(-5deg) scale(1.5);
+}
+
+.reveal-text{
+  position: absolute;
+  color: red
 }
 </style>
