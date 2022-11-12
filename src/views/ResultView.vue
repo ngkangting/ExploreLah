@@ -341,7 +341,7 @@
               Next
             </button>
           </div>
-          <button class="btn btn-pink" @click="goToFoodPage">Go to Food Page</button>
+          <button class="btn btn-pink" @click="goToFoodPage">Go to Food Recommendations</button>
         </div>
       </div>
     </div>

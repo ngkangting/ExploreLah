@@ -3,8 +3,17 @@
     <h1 class="text-center fw-semibold p-4">
       Recommended Food Places
     </h1>
+
     <div class="col-10 offset-1 card border-0 p-3 rounded-4">
       <div class="card-body">
+        <div class="pb-3">
+          <router-link to="/result" class="text-decoration-none text-secondary"><i
+              class="bi-chevron-left text-secondary" style="font-size: 1rem"></i>
+            <span class="ps-1">
+              Back to Itinerary
+            </span>
+          </router-link>
+        </div>
         <h2 class="mb-4 py-2 fw-bold d-flex justify-content-center text-white bg-dark-blue">
           Day {{ currDay }}
         </h2>
@@ -33,15 +42,11 @@
                 </button>
               </li>
             </ul>
-
-            <div class="row">
-              <div>
-                <FoodLocation :data="shownFoodReco"></FoodLocation>
-                <!-- {{shownFoodReco}} -->
-              </div>
+            <div v-for="(place, idx) in Object.values(shownFoodReco)[0]" :key="idx">
+              <FoodCard :placeName="place[0]" :randomNum=randomNumList[idx]></FoodCard>
             </div>
 
-            <div class="d-flex justify-content-center py-2">
+            <div class="d-flex justify-content-start ps-3 py-2">
               <button @click="goPrevDay" class="rounded bg-dark-blue border-0 p-2 px-3 text-white">
                 Prev
               </button>
@@ -53,9 +58,11 @@
               </button>
             </div>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-pink" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-              Save Itinerary
-            </button>
+            <div class="d-flex justify-content-end">
+              <button type="button" class="btn btn-pink" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Save Itinerary
+              </button>
+            </div>
 
             <!-- Modal -->
             <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -72,7 +79,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-pink" @click="saveItineraryToDb" data-bs-toggle="modal"
-                      data-bs-target="#staticBackdrop">Save Trip</button>
+                      data-bs-target="#staticBackdrop">Save</button>
                   </div>
                 </div>
               </div>
@@ -96,18 +103,21 @@ import { getFirestore, collection, addDoc } from "firebase/firestore";
 import firebaseApp from "../firebaseConfig";
 
 import FoodLocation from "../components/resultpage/FoodLocation.vue";
+import FoodCard from "../components/resultpage/FoodCard.vue";
+
 
 
 export default {
   name: "FoodView",
   components: {
-    GoogleMap, Marker, FoodLocation, CustomMarker
+    GoogleMap, Marker, FoodLocation, CustomMarker, FoodCard
   },
   data() {
     return {
       state: 1, //O for lunch, 1 for dinner
       currDay: 1,
       inputName: null,
+      generatedOrder: [],
     };
   },
   setup() {
@@ -135,11 +145,29 @@ export default {
       return "unselected-style text-secondary"
     },
     shownFoodReco() {
+      //Curr Day Toggles
+      //Day 0 [0,3] day -> 0,6, 12 true += 3
       if (this.state) {
         //Show lunch reco
         return this.foodReco[this.currDay - 1]["lunch"]
       }
       return this.foodReco[this.currDay - 1]["dinner"]
+    },
+    randomNumList() {
+      let startIdx = (this.currDay - 1) * 6;
+      let endIdx;
+      if (this.state) {
+        // means is lunch
+        endIdx = startIdx + 3;
+      } else {
+        startIdx += 3;
+        endIdx = startIdx + 3;
+      }
+      let output = [];
+      for (let i = startIdx; i < endIdx; i++) {
+        output.push(this.generatedOrder[i.toString()])
+      }
+      return output;
     },
     markers() {
       if (this.state) {
@@ -150,7 +178,16 @@ export default {
 
     }
   },
+  mounted() {
+    let noOfDays = Object.keys(this.foodReco).length;
+    let noOfFood = noOfDays * 3 * 2;
+    let noOfImages = 42;
+    for (let i = 0; i <= noOfFood; i++) {
+      let rnd = Math.floor(Math.random() * (noOfImages));
+      this.generatedOrder.push(rnd)
+    }
 
+  },
   methods: {
     toggleState() {
       this.state = !this.state;

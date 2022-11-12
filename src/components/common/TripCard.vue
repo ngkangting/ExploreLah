@@ -1,29 +1,29 @@
 <template>
   <div class="trip-card p-4 col-md-6 col-lg-4 col-xl-3 ">
     <div class="effect-image-1 zoom-effect-1">
-      <img src="../../assets/img/tripcard.jpg" class="w-100"/>
+      <img src="../../assets/img/tripcard.jpg" class="w-100" />
       <div class="overlay text-white d-flex justify-content-center align-items-center text-center">
         <div>
-          <h3>{{dayData.name}}</h3>
-          <div>{{startDate}} - {{endDate}}</div>
+          <h3>{{ dayData.name }}</h3>
+          <div>{{ startDate }} - {{ endDate }}</div>
         </div>
       </div>
       <div class="d-flex description bg-white text-dark-blue px-3">
         <p class="m-0 w-100">
-          <b>Accommodation:</b> 
-          <br>{{input.startLoc}}
+          <b>Accommodation:</b>
+          <br>{{ input.startLoc }}
           <br>
-          <b>Preference:</b> 
+          <b>Preference:</b>
           <br>
-          <b>Transportation Method:</b> {{byCar}}
+          <b>Transportation Method:</b> {{ byCar }}
         </p>
       </div>
-    </div> 
+    </div>
     <div>
-      <input  type="button" value="View Trip" @click="viewItinerary"/>
+      <input type="button" value="View Trip" @click="viewItinerary" />
     </div>
   </div>
-  
+
 </template>
 
 <script>
@@ -32,7 +32,7 @@ import { useItineraryStore } from "@/stores/itinerary";
 export default {
   name: "TripCard",
   props: {
-    dayData:null,
+    dayData: null,
   },
   data() {
     return {
@@ -42,39 +42,39 @@ export default {
       input: JSON.parse(this.dayData["input"])
     };
   },
-  computed:{
-    startDate(){
+  computed: {
+    startDate() {
       let startDate = new Date(this.input['dates'][0].toString());
-      let outputStr =  startDate.getDate() + " " + this.numToMonth[startDate.getMonth()];
+      let outputStr = startDate.getDate() + " " + this.numToMonth[startDate.getMonth()];
       return outputStr;
     },
-    endDate(){
+    endDate() {
       let endDate = new Date(this.input['dates'][1].toString());
-      let outputStr =  endDate.getDate() + " " + this.numToMonth[endDate.getMonth()];
+      let outputStr = endDate.getDate() + " " + this.numToMonth[endDate.getMonth()];
       return outputStr;
     },
-    byCar(){
-      if (this.input.byCar){
+    byCar() {
+      if (this.input.byCar) {
         return "Private Transport";
-      } 
+      }
       return "Public Transport";
     },
   },
-  created(){
+  created() {
     let currDate = new Date();
   },
-  setup(){
+  setup() {
     const itineraryStore = useItineraryStore();
-    return {itineraryStore};
+    return { itineraryStore };
   },
-  methods:{
-    viewItinerary(){
+  methods: {
+    viewItinerary() {
       //Set this to be the defacto inside intinerary store
       this.itineraryStore.setItinerary(this.dayData);
       //Redirect
       this.$router.push({
-          path: "/viewresult",
-        });
+        path: "/viewresult",
+      });
     }
   },
 };
@@ -84,20 +84,23 @@ export default {
 .trip-card {
   position: relative;
 }
-.trip-card img{
+
+.trip-card img {
   border-radius: 30px !important;
 }
+
 .overlay {
   position: absolute;
   border-top-left-radius: 30px !important;
   border-top-right-radius: 30px !important;
-  top:0;
+  top: 0;
   bottom: 25% !important;
   right: 0;
   left: 0;
   background: rgba(66, 66, 66, 0.525);
 }
-.description{
+
+.description {
   position: absolute;
   font-size: smaller;
   display: flex;
@@ -110,31 +113,31 @@ export default {
   bottom: 0;
   right: 0;
   left: 0;
-  opacity:90%;
+  opacity: 90%;
 }
 
-.zoom-effect-1{
+.zoom-effect-1 {
   overflow: hidden;
 }
 
-.zoom-effect-1 img{
+.zoom-effect-1 img {
   border-radius: 30px !important;
   transform: scale(1);
   -webkit-transform: scale(1);
 }
 
-.zoom-effect-1:hover img{
+.zoom-effect-1:hover img {
   transform: scale(1.1);
   -webkit-transform: scale(1.1);
 }
 
-.effect-image-1{
+.effect-image-1 {
   border-radius: 30px !important;
   position: relative;
   display: block;
 }
 
-.zoom-effect-1 img{
+.zoom-effect-1 img {
   transition: all .4s linear;
   -webkit-transition: all .4s linear;
   -moz-transition: all .4s linear;
