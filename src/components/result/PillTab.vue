@@ -1,32 +1,17 @@
 <template>
   <div class="d-flex align-items-center">
     <div class="h-100 d-flex align-items-start position-relative tab me-4">
-      <button
-        class="nav-link p-0"
-        :class="[!isLast ? 'line' : '']"
-        :id="`v-pills-${index}-tab`"
-        data-bs-toggle="pill"
-        :data-bs-target="`#v-pills-${index}`"
-        role="tab"
-        :aria-controls="`v-pills-${index}`"
-        @click="onClick($event)"
-        ref="tab"
-      >
-        <i
-          class="bi bi-circle-fill text-dark-blue"
-          style="font-size: 1.2rem"
-        ></i>
+      <button class="nav-link p-0" :class="[!isLast ? 'line' : '']" :id="`v-pills-${index}-tab`" data-bs-toggle="pill"
+        :data-bs-target="`#v-pills-${index}`" role="tab" :aria-controls="`v-pills-${index}`" @click="onClick($event)"
+        ref="tab">
+        <i class="bi bi-circle-fill text-dark-blue" style="font-size: 1.2rem"></i>
       </button>
     </div>
-    <div
-      class="card border-0 p-4"
-      style="transform-origin: left top; width: 350px"
-      :style="[
-        isSelected
-          ? { transform: 'scale(0.85)' }
-          : { transform: 'scale(0.75)' },
-      ]"
-    >
+    <div class="card border-0 p-4" style="transform-origin: left top; width: 350px" :style="[
+      isSelected
+        ? { transform: 'scale(0.85)' }
+        : { transform: 'scale(0.75)' },
+    ]">
       <h4 class="ps-3">{{ place }}</h4>
       <p class="pt-2">
         <span class="tag bg-grey rounded-2 p-1 px-2 ms-3 mb-0">{{ type }}</span>
