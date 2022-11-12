@@ -33,7 +33,7 @@
         <span
           v-for="(tag, index) in type"
           :key="index"
-          class="tag bg-grey rounded-2 p-1 px-2 me-2"
+          class="tag bg-grey rounded-2 p-1 px-2 me-2 text-nowrap"
           >{{ tag }}</span
         >
       </div>

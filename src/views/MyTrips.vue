@@ -19,9 +19,9 @@
       </div>
     </div>
 
-    <div class="p-5">
+    <div class="p-5" >
       <h3 class="fw-bold px-3 pt-4">
-        Upcoming & Current Trips ({{ upcomingTrips.length }})
+        Upcoming & Current Trips ({{ upcomingTrips.length - deletedItemsUpcoming }})
       </h3>
       <div v-if="!loaded" class="text-center">
         <!-- <div  class="spinner-border" role="status" style="width: 5rem; height: 5rem;stroke-width:;">
@@ -30,15 +30,15 @@
           <TripCardSkeleton v-for="info in 3" />
         </div>
       </div>
-      <div v-else class="row d-none d-sm-none d-md-flex">
-        <TripCard v-for="info in this.upcomingTrips" :dayData="info" />
+      <div v-else class="row d-none d-sm-none d-md-flex" >
+        <TripCard v-for="info in this.upcomingTrips" :dayData="info" @trip-Deleted="tripDeletedHandler" />
       </div>
       <div class="row d-md-none d-lg-none d-xl-none">
         <PhoneTripCard v-for="info in this.upcomingTrips" :dayData="info" />
       </div>
     </div>
     <div class="px-5 pb-5">
-      <h3 class="fw-bold px-3">Past Trips ({{ pastTrips.length }})</h3>
+      <h3 class="fw-bold px-3">Past Trips ({{ pastTrips.length - deletedItemsPast }})</h3>
       <div v-if="!loaded" class="text-center">
         <!-- <div  class="spinner-border" role="status" style="width: 5rem; height: 5rem;stroke-width:;">
           </div>           -->
@@ -48,7 +48,7 @@
       </div>
 
       <div v-else class="row d-none d-sm-none d-md-flex">
-        <TripCard v-for="info in this.pastTrips" :dayData="info" />
+        <TripCard v-for="info in this.pastTrips" :dayData="info" @trip-Deleted="tripDeletedHandler" />
       </div>
       <div class="row d-md-none d-lg-none d-xl-none">
         <PhoneTripCard v-for="info in this.pastTrips" :dayData="info" />
@@ -70,6 +70,8 @@ import {
   query,
   where,
   getDocs,
+  deleteDoc,
+  doc
 } from "firebase/firestore";
 import firebaseApp from "../firebaseConfig";
 import { useItineraryStore } from "../stores/itinerary";
@@ -83,6 +85,8 @@ export default {
       loaded: false,
       upcomingTrips: [],
       pastTrips: [],
+      deletedItemsUpcoming:0,
+      deletedItemsPast:0,
     };
   },
   components: {
@@ -119,31 +123,50 @@ export default {
           this.data[doc.id] = doc.data();
           // console.log(doc.id, " => ", doc.data());
         });
+        //Write to
         this.loaded = true;
         this.parseTrips();
       }
     },
   },
   methods: {
+    tripDeletedHandler(tripDate) {
+      
+      let todayDate = new Date();
+      todayDate.setDate(todayDate.getDate() + 1);
+      if (tripDate > todayDate) {
+        //Minus from upcoming
+        this.deletedItemsUpcoming += 1;
+      } else {
+        this.deletedItemsPast += 1;
+      }
+    },
     parseTrips() {
       for (var info in this.data) {
         let tempData = JSON.parse(this.data[info]["input"]);
         let tripDate = new Date(tempData.dates[1]);
         let todayDate = new Date();
         todayDate.setDate(todayDate.getDate() + 1);
-        if (tripDate > todayDate) {
+        if (this.data[info]["deleted"] == true) {
+          //pass
+        } else if (tripDate > todayDate) {
+          //Adding in the unique document ID 
+          this.data[info]["docID"] = info;
           this.upcomingTrips.push(this.data[info]);
+          //Write to itinerary store
         } else {
+          this.data[info]["docID"] = info;
           this.pastTrips.push(this.data[info]);
+
         }
       }
       return null;
     },
-    getFromLocal() {
-      console.log("Triggered");
-      this.itineraryStore.getFromLocalStorage();
-    },
+    
   },
+  handleDelete(){
+    console.log("deleted")
+  }
 };
 </script>
 
@@ -167,7 +190,7 @@ input.form-control:focus {
   background-image: url("../assets/img/mytripsbg.png");
 
   /* Set a specific height */
-  min-height: 500px;
+  min-height: 40vh;
   width: 100%;
   overflow: hidden;
 
