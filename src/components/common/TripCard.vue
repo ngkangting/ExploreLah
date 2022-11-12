@@ -2,13 +2,13 @@
   <div class="trip-card p-4 col-md-6 col-lg-4 col-xl-3 ">
     <div class="effect-image-1 zoom-effect-1">
       <img src="../../assets/img/tripcard.jpg" class="w-100"/>
-      <div class="overlay text-white d-flex justify-content-center align-items-center text-center">
+      <div class="overlay text-white d-flex justify-content-center align-items-center text-center" style="bottom: 50% !important;">
         <div>
-          <h3>{{dayData.name}}</h3>
+          <h3>{{dayData.name.slice(1,-1)}}</h3>
           <div>{{startDate}} - {{endDate}}</div>
         </div>
       </div>
-      <div class="d-flex description bg-white text-dark-blue px-3">
+      <div class="d-flex description bg-white text-dark-blue px-3" style="top: 50% !important;">
         <p class="m-0 w-100">
           <b>Accommodation:</b> 
           <br>{{input.startLoc}}
@@ -16,6 +16,10 @@
           <b>Preference:</b> 
           <br>
           <b>Transportation Method:</b> {{byCar}}
+          <br>
+          <button type="btn" class="btn bg-pink text-white btn-sm my-2">
+          Download as PDF
+          </button>
         </p>
       </div>
     </div> 
@@ -92,7 +96,6 @@ export default {
   border-top-left-radius: 30px !important;
   border-top-right-radius: 30px !important;
   top:0;
-  bottom: 25% !important;
   right: 0;
   left: 0;
   background: rgba(66, 66, 66, 0.525);
@@ -106,7 +109,6 @@ export default {
   text-align: left;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
-  top: 60% !important;
   bottom: 0;
   right: 0;
   left: 0;
@@ -160,7 +162,7 @@ export default {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 40%;
+  height: 50%;
   background: rgba(255, 255, 255, .1);
   z-index: 1;
   transform: skewY(-5deg) scale(1.5);

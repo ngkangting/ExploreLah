@@ -1,51 +1,48 @@
 <template>
-  <div class="d-flex align-items-center">
-    <div class="h-100 d-flex align-items-start position-relative tab me-4">
-      <button
-        class="nav-link p-0"
-        :class="[!isLast ? 'line' : '']"
-        :id="`v-pills-${index}-tab`"
-        data-bs-toggle="pill"
-        :data-bs-target="`#v-pills-${index}`"
-        role="tab"
-        :aria-controls="`v-pills-${index}`"
-        @click="onClick($event)"
-        ref="tab"
-      >
+  <div class="d-flex align-items-center w-100 pill-tab">
+    <div
+      class="h-100 d-flex align-items-start position-relative tab me-4"
+      :id="`v-pills-${index}-tab`"
+      data-bs-toggle="pill"
+      :data-bs-target="`#v-pills-${index}`"
+      role="tab"
+      ref="tab"
+      :aria-controls="`v-pills-${index}`"
+    >
+      <button class="nav-link p-0" :class="[!isLast ? 'line' : '']">
         <i
-          class="bi bi-circle-fill text-dark-blue"
+          class="bi bi-circle-fill"
+          :class="[isSelected ? 'text-dark-blue' : 'text-gray']"
+          :style="{ transition: 'all .25s' }"
           style="font-size: 1.2rem"
         ></i>
       </button>
     </div>
     <div
-      class="card border-0 p-4"
-      style="transform-origin: left top; width: 350px"
+      class="card border-0 p-4 w-100"
+      :class="[isLast && isSelected ? 'mb-5' : isLast ? 'mb-3' : 'mb-5']"
+      style="transform-origin: left top"
       :style="[
         isSelected
-          ? { transform: 'scale(0.85)' }
-          : { transform: 'scale(0.75)' },
+          ? { transform: 'scale(1.00)', transition: 'all .25s' }
+          : { transform: 'scale(0.85)', transition: 'all .25s' },
       ]"
     >
-      <h4 class="ps-3">{{ place }}</h4>
-      <p class="pt-2">
-        <span class="tag bg-grey rounded-2 p-1 px-2 ms-3 mb-0">{{ type }}</span>
-      </p>
-      <div class="d-flex justify-content-between">
-        <span class="p-3">
-          <b>Arrival Time:</b>
-          {{ arrivalTime }}
-        </span>
-        <span class="p-3">
-          <b>Departure Time:</b>
-          {{ departureTime }}
-        </span>
-        <span class="m-0 p-3">
-          <b>Forecast:</b>
-          {{ forecast }}
-        </span>
+      <h4 class="pb-2">{{ place }}</h4>
+      <div class="pb-2">
+        <span
+          v-for="(tag, index) in type"
+          :key="index"
+          class="tag bg-grey rounded-2 p-1 px-2 me-2"
+          >{{ tag }}</span
+        >
       </div>
-      {{ travelTimeToThis }}
+      <div class="d-flex flex-column p-1">
+        <span class=""
+          >Time: {{ arrivalTime }}hrs - {{ departureTime }}hrs</span
+        >
+        <span class="">Travel Time: {{ travelTimeToThis }} mins</span>
+      </div>
     </div>
   </div>
 </template>
@@ -60,11 +57,11 @@ export default {
     },
     isSelected: {
       type: Boolean,
-      default: null,
+      default: false,
     },
     isLast: {
       type: Boolean,
-      default: null,
+      default: false,
     },
     place: {
       type: String,
@@ -86,10 +83,6 @@ export default {
       type: String,
       default: null,
     },
-    forecast: {
-      type: String,
-      default: "Currently Unavailable",
-    },
     duration: {
       type: Number,
       default: null,
@@ -102,31 +95,15 @@ export default {
   data() {
     return {};
   },
-  mounted() {
-    this.$watch(
-      () => {
-        // console.log(this.$refs.tab.getAttribute("aria-selected"));
-        // console.log(this.$refs.tab.getAttribute("aria-selected"));
-      },
-      (val) => {
-        alert("HELLO");
-      }
-    );
-  },
-  methods: {
-    onClick(event) {
-      // console.log(this.$refs.tab.getAttribute("aria-selected"));
-      // event.delegateTarget.classList.add("line-active");
-      // console.log(event.delegateTarget.classList);
-      // console.log(target.$el);
-      // target.$el.classList.add("line-active");
-      // console.log(target.$el.classList);
-    },
-  },
+  methods: {},
 };
 </script>
 
 <style lang="scss">
+.pill-tab {
+  cursor: pointer;
+}
+
 .tab {
   z-index: 1;
 }

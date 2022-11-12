@@ -362,7 +362,10 @@ export default {
         { name: "Transportation", icon: Transport },
       ],
       headerText: [
-        { heading: "Location", secondaryHeading: "Where will you be staying?" },
+        {
+          heading: "Location",
+          secondaryHeading: "Where will you be starting your trip from?",
+        },
         {
           heading: "Duration",
           secondaryHeading: "When will this trip be?",
@@ -454,9 +457,11 @@ export default {
       }
 
       this.activePhase += 1;
+      window.scrollTo({ top: 0, behavior: "smooth" });
     },
     goToPrevStep() {
       this.activePhase -= 1;
+      window.scrollTo({ top: 0, behavior: "smooth" });
     },
     stepNumberClasses(i) {
       return {
