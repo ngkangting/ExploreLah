@@ -9,6 +9,7 @@
         Singapore is yours to EXPLORE!
       </h1>
     </div>
+    <MerlionMascot></MerlionMascot>
 
     <div class="row d-md-none d-lg-none d-xl-none justify-content-center">
       <div class="col-5 pt-5 pb-0 d-">
@@ -515,10 +516,12 @@
 <script>
 import { useAuthStore } from "@/stores/auth";
 import Footer from "@/components/layout/Footer.vue";
+import MerlionMascot from "@/components/common/MerlionMascot.vue";
 
 export default {
   name: "HomeView",
   components: {
+    MerlionMascot,
     Footer,
   },
   data() {
