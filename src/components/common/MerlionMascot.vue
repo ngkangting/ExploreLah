@@ -5,6 +5,7 @@
     @mouseleave="hover = false"
     :style="merlionPos"
   >
+  
     <img
       class="merlionHand"
       :style="merlionHand"
@@ -13,7 +14,7 @@
     />
     <img
       v-if="!hover"
-      class="merlionBody"
+      class="merlionBody baseShake"
       :style="merlionBodyStyle"
       src="../../assets/img/merlion/merlionBaseWEye.png"
       ref="merlion"
@@ -28,6 +29,7 @@
       src="../../assets/img/merlion/merlionBaseWink.png"
       ref="merlion"
     />
+    <!-- Mouse position is at: {{ x }}, {{ y }} -->
   </div>
 </template>
 
@@ -52,10 +54,10 @@ export default {
       isMovable: true,
     };
   },
-  setup() {
-    const { x, y } = useMouse();
-    return { x, y };
-  },
+  // setup() {
+  //   const { x, y } = useMouse();
+  //   return { x, y };
+  // },
   methods: {
     calculateDistance(mouseX, mouseY) {
       //element.getBoundingClientRect().left
@@ -65,22 +67,21 @@ export default {
         )
       );
     },
-    mouseMove(event) {
-      // this.getAngle(event.clientX, event.clientY, this.anchorX, this.anchorY)
-      this.mouseX = event.clientX;
-      this.mouseY = event.clientY;
-
-      let { distance } = useMouseDistanceFromElement(this.$refs.merlion);
-
-      // console.log(distance.value)
-      // console.log(this.$refs.merlion);
-      // console.log(this.mouseX, this.mouseY);
-      // console.log(element)
-
-      console.log(this.calculateDistance(this.x, this.y));
-    },
   },
   computed: {
+    // distanceFromMouse(){
+    //   let halfScreenY = window.screen.height / 1.5;
+    //   let halfScreenX = window.screen.width / 1.5;
+    //   let difference = 0;
+    //   if (this.y > halfScreenY) {
+    //     difference = this.y - halfScreenY;
+    //   }
+    //   difference = Math.min(85, difference);
+    //   console.log(difference)
+
+
+    //   return difference
+    // },
     merlionBodyStyle() {
       // if (this.isMovable) {
       //   let top = 85;
@@ -139,7 +140,6 @@ export default {
     },
   },
   mounted() {
-    console.log(this.posX, this.posY);
   },
 };
 </script>
@@ -154,6 +154,22 @@ export default {
   scale: 0.5;
 }
 
+.baseShake{
+  animation: merlionShake 2s  infinite;
+}
+@keyframes merlionShake {
+  0%{
+    transform: rotate(0deg);
+    right:0px;
+    opacity: 0.5;
+  }
+  100%{
+    transform: rotate(905deg);
+    opacity: 1;
+    right:50px
+  }
+}
+
 @keyframes merlionDuck {
   0% {
     top: 85px;
@@ -162,4 +178,5 @@ export default {
     top: 95px;
   }
 }
+
 </style>
