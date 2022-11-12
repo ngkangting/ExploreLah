@@ -19,7 +19,7 @@
         </h2>
 
         <div class="row">
-          <div class="col-6">
+          <div class="col-md-6">
             <GoogleMap api-key="AIzaSyA__JlBf_-nIjvNRUNSpM4gdrygcyDenm0"
               style="width: 100%; height: 85vh; background-color: azure;" :center="center" :zoom="15">
               <!-- <Marker v-for="(pos, index) in markers" :options="{ position: pos }" :icon="{url:('../../public/ico/food.ico'), size: {width:30, height:30}}" /> -->
@@ -29,7 +29,7 @@
             </GoogleMap>
           </div>
 
-          <div class="col-6">
+          <div class="col-md-6">
             <ul class="nav nav-tabs">
               <li class="nav-item">
                 <button @click="toggleState" class="nav-link" :class="lunchStyle">
@@ -104,6 +104,7 @@ import firebaseApp from "../firebaseConfig";
 
 import FoodLocation from "../components/resultpage/FoodLocation.vue";
 import FoodCard from "../components/resultpage/FoodCard.vue";
+
 
 
 
