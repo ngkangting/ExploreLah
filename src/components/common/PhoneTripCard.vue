@@ -98,13 +98,14 @@ export default {
     },
     data() {
         return {
-            
+
         };
     },
     methods(){
-        generateReport () {
-                this.$refs.html2Pdf.generatePdf(document.getElementById("pdf-content"))
-        },
+        //error
+        // generateReport () {
+        //         this.$refs.html2Pdf.generatePdf(document.getElementById("pdf-content"))
+        // },
     },
 };
 </script>
