@@ -23,6 +23,7 @@
         }})
       </h3>
       <div v-if="!loaded" class="text-center">
+        <!-- <div v-if="!loaded" class="text-center"> -->
         <!-- <div  class="spinner-border" role="status" style="width: 5rem; height: 5rem;stroke-width:;">
           </div>           -->
         <div class="row d-none d-sm-none d-md-flex">
@@ -129,7 +130,7 @@ export default {
         // console.log(querySnapshot);
         querySnapshot.forEach((doc) => {
           // doc.data() is never undefined for query doc snapshots
-          this.data[doc.id] = doc.data();
+          this.itineraryStore.myTripsData[doc.id] = doc.data();
           // console.log(doc.id, " => ", doc.data());
         });
         //Write to
@@ -150,12 +151,14 @@ export default {
       }
     },
     parseTrips() {
-      for (var info in this.data) {
-        let tempData = JSON.parse(this.data[info]["input"]);
+      for (var info in this.itineraryStore.myTripsData) {
+        let tempData = JSON.parse(
+          this.itineraryStore.myTripsData[info]["input"]
+        );
         let tripDate = new Date(tempData.dates[1]);
         let todayDate = new Date();
         todayDate.setDate(todayDate.getDate() + 1);
-        if (this.data[info]["deleted"] == true) {
+        if (this.itineraryStore.myTripsData[info]["deleted"] == true) {
           //pass
         } else if (tripDate > todayDate) {
           //Adding in the unique document ID
