@@ -128,7 +128,11 @@
             <div class="card-body">
               <div class="row mb-3">
                 <div class="col-12 col-lg-8">
-                  <img class="w-100 rounded" src="../assets/img/mbs-4.jpg" alt="..." height="350" />
+                  <img v-if="'photos' in currentDayDetails[idx][currentDayData[idx].placeID].result"
+                    :src="'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=' + currentDayDetails[idx][currentDayData[idx].placeID].result.photos[0].photo_reference + imgKey"
+                    class="w-100 rounded" height="350" />
+
+                  <!-- <img class="w-100 rounded" src="../assets/img/mbs-4.jpg" alt="..." height="350" /> -->
                 </div>
                 <div class="col-4 d-none d-lg-flex flex-column justify-content-between">
                   <!-- <div class="col-12">
@@ -141,12 +145,18 @@
                 </div>  -->
                   <div class="row">
                     <div class="col-12">
-                      <img class="w-100 rounded" src="../assets/img/mbs-2.jpg" alt="..." height="165" />
+                      <!-- <img class="w-100 rounded" src="../assets/img/mbs-2.jpg" alt="..." height="165" /> -->
+                      <img v-if="'photos' in currentDayDetails[idx][currentDayData[idx].placeID].result"
+                        :src="'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=' + currentDayDetails[idx][currentDayData[idx].placeID].result.photos[1].photo_reference + imgKey"
+                        class="w-100 rounded" height="165" />
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-12">
-                      <img class="w-100 rounded" src="../assets/img/mbs-1.jpeg" alt="..." height="165" />
+                      <!-- <img class="w-100 rounded" src="../assets/img/mbs-1.jpeg" alt="..." height="165" /> -->
+                      <img v-if="'photos' in currentDayDetails[idx][currentDayData[idx].placeID].result"
+                        :src="'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=' + currentDayDetails[idx][currentDayData[idx].placeID].result.photos[2].photo_reference + imgKey"
+                        class="w-100 rounded" height="165" />
                     </div>
                   </div>
                 </div>
@@ -296,7 +306,7 @@
             <PillTab v-for="(activity, index) in currentDayData" :key="index" :index="index" :isSelected="false"
               :isLast="false" :place="activity.name" :type="activity.tags" :arrivalTime="activity.arriveTime"
               :departureTime="activity.endTime" :forecast="activity.status" :duration="activity.dur"
-              :travelTimeToThis="activity.travelTimeTo" :name="`pill-tab-${index}`" />
+              :travelTimeToThis="activity.travelTimeTo" :name="`pill-tab-${index}`" @click="idx = index" />
           </div>
           <!-- Next buttons -->
           <div class="row">
@@ -336,6 +346,7 @@ export default {
       currDay: 1,
       showSkeleton: true,
       idx: 0,
+      imgKey: "&key=AIzaSyAWD7RGn64dPl6DvyAQ4GciUGSWmsiF2Ys"
     };
   },
   setup() {
