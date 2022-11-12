@@ -21,11 +21,13 @@
     <img
       v-else
       class="merlionBody"
-      :style="merlionBodyStyle"
+      :style="[
+        merlionBodyStyle,
+        'animation: merlionDuck 0.5s ease 2 alternate; width: 100%;',
+      ]"
       src="../../assets/img/merlion/merlionBaseWink.png"
       ref="merlion"
     />
-    Mouse position is at: {{ x }}, {{ y }}
   </div>
 </template>
 
@@ -38,10 +40,6 @@ export default {
   props: {
     posX: String,
     posY: String,
-    isMovable: {
-      type: Boolean,
-      default: false,
-    },
   },
   data() {
     return {
@@ -51,6 +49,7 @@ export default {
       anchorY: 0,
       eyeRotation: null,
       hover: false,
+      isMovable: true,
     };
   },
   setup() {
@@ -83,34 +82,47 @@ export default {
   },
   computed: {
     merlionBodyStyle() {
-      let top = 85;
-      let left = -12;
-      let halfScreenY = window.screen.height / 1.5;
-      let halfScreenX = window.screen.width / 1.5;
-      let difference = 0;
+      // if (this.isMovable) {
+      //   let top = 85;
+      //   let left = -12;
+      //   let halfScreenY = window.screen.height / 1.4;
+      //   let halfScreenX = window.screen.width / 1.4;
+      //   let difference = 40;
 
-      if (this.y > halfScreenY) {
-        difference = this.y - halfScreenY;
-      }
+      //   if (this.y > halfScreenY) {
+      //     difference = this.y - halfScreenY;
+      //   }
 
-      difference = Math.min(85, difference);
+      //   difference = Math.min(85, difference);
 
-      console.log(difference);
+      //   console.log(difference);
 
-      return `position: absolute; top: ${top}px; left: ${left}px; animation: merlionDuck 0.5s ease 2 alternate;`;
+      //   return `position: absolute; top: ${difference}px; left: ${left}px; width: 100%;`;
+      // } else {
+      //   return `position: absolute; top: 85px; left: -15px; width: 100%;`;
+      // }
+      return `position: absolute; top: ${this.posY}px; left: ${this.posX}px; animation: merlionDuck 0.5s ease 2 alternate; width: 100%;`;
     },
     merlionHand() {
-      let top = 85;
-      let left = -15;
-      let halfScreenY = window.screen.height / 1.5;
-      let halfScreenX = window.screen.width / 1.5;
-      let difference = 0;
-
-      if (this.y > halfScreenY) {
-        difference = this.y - halfScreenY;
-      }
-
-      return `position:absolute; z-index: 1; top:${top}px; left: ${left}px; `;
+      // if (this.isMovable) {
+      //   let top = 85;
+      //   let left = -15;
+      //   let halfScreenY = window.screen.height / 1.4;
+      //   let halfScreenX = window.screen.width / 1.4;
+      //   let difference = 40;
+      //   if (this.y > halfScreenY) {
+      //     difference = this.y - halfScreenY;
+      //   }
+      //   if (this.y > window.screen.height) {
+      //     difference = this.y - halfScreenY;
+      //     this.isMovable = false;
+      //   }
+      //   difference = Math.min(85, difference);
+      //   return `position:absolute; z-index: 1; top:${difference}px; left: ${left}px; width: 100%;`;
+      // } else {
+      //   return `position:absolute; z-index: 1; top: 85px; left: -15px; width: 100%;`;
+      // }
+      return `position:absolute; z-index: 1; top: ${this.posY}px; left: ${this.posX}px; animation: merlionDuck 0.5s ease 2 alternate; width: 100%;`;
     },
     left() {
       return this.$refs.merlion.getBoundingClientRect().x;
@@ -137,7 +149,7 @@ export default {
   // background-color: red;
   height: 250px;
   width: 250px;
-  position: fixed;
+  position: absolute;
   overflow: hidden;
   scale: 0.5;
 }
