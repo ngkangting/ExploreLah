@@ -1,16 +1,22 @@
 import {defineStore} from "pinia";
 import axios from "axios";
-import {watch} from "vue";
+import {useStorage} from "@vueuse/core";
 
 export const useItineraryStore = defineStore("itinerary", {
 
     state: () => ({
-        foodReco:null,
-        itineraryList:null,
-        itineraryInput:null,
+        foodReco:useStorage('foodReco',{}),
+        itineraryList:useStorage('itineraryList',{}),
+        itineraryInput:useStorage("itineraryInput", {}),
         isLoading:true,
-        details:null,
+        details:useStorage("details",{}),
     }),
+
+    mounted(){
+        if (localStorage.itineraryList) {
+            this.itineraryList = JSON.parse(localStorage.itineraryList);
+        }
+    },
     actions: {
         async fetchItinerary(formInfo) {
                 // const path = "http://127.0.0.1:5000"; // LocalHost Path
@@ -22,11 +28,6 @@ export const useItineraryStore = defineStore("itinerary", {
                     this.foodReco = res.data.foodReco;
                     this.itineraryInput = res.data["user"];
                     this.details = res.data["details"];
-                    //Setting to localstorage
-                    // localStorage.setItem("itineraryList",JSON.parse(res.data.itinerary));
-                    // localStorage.setItem("itineraryInput",res.data["user"]);
-                    // localStorage.setItem("foodReco", res.data.foodReco);
-                    
                     this.isLoading = false;
             }).catch( (err) => {
                 console.error(err);
@@ -40,7 +41,8 @@ export const useItineraryStore = defineStore("itinerary", {
             this.itineraryInput = JSON.parse(dayData['input']);
             this.details = JSON.parse(dayData['details']);
             this.name = dayData['name'];
-        }
+        },
+
         
 
         },
