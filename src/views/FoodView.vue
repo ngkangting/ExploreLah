@@ -174,7 +174,7 @@ import firebaseApp from "../firebaseConfig";
 
 import FoodLocation from "../components/resultpage/FoodLocation.vue";
 import FoodCard from "../components/resultpage/FoodCard.vue";
-
+import GoogleMapWPinsForFood from "../components/common/GoogleMapWPinsForFood.vue";
 export default {
   name: "FoodView",
   components: {
@@ -183,6 +183,7 @@ export default {
     FoodLocation,
     CustomMarker,
     FoodCard,
+    GoogleMapWPinsForFood,
   },
   data() {
     return {
