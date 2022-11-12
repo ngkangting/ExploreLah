@@ -1,12 +1,10 @@
 <template>
   <div class="container-fluid">
     <div v-if="isLoading">
-      <div class="row d-flex py-5 px-5">
-        <h1 class="text-center fw-semibold mb-5">Trip Itinerary</h1>
+      <div class="row d-flex py-5 px-4 px-md-5">
+        <h1 class="text-center fw-semibold mb-4 mb-md-5">Trip Itinerary</h1>
         <!-- Result -->
-        <div
-          class="col-md-6 col-lg-8 order-2 order-sm-2 order-md-1 order-lg-1 order-xl-1"
-        >
+        <div class="col-12 col-md-6 col-lg-8 order-2 order-md-1">
           <div class="card w-100 border-0">
             <div class="card-body">
               <div class="row mb-3">
@@ -38,14 +36,14 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-6 col-lg-6 rounded-3 px-3 py-3">
+                <div class="col-12 col-lg-6 rounded-3 px-3 py-3">
                   <div
                     class="w-100 rounded skeleton"
                     style="height: 500px"
                   ></div>
                 </div>
 
-                <div class="column col-6 col-lg-6 rounded-3 px-3 py-3">
+                <div class="column col-12 col-lg-6 rounded-3 px-3 py-3">
                   <!-- Header -->
                   <div
                     class="skeleton skeleton-text rounded pb-1"
@@ -125,7 +123,7 @@
 
         <!-- Locations -->
         <div
-          class="col col-md-6 col-lg-4 order-1 order-sm-1 order-md-2 order-lg-2 order-xl-2 position-relative"
+          class="col-12 col-md-6 col-lg-4 order-1 order-md-2 position-relative"
         >
           <div
             class="skeleton skeleton-text rounded mx-auto my-2 mb-4"
@@ -150,17 +148,20 @@
     </div>
 
     <div v-else>
-      <div class="row d-flex py-5 px-5">
+      <div class="row d-flex py-5 px-4 px-md-5">
         <div v-if="itineraryStore.viewingTrip">
           <p class="text-center fw-semibold">Viewing Saved Trip</p>
-          <h1 class="text-center fw-semibold mb-5">{{itineraryStore.name}}</h1>
-          
+          <h1 class="text-center fw-semibold mb-4 mb-md-5">
+            {{ itineraryStore.name }}
+          </h1>
         </div>
 
-        <h1 v-else class="text-center fw-semibold mb-5">Trip Itinerary</h1>
+        <h1 v-else class="text-center fw-semibold mb-4 mb-md-5">
+          Trip Itinerary
+        </h1>
 
         <!-- Result -->
-        <div class="col-md-6 col-lg-8">
+        <div class="col-12 col-md-6 col-lg-8 order-2 order-md-1">
           <div class="card w-100 border-0">
             <div class="card-body">
               <div class="row mb-3">
@@ -181,13 +182,16 @@
                     height="350"
                   />
 
-                  <img
+                  <div
                     v-else
-                    class="w-100 rounded"
-                    src="../assets/img/mbs-4.jpg"
-                    alt="..."
-                    height="350"
-                  />
+                    class="w-100 rounded bg-light position-relative"
+                    style="height: 350px"
+                  >
+                    <span
+                      class="fs-4 position-absolute top-50 start-50 translate-middle text-secondary"
+                      >No Image Found</span
+                    >
+                  </div>
                 </div>
                 <div
                   class="col-4 d-none d-lg-flex flex-column justify-content-between"
@@ -211,13 +215,16 @@
                         height="165"
                       />
 
-                      <img
+                      <div
                         v-else
-                        class="w-100 rounded"
-                        src="../assets/img/mbs-2.jpg"
-                        alt="..."
-                        height="165"
-                      />
+                        class="w-100 rounded bg-light position-relative"
+                        style="height: 165px"
+                      >
+                        <span
+                          class="position-absolute top-50 start-50 translate-middle text-secondary"
+                          >No Image Found</span
+                        >
+                      </div>
                     </div>
                   </div>
                   <div class="row">
@@ -239,24 +246,26 @@
                         height="165"
                       />
 
-                      <img
+                      <div
                         v-else
-                        class="w-100 rounded"
-                        src="../assets/img/mbs-1.jpeg"
-                        alt="..."
-                        height="165"
-                      />
+                        class="w-100 rounded bg-light position-relative"
+                        style="height: 165px"
+                      >
+                        <span
+                          class="position-absolute top-50 start-50 translate-middle text-secondary"
+                          >No Image Found</span
+                        >
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="row">
-                <div class="column col-6 col-lg-6 rounded-3 px-3 py-3">
-                  <GoogleMapWPins :pinsInfo="currentDayMarkers"/> 
-
+                <div class="col-12 col-lg-6 rounded-3 px-3 py-3">
+                  <GoogleMapWPins :pinsInfo="currentDayMarkers" />
                 </div>
 
-                <div class="column col-6 col-lg-6 rounded-3 px-3 py-3">
+                <div class="column col-12 col-lg-6 rounded-3 px-3 py-3">
                   <h3 class="pb-1 fw-bold">
                     {{
                       currentDayDetails[idx][currentDayData[idx].placeID].result
@@ -414,7 +423,9 @@
         </div>
 
         <!-- Locations -->
-        <div class="col col-md-6 col-lg-4 position-relative">
+        <div
+          class="col-12 col-md-6 col-lg-4 order-1 order-md-2 position-relative mb-4 mb-md-0"
+        >
           <h4 class="text-center my-2 mb-4">
             Day {{ currDay }} of {{ this.itineraryStore.itineraryList.length }}
           </h4>
@@ -486,7 +497,7 @@ import { GoogleMap, Marker, CustomMarker } from "vue3-google-map";
 import PillTabSkeleton from "@/components/result/PillTabSkeleton.vue";
 import PillTab from "@/components/result/PillTab.vue";
 import GoogleMapWPins from "@/components/common/GoogleMapWPins.vue";
-
+import MerlionMascot from "@/components/common/MerlionMascot.vue";
 
 export default {
   name: "ResultView",
@@ -496,7 +507,8 @@ export default {
     GoogleMap,
     Marker,
     CustomMarker,
-    GoogleMapWPins
+    GoogleMapWPins,
+    MerlionMascot,
   },
   data() {
     return {
