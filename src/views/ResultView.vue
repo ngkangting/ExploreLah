@@ -497,7 +497,6 @@ import { GoogleMap, Marker, CustomMarker } from "vue3-google-map";
 import PillTabSkeleton from "@/components/result/PillTabSkeleton.vue";
 import PillTab from "@/components/result/PillTab.vue";
 import GoogleMapWPins from "@/components/common/GoogleMapWPins.vue";
-import MerlionMascot from "@/components/common/MerlionMascot.vue";
 
 export default {
   name: "ResultView",
@@ -508,7 +507,6 @@ export default {
     Marker,
     CustomMarker,
     GoogleMapWPins,
-    MerlionMascot,
   },
   data() {
     return {
