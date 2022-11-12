@@ -174,14 +174,6 @@
                 <div
                 class="col-4 d-none d-lg-flex flex-column justify-content-between"
                 >
-                <!-- <div class="col-12">
-                  <GoogleMap api-key="AIzaSyA__JlBf_-nIjvNRUNSpM4gdrygcyDenm0" style="width: 100%; height: 38vh; background-color: azure;" :center="center" :zoom="15">
-                    <Marker v-for="(pos, index) in markers" :options="{ position: pos }" :icon="{url:('../../public/ico/food.ico'), size: {width:30, height:30}}" />
-                    <CustomMarker v-for="(pos, index) in markers" :options="{ position: pos}">
-                        <img src="../../public/ico/food.ico" width="32" height="32" style="margin-top: 8px" />
-                    </CustomMarker>
-                  </GoogleMap> 
-                </div>  -->
                 <div class="row">
                   <div class="col-12">
                     <img
@@ -206,7 +198,7 @@
               </div>
               <div class="row">
                 <div class="column col-6 col-lg-6 rounded-3 px-3 py-3">
-                  <GoogleMap api-key="AIzaSyA__JlBf_-nIjvNRUNSpM4gdrygcyDenm0" style="width: 100%; height:500px; background-color: azure;" :center="center" :zoom="15">
+                  <GoogleMap :api-key="apiKey" style="width: 100%; height:500px; background-color: azure;" :center="center" :zoom="15">
                     <!-- <Marker v-for="(pos, index) in markers" :options="{ position: pos }" :icon="{url:('../../public/ico/food.ico'), size: {width:30, height:30}}" />
                     <CustomMarker v-for="(pos, index) in markers" :options="{ position: pos}">
                         <img src="../../public/ico/food.ico" width="32" height="32" style="margin-top: 8px" />
@@ -356,6 +348,7 @@ export default {
     return {
       currDay: 1,
       showSkeleton:true,
+      apiKey: 'AIzaSyAWD7RGn64dPl6DvyAQ4GciUGSWmsiF2Ys',
     };
   },
   setup() {
