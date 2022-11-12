@@ -61,9 +61,10 @@
         autoplay
       ></lottie-player>
       <div class="d-flex justify-content-center">
-        <h6
-        class="d-flex justify-content align-items-center btn-special-blue text-center ">
+        <h6>
+          <router-link to="/plan" class="btn-special-blue text-decoration-none">
           Start Planning!
+          </router-link>
         </h6>
       </div>
     </div>
@@ -174,11 +175,11 @@
           loop
           autoplay
         ></lottie-player>
-        <h6
-          class="d-flex justify-content align-items-center btn-special-blue text-center me-5"
-        >
-          Start Planning!
-        </h6>
+        <h4>
+          <router-link to="/plan" class="d-flex justify-content align-items-center btn-special-blue text-center me-5 text-decoration-none">
+            Start Planning
+          </router-link>
+        </h4>
       </span>
     </div>
   </div>
@@ -269,11 +270,11 @@
       >
         <div class="m-4">
           <h2>
-            <i class="bi bi-1-circle"></i>
+            <i class="bi bi-1-circle text-pink"></i>
             Location
           </h2>
           <div>
-            Let us know where you're currently staying so we have an idea of
+            Let us know where you want to start from so we have an idea of
             whats near you!
           </div>
         </div>
@@ -286,7 +287,7 @@
       >
         <div class="m-4">
           <h2>
-            <i class="bi bi-2-circle"></i>
+            <i class="bi bi-2-circle text-newlightpink"></i>
             Duration
           </h2>
           <div>Tell us how long you plan on hanging around Singapore!</div>
@@ -318,7 +319,7 @@
       >
         <div class="m-4">
           <h2>
-            <i class="bi bi-3-circle"></i>
+            <i class="bi bi-3-circle text-light-blue"></i>
             Preferences
           </h2>
           <div>
@@ -334,7 +335,7 @@
       >
         <div class="m-4">
           <h2>
-            <i class="bi bi-4-circle"></i>
+            <i class="bi bi-4-circle text-blue"></i>
             Transportation
           </h2>
           <div>
@@ -486,7 +487,7 @@
               Easy to use and convenient! Wish I had something like this for
               overseas too.
             </p>
-            <p class="text-muted">- Derrick Tan</p>
+            <p class="text-muted">- Prof Kyong</p>
           </div>
         </div>
       </div>
@@ -500,7 +501,11 @@
       <span> Ready to plan your trip now? </span>
     </h1>
     <div class="d-flex justify-content-center">
-      <h4 class="btn-special">Plan Now</h4>
+      <h4>
+        <router-link to="/plan" class="btn-special text-decoration-none">
+        Plan Now
+        </router-link>
+      </h4>
     </div>
   </div>
 
@@ -663,6 +668,10 @@ span.btn-special:hover {
 
 .bg-newlightpink {
   background-color: #fad9e0;
+}
+
+.text-newlightpink {
+  color: #fad9e0;
 }
 
 .review {
