@@ -1,9 +1,10 @@
 <template>
     <GoogleMap :api-key="apiKey" style="height:500px; background-color: azure;" :center="center" :zoom="15">
-        <Marker v-for="pos in pinsInfo" :options="{ position: {lat:pos[1], lng:pos[2]} }" :icon="{url:('../../public/ico/food.ico'), size: {width:30, height:30}}" />
-        <!-- <CustomMarker v-for="(pos, index) in markers" :options="{ position: pos}">
-            <img src="../../public/ico/food.ico" width="32" height="32" style="margin-top: 8px" />
-        </CustomMarker> -->
+        <!-- <Marker v-for="pos in pinsInfo" :options="{ position: {lat:pos[1], lng:pos[2]} }" :icon="{url:('../../public/ico/food.ico'), size: {width:30, height:30}}" /> -->
+        <CustomMarker v-for="(pos,idx) in pinsInfo" :options="{ position: {lat:pos[1], lng:pos[2]} }">
+            <!-- <img src="../../assets/img/pins/bluepin1.png" width="64" height="64" style="margin-top: 0px" /> -->
+            <img :src="'../../src/assets/img/pins/bluepin' + (idx + 1).toString() + '.png'" width="64" height="64" style="margin-top: 0px" />
+        </CustomMarker>
     </GoogleMap> 
     
 </template>
@@ -25,10 +26,18 @@ data() {
     return {
         apiKey: 'AIzaSyAWD7RGn64dPl6DvyAQ4GciUGSWmsiF2Ys',
         center: { lat: 1.29027, lng: 103.851959 },
+        count:1,
 
     };
 },
 computed:{
+    pinSrc(){
+        //"../../assets/img/pins/bluepin2.png"
+        let source = "../../assets/img/pins/bluepin" + this.count.toString() + ".png";
+        console.log(source);
+        this.count += 1;
+        return source
+    }
 
 },
 created(){
