@@ -5,6 +5,7 @@
     @mouseleave="hover = false"
     :style="merlionPos"
   >
+  
     <img
       class="merlionHand"
       :style="merlionHand"
@@ -13,7 +14,7 @@
     />
     <img
       v-if="!hover"
-      class="merlionBody"
+      class="merlionBody baseShake"
       :style="merlionBodyStyle"
       src="../../assets/img/merlion/merlionBaseWEye.png"
       ref="merlion"
@@ -25,7 +26,7 @@
       src="../../assets/img/merlion/merlionBaseWink.png"
       ref="merlion"
     />
-    Mouse position is at: {{ x }}, {{ y }}
+    <!-- Mouse position is at: {{ x }}, {{ y }} -->
   </div>
 </template>
 
@@ -53,10 +54,10 @@ export default {
       hover: false,
     };
   },
-  setup() {
-    const { x, y } = useMouse();
-    return { x, y };
-  },
+  // setup() {
+  //   const { x, y } = useMouse();
+  //   return { x, y };
+  // },
   methods: {
     calculateDistance(mouseX, mouseY) {
       //element.getBoundingClientRect().left
@@ -66,49 +67,50 @@ export default {
         )
       );
     },
-    mouseMove(event) {
-      // this.getAngle(event.clientX, event.clientY, this.anchorX, this.anchorY)
-      this.mouseX = event.clientX;
-      this.mouseY = event.clientY;
-
-      let { distance } = useMouseDistanceFromElement(this.$refs.merlion);
-
-      // console.log(distance.value)
-      // console.log(this.$refs.merlion);
-      // console.log(this.mouseX, this.mouseY);
-      // console.log(element)
-
-      console.log(this.calculateDistance(this.x, this.y));
-    },
   },
   computed: {
+    // distanceFromMouse(){
+    //   let halfScreenY = window.screen.height / 1.5;
+    //   let halfScreenX = window.screen.width / 1.5;
+    //   let difference = 0;
+    //   if (this.y > halfScreenY) {
+    //     difference = this.y - halfScreenY;
+    //   }
+    //   difference = Math.min(85, difference);
+    //   console.log(difference)
+
+
+    //   return difference
+    // },
     merlionBodyStyle() {
       let top = 85;
       let left = -12;
-      let halfScreenY = window.screen.height / 1.5;
-      let halfScreenX = window.screen.width / 1.5;
-      let difference = 0;
+      // let halfScreenY = window.screen.height /1.5;
+      // let halfScreenX = window.screen.width / 1.5;
+      // let difference = 0;
 
-      if (this.y > halfScreenY) {
-        difference = this.y - halfScreenY;
-      }
+      // if (this.y > halfScreenY) {
+      //   difference = this.y - halfScreenY;
+      // }
 
-      difference = Math.min(85, difference);
+      // // difference = Math.min(85, difference);
+      // let difference = Math.min(700,this.y);
+      // console.log(difference)
+      // let totalDistanceMoved = 10;
+      
 
-      console.log(difference);
-
-      return `position: absolute; top: ${top}px; left: ${left}px; animation: merlionDuck 0.5s ease 2 alternate;`;
+      return `position: absolute; top: ${top }px; left: ${left}px; animation: merlionDuck 0.5s ease 2 alternate;`;
     },
     merlionHand() {
       let top = 85;
       let left = -15;
-      let halfScreenY = window.screen.height / 1.5;
-      let halfScreenX = window.screen.width / 1.5;
-      let difference = 0;
+      // let halfScreenY = window.screen.height / 1.5;
+      // let halfScreenX = window.screen.width / 1.5;
+      // let difference = 0;
 
-      if (this.y > halfScreenY) {
-        difference = this.y - halfScreenY;
-      }
+      // if (this.y > halfScreenY) {
+      //   difference = this.y - halfScreenY;
+      // }
 
       return `position:absolute; z-index: 1; top:${top}px; left: ${left}px; `;
     },
@@ -127,7 +129,6 @@ export default {
     },
   },
   mounted() {
-    console.log(this.posX, this.posY);
   },
 };
 </script>
@@ -136,10 +137,26 @@ export default {
 .mask-merlion {
   // background-color: red;
   height: 250px;
-  width: 250px;
+  width: 275px;
   position: fixed;
   overflow: hidden;
   scale: 0.5;
+}
+
+.baseShake{
+  animation: merlionShake 2s  infinite;
+}
+@keyframes merlionShake {
+  0%{
+    transform: rotate(0deg);
+    right:0px;
+    opacity: 0.5;
+  }
+  100%{
+    transform: rotate(905deg);
+    opacity: 1;
+    right:50px
+  }
 }
 
 @keyframes merlionDuck {
@@ -150,4 +167,5 @@ export default {
     top: 95px;
   }
 }
+
 </style>
