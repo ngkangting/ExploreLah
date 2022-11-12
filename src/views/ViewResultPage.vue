@@ -16,13 +16,6 @@
           <div class="row">
             <div class="col-6">
               <GoogleMapWPinsForFood :pinsInfo="markers"/> 
-
-              <!-- <GoogleMap :api-key="apiKey" style="width: 100%; height: 85vh; background-color: azure;" :center="center" :zoom="15"> -->
-                <!-- <Marker v-for="(pos, index) in markers" :options="{ position: pos }" :icon="{url:('../../public/ico/food.ico'), size: {width:30, height:30}}" /> -->
-                <!-- <CustomMarker v-for="(pos, index) in markers" :options="{ position: pos}">
-                    <img src="../../public/ico/food.ico" width="32" height="32" style="margin-top: 8px" />
-                </CustomMarker> -->
-              <!-- </GoogleMap>  -->
             </div> 
             
             <div class="col-6">
@@ -92,7 +85,6 @@ export default {
       state:1, //O for lunch, 1 for dinner
       currDay:1,
       inputName:null,
-      apiKey: 'AIzaSyAWD7RGn64dPl6DvyAQ4GciUGSWmsiF2Ys',
 
     };
   },

@@ -151,7 +151,13 @@
 
     <div v-else>
       <div class="row d-flex py-5 px-5">
-        <h1 class="text-center fw-semibold mb-5">Trip Itinerary</h1>
+        <div v-if="itineraryStore.viewingTrip">
+          <p class="text-center fw-semibold">Viewing Saved Trip</p>
+          <h1 class="text-center fw-semibold mb-5">{{itineraryStore.name}}</h1>
+          
+        </div>
+
+        <h1 v-else class="text-center fw-semibold mb-5">Trip Itinerary</h1>
 
         <!-- Result -->
         <div class="col-md-6 col-lg-8">
@@ -246,13 +252,8 @@
               </div>
               <div class="row">
                 <div class="column col-6 col-lg-6 rounded-3 px-3 py-3">
-                  <GoogleMap
-                    api-key="AIzaSyA__JlBf_-nIjvNRUNSpM4gdrygcyDenm0"
-                    style="width: 100%; height: 500px; background-color: azure"
-                    :center="center"
-                    :zoom="15"
-                  >
-                  </GoogleMap>
+                  <GoogleMapWPins :pinsInfo="currentDayMarkers"/> 
+
                 </div>
 
                 <div class="column col-6 col-lg-6 rounded-3 px-3 py-3">
@@ -484,6 +485,8 @@ import { GoogleMap, Marker, CustomMarker } from "vue3-google-map";
 
 import PillTabSkeleton from "@/components/result/PillTabSkeleton.vue";
 import PillTab from "@/components/result/PillTab.vue";
+import GoogleMapWPins from "@/components/common/GoogleMapWPins.vue";
+
 
 export default {
   name: "ResultView",
@@ -493,6 +496,7 @@ export default {
     GoogleMap,
     Marker,
     CustomMarker,
+    GoogleMapWPins
   },
   data() {
     return {

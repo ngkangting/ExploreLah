@@ -11,7 +11,7 @@
               <div class="row mb-3">
                   <div class="card-title">
                     <h3 class="text-secondary">
-                      HiYou are viewing: <span class="text-dark fw-bold">{{itineraryStore.name}}</span>
+                      You are viewing: <span class="text-dark fw-bold">{{itineraryStore.name}}</span>
                     </h3> 
                   </div>  
                   <div class="col-12 col-lg-8">
@@ -59,7 +59,7 @@
                   </div>
   
                   <div class="column col-6 col-lg-6 rounded-3 px-3 py-3">
-                    <h3 class="pb-1 fw-bold">The Shoppes at Marina Bay Sands</h3>
+                    <h3 class="pb-1 fw-bold">The Shopfkt Marina Bay Sands</h3>
   
                     <p class="mb-4">
                       <!--to add color -->

@@ -11,12 +11,9 @@
 
           <div class="row">
             <div class="col-6">
-              <GoogleMap :api-key="apiKey" style="width: 100%; height: 85vh; background-color: azure;" :center="center" :zoom="15">
-                <!-- <Marker v-for="(pos, index) in markers" :options="{ position: pos }" :icon="{url:('../../public/ico/food.ico'), size: {width:30, height:30}}" /> -->
-                <CustomMarker v-for="(pos, index) in markers" :options="{ position: pos}">
-                    <img src="../../public/ico/food.ico" width="32" height="32" style="margin-top: 8px" />
-                </CustomMarker>
-              </GoogleMap> 
+              <GoogleMapWPinsForFood :pinsInfo="markers"/> 
+
+  
             </div> 
             
             <div class="col-6">
@@ -96,12 +93,14 @@ import {getFirestore, collection, addDoc} from "firebase/firestore";
 import firebaseApp from "../firebaseConfig";
 
 import FoodLocation from "../components/resultpage/FoodLocation.vue";
+import GoogleMapWPinsForFood from "@/components/common/GoogleMapWPinsForFood.vue";
+
 
 
 export default {
   name: "ResultPage",
   components: {
-    GoogleMap, Marker, FoodLocation,CustomMarker
+    GoogleMap, Marker, FoodLocation,CustomMarker, GoogleMapWPinsForFood
   },
   data() {
     return {
