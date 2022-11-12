@@ -195,7 +195,7 @@
       <div class="feature col-12 col-md-6 col-lg-3 p-4">
         <div class="row picture align-items-center">
           <img
-            class="w-25 p-2 mx-auto"
+            class="w-50 p-2 mx-auto"
             src="../assets/img/feature1.jpg"
             alt="feature1"
           />
@@ -210,7 +210,7 @@
       <div class="feature col-12 col-md-6 col-lg-3 p-4">
         <div class="row picture align-items-center">
           <img
-            class="w-50 p-2 mx-auto"
+            class="w-75 p-2 mx-auto"
             src="../assets/img/feature2.png"
             alt="feature2"
           />
@@ -222,7 +222,7 @@
       <div class="feature col-12 col-md-6 col-lg-3 p-4">
         <div class="row picture align-items-center">
           <img
-            class="w-25 p-2 mx-auto"
+            class="w-50 p-2 mx-auto"
             src="../assets/img/feature3.png"
             alt="feature3"
           />
@@ -237,7 +237,7 @@
       <div class="feature col-12 col-md-6 col-lg-3 p-4">
         <div class="row picture align-items-center">
           <img
-            class="w-25 p-2 mx-auto"
+            class="w-50 p-2 mx-auto"
             src="../assets/img/feature5.png"
             alt="feature5"
           />
@@ -256,7 +256,7 @@
 
     <div class="row fixed justify-content-center">
       <div
-        class="col-5 d-flex rounded-4 d-none d-sm-block d-md-block d-lg-block d-xl-block"
+        class="col-5 rounded-4 d-none d-sm-block d-md-block d-lg-block d-xl-block"
         style="background-color: #ff8397"
       >
         <img
