@@ -1,10 +1,10 @@
 <template>
   <div
-  v-motion-pop
-  class="mb-0 pb-2 bg-light pt-5"
-  :style="{ minHeight: 'calc(100vh - 75px)' }"
+    v-motion-pop
+    class="mb-0 pb-2 bg-light pt-5"
+    :style="{ minHeight: 'calc(100vh - 75px)' }"
   >
-  <MerlionMascot :posX=60 :posY=-64> </MerlionMascot>
+    <MerlionMascot :posX="50" :posY="-64" :isMovable="true" />
     <div class="d-flex justify-content-center align-items-center">
       <h1 class="d-flex fw-bold justify-content-center pt-4 px-3 text-center">
         Singapore is yours to EXPLORE!
@@ -56,14 +56,14 @@
         src="https://assets4.lottiefiles.com/packages/lf20_JOHmpu.json"
         background="transparent"
         speed="0.6"
-        style="width: auto; height: 100px;"
+        style="width: auto; height: 100px"
         loop
         autoplay
       ></lottie-player>
       <div class="d-flex justify-content-center">
         <h6>
           <router-link to="/plan" class="btn-special-blue text-decoration-none">
-          Start Planning!
+            Start Planning!
           </router-link>
         </h6>
       </div>
@@ -176,7 +176,11 @@
           autoplay
         ></lottie-player>
         <h4>
-          <router-link to="/plan" class="d-flex justify-content align-items-center btn-special-blue text-center me-5 text-decoration-none" style="min-height: 50px">
+          <router-link
+            to="/plan"
+            class="d-flex justify-content align-items-center btn-special-blue text-center me-5 text-decoration-none"
+            style="min-height: 50px"
+          >
             Start Planning
           </router-link>
         </h4>
@@ -274,8 +278,8 @@
             Location
           </h2>
           <div>
-            Let us know where you want to start from so we have an idea of
-            whats near you!
+            Let us know where you want to start from so we have an idea of whats
+            near you!
           </div>
         </div>
       </div>
@@ -503,7 +507,7 @@
     <div class="d-flex justify-content-center">
       <h4>
         <router-link to="/plan" class="btn-special text-decoration-none">
-        Plan Now
+          Plan Now
         </router-link>
       </h4>
     </div>

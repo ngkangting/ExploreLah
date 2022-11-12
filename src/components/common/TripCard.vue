@@ -1,25 +1,36 @@
 <template>
-  <div class="trip-card p-4 col-md-6 col-lg-4 col-xl-3 " > <!--@click="viewItinerary"-->
+  <div class="trip-card p-4 col-md-6 col-lg-4 col-xl-3">
+    <!--@click="viewItinerary"-->
     <div class="effect-image-1 zoom-effect-1">
-      <img src="../../assets/img/tripcard.jpg" class="w-100"/>
-      <div class="overlay text-white d-flex justify-content-center align-items-center text-center" style="bottom: 45% !important;">
+      <img src="../../assets/img/tripcard.jpg" class="w-100" />
+      <div
+        class="overlay text-white d-flex justify-content-center align-items-center text-center"
+        style="bottom: 45% !important"
+      >
         <div>
-          <h3>{{ dayData.name.slice(1,-1) }}</h3>
+          <h3>{{ dayData.name.slice(1, -1) }}</h3>
           <div>{{ startDate }} - {{ endDate }}</div>
         </div>
       </div>
-      <div class="d-flex description bg-white text-dark-blue px-3" style="top: 45% !important;">
+      <div
+        class="d-flex description bg-white text-dark-blue px-3"
+        style="top: 45% !important"
+      >
         <p class="m-0 w-100">
-          <b>Starting Location:</b> {{input.startLoc}}
-          <br>
-          <b>Transportation Method:</b> {{byCar}}
-          <br>
-          <button @click="generatePDF()" type="btn" class="btn bg-pink text-white btn-sm my-2">
+          <b>Starting Location:</b> {{ input.startLoc }}
+          <br />
+          <b>Transportation Method:</b> {{ byCar }}
+          <br />
+          <button
+            @click="generatePDF()"
+            type="btn"
+            class="btn bg-pink text-white btn-sm my-2"
+          >
             Download as PDF
           </button>
         </p>
       </div>
-    </div> 
+    </div>
   </div>
 </template>
 
@@ -32,104 +43,121 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 export default {
   name: "TripCard",
   props: {
-    dayData:null,
+    dayData: null,
   },
   data() {
     return {
-      numToMonth: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+      numToMonth: [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+      ],
       itinerary: JSON.parse(this.dayData["itinerary"]),
       food: JSON.parse(this.dayData["food"]),
-      input: JSON.parse(this.dayData["input"])
+      input: JSON.parse(this.dayData["input"]),
     };
   },
-  computed:{
-    startDate(){
-      let startDate = new Date(this.input['dates'][0].toString());
-      let outputStr =  startDate.getDate() + " " + this.numToMonth[startDate.getMonth()];
+  computed: {
+    startDate() {
+      let startDate = new Date(this.input["dates"][0].toString());
+      let outputStr =
+        startDate.getDate() + " " + this.numToMonth[startDate.getMonth()];
       return outputStr;
     },
-    endDate(){
-      let endDate = new Date(this.input['dates'][1].toString());
-      let outputStr =  endDate.getDate() + " " + this.numToMonth[endDate.getMonth()];
+    endDate() {
+      let endDate = new Date(this.input["dates"][1].toString());
+      let outputStr =
+        endDate.getDate() + " " + this.numToMonth[endDate.getMonth()];
       return outputStr;
     },
-    byCar(){
-      if (this.input.byCar){
+    byCar() {
+      if (this.input.byCar) {
         return "Private Transport";
-      } 
+      }
       return "Public Transport";
     },
   },
-  created(){
+  created() {
     let currDate = new Date();
   },
-  setup(){
+  setup() {
     const itineraryStore = useItineraryStore();
-    return {itineraryStore};
+    return { itineraryStore };
   },
-  methods:{
-    viewItinerary(){
+  methods: {
+    viewItinerary() {
       //Set this to be the defacto inside intinerary store
       this.itineraryStore.setItinerary(this.dayData);
       //Redirect
       this.$router.push({
-          path: "/viewresult",
-        });
+        path: "/viewresult",
+      });
     },
-    
+
     generatePDF() {
-      var dayCounter=1
-      var activityCounter=1
+      var dayCounter = 1;
+      var activityCounter = 1;
       var docDefinition = {
         content: [
-          'Trip Name: ' + this.dayData.name.slice(1,-1),
-          'Starting Location: ' + this.input.startLoc,
-          ' '
-        ]
+          "Trip Name: " + this.dayData.name.slice(1, -1),
+          "Starting Location: " + this.input.startLoc,
+          " ",
+        ],
       };
-      for (let day of this.itinerary){
-        docDefinition.content.push("Day" + dayCounter)
-        docDefinition.content.push(" ")
-        dayCounter += 1
+      for (let day of this.itinerary) {
+        docDefinition.content.push("Day" + dayCounter);
+        docDefinition.content.push(" ");
+        dayCounter += 1;
 
-        for (let activity of day.itinerary){
-          docDefinition.content.push("Activity" + activityCounter)
-          docDefinition.content.push("Location: " + activity.name)
-          docDefinition.content.push("Start Time: " + activity.arriveTime)
-          docDefinition.content.push("End Time: " + activity.endTime)
-          docDefinition.content.push("Duration of Activity: " + activity.dur)
-          docDefinition.content.push("Travel Time to Location: " + activity.travelTimeTo)
-          docDefinition.content.push("Weather: " + activity.status)
-          docDefinition.content.push(" ")
-          activityCounter += 1
+        for (let activity of day.itinerary) {
+          docDefinition.content.push("Activity" + activityCounter);
+          docDefinition.content.push("Location: " + activity.name);
+          docDefinition.content.push("Start Time: " + activity.arriveTime);
+          docDefinition.content.push("End Time: " + activity.endTime);
+          docDefinition.content.push("Duration of Activity: " + activity.dur);
+          docDefinition.content.push(
+            "Travel Time to Location: " + activity.travelTimeTo
+          );
+          docDefinition.content.push("Weather: " + activity.status);
+          docDefinition.content.push(" ");
+          activityCounter += 1;
         }
-        docDefinition.content.push(" ")
-        activityCounter = 1
+        docDefinition.content.push(" ");
+        activityCounter = 1;
       }
 
       pdfMake.createPdf(docDefinition).download();
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style>
 .trip-card {
   position: relative;
 }
-.trip-card img{
+.trip-card img {
   border-radius: 30px !important;
 }
 .overlay {
   position: absolute;
   border-top-left-radius: 30px !important;
   border-top-right-radius: 30px !important;
-  top:0;
+  top: 0;
   right: 0;
   left: 0;
   background: rgba(66, 66, 66, 0.525);
 }
-.description{
+.description {
   position: absolute;
   font-size: smaller;
   display: flex;
@@ -141,35 +169,35 @@ export default {
   bottom: 0;
   right: 0;
   left: 0;
-  opacity:90%;
+  opacity: 90%;
 }
 
-.zoom-effect-1{
+.zoom-effect-1 {
   overflow: hidden;
 }
 
-.zoom-effect-1 img{
+.zoom-effect-1 img {
   border-radius: 30px !important;
   transform: scale(1);
   -webkit-transform: scale(1);
 }
 
-.zoom-effect-1:hover img{
+.zoom-effect-1:hover img {
   transform: scale(1.1);
   -webkit-transform: scale(1.1);
 }
 
-.effect-image-1{
+.effect-image-1 {
   border-radius: 30px !important;
   position: relative;
   display: block;
 }
 
-.zoom-effect-1 img{
-  transition: all .4s linear;
-  -webkit-transition: all .4s linear;
-  -moz-transition: all .4s linear;
-  -o-transition: all .4s linear;
+.zoom-effect-1 img {
+  transition: all 0.4s linear;
+  -webkit-transition: all 0.4s linear;
+  -moz-transition: all 0.4s linear;
+  -o-transition: all 0.4s linear;
 }
 
 .tripcard {
@@ -178,7 +206,7 @@ export default {
   overflow: hidden;
   margin: 0 auto;
   padding: 40px 20px;
-  transition: .25s;
+  transition: 0.25s;
 }
 
 .tripcard:hover {
@@ -186,13 +214,13 @@ export default {
 }
 
 .tripcard:before {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 45%;
-  background: rgba(255, 255, 255, .1);
+  background: rgba(255, 255, 255, 0.1);
   z-index: 1;
   transform: skewY(-5deg) scale(1.5);
 }
