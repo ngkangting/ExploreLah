@@ -122,7 +122,7 @@
     <div v-else>
       <div class="row d-flex">
         <!-- Result -->
-        <div class="col-md-6 col-lg-8 order-2 order-sm-2 order-md-1 order-lg-1 order-xl-1">
+        <div class="col-md-6 col-lg-8">
 
           <div class="card w-100 border-0 mt-4 ms-3">
             <div class="card-body">
@@ -202,6 +202,27 @@
                             currentDayDetails[idx][currentDayData[idx].placeID].result.formatted_address
                         }}</td>
                       <td v-else style="padding-left: 10px">No Address Available</td>
+                    </tr>
+
+                    <tr v-if="currentDayData[idx].status.toLowerCase() == 'clear'">
+                      <td><i class="bg-grey bi bi-sun-fill rounded-circle p-2 text-dark-blue"></i></td>
+                      <td style="padding-left: 10px">Forecast : {{
+                          currentDayData[idx].status
+                      }}</td>
+                    </tr>
+
+                    <tr v-if="currentDayData[idx].status.toLowerCase() == 'rain'">
+                      <td><i class="bg-grey bi bi-cloud-drizzle-fill rounded-circle p-2 text-dark-blue"></i></td>
+                      <td style="padding-left: 10px">Forecast : {{
+                          currentDayData[idx].status
+                      }}</td>
+                    </tr>
+
+                    <tr v-if="currentDayData[idx].status.toLowerCase() == 'clouds'">
+                      <td><i class="bg-grey bi bi-cloud-fill rounded-circle p-2 text-dark-blue"></i></td>
+                      <td style="padding-left: 10px">Forecast : {{
+                          currentDayData[idx].status
+                      }}</td>
                     </tr>
 
                     <tr>
@@ -300,7 +321,7 @@
         </div>
 
         <!-- Locations -->
-        <div class="col col-md-6 col-lg-4 order-1 order-sm-1 order-md-2 order-lg-2 order-xl-2">
+        <div class="col col-md-6 col-lg-4">
           <div class="nav nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
             <PillTab v-for="(activity, index) in currentDayData" :key="index" :index="index" :isSelected="false"
@@ -309,12 +330,16 @@
               :travelTimeToThis="activity.travelTimeTo" :name="`pill-tab-${index}`" @click="idx = index" />
           </div>
           <!-- Next buttons -->
-          <div class="row">
-            <div class="col-6">
-              <button class="btn btn-secondary" @click="goPrevDay">Prev</button>
-              {{ currDay }}
-              <button class="btn btn-primary" @click="goNextDay()">Next</button>
-            </div>
+          <div class="d-flex justify-content-center py-2">
+            <button @click="goPrevDay" class="rounded bg-dark-blue border-0 p-2 px-3 text-white">
+              Prev
+            </button>
+            <span class="mx-3 d-flex justify-content-center align-items-center">
+              Day {{ currDay }}
+            </span>
+            <button @click="goNextDay" class="rounded bg-dark-blue border-0 py-1 px-3 text-white">
+              Next
+            </button>
           </div>
           <button class="btn btn-pink" @click="goToFoodPage">Go to Food Page</button>
         </div>
@@ -390,6 +415,7 @@ export default {
     goNextDay() {
       if (this.currDay != this.itineraryStore.itineraryList.length) {
         this.currDay += 1;
+        this.idx = 0;
       }
     },
     goToFoodPage() {
