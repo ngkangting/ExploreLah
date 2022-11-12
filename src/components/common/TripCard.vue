@@ -58,8 +58,6 @@ import { useAuthStore } from "@/stores/auth";
 import { getFirestore, doc, updateDoc, collection } from "firebase/firestore";
 import firebaseApp from "../../firebaseConfig";
 import pdfMake from "pdfmake/build/pdfmake";
-import pdfFonts from "pdfmake/build/vfs_fonts";
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 export default {
   name: "TripCard",
