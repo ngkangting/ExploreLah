@@ -1,6 +1,5 @@
 <template > 
   <div class="container-fluid">
-    
   <div v-if="isLoading">
     <div class="row d-flex">
       <!-- Result -->
