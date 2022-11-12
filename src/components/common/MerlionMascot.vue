@@ -1,5 +1,4 @@
 <template>
-    
     <div class="mask" @mouseover="hover = true" @mouseleave="hover = false" :style="merlionPos">
         <img class="merlionHand"   src="../../assets/img/merlion/merlionHand.png" ref="merlion"  />
         <img v-if="!hover" class="merlionBody"   src="../../assets/img/merlion/merlionBaseWEye.png" ref="merlion"  />
@@ -52,10 +51,7 @@ methods : {
         // console.log(this.calculateDistance(this.mouseX, this.mouseY))
         
     },
-    hoverMerlion(){
-        console.log("Fuck u");
-        this.hover = !this.hover
-    }
+
 
 },
 computed : {        
@@ -104,7 +100,7 @@ mounted(){
     width:250px;
     position: fixed;
     overflow: hidden;
-    scale: 0.7;
+    scale: .5;
 }
 
 .merlionBody{
