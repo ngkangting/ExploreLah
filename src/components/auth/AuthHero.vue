@@ -1,6 +1,6 @@
 <template>
   <div
-    class="col-12 col-lg-5 offset-lg-1 bg-dark-blue vh-100 d-none d-lg-flex flex-row justify-content-center align-items-center"
+    class="col-12 col-lg-5 offset-lg-1 bg-dark-blue min-vh-100 d-none d-lg-flex flex-row justify-content-center align-items-center"
   >
     <img
       class="w-100 mh-100"

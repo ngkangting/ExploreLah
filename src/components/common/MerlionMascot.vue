@@ -1,6 +1,6 @@
 <template>
   <div
-    class="mask"
+    class="mask-merlion"
     @mouseover="hover = true"
     @mouseleave="hover = false"
     :style="merlionPos"
@@ -133,7 +133,7 @@ export default {
 </script>
 
 <style lang="scss">
-.mask {
+.mask-merlion {
   // background-color: red;
   height: 250px;
   width: 250px;
