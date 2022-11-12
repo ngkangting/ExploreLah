@@ -1,6 +1,6 @@
 <template>
     
-    <div class="mask" @mouseover="hover = true" @mouseleave="hover = false" >
+    <div class="mask" @mouseover="hover = true" @mouseleave="hover = false" :style="merlionPos">
         <img class="merlionHand"   src="../../assets/img/merlion/merlionHand.png" ref="merlion"  />
         <img v-if="!hover" class="merlionBody"   src="../../assets/img/merlion/merlionBaseWEye.png" ref="merlion"  />
         <img v-else class="merlionBody" src="../../assets/img/merlion/merlionBaseWink.png" ref="merlion"   />
@@ -16,8 +16,8 @@ import { useMouseDistanceFromElement } from "vue-composable";
 export default {
 name: "MerlionMascot",
 props: {
-    positionX: String,
-    positionY: String,
+    posX: String,
+    posY: String,
 },
 data() {
     return {
@@ -58,7 +58,7 @@ methods : {
     }
 
 },
-computed : {
+computed : {        
     leftEyeStyle(){
         return `transform:rotate(${90 + this.eyeRotation}deg);top: -198px;left: 107px`
     },
@@ -78,17 +78,17 @@ computed : {
     mouseDistance(){
         
         return this.distance;
+    },
+    merlionPos(){
+        console.log(`top:${this.posY}px;left:${this.posX}px`);
+        return `bottom:${this.posY}px;left:${this.posX}px`
     }
 
     
 
 },
 mounted(){  
-    const {distance} = useMouseDistanceFromElement();
-    console.log(`Distance here is ${distance.value}`)
-    const {distance2} = useMouseDistanceFromElement(this.$refs.merlion);
-    console.log(`Distance here is ${distance.value}`)
-    console.log(this.$refs.merlion)
+    console.log(this.posX, this.posY)
 
 }
 }
@@ -99,11 +99,12 @@ mounted(){
 
 
 .mask{
-    background-color: red;
+    // background-color: red;
     height:250px;
     width:250px;
     position: fixed;
     overflow: hidden;
+    scale: 0.7;
 }
 
 .merlionBody{

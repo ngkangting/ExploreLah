@@ -1,15 +1,15 @@
 <template>
   <div
-    v-motion-pop
-    class="mb-0 pb-2 bg-light pt-5"
-    :style="{ minHeight: 'calc(100vh - 75px)' }"
+  v-motion-pop
+  class="mb-0 pb-2 bg-light pt-5"
+  :style="{ minHeight: 'calc(100vh - 75px)' }"
   >
+  <MerlionMascot :posX=250 :posY=685></MerlionMascot>
     <div class="d-flex justify-content-center align-items-center">
       <h1 class="d-flex fw-bold justify-content-center pt-4 px-3 text-center">
         Singapore is yours to EXPLORE!
       </h1>
     </div>
-    <MerlionMascot></MerlionMascot>
 
     <div class="row d-md-none d-lg-none d-xl-none justify-content-center">
       <div class="col-5 pt-5 pb-0 d-">
