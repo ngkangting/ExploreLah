@@ -5,7 +5,7 @@ import LoginView from "../views/auth/LoginView.vue";
 import SignUpView from "../views/auth/SignUpView.vue";
 import ForgotPasswordView from "../views/auth/ForgotPasswordView.vue";
 import Plan from "../views/Plan.vue";
-import ResultFood from "../views/ResultPage.vue";
+import FoodView from "../views/FoodView.vue";
 import MyTrips from "../views/MyTrips.vue";
 import Result from "../views/ResultView.vue";
 import Discover from "../views/Discover.vue";
@@ -57,9 +57,9 @@ const router = createRouter({
       component: Result,
     },
     {
-      path: "/resultfood",
+      path: "/foodview",
       name: "Food Recommendation",
-      component: ResultFood,
+      component: FoodView,
     },
     {
       path: "/mytrips",

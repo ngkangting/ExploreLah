@@ -420,7 +420,7 @@ export default {
     },
     goToFoodPage() {
       this.$router.push({
-        path: "/resultfood",
+        path: "/foodview",
       });
     }
 
