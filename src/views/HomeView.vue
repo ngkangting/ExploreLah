@@ -179,6 +179,7 @@
           <router-link
             to="/plan"
             class="d-flex justify-content align-items-center btn-special-blue text-center me-5 text-decoration-none"
+            style="min-height: 50px"
           >
             Start Planning
           </router-link>
