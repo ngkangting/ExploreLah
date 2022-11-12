@@ -1,13 +1,16 @@
 <template>
     <div class="container-fluid pb-5"> 
-      <h1 class="text-center fw-semibold p-4">
-        Recommended Food Places
-      </h1> 
+      <div v-if="itineraryStore.viewingTrip">
+          <p class="text-center fw-semibold pt-5 "> Recommended Food Places for</p>
+          <h1 class="text-center fw-semibold mb-5">{{itineraryStore.name}}</h1>
+      </div>
+
+        <h1 v-else class="text-center fw-semibold mb-5 pt-5">Recommended Food Places</h1>
       <div class="col-10 offset-1 card border-0 p-3 rounded-4">
         <div class="card-body">
           <h2 class="mb-4 py-2 fw-bold d-flex justify-content-center text-white bg-dark-blue">
-            Day {{currDay}}
-          </h2>
+            Day {{currDay}} 
+          </h2> 
 
           <div class="row">
             <div class="col-6">
@@ -144,7 +147,6 @@ export default {
     },
     markers(){
       if(this.state) {
-        console.log(this.foodReco[this.currDay-1]["lunchPin"][0])
         return this.foodReco[this.currDay-1]["lunchPin"]
       }
       return this.foodReco[this.currDay-1]["dinnerPin"]
@@ -159,15 +161,12 @@ export default {
     goPrevDay(){
       if (this.currDay != 1) {
         this.currDay -= 1;
-        console.log("hi")
-        console.log(this.itineraryStore.details)
+
       }
     },
     goNextDay(){
       if(this.currDay!= Object.keys(this.foodReco).length){
         this.currDay += 1
-        console.log("hi")
-        console.log(this.itineraryStore.details)
       }
     },
     async saveItineraryToDb(){
@@ -185,7 +184,7 @@ export default {
               input : JSON.stringify(itineraryInput),
               details: JSON.stringify(details),
             });
-            console.log("Document written with ID: ", docRef.id);
+            // console.log("Document written with ID: ", docRef.id);
             this.$router.push({
               path: "/mytrips",
             });
