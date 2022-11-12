@@ -49,12 +49,7 @@
                 </div>
                 <div class="row">
                   <div class="column col-6 col-lg-6 rounded-3 px-3 py-3">
-                    <GoogleMap :api-key="apiKey" style="width: 100%; height:500px; background-color: azure;" :center="center" :zoom="15">
-                      <!-- <Marker v-for="(pos, index) in markers" :options="{ position: pos }" :icon="{url:('../../public/ico/food.ico'), size: {width:30, height:30}}" />
-                      <CustomMarker v-for="(pos, index) in markers" :options="{ position: pos}">
-                          <img src="../../public/ico/food.ico" width="32" height="32" style="margin-top: 8px" />
-                      </CustomMarker> -->
-                    </GoogleMap> 
+                    <GoogleMapWPins :pinsInfo="currentDayMarkers"/>
                   </div>
   
                   <div class="column col-6 col-lg-6 rounded-3 px-3 py-3">
@@ -168,6 +163,7 @@
   import { GoogleMap, Marker, CustomMarker } from "vue3-google-map";
   
   import PillTab from "@/components/result/PillTab.vue";
+  import GoogleMapWPins from "@/components/common/GoogleMapWPins.vue";
   
   export default {
     name: "ResultView",
@@ -176,6 +172,7 @@
       GoogleMap,
       Marker,
       CustomMarker,
+      GoogleMapWPins
     },
     data() {
       return {
@@ -210,10 +207,8 @@
       currentDayMarkers(){
         return this.itineraryStore.itineraryList[this.currDay-1]["pinInfoList"];
       },
-  
-      isLoading(){
-        return this.itineraryStore.isLoading;
-      }
+
+
   
     },
     methods: {
