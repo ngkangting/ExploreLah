@@ -5,19 +5,17 @@ import LoginView from "../views/auth/LoginView.vue";
 import SignUpView from "../views/auth/SignUpView.vue";
 import ForgotPasswordView from "../views/auth/ForgotPasswordView.vue";
 import Plan from "../views/Plan.vue";
-import ResultFood from "../views/ResultPage.vue";
+import FoodView from "../views/FoodView.vue";
 import MyTrips from "../views/MyTrips.vue";
 import Result from "../views/ResultView.vue";
 import Discover from "../views/Discover.vue";
 import AboutUs from "../views/AboutUs.vue";
 import PageNotFound from "../views/PageNotFound.vue";
-import ViewResultView from "../views/ViewResultView.vue";
-import ViewResultPage from "../views/ViewResultPage.vue";
 
 const router = createRouter({
   scrollBehavior(to, from, savedPosition) {
     // always scroll to top
-    return { top: 0 }
+    return { top: 0 };
   },
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -61,9 +59,9 @@ const router = createRouter({
       component: Result,
     },
     {
-      path: "/resultfood",
+      path: "/foodview",
       name: "Food Recommendation",
-      component: ResultFood,
+      component: FoodView,
     },
     {
       path: "/mytrips",
@@ -79,16 +77,6 @@ const router = createRouter({
       path: "/aboutus",
       name: "About Us",
       component: AboutUs,
-    },
-    {
-      path: "/viewresult",
-      name: "View Result",
-      component: ViewResultView,
-    },
-    {
-      path: "/viewfood",
-      name: "View Food",
-      component: ViewResultPage,
     },
     {
       path: "/:pathMatch(.*)*",

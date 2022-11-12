@@ -32,7 +32,7 @@
           </p>
         </div>
       </div>
-  </div>
+    </div>
     <!-- <vue3-html2pdf
       :show-layout="false"
       :float-layout="true"
@@ -110,14 +110,14 @@ import {
 } from "firebase/firestore";
 import firebaseApp from "../../firebaseConfig";
 // import Vue3Html2pdf from "vue3-html2pdf";
+import pdfMake from "pdfmake/build/pdfmake";
+import pdfFonts from "pdfmake/build/vfs_fonts";
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 export default {
   name: "TripCard",
   props: {
     dayData: null,
-  },
-  components: {
-    // Vue3Html2pdf,
   },
   data() {
     return {
@@ -185,8 +185,40 @@ export default {
         path: "/result",
       });
     },
-    generateReport() {
-      // this.$refs.html2Pdf.generatePdf(document.getElementById("pdf-content"));
+
+    generatePDF() {
+      var dayCounter = 1;
+      var activityCounter = 1;
+      var docDefinition = {
+        content: [
+          "Trip Name: " + this.dayData.name.slice(1, -1),
+          "Starting Location: " + this.input.startLoc,
+          " ",
+        ],
+      };
+      for (let day of this.itinerary) {
+        docDefinition.content.push("Day" + dayCounter);
+        docDefinition.content.push(" ");
+        dayCounter += 1;
+
+        for (let activity of day.itinerary) {
+          docDefinition.content.push("Activity" + activityCounter);
+          docDefinition.content.push("Location: " + activity.name);
+          docDefinition.content.push("Start Time: " + activity.arriveTime);
+          docDefinition.content.push("End Time: " + activity.endTime);
+          docDefinition.content.push("Duration of Activity: " + activity.dur);
+          docDefinition.content.push(
+            "Travel Time to Location: " + activity.travelTimeTo
+          );
+          docDefinition.content.push("Weather: " + activity.status);
+          docDefinition.content.push(" ");
+          activityCounter += 1;
+        }
+        docDefinition.content.push(" ");
+        activityCounter = 1;
+      }
+
+      pdfMake.createPdf(docDefinition).download();
     },
     async deleteTrip(){
       let docID = this.dayData["docID"];

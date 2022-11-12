@@ -15,6 +15,7 @@
         >
           <i class="bi-chevron-left text-secondary" style="font-size: 1rem"></i>
         </RoundLink>
+        Back to Itinerary
         <div class="mb-5">
           <h1 class="text-dark-blue">Sign Up</h1>
           <p class="text-black-50">
@@ -56,8 +57,8 @@
                 >I have read and agree to the
                 <router-link to="/signup" class="text-decoration-none"
                   >Terms of Service</router-link
-                ></label
-              >
+                >
+              </label>
             </div>
           </div>
           <div class="text-center">
