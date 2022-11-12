@@ -21,9 +21,9 @@
           </p>
         </div>
       </div> 
-      <div>
+      <!-- <div>
         <input  type="button" value="View Trip" />
-      </div>
+      </div> -->
     </div>
     
   </template>

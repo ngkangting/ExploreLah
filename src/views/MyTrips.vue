@@ -34,7 +34,7 @@
         <TripCard v-for="info in this.upcomingTrips" :dayData="info" />
       </div>
       <div class="row d-md-none d-lg-none d-xl-none">
-        <PhoneTripCard />
+        <PhoneTripCard v-for="info in this.upcomingTrips" :dayData="info" />
       </div>
     </div>
     <div class="px-5 pb-5">
@@ -51,12 +51,7 @@
         <TripCard v-for="info in this.pastTrips" :dayData="info" />
       </div>
       <div class="row d-md-none d-lg-none d-xl-none">
-        <PhoneTripCard />
-        <PhoneTripCard />
-        <PhoneTripCard />
-        <PhoneTripCard />
-        <PhoneTripCard />
-        <PhoneTripCard />
+        <PhoneTripCard v-for="info in this.pastTrips" :dayData="info" />
       </div>
     </div>
   </div>
