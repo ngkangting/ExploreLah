@@ -6,7 +6,7 @@
         :alertContent="alertContent"
         v-if="isAlert"
       />
-      <div class="col-12 col-lg-5 offset-lg-1 my-auto px-5">
+      <div class="col-12 col-lg-5 offset-lg-1 my-auto mt-5 px-5">
         <RoundLink
           class="position-absolute top-0 start-0 mt-4 ms-3 mt-lg-4 ms-lg-4"
           :path="'/'"

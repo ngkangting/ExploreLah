@@ -1,42 +1,98 @@
 <template>
-  <div class="trip-card p-4 col-md-6 col-lg-4 col-xl-3 ">
+  <div class="trip-card p-4 col-md-6 col-lg-4 col-xl-3 " @click="viewItinerary">
     <div class="effect-image-1 zoom-effect-1">
       <img src="../../assets/img/tripcard.jpg" class="w-100"/>
-      <div class="overlay text-white d-flex justify-content-center align-items-center text-center" style="bottom: 50% !important;">
+      <div class="overlay text-white d-flex justify-content-center align-items-center text-center" style="bottom: 45% !important;">
         <div>
-          <h3>{{dayData.name.slice(1,-1)}}</h3>
-          <div>{{startDate}} - {{endDate}}</div>
+          <h3>{{ dayData.name.slice(1,-1) }}</h3>
+          <div>{{ startDate }} - {{ endDate }}</div>
         </div>
       </div>
-      <div class="d-flex description bg-white text-dark-blue px-3" style="top: 50% !important;">
+      <div class="d-flex description bg-white text-dark-blue px-3" style="top: 45% !important;">
         <p class="m-0 w-100">
-          <b>Accommodation:</b> 
-          <br>{{input.startLoc}}
-          <br>
-          <b>Preference:</b> 
+          <b>Starting Location:</b> {{input.startLoc}}
           <br>
           <b>Transportation Method:</b> {{byCar}}
           <br>
-          <button type="btn" class="btn bg-pink text-white btn-sm my-2">
-          Download as PDF
+          <button @click="generateReport" type="btn" class="btn bg-pink text-white btn-sm my-2">
+            Download as PDF
           </button>
         </p>
       </div>
     </div> 
-    <div>
-      <input  type="button" value="View Trip" @click="viewItinerary"/>
-    </div>
+    <vue3-html2pdf
+        :show-layout="false"
+        :float-layout="true"
+        :enable-download="true"
+        :preview-modal="true"
+        :paginate-elements-by-height="1400"
+        :filename="dayData.name.slice(1,-1)"
+        :pdf-quality="2"
+        :manual-pagination="false"
+        pdf-format="a4"
+        pdf-orientation="landscape"
+        pdf-content-width="1100px"
+        @progress="onProgress($event)"
+        @hasStartedGeneration="hasStartedGeneration()"
+        @hasGenerated="hasGenerated($event)"
+        ref="html2Pdf"
+    >
+        <template v-slot:pdf-content>
+          <span>
+            <h1 class="text-center">
+                {{ dayData.name.slice(1,-1) }}
+              </h1>
+              <h5 class="text-center">
+                {{ startDate }} - {{ endDate }}
+              </h5>
+              <p>
+                <span class="fw-bold ms-5 ps-5">Starting Location: </span>{{ input.startLoc }}
+              </p>
+              <div v-for="(day,index1) in itinerary" :key="index1" class="py-2 ms-5 ps-5">
+                <h5 class="fw-bold">
+                  Day {{ index1 + 1 }}
+                </h5>
+                <div v-for="(activity, index2) in day.itinerary" :key="index2" class="py-2 ms-5 ps-5">
+                  <p class="text-decoration-underline">
+                    Activity {{ index2 + 1 }}
+                  </p>
+                  <p>
+                    <span class="fw-bold">Location: </span> {{ activity.name }}
+                  </p>
+                  <p>
+                    <span class="fw-bold">Start time: </span> {{ activity.arriveTime }}
+                  </p>
+                  <p>
+                    <span class="fw-bold">End Time: </span> {{ activity.endTime }}
+                  </p>
+                  <p>
+                    <span class="fw-bold">Duration of Activity: </span> {{ activity.dur }} Hours
+                  </p>
+                  <p>
+                    <span class="fw-bold">Travel Time: </span> {{ activity.travelTimeTo }} Minutes
+                  </p>
+                  <p>
+                    <span class="fw-bold">Weather: </span> {{ activity.status }}
+                  </p>
+                </div>
+              </div>
+          </span>
+        </template>
+    </vue3-html2pdf>  
   </div>
-  
 </template>
 
 <script>
 import { useItineraryStore } from "@/stores/itinerary";
+import Vue3Html2pdf from 'vue3-html2pdf';
 
 export default {
   name: "TripCard",
   props: {
     dayData:null,
+  },
+  components: {
+    Vue3Html2pdf
   },
   data() {
     return {
@@ -79,9 +135,12 @@ export default {
       this.$router.push({
           path: "/viewresult",
         });
-    }
-  },
-};
+    },
+    generateReport () {
+            this.$refs.html2Pdf.generatePdf(document.getElementById("pdf-content"))
+    },
+  }
+}
 </script>
 
 <style>
@@ -162,7 +221,7 @@ export default {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 50%;
+  height: 45%;
   background: rgba(255, 255, 255, .1);
   z-index: 1;
   transform: skewY(-5deg) scale(1.5);

@@ -17,6 +17,7 @@
     "bootstrap": "^5.2.1",
     "bootstrap-icons": "^1.9.1",
     "firebase": "^9.9.4",
+    "jspdf": "^2.5.1",
     "lottie-vuejs": "^0.1.0",
     "pinia": "^2.0.21",
     "vue": "^3.2.40",
@@ -24,6 +25,7 @@
     "vue-final-modal": "^3.4.8",
     "vue-router": "^4.1.5",
     "vue3-google-map": "^0.15.0",
+    "vue3-html2pdf": "^1.1.2",
     "vue3-typeahead-input": "^1.0.5",
     "vueperslides": "^3.4.2"
   },
