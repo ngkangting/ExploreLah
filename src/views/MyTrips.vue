@@ -130,7 +130,7 @@ export default {
         // console.log(querySnapshot);
         querySnapshot.forEach((doc) => {
           // doc.data() is never undefined for query doc snapshots
-          this.itineraryStore.myTripsData[doc.id] = doc.data();
+          this.data[doc.id] = doc.data();
           // console.log(doc.id, " => ", doc.data());
         });
         //Write to
@@ -151,14 +151,14 @@ export default {
       }
     },
     parseTrips() {
-      for (var info in this.itineraryStore.myTripsData) {
+      for (var info in this.data) {
         let tempData = JSON.parse(
-          this.itineraryStore.myTripsData[info]["input"]
+          this.data[info]["input"]
         );
         let tripDate = new Date(tempData.dates[1]);
         let todayDate = new Date();
         todayDate.setDate(todayDate.getDate() + 1);
-        if (this.itineraryStore.myTripsData[info]["deleted"] == true) {
+        if (this.data[info]["deleted"] == true) {
           //pass
         } else if (tripDate > todayDate) {
           //Adding in the unique document ID
