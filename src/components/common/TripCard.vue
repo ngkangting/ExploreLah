@@ -57,8 +57,12 @@ import { useItineraryStore } from "@/stores/itinerary";
 import { useAuthStore } from "@/stores/auth";
 import { getFirestore, doc, updateDoc, collection } from "firebase/firestore";
 import firebaseApp from "../../firebaseConfig";
+// import pdfFonts from "pdfmake/build/vfs_fonts";
+// import pdfMake from "pdfmake/build/pdfmake";
+// pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+import * as pdfFonts from "pdfmake/build/vfs_fonts.js";
 import pdfMake from "pdfmake/build/pdfmake";
-import pdfFonts from "pdfmake/build/vfs_fonts";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 export default {
