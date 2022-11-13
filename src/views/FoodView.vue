@@ -179,11 +179,11 @@ import { useItineraryStore } from "@/stores/itinerary";
 import { GoogleMap, Marker, CustomMarker } from "vue3-google-map";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 import firebaseApp from "../firebaseConfig";
-
 import FoodLocation from "../components/resultpage/FoodLocation.vue";
 import FoodCard from "../components/resultpage/FoodCard.vue";
-import GoogleMapWPinsForFood from "../components/common/GoogleMapWPinsForFood.vue";
-
+// import pdfMake from "pdfmake/build/pdfmake";
+// import pdfFonts from "pdfmake/build/vfs_fonts";
+// pdfMake.vfs = pdfFonts.pdfMake.vfs;
 export default {
   name: "FoodView",
   components: {
@@ -192,7 +192,6 @@ export default {
     FoodLocation,
     CustomMarker,
     FoodCard,
-    GoogleMapWPinsForFood,
   },
   data() {
     return {
@@ -325,7 +324,6 @@ export default {
     //     docDefinition.content.push("Day" + dayCounter);
     //     docDefinition.content.push(" ");
     //     dayCounter += 1;
-
     //     for (let activity of day.itinerary) {
     //       docDefinition.content.push("Activity" + activityCounter);
     //       docDefinition.content.push("Location: " + activity.name);
@@ -342,7 +340,6 @@ export default {
     //     docDefinition.content.push(" ");
     //     activityCounter = 1;
     //   }
-
     //   pdfMake.createPdf(docDefinition).download();
     // },
   },
