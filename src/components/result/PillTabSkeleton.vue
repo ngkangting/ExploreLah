@@ -12,40 +12,40 @@
       <!-- Header -->
       <div class="pb-3">
         <div
-          class="skeleton skeleton-text rounded"
-          style="height: 30px; width: 150px"
+          class="skeleton skeleton-text rounded w-50"
+          style="height: 30px"
         ></div>
       </div>
 
       <!-- Tags -->
       <div class="d-flex">
         <div
-          class="skeleton skeleton-text rounded me-2"
-          style="height: 18px; width: 75px"
+          class="skeleton skeleton-text rounded me-2 w-100"
+          style="height: 18px"
         ></div>
         <div
-          class="skeleton skeleton-text rounded mx-2"
-          style="height: 18px; width: 75px"
+          class="skeleton skeleton-text rounded mx-2 w-100"
+          style="height: 18px"
         ></div>
         <div
-          class="skeleton skeleton-text rounded mx-2"
-          style="height: 18px; width: 75px"
+          class="skeleton skeleton-text rounded mx-2 w-100"
+          style="height: 18px"
         ></div>
         <div
-          class="skeleton skeleton-text rounded mx-2"
-          style="height: 18px; width: 75px"
+          class="skeleton skeleton-text rounded mx-2 w-100"
+          style="height: 18px"
         ></div>
       </div>
 
       <!-- Description -->
       <div class="d-flex flex-column">
         <div
-          class="skeleton skeleton-text rounded"
-          style="height: 22px; width: 200px"
+          class="skeleton skeleton-text rounded w-75"
+          style="height: 22px"
         ></div>
         <div
-          class="skeleton skeleton-text rounded"
-          style="height: 22px; width: 200px"
+          class="skeleton skeleton-text rounded w-75"
+          style="height: 22px"
         ></div>
       </div>
     </div>
