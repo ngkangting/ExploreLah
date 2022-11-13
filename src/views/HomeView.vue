@@ -4,7 +4,7 @@
     class="mb-0 pb-2 bg-light pt-5"
     :style="{ minHeight: 'calc(100vh - 75px)' }"
   >
-    <MerlionMascot :posX="50" :posY="-64" />
+    <MerlionMascot :posX="50" :posY="-64"  class="d-none d-md-block"/>
     <div class="d-flex justify-content-center align-items-center">
       <h1 class="d-flex fw-bold justify-content-center pt-4 px-3 text-center">
         Singapore is yours to EXPLORE!
