@@ -54,12 +54,19 @@
         <div
           class="d-flex justify-content-center align-items-center bg-light-blue h-100 w-100 text-center p-3 py-5 rounded-4"
         >
-          <div class="fw-bold w-90 display-5 me-3">258</div>
+          <div class="fw-bold w-90 display-5 me-3">{{counter}}</div>
           <h5>
-            trips planned in
-            <br/>
-            the last hour
+            trips planned and counting!            
           </h5>
+          <lottie-player
+          class="w-100 mx-auto position-absolute"
+          style="z-index:1;"
+          src="https://assets5.lottiefiles.com/packages/lf20_iIAhmmGBMG.json"
+          background="transparent"
+          speed="1"
+          loop
+          autoplay
+        ></lottie-player>
         </div>
       </div>
 
@@ -139,6 +146,7 @@ export default {
   },
   data() {
     return {
+      counter:258,
       cards: [
         {
           img: LocalFood,
@@ -182,7 +190,15 @@ export default {
     };
   },
 
-  methods: {},
+  methods: {
+    addCount(){
+      // Math.floor(Math.random() * 35)
+      this.counter += Math.floor(Math.random() * 35);
+    }
+  },
+  mounted(){
+    setInterval(this.addCount, 2300)
+  }
 };
 </script>
 
