@@ -13,6 +13,12 @@
       src="../../assets/img/merlion/merlionHand.png"
       ref="merlion"
     />
+    <!-- <img
+      v-if="!hover"
+      class="merlionBody"
+      src="../../assets/img/merlion/merlionBaseWEye.png"
+      ref="merlion"
+    /> -->
     <img
       v-if="!hover"
       class="merlionBody merlionIdle"
@@ -145,7 +151,7 @@ export default {
       return this.distance;
     },
     merlionPos() {
-      console.log(`top:${this.posY}px;left:${this.posX}px`);
+      // console.log(`top:${this.posY}px;left:${this.posX}px`);
       return `bottom:${this.posY}px;left:${this.posX}px`;
     },
   },
@@ -153,7 +159,7 @@ export default {
   },
 };
 </script>
-
+T
 <style lang="scss">
 .mask-merlion {
   //Edit posx and y here here
@@ -163,6 +169,7 @@ export default {
   position: absolute;
   overflow: hidden;
   scale: 0.5;
+  z-index:15
 }
 
 .merlionBody{
@@ -170,6 +177,22 @@ export default {
   top: 65px;
   left: -22px;
   z-index: -1;
+  // animation: popUp 1s ease alternate 1 ;
+  // animation-delay: 2s;
+
+}
+
+@keyframes popUp{
+  0%{
+    top: px;
+  }
+  65%{
+    top:85px
+  }
+  100%{
+    top: 65px;
+  }
+
 }
 
 .merlionHands{
@@ -177,6 +200,21 @@ export default {
   top: 80px;
   left: -22px;
   z-index: 1;
+  // animation: handsUp 1s ease alternate 1 ;
+  // animation-delay: 2s;
+
+}
+
+@keyframes handsUp {
+  15%{
+    top: 0px;
+  }
+  65%{
+    top:15px
+  }
+  100%{
+    top: 0px;
+  }
 }
 
 .merlionIdle{

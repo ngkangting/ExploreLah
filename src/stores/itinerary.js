@@ -2,24 +2,27 @@ import { defineStore } from "pinia";
 import axios from "axios";
 import { useStorage } from "@vueuse/core";
 
+
 export const useItineraryStore = defineStore("itinerary", {
   state: () => ({
     foodReco: useStorage("foodReco", {}),
     itineraryList: useStorage("itineraryList", {}),
     itineraryInput: useStorage("itineraryInput", {}),
-    isLoading: true,
+    isLoading: false,
     details: useStorage("details", {}),
     viewingTrip: false,
     myTripsData: useStorage("myTripsData", {}),
-    myTripsDataExist: false,
+    myTripsDataExist: useStorage("myTripsDataExist",false),
     // upcomingTrips: useStorage("upcomingTrips", {}),
     // pastTrips: useStorage("pastTrips", {}),
   }),
 
   mounted() {
+
     if (localStorage.itineraryList) {
       this.itineraryList = JSON.parse(localStorage.itineraryList);
     }
+
   },
   actions: {
     async fetchItinerary(formInfo) {
@@ -43,6 +46,7 @@ export const useItineraryStore = defineStore("itinerary", {
           this.isLoading = true;
         });
     },
+
     setItinerary(dayData) {
       //Takes in a json dump and sets the info
       this.itineraryList = JSON.parse(dayData["itinerary"]);

@@ -2,7 +2,7 @@
   <div class="container-fluid bg-image p-0">
     <div
       class="parallax d-flex flex-column justify-content-center align-items-center"
-      :style="{ minHeight: 'calc(80vh - 75px)' }"
+      :style="{ minHeight: 'calc(85vh - 75px)' }"
     >
       <h1 class="fw-bold text-white display-3 pb-3">Relive your trips</h1>
       <h3 class="text-white type">
@@ -17,7 +17,7 @@
     </div>
 
     <div class="p-5">
-      <h3 class="fw-bold px-3 pt-4">
+      <h3 class="fw-bold px-3 py-2">
         Upcoming & Current Trips ({{
           upcomingTrips.length - deletedItemsUpcoming
         }})
@@ -38,11 +38,15 @@
         />
       </div>
       <div class="row d-md-none d-lg-none d-xl-none">
-        <PhoneTripCard v-for="info in this.upcomingTrips" :dayData="info" />
+        <PhoneTripCard
+          v-for="info in this.upcomingTrips"
+          :dayData="info"
+          @trip-Deleted="tripDeletedHandler"
+        />
       </div>
     </div>
     <div class="px-5 pb-5">
-      <h3 class="fw-bold px-3">
+      <h3 class="fw-bold px-3 py-2">
         Past Trips ({{ pastTrips.length - deletedItemsPast }})
       </h3>
       <div v-if="!loaded" class="text-center">
@@ -61,7 +65,11 @@
         />
       </div>
       <div class="row d-md-none d-lg-none d-xl-none">
-        <PhoneTripCard v-for="info in this.pastTrips" :dayData="info" />
+        <PhoneTripCard
+          v-for="info in this.pastTrips"
+          :dayData="info"
+          @trip-Deleted="tripDeletedHandler"
+        />
       </div>
     </div>
   </div>
@@ -82,6 +90,7 @@ import {
   getDocs,
   deleteDoc,
   doc,
+  onSnapshot,
 } from "firebase/firestore";
 import firebaseApp from "../firebaseConfig";
 import { useItineraryStore } from "../stores/itinerary";
@@ -112,7 +121,18 @@ export default {
     return { authStore, db, itineraryStore };
   },
   mounted() {
-    this.triggerWatcher += 1;    
+    this.triggerWatcher += 1;
+    //Runs whenever got snapshot
+    const q = query(collection(this.db, this.authStore.userUid));
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      //clear current itienrarystore
+      this.itineraryStore.myTripsData = {};
+      querySnapshot.forEach((doc) => {
+        this.itineraryStore.myTripsData[doc.id] = doc.data();
+        // console.log(doc.id, " => ", doc.data());
+        this.itineraryStore.myTripsData = this.data;
+      });
+    });
   },
   computed: {
     async userUid() {
@@ -124,26 +144,50 @@ export default {
   },
   watch: {
     async triggerWatcher() {
-      if (this.authStore.user != null) {
-        const q = query(collection(this.db, this.authStore.user.uid));
-        const querySnapshot = await getDocs(q);
-        // console.log(querySnapshot);
-        querySnapshot.forEach((doc) => {
-          // doc.data() is never undefined for query doc snapshots
-          this.data[doc.id] = doc.data();
-          // console.log(doc.id, " => ", doc.data());
-        });
-        //Write to
-        this.loaded = true;
+      //Check if store have
+      if (this.authStore.isLoggedIn != null) {
+        if (this.itineraryStore.myTripsDataExist) {
+          this.loaded = true;
+          //When redirect gets here
+        } else {
+          //Get from firebaseDB this work...
+          this.loaded = false;
+          // console.log(`Is loading is ${this.loaded}`)
+          // const q = query(collection(this.db, this.authStore.userUid));
+          // const querySnapshot = await getDocs(q);
+          // // console.log(querySnapshot);
+          // querySnapshot.forEach((doc) => {
+          //   // doc.data() is never undefined for query doc snapshots
+          //   this.itineraryStore.myTripsData[doc.id] = doc.data();
+          //   // console.log(doc.id, " => ", doc.data());
+          //   this.itineraryStore.myTripsData = this.data;
+          // });
+          // this.itineraryStore.myTripsDataExist = true;
+          // console.log("We have loaded ")
+          this.loaded = true;
+        }
         this.parseTrips();
+        // querySnapshot.forEach((doc) => {
+        //   // doc.data() is never undefined for query doc snapshots
+        //   this.data[doc.id] = doc.data();
+        //   // console.log(doc.id, " => ", doc.data());
+        //   this.itineraryStore.myTripsData = this.data;
+        //   this.loaded = true;
+        //   this.parseTrips();
+        // });
+        //Write to local
       }
     },
   },
   methods: {
     tripDeletedHandler(tripDate) {
+      console.log("Event recieved");
       let todayDate = new Date();
       todayDate.setDate(todayDate.getDate() + 1);
-      if (tripDate > todayDate) {
+      console.log(
+        `The trip date is GREATER than today ${tripDate > todayDate}`
+      );
+      if (tripDate >= todayDate) {
         //Minus from upcoming
         this.deletedItemsUpcoming += 1;
       } else {
@@ -151,23 +195,23 @@ export default {
       }
     },
     parseTrips() {
-      for (var info in this.data) {
+      for (var info in this.itineraryStore.myTripsData) {
         let tempData = JSON.parse(
-          this.data[info]["input"]
+          this.itineraryStore.myTripsData[info]["input"]
         );
         let tripDate = new Date(tempData.dates[1]);
         let todayDate = new Date();
         todayDate.setDate(todayDate.getDate() + 1);
-        if (this.data[info]["deleted"] == true) {
+        if (this.itineraryStore.myTripsData[info]["deleted"] == true) {
           //pass
-        } else if (tripDate > todayDate) {
+        } else if (tripDate >= todayDate) {
           //Adding in the unique document ID
-          this.data[info]["docID"] = info;
-          this.upcomingTrips.push(this.data[info]);
+          this.itineraryStore.myTripsData[info]["docID"] = info;
+          this.upcomingTrips.push(this.itineraryStore.myTripsData[info]);
           //Write to itinerary store
         } else {
-          this.data[info]["docID"] = info;
-          this.pastTrips.push(this.data[info]);
+          this.itineraryStore.myTripsData[info]["docID"] = info;
+          this.pastTrips.push(this.itineraryStore.myTripsData[info]);
         }
       }
       return null;
