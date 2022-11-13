@@ -1,5 +1,7 @@
 <template>
   <div class="container-fluid">
+
+    
     <div v-if="itineraryStore.isLoading">
       <div class="row d-flex py-5 px-4 px-md-5">
         <h1 class="text-center fw-semibold mb-4 mb-md-5">Trip Itinerary</h1>
@@ -155,11 +157,12 @@
             {{ itineraryStore.name }}
           </h1>
         </div>
-
+        
         <h1 v-else class="text-center fw-semibold mb-4 mb-md-5">
           Trip Itinerary
+          <MerlionMascot :posX="35" :posY="915" />
         </h1>
-
+        
         <!-- Result -->
         <div class="col-12 col-md-6 col-lg-8 order-2 order-md-1 mb-5 mb-md-0">
           <div class="card w-100 border-0">
@@ -168,10 +171,10 @@
                 <div class="col-12 col-lg-8">
                   <!-- First Image -->
                   <img
-                    v-if="
+                  v-if="
                       'photos' in
                       currentDayDetails[idx][currentDayData[idx].placeID].result
-                    "
+                      "
                     :src="
                       'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=' +
                       currentDayDetails[idx][currentDayData[idx].placeID].result
@@ -510,6 +513,8 @@ import { GoogleMap, Marker, CustomMarker } from "vue3-google-map";
 import PillTabSkeleton from "@/components/result/PillTabSkeleton.vue";
 import PillTab from "@/components/result/PillTab.vue";
 import GoogleMapWPins from "@/components/common/GoogleMapWPins.vue";
+import MerlionMascot from "@/components/common/MerlionMascot.vue";
+
 
 export default {
   name: "ResultView",
@@ -520,6 +525,7 @@ export default {
     Marker,
     CustomMarker,
     GoogleMapWPins,
+    MerlionMascot,
   },
   data() {
     return {
