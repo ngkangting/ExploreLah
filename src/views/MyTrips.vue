@@ -1,44 +1,50 @@
 <template>
   <div class="container-fluid bg-image p-0">
-    <div class="background parallax">
-      <div class="d-flex justify-content-center py-5">
-        <div>
-          <h1 class="py-5 fw-bold text-white display-3">
-            <span> Relive your trips </span>
-          </h1>
-        </div>
-      </div>
-
-      <div class="d-flex justify-content-center pt-0">
-        <h3 class="text-white type">
-          <span>
-            Together, we have planned
-            {{ upcomingTrips.length + pastTrips.length }} trips!
-          </span>
-        </h3>
-      </div>
+    <div
+      class="parallax d-flex flex-column justify-content-center align-items-center"
+      :style="{ minHeight: 'calc(80vh - 75px)' }"
+    >
+      <h1 class="fw-bold text-white display-3 pb-3">Relive your trips</h1>
+      <h3 class="text-white type">
+        <span v-if="pastTrips.length == 0"
+          >Start planning your trips now!
+        </span>
+        <span v-else
+          >Together, we have planned
+          {{ upcomingTrips.length + pastTrips.length }} trips!
+        </span>
+      </h3>
     </div>
 
-    <div class="p-5" >
+    <div class="p-5">
       <h3 class="fw-bold px-3 pt-4">
-        Upcoming & Current Trips ({{ upcomingTrips.length - deletedItemsUpcoming }})
+        Upcoming & Current Trips ({{
+          upcomingTrips.length - deletedItemsUpcoming
+        }})
       </h3>
       <div v-if="!loaded" class="text-center">
+        <!-- <div v-if="!loaded" class="text-center"> -->
         <!-- <div  class="spinner-border" role="status" style="width: 5rem; height: 5rem;stroke-width:;">
           </div>           -->
         <div class="row d-none d-sm-none d-md-flex">
           <TripCardSkeleton v-for="info in 3" />
         </div>
       </div>
-      <div v-else class="row d-none d-sm-none d-md-flex" >
-        <TripCard v-for="info in this.upcomingTrips" :dayData="info" @trip-Deleted="tripDeletedHandler" />
+      <div v-else class="row d-none d-sm-none d-md-flex">
+        <TripCard
+          v-for="info in this.upcomingTrips"
+          :dayData="info"
+          @trip-Deleted="tripDeletedHandler"
+        />
       </div>
       <div class="row d-md-none d-lg-none d-xl-none">
         <PhoneTripCard v-for="info in this.upcomingTrips" :dayData="info" />
       </div>
     </div>
     <div class="px-5 pb-5">
-      <h3 class="fw-bold px-3">Past Trips ({{ pastTrips.length - deletedItemsPast }})</h3>
+      <h3 class="fw-bold px-3">
+        Past Trips ({{ pastTrips.length - deletedItemsPast }})
+      </h3>
       <div v-if="!loaded" class="text-center">
         <!-- <div  class="spinner-border" role="status" style="width: 5rem; height: 5rem;stroke-width:;">
           </div>           -->
@@ -48,7 +54,11 @@
       </div>
 
       <div v-else class="row d-none d-sm-none d-md-flex">
-        <TripCard v-for="info in this.pastTrips" :dayData="info" @trip-Deleted="tripDeletedHandler" />
+        <TripCard
+          v-for="info in this.pastTrips"
+          :dayData="info"
+          @trip-Deleted="tripDeletedHandler"
+        />
       </div>
       <div class="row d-md-none d-lg-none d-xl-none">
         <PhoneTripCard v-for="info in this.pastTrips" :dayData="info" />
@@ -71,7 +81,7 @@ import {
   where,
   getDocs,
   deleteDoc,
-  doc
+  doc,
 } from "firebase/firestore";
 import firebaseApp from "../firebaseConfig";
 import { useItineraryStore } from "../stores/itinerary";
@@ -85,8 +95,8 @@ export default {
       loaded: false,
       upcomingTrips: [],
       pastTrips: [],
-      deletedItemsUpcoming:0,
-      deletedItemsPast:0,
+      deletedItemsUpcoming: 0,
+      deletedItemsPast: 0,
     };
   },
   components: {
@@ -131,7 +141,6 @@ export default {
   },
   methods: {
     tripDeletedHandler(tripDate) {
-      
       let todayDate = new Date();
       todayDate.setDate(todayDate.getDate() + 1);
       if (tripDate > todayDate) {
@@ -143,30 +152,30 @@ export default {
     },
     parseTrips() {
       for (var info in this.data) {
-        let tempData = JSON.parse(this.data[info]["input"]);
+        let tempData = JSON.parse(
+          this.data[info]["input"]
+        );
         let tripDate = new Date(tempData.dates[1]);
         let todayDate = new Date();
         todayDate.setDate(todayDate.getDate() + 1);
         if (this.data[info]["deleted"] == true) {
           //pass
         } else if (tripDate > todayDate) {
-          //Adding in the unique document ID 
+          //Adding in the unique document ID
           this.data[info]["docID"] = info;
           this.upcomingTrips.push(this.data[info]);
           //Write to itinerary store
         } else {
           this.data[info]["docID"] = info;
           this.pastTrips.push(this.data[info]);
-
         }
       }
       return null;
     },
-    
   },
-  handleDelete(){
-    console.log("deleted")
-  }
+  handleDelete() {
+    console.log("deleted");
+  },
 };
 </script>
 

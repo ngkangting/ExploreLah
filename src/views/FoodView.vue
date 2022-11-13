@@ -1,4 +1,3 @@
-desiree, [13 Nov 2022 at 02:50:50]:
 <template>
   <div class="container-fluid pb-5">
     <h1 class="text-center fw-semibold p-4 pb-0">Recommended Food Places</h1>
@@ -10,8 +9,7 @@ desiree, [13 Nov 2022 at 02:50:50]:
     </div>
     <div class="col-10 offset-1 card border-0 p-3 rounded-4">
       <div class="card-body">
-        <div class="pb-3">
-        </div>
+        <div class="pb-3"></div>
 
         <div class="row">
           <div class="col-md-6 pb-4">
@@ -37,25 +35,29 @@ desiree, [13 Nov 2022 at 02:50:50]:
                 </button>
               </li>
               <li class="nav-item">
-                <div class="nav-link position-absolute end-0 border-0" style="color:black">Day {{ currDay }} of
-                  {{ this.itineraryStore.itineraryList.length }}</div>
+                <div class="nav-link position-absolute end-0 border-0" style="color: black">
+                  Day {{ currDay }} of
+                  {{ this.itineraryStore.itineraryList.length }}
+                </div>
               </li>
             </ul>
             <div v-for="(place, idx) in Object.values(shownFoodReco)[0]" :key="idx">
               <FoodCard :placeName="place[0]" :randomNum="randomNumList[idx]"></FoodCard>
             </div>
 
-            <div class="d-flex justify-content-start ps-3 py-2">
-              <button @click="goPrevDay" class="rounded bg-dark-blue border-0 p-2 px-3 text-white">
-                Prev
+            <!-- Next buttons -->
+            <div class="d-flex justify-content-center pb-3">
+              <button v-if="this.currDay != 1" @click="goPrevDay"
+                class="rounded bg-dark-blue border-0 py-2 px-3 mx-2 text-white">
+                Back
               </button>
-              <span class="mx-3 d-flex justify-content-center align-items-center">
-                Day {{ currDay }}
-              </span>
-              <button @click="goNextDay" class="rounded bg-dark-blue border-0 py-1 px-3 text-white">
+              <button v-if="this.currDay != this.itineraryStore.itineraryList.length" @click="goNextDay"
+                class="rounded bg-dark-blue border-0 py-2 px-3 mx-2 text-white">
                 Next
               </button>
             </div>
+
+
             <!-- Button trigger modal -->
             <div v-if="authStore.isLoggedIn" class="d-flex justify-content-end">
               <button type="button" class="btn btn-pink" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -63,11 +65,11 @@ desiree, [13 Nov 2022 at 02:50:50]:
               </button>
             </div>
 
-            <!-- <div v-else>
-              <button @click="generatePDF" type="btn" class="btn bg-pink text-white btn-sm my-2">
+            <div v-else class="d-flex justify-content-end">
+              <button @click="generatePDF" type="button" class="btn btn-pink">
                 Download as PDF
               </button>
-            </div> -->
+            </div>
 
             <!-- Modal -->
             <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -109,13 +111,12 @@ import { useItineraryStore } from "@/stores/itinerary";
 import { GoogleMap, Marker, CustomMarker } from "vue3-google-map";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 import firebaseApp from "../firebaseConfig";
-
 import FoodLocation from "../components/resultpage/FoodLocation.vue";
 import FoodCard from "../components/resultpage/FoodCard.vue";
 
-// import pdfMake from "pdfmake/build/pdfmake";
-// import pdfFonts from "pdfmake/build/vfs_fonts";
-// pdfMake.vfs = pdfFonts.pdfMake.vfs;
+import pdfMake from "pdfmake/build/pdfmake";
+import pdfFonts from "pdfmake/build/vfs_fonts";
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 export default {
   name: "FoodView",
@@ -132,8 +133,6 @@ export default {
       currDay: 1,
       inputName: null,
       generatedOrder: [],
-      // itinerary: JSON.parse(this.dayData["itinerary"]),
-      // input: JSON.parse(this.dayData["input"]),
     };
   },
   setup() {
@@ -170,7 +169,6 @@ export default {
       return this.foodReco[this.currDay - 1]["dinner"];
     },
     randomNumList() {
-      console.log(this.generatedOrder);
       let startIdx = (this.currDay - 1) * 6;
       let endIdx;
       if (this.state) {
@@ -188,20 +186,18 @@ export default {
     },
     markers() {
       if (this.state) {
-        console.log(this.foodReco[this.currDay - 1]["lunchPin"][0]);
         return this.foodReco[this.currDay - 1]["lunchPin"];
       }
       return this.foodReco[this.currDay - 1]["dinnerPin"];
     },
-    formInput() {
-      //Gives u form details
-      return this.itineraryStore.itineraryInput;
+    formInputs() {
+      // get inputs
+      return this.itineraryStore.itineraryInput
     },
-    formInput() {
-      //Gives u activites
-      return this.itineraryStore.itineraryList;
-    },
-
+    formActivities() {
+      // get activities
+      return this.itineraryStore.itineraryList
+    }
   },
   mounted() {
     let noOfDays = Object.keys(this.foodReco).length;
@@ -224,15 +220,14 @@ export default {
     goPrevDay() {
       if (this.currDay != 1) {
         this.currDay -= 1;
-        console.log("hi");
-        console.log(this.itineraryStore.details);
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
     },
     goNextDay() {
-      if (this.currDay != Object.keys(this.foodReco).length) {
+      if (this.currDay != this.itineraryStore.itineraryList.length) {
         this.currDay += 1;
-        console.log("hi");
-        console.log(this.itineraryStore.details);
+        this.idx = 0;
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
     },
     async saveItineraryToDb() {
@@ -250,7 +245,6 @@ export default {
           input: JSON.stringify(itineraryInput),
           details: JSON.stringify(details),
         });
-        console.log("Document written with ID: ", docRef.id);
         this.$router.push({
           path: "/mytrips",
         });
@@ -258,40 +252,39 @@ export default {
         console.error("Error adding document: ", e);
       }
     },
-    // generatePDF() {
-    //   var dayCounter = 1;
-    //   var activityCounter = 1;
-    //   var docDefinition = {
-    //     content: [
-    //       "Trip Name: " + this.dayData.name.slice(1, -1),
-    //       "Starting Location: " + this.input.startLoc,
-    //       " ",
-    //     ],
-    //   };
-    //   for (let day of this.itinerary) {
-    //     docDefinition.content.push("Day" + dayCounter);
-    //     docDefinition.content.push(" ");
-    //     dayCounter += 1;
-
-    //     for (let activity of day.itinerary) {
-    //       docDefinition.content.push("Activity" + activityCounter);
-    //       docDefinition.content.push("Location: " + activity.name);
-    //       docDefinition.content.push("Start Time: " + activity.arriveTime);
-    //       docDefinition.content.push("End Time: " + activity.endTime);
-    //       docDefinition.content.push("Duration of Activity: " + activity.dur);
-    //       docDefinition.content.push(
-    //         "Travel Time to Location: " + activity.travelTimeTo
-    //       );
-    //       docDefinition.content.push("Weather: " + activity.status);
-    //       docDefinition.content.push(" ");
-    //       activityCounter += 1;
-    //     }
-    //     docDefinition.content.push(" ");
-    //     activityCounter = 1;
-    //   }
-
-    //   pdfMake.createPdf(docDefinition).download();
-    // },
+    generatePDF() {
+      var dayCounter = 1;
+      var activityCounter = 1;
+      var docDefinition = {
+        content: [
+          "My Itinerary",
+          " ",
+          "Starting Location: " + this.formInputs.startLoc,
+          " ",
+        ],
+      };
+      for (let day of this.formActivities) {
+        docDefinition.content.push("Day" + dayCounter);
+        docDefinition.content.push(" ");
+        dayCounter += 1;
+        for (let activity of day.itinerary) {
+          docDefinition.content.push("Activity" + activityCounter);
+          docDefinition.content.push("Location: " + activity.name);
+          docDefinition.content.push("Start Time: " + activity.arriveTime);
+          docDefinition.content.push("End Time: " + activity.endTime);
+          docDefinition.content.push("Duration of Activity: " + activity.dur);
+          docDefinition.content.push(
+            "Travel Time to Location: " + activity.travelTimeTo
+          );
+          docDefinition.content.push("Weather: " + activity.status);
+          docDefinition.content.push(" ");
+          activityCounter += 1;
+        }
+        docDefinition.content.push(" ");
+        activityCounter = 1;
+      }
+      pdfMake.createPdf(docDefinition).download();
+    },
   },
 };
 </script>

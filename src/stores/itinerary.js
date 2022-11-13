@@ -10,6 +10,8 @@ export const useItineraryStore = defineStore("itinerary", {
     isLoading: true,
     details: useStorage("details", {}),
     viewingTrip: false,
+    myTripsData: useStorage("myTripsData", {}),
+    myTripsDataExist: false,
     // upcomingTrips: useStorage("upcomingTrips", {}),
     // pastTrips: useStorage("pastTrips", {}),
   }),
