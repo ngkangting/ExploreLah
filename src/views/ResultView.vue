@@ -1,8 +1,11 @@
 <template>
   <div class="container-fluid">
+    <!-- <div class="row position-absolute w-100">
+      <div class="bg-dark-blue" style="height: 250px"></div>
+    </div> -->
     <div v-if="itineraryStore.isLoading">
       <div class="row d-flex py-5 px-4 px-md-5">
-        <h1 class="text-center fw-semibold mb-4 mb-md-5">Trip Itinerary</h1>
+        <h1 class="text-center fw-semibold mb-4 mb-md-5" >Trip Itinerary</h1>
         <!-- Result -->
         <div class="col-12 col-md-6 col-lg-8 order-2 order-md-1">
           <div class="card w-100 border-0">
