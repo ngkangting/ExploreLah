@@ -21,7 +21,7 @@
         <div class="display-4 mb-2">
           No planned trips yet!
         </div >
-        <div class="col-6 offset-3 mb-5">
+        <div class="col-sm-6 offset-sm-3  mb-5">
           <div
             class="d-flex justify-content-center align-items-center bg-light-blue h-100 w-100 text-center p-3 py-5 rounded-4"
           >
@@ -192,30 +192,10 @@ export default {
         } else {
           //Get from firebaseDB this work...
           this.loaded = false;
-          // console.log(`Is loading is ${this.loaded}`)
-          // const q = query(collection(this.db, this.authStore.userUid));
-          // const querySnapshot = await getDocs(q);
-          // // console.log(querySnapshot);
-          // querySnapshot.forEach((doc) => {
-          //   // doc.data() is never undefined for query doc snapshots
-          //   this.itineraryStore.myTripsData[doc.id] = doc.data();
-          //   // console.log(doc.id, " => ", doc.data());
-          //   this.itineraryStore.myTripsData = this.data;
-          // });
-          // this.itineraryStore.myTripsDataExist = true;
-          // console.log("We have loaded ")
           this.loaded = true;
         }
         this.parseTrips();
-        // querySnapshot.forEach((doc) => {
-        //   // doc.data() is never undefined for query doc snapshots
-        //   this.data[doc.id] = doc.data();
-        //   // console.log(doc.id, " => ", doc.data());
-        //   this.itineraryStore.myTripsData = this.data;
-        //   this.loaded = true;
-        //   this.parseTrips();
-        // });
-        //Write to local
+
       }
     },
   },
@@ -226,10 +206,8 @@ export default {
     },
     tripDeletedHandler(tripDate) {
       let todayDate = new Date();
-      todayDate.setDate(todayDate.getDate() + 1);
-      console.log(
-        `The trip date is GREATER than today ${tripDate > todayDate}`
-      );
+      todayDate.setDate(todayDate.getDate() - 1);
+ 
       if (tripDate >= todayDate) {
         //Minus from upcoming
         this.deletedItemsUpcoming += 1;
@@ -245,6 +223,7 @@ export default {
         let tripDate = new Date(tempData.dates[1]);
         let todayDate = new Date();
         todayDate.setDate(todayDate.getDate() + 1);
+
         if (this.itineraryStore.myTripsData[info]["deleted"] == true) {
           //pass
         } else if (tripDate >= todayDate) {

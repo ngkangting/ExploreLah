@@ -172,7 +172,12 @@ export default {
       let userID = this.authStore.user.uid;
       const docRef = doc(this.db, userID, docID);
       //Start date
+      
       let startDate = new Date(this.input["dates"][0].toString());
+      if (startDate == NaN){
+        startDate = new Date();
+        startDate.setDate(startDate.getDate()-1);
+      }
       this.$emit("tripDeleted", startDate);
 
       this.showTripCard = false;
