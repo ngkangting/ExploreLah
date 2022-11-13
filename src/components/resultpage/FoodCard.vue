@@ -80,10 +80,7 @@ export default {
   },
   computed: {
     foodImg() {
-      return new URL(
-        "../../assets/img/food/food" + this.randomNum + ".jpg",
-        import.meta.url
-      ).href;
+      return "/food/food" + this.randomNum + ".jpg";
     },
     starRating() {
       //Gets number between 6 and 10, divide by 2 to get number of full stars

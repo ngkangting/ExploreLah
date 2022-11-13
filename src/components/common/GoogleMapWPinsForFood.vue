@@ -9,9 +9,7 @@
     <CustomMarker v-for="(pos, idx) in pinsInfo" :options="{ position: pos }">
       <!-- <img src="../../assets/img/pins/bluepin1.png" width="64" height="64" style="margin-top: 0px" /> -->
       <img
-        :src="
-          '../../src/assets/img/pins/bluepin' + (idx + 1).toString() + '.png'
-        "
+        :src="'/pins/bluepin' + (idx + 1).toString() + '.png'"
         width="64"
         height="64"
         style="margin-top: 0px"
