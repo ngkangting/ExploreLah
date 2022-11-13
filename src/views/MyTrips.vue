@@ -112,7 +112,7 @@ export default {
     return { authStore, db, itineraryStore };
   },
   mounted() {
-    this.triggerWatcher += 1;
+    this.triggerWatcher += 1;    
   },
   computed: {
     async userUid() {
