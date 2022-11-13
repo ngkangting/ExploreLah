@@ -82,11 +82,11 @@ export default {
   },
   computed: {
     foodImg() {
-      return Test;
-      // return new URL(
-      //   "/src/assets/img/food/food" + this.randomNum + ".jpg",
-      //   import.meta.url
-      // ).href;
+      // return Test;
+      return new URL(
+        "../../assets/img/food/food" + this.randomNum + ".jpg",
+        import.meta.url
+      ).href;
     },
     starRating() {
       //Gets number between 6 and 10, divide by 2 to get number of full stars
