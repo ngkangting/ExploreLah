@@ -53,9 +53,6 @@ export default {
       }
     },
   },
-  created() {
-    console.log(this.pinsInfo);
-  },
 };
 </script>
 

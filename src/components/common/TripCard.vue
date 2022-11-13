@@ -167,7 +167,7 @@ export default {
       const docRef = doc(this.db, userID, docID);
       //Start date
       let startDate = new Date(this.input["dates"][0].toString());
-      console.log(`Emitted is ${startDate}`);
+      // console.log(`Emitted is ${startDate}`);
       this.$emit("tripDeleted", startDate);
 
       this.showTripCard = false;
