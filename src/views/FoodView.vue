@@ -107,22 +107,25 @@
                 <div class="modal-content">
                   <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">
-                      Give this trip a name!
+                      Give this trip a name!<span class="text-danger">*</span>
                     </h5>
                     <button
-                      type="button"
-                      class="btn-close"
-                      data-bs-dismiss="modal"
-                      aria-label="Close"
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
                     ></button>
                   </div>
                   <div class="modal-body">
                     <input
-                      class="form-control"
-                      type="text"
-                      v-model="inputName"
-                      placeholder="Exciting day trip!"
+                    class="form-control"
+                    type="text"
+                    v-model="inputName"
+                    placeholder="Exciting day trip!"
                     />
+                    <div v-if="showInvalid" class="text-danger mt-1 text-start">
+                      Please enter a name!
+                    </div>
                   </div>
                   <div class="modal-footer">
                     <button
@@ -136,11 +139,17 @@
                       type="button"
                       class="btn btn-pink"
                       @click="saveItineraryToDb"
+                    
+                    
+                    > 
+                    Save</button>
+                    <button
+                      type="button"
+                      class="d-none"
                       data-bs-toggle="modal"
                       data-bs-target="#staticBackdrop"
-                    >
-        
-                      Save
+                      ref="hideModal"
+                    > 
                     </button>
                   </div>
                 </div>
@@ -180,8 +189,9 @@ export default {
     return {
       state: 1, //O for lunch, 1 for dinner
       currDay: 1,
-      inputName: null,
+      inputName: "",
       generatedOrder: [],
+      showInvalid:false,
       // itinerary: JSON.parse(this.dayData["itinerary"]),
       // input: JSON.parse(this.dayData["input"]),
     };
@@ -259,38 +269,41 @@ export default {
     goPrevDay() {
       if (this.currDay != 1) {
         this.currDay -= 1;
-        console.log("hi");
-        console.log(this.itineraryStore.details);
       }
     },
     goNextDay() {
       if (this.currDay != Object.keys(this.foodReco).length) {
         this.currDay += 1;
-        console.log("hi");
-        console.log(this.itineraryStore.details);
       }
     },
     async saveItineraryToDb() {
-      //Write to DB
-      let userID = this.authStore.user.uid;
-      let itineraryList = this.itineraryStore.itineraryList;
-      let foodReco = this.itineraryStore.foodReco;
-      let itineraryInput = this.itineraryStore.itineraryInput;
-      let details = this.itineraryStore.details;
-      try {
-        const docRef = await addDoc(collection(this.db, userID), {
-          name: JSON.stringify(this.inputName),
-          itinerary: JSON.stringify(itineraryList),
-          food: JSON.stringify(foodReco),
-          input: JSON.stringify(itineraryInput),
-          details: JSON.stringify(details),
-        });
-        console.log("Document written with ID: ", docRef.id);
-        this.$router.push({
-          path: "/mytrips",
-        });
-      } catch (e) {
-        console.error("Error adding document: ", e);
+      if (this.inputName === ""){
+        //Not valid name
+        this.showInvalid = true;
+      
+      } else {
+        //Write to DB
+        let userID = this.authStore.user.uid;
+        let itineraryList = this.itineraryStore.itineraryList;
+        let foodReco = this.itineraryStore.foodReco;
+        let itineraryInput = this.itineraryStore.itineraryInput;
+        let details = this.itineraryStore.details;
+        try {
+          const docRef = await addDoc(collection(this.db, userID), {
+            name: JSON.stringify(this.inputName),
+            itinerary: JSON.stringify(itineraryList),
+            food: JSON.stringify(foodReco),
+            input: JSON.stringify(itineraryInput),
+            details: JSON.stringify(details),
+          })
+          // console.log("Document written with ID: ", docRef.id);
+          this.$router.push({
+            path: "/mytrips",
+          });
+          this.$refs.hideModal.click();
+        } catch (e) {
+          console.error("Error adding document: ", e);
+        }
       }
     },
     // generatePDF() {

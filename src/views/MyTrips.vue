@@ -112,12 +112,7 @@ export default {
     return { authStore, db, itineraryStore };
   },
   mounted() {
-    this.triggerWatcher += 1;
-    var collapseElementList = [].slice.call(document.querySelectorAll('.collapse'));
-    console.log(collapseElementList);
-    var collapseList = collapseElementList.map(function (collapseEl) {
-      return new bootstrap.Collapse(collapseEl)
-})
+    this.triggerWatcher += 1;    
   },
   computed: {
     async userUid() {
