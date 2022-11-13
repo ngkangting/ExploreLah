@@ -225,7 +225,6 @@ export default {
       this.counter += Math.floor(Math.random() * 35);
     },
     tripDeletedHandler(tripDate) {
-      console.log("Event recieved");
       let todayDate = new Date();
       todayDate.setDate(todayDate.getDate() + 1);
       console.log(
@@ -261,9 +260,7 @@ export default {
       return null;
     },
   },
-  handleDelete() {
-    console.log("deleted");
-  },
+ 
 };
 </script>
 
