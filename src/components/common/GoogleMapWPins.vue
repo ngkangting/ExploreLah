@@ -2,7 +2,7 @@
   <GoogleMap
     :api-key="apiKey"
     style="height: 500px; background-color: azure"
-    :center="center"
+    :center="centerMap"
     :zoom="15"
   >
     <!-- <Marker v-for="pos in pinsInfo" :options="{ position: {lat:pos[1], lng:pos[2]} }" :icon="{url:('../../public/ico/food.ico'), size: {width:30, height:30}}" /> -->
@@ -41,7 +41,18 @@ export default {
       count: 1,
     };
   },
-  computed: {},
+  computed: {
+    centerMap() {
+      if (this.pinsInfo) {
+        return {
+          lat: this.pinsInfo[0][1],
+          lng: this.pinsInfo[0][2],
+        };
+      } else {
+        return center;
+      }
+    },
+  },
   created() {
     console.log(this.pinsInfo);
   },

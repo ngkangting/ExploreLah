@@ -3,11 +3,8 @@
     class="mask-merlion"
     @mouseover="handleHoverOn"
     @mouseleave="handleHoverOff"
-
     :style="merlionPos"
   >
-
-  
     <img
       class="merlionHands"
       src="../../assets/img/merlion/merlionHand.png"
@@ -27,7 +24,7 @@
     />
     <img
       v-else
-      class="merlionBody merlionWinkAnimation"      
+      class="merlionBody merlionWinkAnimation"
       src="../../assets/img/merlion/merlionBaseWink.png"
       ref="merlion"
     />
@@ -54,7 +51,7 @@ export default {
       eyeRotation: null,
       hover: false,
       isMovable: true,
-      animationPlaying:false,
+      animationPlaying: false,
     };
   },
   // setup() {
@@ -62,18 +59,19 @@ export default {
   //   return { x, y };
   // },
   methods: {
-    handleHoverOn(){
+    handleHoverOn() {
       //Set animation to true
       //append and remove class
-      if (this.hover == false){
+      if (this.hover == false) {
         this.hover = true;
-      } 
+      }
     },
-    handleHoverOff(){
-      if (this.hover == true) {}
-      setTimeout(()=>{
+    handleHoverOff() {
+      if (this.hover == true) {
+      }
+      setTimeout(() => {
         this.hover = false;
-      }, 750)
+      }, 750);
     },
     calculateDistance(mouseX, mouseY) {
       //element.getBoundingClientRect().left
@@ -94,7 +92,6 @@ export default {
     //   }
     //   difference = Math.min(85, difference);
     //   console.log(difference)
-
 
     //   return difference
     // },
@@ -155,8 +152,7 @@ export default {
       return `bottom:${this.posY}px;left:${this.posX}px`;
     },
   },
-  mounted() {
-  },
+  mounted() {},
 };
 </script>
 T
@@ -169,89 +165,82 @@ T
   position: absolute;
   overflow: hidden;
   scale: 0.5;
-  z-index:15
+  z-index: 15;
 }
 
-.merlionBody{
+.merlionBody {
   position: absolute;
   top: 65px;
   left: -22px;
   z-index: -1;
   // animation: popUp 1s ease alternate 1 ;
   // animation-delay: 2s;
-
 }
 
-@keyframes popUp{
-  0%{
+@keyframes popUp {
+  0% {
     top: px;
   }
-  65%{
-    top:85px
+  65% {
+    top: 85px;
   }
-  100%{
+  100% {
     top: 65px;
   }
-
 }
 
-.merlionHands{
+.merlionHands {
   position: absolute;
   top: 80px;
   left: -22px;
   z-index: 1;
   // animation: handsUp 1s ease alternate 1 ;
   // animation-delay: 2s;
-
 }
 
 @keyframes handsUp {
-  15%{
+  15% {
     top: 0px;
   }
-  65%{
-    top:15px
+  65% {
+    top: 15px;
   }
-  100%{
+  100% {
     top: 0px;
   }
 }
 
-.merlionIdle{
+.merlionIdle {
   animation: bobbing 2s ease alternate infinite;
 }
 
-@keyframes bobbing{
-  0%{
-    top:65px;
+@keyframes bobbing {
+  0% {
+    top: 65px;
   }
-  50%{
-    top:65px;
+  50% {
+    top: 65px;
   }
 
-
-  75%{
-    top:85px;
+  75% {
+    top: 85px;
     transform: rotate(-1deg);
   }
-  100%{
-    top:65px;
+  100% {
+    top: 65px;
     transform: rotate(2deg);
   }
 }
 
-.merlionWinkAnimation{
+.merlionWinkAnimation {
   animation: hideUnder 0.5s ease 2 alternate;
 }
 @keyframes hideUnder {
-  0%{
+  0% {
     top: 65px;
   }
-  100%{
-    top: 85px
+  100% {
+    top: 85px;
   }
 }
-
-
-
 </style>
