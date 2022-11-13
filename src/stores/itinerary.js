@@ -13,6 +13,7 @@ export const useItineraryStore = defineStore("itinerary", {
     viewingTrip: false,
     myTripsData: useStorage("myTripsData", {}),
     myTripsDataExist: useStorage("myTripsDataExist",false),
+    tripsCreated :useStorage("tripsCreated", 258),
     // upcomingTrips: useStorage("upcomingTrips", {}),
     // pastTrips: useStorage("pastTrips", {}),
   }),
