@@ -15,7 +15,7 @@
         >
           <i class="bi-chevron-left text-secondary" style="font-size: 1rem"></i>
         </RoundLink>
-        <div class="my-5">
+        <div class="my-3">
           <h1 class="text-dark-blue">Login</h1>
           <p class="text-black-50">Ready to explore Singapore?</p>
         </div>

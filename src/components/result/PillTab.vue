@@ -28,16 +28,16 @@
           : { transform: 'scale(0.85)', transition: 'all .25s' },
       ]"
     >
-      <h4 class="pb-2">{{ place }}</h4>
+      <h4 class="pb-1">{{ place }}</h4>
       <div class="d-flex flex-wrap pb-2">
         <span
           v-for="(tag, index) in type"
           :key="index"
-          class="tag bg-grey rounded-2 p-1 px-2 me-2 text-nowrap"
+          class="tag bg-grey rounded-2 py-1 px-2 me-2 my-1 text-nowrap"
           >{{ tag }}</span
         >
       </div>
-      <div class="d-flex flex-column p-1">
+      <div class="d-flex flex-column ps-1">
         <span class=""
           >Time: {{ arrivalTime }}hrs - {{ departureTime }}hrs</span
         >
