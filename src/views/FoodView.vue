@@ -170,6 +170,7 @@ export default {
       return this.foodReco[this.currDay - 1]["dinner"];
     },
     randomNumList() {
+      console.log(this.generatedOrder);
       let startIdx = (this.currDay - 1) * 6;
       let endIdx;
       if (this.state) {
@@ -192,15 +193,28 @@ export default {
       }
       return this.foodReco[this.currDay - 1]["dinnerPin"];
     },
+    formInput() {
+      //Gives u form details
+      return this.itineraryStore.itineraryInput;
+    },
+    formInput() {
+      //Gives u activites
+      return this.itineraryStore.itineraryList;
+    },
 
   },
   mounted() {
     let noOfDays = Object.keys(this.foodReco).length;
     let noOfFood = noOfDays * 3 * 2;
     let noOfImages = 42;
+    var unselectedImgs = []
+    for (let i = 0; i < 42; i++) {
+      unselectedImgs.push(i)
+    }
     for (let i = 0; i <= noOfFood; i++) {
-      let rnd = Math.floor(Math.random() * noOfImages);
-      this.generatedOrder.push(rnd);
+      let rnd = Math.floor(Math.random() * unselectedImgs.length);
+      this.generatedOrder.push(unselectedImgs[rnd]);
+      unselectedImgs.splice(rnd, 1);
     }
   },
   methods: {
