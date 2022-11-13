@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid">
-    <div v-if="isLoading">
+    <div v-if="itineraryStore.isLoading">
       <div class="row d-flex py-5 px-4 px-md-5">
         <h1 class="text-center fw-semibold mb-4 mb-md-5">Trip Itinerary</h1>
         <!-- Result -->

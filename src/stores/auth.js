@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import { useStorage } from "@vueuse/core";
 
 import {
   getAuth,
@@ -14,6 +15,7 @@ import {
 export const useAuthStore = defineStore("auth", {
   state: () => ({
     user: null,
+    userUid: useStorage("userUid", {}),
   }),
   getters: {
     isLoggedIn(state) {
@@ -30,6 +32,7 @@ export const useAuthStore = defineStore("auth", {
       await onAuthStateChanged(auth, (user) => {
         if (user) {
           this.user = user;
+          this.userUid = user.uid;
         }
       });
     },
