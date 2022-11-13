@@ -1,5 +1,5 @@
 <template>
-    <div class="card m-4 col-10 ps-0 border border-blue" @click="viewItinerary">
+    <div class="card m-4 col-10 ps-0 border border-blue" >
         <div class="row g-0">
             <div class="col-4">
                 <img src="../../assets/img/tripcard.jpg" class="img-fluid rounded-start h-100">
@@ -15,7 +15,7 @@
                     <br>
                     <b>Transportation Method:</b> {{ byCar }}
                 </p>
-                <button type="btn" class="btn bg-pink text-white btn-sm my-2" @click="generatePDF()">
+                <button type="btn" class="btn bg-pink text-white btn-sm my-2" @click="generatePDF">
                         Download as PDF
                 </button>
             </div>
