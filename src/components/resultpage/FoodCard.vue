@@ -38,8 +38,6 @@
 </template>
 
 <script>
-import Test from "@/assets/img/food/food0.jpg";
-
 export default {
   name: "FoodCard",
   props: {
@@ -82,7 +80,6 @@ export default {
   },
   computed: {
     foodImg() {
-      // return Test;
       return new URL(
         "../../assets/img/food/food" + this.randomNum + ".jpg",
         import.meta.url
