@@ -197,7 +197,7 @@ export default {
   methods: {
     addCount(){
       // Math.floor(Math.random() * 35)
-      this.itineraryStore.tripsCreated += Math.floor(Math.random() * 35);
+      this.itineraryStore.tripsCreated += Math.floor(Math.random() * 450);
     }
   },
   mounted(){

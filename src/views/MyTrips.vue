@@ -201,7 +201,7 @@ export default {
   methods: {
     addCount(){
       // Math.floor(Math.random() * 35)
-      this.itineraryStore.tripsCreated += Math.floor(Math.random() * 35);
+      this.itineraryStore.tripsCreated += Math.floor(Math.random() * 350);
     },
     tripDeletedHandler(tripDate) {
       let todayDate = new Date();
