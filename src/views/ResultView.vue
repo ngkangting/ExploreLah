@@ -46,26 +46,26 @@
                 <div class="column col-12 col-lg-6 rounded-3 px-3 py-3">
                   <!-- Header -->
                   <div
-                    class="skeleton skeleton-text rounded pb-1"
-                    style="height: 35px; width: 150px"
+                    class="skeleton skeleton-text rounded pb-1 w-50"
+                    style="height: 35px"
                   ></div>
                   <!-- Tags -->
                   <div class="d-flex">
                     <div
-                      class="skeleton skeleton-text rounded me-2"
-                      style="height: 18px; width: 75px"
+                      class="skeleton skeleton-text rounded me-2 w-25"
+                      style="height: 18px"
                     ></div>
                     <div
-                      class="skeleton skeleton-text rounded mx-2"
-                      style="height: 18px; width: 75px"
+                      class="skeleton skeleton-text rounded mx-2 w-25"
+                      style="height: 18px"
                     ></div>
                     <div
-                      class="skeleton skeleton-text rounded mx-2"
-                      style="height: 18px; width: 75px"
+                      class="skeleton skeleton-text rounded mx-2 w-25"
+                      style="height: 18px"
                     ></div>
                     <div
-                      class="skeleton skeleton-text rounded mx-2"
-                      style="height: 18px; width: 75px"
+                      class="skeleton skeleton-text rounded mx-2 w-25"
+                      style="height: 18px"
                     ></div>
                   </div>
 
@@ -77,8 +77,8 @@
                         style="height: 30px; width: 30px"
                       ></div>
                       <div
-                        class="skeleton skeleton-text ms-2"
-                        style="height: 20px; width: 150px"
+                        class="skeleton skeleton-text rounded ms-2 w-50"
+                        style="height: 20px"
                       ></div>
                     </div>
 
@@ -88,8 +88,8 @@
                         style="height: 30px; width: 30px"
                       ></div>
                       <div
-                        class="skeleton skeleton-text ms-2"
-                        style="height: 20px; width: 150px"
+                        class="skeleton skeleton-text rounded ms-2 w-50"
+                        style="height: 20px"
                       ></div>
                     </div>
 
@@ -99,8 +99,8 @@
                         style="height: 30px; width: 30px"
                       ></div>
                       <div
-                        class="skeleton skeleton-text ms-2"
-                        style="height: 20px; width: 150px"
+                        class="skeleton skeleton-text rounded ms-2 w-50"
+                        style="height: 20px"
                       ></div>
                     </div>
 
@@ -110,8 +110,8 @@
                         style="height: 30px; width: 30px"
                       ></div>
                       <div
-                        class="skeleton skeleton-text ms-2"
-                        style="height: 20px; width: 150px"
+                        class="skeleton skeleton-text rounded ms-2 w-50"
+                        style="height: 20px"
                       ></div>
                     </div>
                   </div>
@@ -126,8 +126,8 @@
           class="col-12 col-md-6 col-lg-4 order-1 order-md-2 position-relative"
         >
           <div
-            class="skeleton skeleton-text rounded mx-auto my-2 mb-4"
-            style="height: 35px; width: 200px"
+            class="skeleton skeleton-text rounded mx-auto my-2 mb-4 w-50"
+            style="height: 35px"
           ></div>
 
           <div
