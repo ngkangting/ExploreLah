@@ -1,54 +1,50 @@
 <template>
-  <!-- <div v-if="showTripCard"> -->
   <div
     v-if="showTripCard"
-    class="trip-card col-md-6 col-lg-4 col-xl-3 position-relative"
+    class="tripCard card shadow-sm col-12 col-sm-6 col-md-4 col-lg-3 mx-0 mx-sm-3 mx-md-4 my-3 bg-white border-0 rounded-4 p-0"
   >
-    <button
-      class="btn btn-light position-absolute end-0 top-0 m-3"
-      @click="deleteTrip"
-      style="z-index: 10"
-    >
-      <i class="bi bi-trash-fill text-secondary"></i>
-    </button>
-    <div
-      class="effect-image-1 zoom-effect-1"
-      @mouseenter="revealText = true"
-      @mouseleave="revealText = false"
-    >
-      <img src="../../assets/img/tripcard.jpg" class="w-100" />
-      <div
-        class="overlay text-white d-flex justify-content-center align-items-center text-center"
-        style="bottom: 45% !important"
-      >
-        <div>
-          <h3>{{ dayData.name.slice(1, -1) }}</h3>
-          <div>{{ startDate }} - {{ endDate }}</div>
-          <span v-if="revealText" class="revealText"
-            >Click to view details!</span
-          >
+    <div class="card-img-wrap position-relative">
+      <img
+        src="../../assets/img/tripcard.jpg"
+        class="card-img-top w-100"
+        style="max-height: 300px"
+      />
+      <div class="overlay"></div>
+    </div>
+
+    <div class="card-body bg-white d-flex flex-column p-4 position-relative">
+      <div class="mb-3">
+        <h4 class="card-title">{{ dayData.name.slice(1, -1) }}</h4>
+        <h6 class="mb-1">{{ startDate }} - {{ endDate }}</h6>
+
+        <div class="position-absolute end-0 top-0 pt-3 pe-4">
+          <button class="btn border-0 p-0 me-4" @click="generatePDF">
+            <i
+              class="bi bi-file-earmark-pdf-fill text-secondary"
+              style="font-size: 1.4rem"
+            ></i>
+          </button>
+
+          <button class="btn border-0 p-0" @click="deleteTrip">
+            <i
+              class="bi bi-trash-fill text-secondary"
+              style="font-size: 1.4rem"
+            ></i>
+          </button>
         </div>
       </div>
-      <div
-        class="d-flex description bg-white text-dark-blue px-3"
-        style="top: 45% !important"
-      >
-        <p class="m-0 w-100">
-          <b>Starting Location:</b> {{ input.startLoc }}
-          <br />
-          <b>Transportation Method:</b> {{ byCar }}
-          <br />
-          <button
-            @click="generatePDF"
-            type="btn"
-            class="btn bg-pink text-white btn-sm my-2"
-          >
-            Download as PDF
-          </button>
+
+      <div class="mb-4 text-dark-blue">
+        <p class="mb-1 fs-6">
+          <strong>Starting Location:</strong> {{ input.startLoc }}
         </p>
+        <p class="fs-6"><strong>Transportation Method:</strong> {{ byCar }}</p>
       </div>
+
+      <button class="btn btn-pink py-2 mt-auto" @click="viewItinerary()">
+        View Trip
+      </button>
     </div>
-    <!-- </div> -->
   </div>
 </template>
 
@@ -57,9 +53,6 @@ import { useItineraryStore } from "@/stores/itinerary";
 import { useAuthStore } from "@/stores/auth";
 import { getFirestore, doc, updateDoc, collection } from "firebase/firestore";
 import firebaseApp from "../../firebaseConfig";
-// import pdfFonts from "pdfmake/build/vfs_fonts";
-// import pdfMake from "pdfmake/build/pdfmake";
-// pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 import * as pdfFonts from "pdfmake/build/vfs_fonts.js";
 import pdfMake from "pdfmake/build/pdfmake";
@@ -90,7 +83,6 @@ export default {
       food: JSON.parse(this.dayData["food"]),
       input: JSON.parse(this.dayData["input"]),
       showTripCard: true,
-      revealText: false,
     };
   },
   mounted() {},
@@ -190,14 +182,13 @@ export default {
 </script>
 
 <style>
-.trip-card {
-  position: relative;
+.tripCard {
+  overflow: hidden;
 }
-.trip-card img {
-  border-radius: 5px !important;
-}
+
 .overlay {
   position: absolute;
+  overflow: hidden;
   border-top-left-radius: 5px !important;
   border-top-right-radius: 5px !important;
   top: 0;
@@ -205,76 +196,32 @@ export default {
   left: 0;
   background: rgba(66, 66, 66, 0.525);
 }
-.description {
-  position: absolute;
-  font-size: smaller;
-  display: flex;
-  justify-content: left;
-  align-items: center;
-  text-align: left;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  opacity: 90%;
-}
 
-.zoom-effect-1 {
+.zoom-effect-trip {
   overflow: hidden;
 }
 
-.zoom-effect-1 img {
+.zoom-effect-trip img {
   border-radius: 5px !important;
   transform: scale(1);
   -webkit-transform: scale(1);
 }
 
-.zoom-effect-1:hover img {
+.zoom-effect-trip:hover img {
   transform: scale(1.1);
   -webkit-transform: scale(1.1);
 }
 
-.effect-image-1 {
+.effect-image-trip {
   border-radius: 5px !important;
   position: relative;
   display: block;
 }
 
-.zoom-effect-1 img {
+.zoom-effect-trip img {
   transition: all 0.4s linear;
   -webkit-transition: all 0.4s linear;
   -moz-transition: all 0.4s linear;
   -o-transition: all 0.4s linear;
-}
-
-.tripcard {
-  position: relative;
-  height: auto;
-  overflow: hidden;
-  margin: 0 auto;
-  padding: 40px 20px;
-  transition: 0.25s;
-}
-
-.tripcard:hover {
-  transform: scale(1.1);
-}
-
-.tripcard:before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 45%;
-  background: rgba(255, 255, 255, 0.1);
-  z-index: 1;
-  transform: skewY(-5deg) scale(1.5);
-}
-
-.reveal-text {
-  position: absolute;
-  color: red;
 }
 </style>

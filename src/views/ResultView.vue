@@ -158,6 +158,7 @@
 
         <h1 v-else class="text-center fw-semibold mb-4 mb-md-5">
           Trip Itinerary
+          <MerlionMascot :posX="35" :posY="915" />
         </h1>
 
         <!-- Result -->
@@ -188,7 +189,7 @@
                     style="height: 350px"
                   >
                     <span
-                      class="fs-4 position-absolute top-50 start-50 translate-middle text-secondary"
+                      class="fs-4 position-absolute top-50 start-50 translate-middle text-secondary text-center"
                       >No Image Found</span
                     >
                   </div>
@@ -221,7 +222,7 @@
                         style="height: 165px"
                       >
                         <span
-                          class="position-absolute top-50 start-50 translate-middle text-secondary"
+                          class="position-absolute top-50 start-50 translate-middle text-secondary text-center"
                           >No Image Found</span
                         >
                       </div>
@@ -252,7 +253,7 @@
                         style="height: 165px"
                       >
                         <span
-                          class="position-absolute top-50 start-50 translate-middle text-secondary"
+                          class="position-absolute top-50 start-50 translate-middle text-secondary text-center"
                           >No Image Found</span
                         >
                       </div>
@@ -510,6 +511,7 @@ import { GoogleMap, Marker, CustomMarker } from "vue3-google-map";
 import PillTabSkeleton from "@/components/result/PillTabSkeleton.vue";
 import PillTab from "@/components/result/PillTab.vue";
 import GoogleMapWPins from "@/components/common/GoogleMapWPins.vue";
+import MerlionMascot from "@/components/common/MerlionMascot.vue";
 
 export default {
   name: "ResultView",
@@ -520,6 +522,7 @@ export default {
     Marker,
     CustomMarker,
     GoogleMapWPins,
+    MerlionMascot,
   },
   data() {
     return {
