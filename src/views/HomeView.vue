@@ -4,7 +4,7 @@
     class="mb-0 pb-2 bg-light pt-5"
     :style="{ minHeight: 'calc(100vh - 75px)' }"
   >
-    <MerlionMascot :posX="50" :posY="-64" />
+    <MerlionMascot :posX="50" :posY="-64"  class="d-none d-md-block"/>
     <div class="d-flex justify-content-center align-items-center">
       <h1 class="d-flex fw-bold justify-content-center pt-4 px-3 text-center">
         Singapore is yours to EXPLORE!
@@ -371,23 +371,23 @@
             <div class="py-2 d-flex">
               <i
                 class="bi bi-star-fill text-pink me-1"
-                style="font-size: 1.4rem"
+                style="font-size: 1.2rem"
               ></i>
               <i
                 class="bi bi-star-fill text-pink me-1"
-                style="font-size: 1.4rem"
+                style="font-size: 1.2rem"
               ></i>
               <i
                 class="bi bi-star-fill text-pink me-1"
-                style="font-size: 1.4rem"
+                style="font-size: 1.2rem"
               ></i>
               <i
                 class="bi bi-star-fill text-pink me-1"
-                style="font-size: 1.4rem"
+                style="font-size: 1.2rem"
               ></i>
               <i
                 class="bi bi-star-fill text-pink"
-                style="font-size: 1.4rem"
+                style="font-size: 1.2rem"
               ></i>
             </div>
             <p>
@@ -400,23 +400,23 @@
             <div class="py-2 d-flex">
               <i
                 class="bi bi-star-fill text-pink me-1"
-                style="font-size: 1.4rem"
+                style="font-size: 1.2rem"
               ></i>
               <i
                 class="bi bi-star-fill text-pink me-1"
-                style="font-size: 1.4rem"
+                style="font-size: 1.2rem"
               ></i>
               <i
                 class="bi bi-star-fill text-pink me-1"
-                style="font-size: 1.4rem"
+                style="font-size: 1.2rem"
               ></i>
               <i
                 class="bi bi-star-fill text-pink me-1"
-                style="font-size: 1.4rem"
+                style="font-size: 1.2rem"
               ></i>
               <i
                 class="bi bi-star-fill text-pink"
-                style="font-size: 1.4rem"
+                style="font-size: 1.2rem"
               ></i>
             </div>
             <p>
@@ -442,23 +442,23 @@
             <div class="py-2 d-flex">
               <i
                 class="bi bi-star-fill text-pink me-1"
-                style="font-size: 1.4rem"
+                style="font-size: 1.2rem"
               ></i>
               <i
                 class="bi bi-star-fill text-pink me-1"
-                style="font-size: 1.4rem"
+                style="font-size: 1.2rem"
               ></i>
               <i
                 class="bi bi-star-fill text-pink me-1"
-                style="font-size: 1.4rem"
+                style="font-size: 1.2rem"
               ></i>
               <i
                 class="bi bi-star-fill text-pink me-1"
-                style="font-size: 1.4rem"
+                style="font-size: 1.2rem"
               ></i>
               <i
                 class="bi bi-star-fill text-pink"
-                style="font-size: 1.4rem"
+                style="font-size: 1.2rem"
               ></i>
             </div>
             <p>Great app that saved me a lot of time while I was travelling</p>
@@ -468,23 +468,23 @@
             <div class="py-2 d-flex">
               <i
                 class="bi bi-star-fill text-pink me-1"
-                style="font-size: 1.4rem"
+                style="font-size: 1.2rem"
               ></i>
               <i
                 class="bi bi-star-fill text-pink me-1"
-                style="font-size: 1.4rem"
+                style="font-size: 1.2rem"
               ></i>
               <i
                 class="bi bi-star-fill text-pink me-1"
-                style="font-size: 1.4rem"
+                style="font-size: 1.2rem"
               ></i>
               <i
                 class="bi bi-star-fill text-pink me-1"
-                style="font-size: 1.4rem"
+                style="font-size: 1.2rem"
               ></i>
               <i
                 class="bi bi-star-fill text-pink"
-                style="font-size: 1.4rem"
+                style="font-size: 1.2rem"
               ></i>
             </div>
             <p>
@@ -680,6 +680,6 @@ span.btn-special:hover {
 }
 
 .review {
-  min-height: 300px;
+  min-height: 310px;
 }
 </style>

@@ -30,7 +30,7 @@
               <li class="nav-item">
                 <button
                   @click="toggleState"
-                  class="nav-link"
+                  class="nav-link px-2"
                   :class="lunchStyle"
                 >
                   Lunch
@@ -39,7 +39,7 @@
               <li class="nav-item">
                 <button
                   @click="toggleState"
-                  class="nav-link"
+                  class="nav-link px-2"
                   :class="dinnerStyle"
                 >
                   Dinner
