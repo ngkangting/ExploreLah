@@ -161,11 +161,22 @@
 
         <h1 v-else class="text-center fw-semibold mb-4 mb-md-5">
           Trip Itinerary
-          <MerlionMascot :posX="35" :posY="915" />
         </h1>
 
         <!-- Result -->
         <div class="col-12 col-md-6 col-lg-8 order-2 order-md-1 mb-5 mb-md-0">
+          <MerlionMascot
+            :posX="35"
+            :posY="915"
+            class="d-none d-lg-block"
+            v-if="currentDayData.length == 3"
+          />
+          <MerlionMascot
+            :posX="35"
+            :posY="1065"
+            class="d-none d-lg-block"
+            v-if="currentDayData.length == 4"
+          />
           <div class="card w-100 border-0">
             <div class="card-body">
               <div class="row mb-3">

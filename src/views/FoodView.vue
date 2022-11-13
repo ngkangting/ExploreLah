@@ -1,13 +1,7 @@
 <template>
   <div class="container-fluid pb-5">
-   
-     
-      <h1 class="text-center fw-semibold p-4 pb-0">Recommended Food Places</h1>
-    
+    <h1 class="text-center fw-semibold p-4 pb-0">Recommended Food Places</h1>
 
-    
-    
-    
     <div class="p-3 offset-1">
       <router-link to="/result" class="text-decoration-none text-secondary"
         ><i class="bi-chevron-left text-secondary" style="font-size: 1rem"></i>
@@ -184,7 +178,13 @@
 import { useAuthStore } from "@/stores/auth";
 import { useItineraryStore } from "@/stores/itinerary";
 import { GoogleMap, Marker, CustomMarker } from "vue3-google-map";
-import { getFirestore, collection, addDoc, query, getDocs } from "firebase/firestore";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  query,
+  getDocs,
+} from "firebase/firestore";
 
 import firebaseApp from "../firebaseConfig";
 import FoodLocation from "../components/resultpage/FoodLocation.vue";
@@ -204,7 +204,7 @@ export default {
     CustomMarker,
     FoodCard,
     GoogleMapWPinsForFood,
-    MerlionMascot
+    MerlionMascot,
   },
   data() {
     return {
@@ -285,8 +285,8 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      window.addEventListener('resize', this.onResize);
-    })
+      window.addEventListener("resize", this.onResize);
+    });
 
     let noOfDays = Object.keys(this.foodReco).length;
     let noOfFood = noOfDays * 3 * 2;
@@ -301,12 +301,12 @@ export default {
       unselectedImgs.splice(rnd, 1);
     }
   },
-  beforeDestroy() { 
-    window.removeEventListener('resize', this.onResize); 
+  beforeDestroy() {
+    window.removeEventListener("resize", this.onResize);
   },
   methods: {
     onResize() {
-      this.windowWidth = window.innerWidth
+      this.windowWidth = window.innerWidth;
     },
     toggleState() {
       this.state = !this.state;
@@ -344,7 +344,7 @@ export default {
             input: JSON.stringify(itineraryInput),
             details: JSON.stringify(details),
           });
-          
+
           // console.log("Document written with ID: ", docRef.id);
           this.$router.push({
             path: "/mytrips",

@@ -1,10 +1,20 @@
 <template>
-  <GoogleMap :api-key="apiKey" style="height: 500px; background-color: azure" :center="center" :zoom="15">
+  <GoogleMap
+    :api-key="apiKey"
+    style="height: 500px; background-color: azure"
+    :center="centerMap"
+    :zoom="15"
+  >
     <!-- <Marker v-for="pos in pinsInfo" :options="{ position: {lat:pos[1], lng:pos[2]} }" :icon="{url:('../../public/ico/food.ico'), size: {width:30, height:30}}" /> -->
     <CustomMarker v-for="(pos, idx) in pinsInfo" :options="{ position: pos }">
       <!-- <img src="../../assets/img/pins/bluepin1.png" width="64" height="64" style="margin-top: 0px" /> -->
-      <img v-if="idx <= 3" :src="'/pins/bluepin' + (idx + 1).toString() + '.png'" width="64" height="64"
-        style="margin-top: 0px" />
+      <img
+        v-if="idx <= 3"
+        :src="'/pins/bluepin' + (idx + 1).toString() + '.png'"
+        width="64"
+        height="64"
+        style="margin-top: 0px"
+      />
     </CustomMarker>
   </GoogleMap>
 </template>
@@ -29,13 +39,19 @@ export default {
       count: 1,
     };
   },
-  computed: {},
+  computed: {
+    centerMap() {
+      if (this.pinsInfo) {
+        return this.pinsInfo[0];
+      } else {
+        return center;
+      }
+    },
+  },
   created() {
     console.log(this.pinsInfo);
   },
 };
 </script>
 
-<style>
-
-</style>
+<style></style>
