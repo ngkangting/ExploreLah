@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid h-100">
-    <div class="row min-vh-100 justify-content-around">
+    <div class="row min-vh-100 pt-5 pt-lg-0 justify-content-around">
       <FixedAlert
         :variant="variant"
         :alertContent="alertContent"
@@ -15,7 +15,7 @@
         >
           <i class="bi-chevron-left text-secondary" style="font-size: 1rem"></i>
         </RoundLink>
-        <div class="my-5">
+        <div class="my-3">
           <h1 class="text-dark-blue">Forgot Password?</h1>
           <p class="text-black-50">
             Enter your email address and we'll send you instructions to reset

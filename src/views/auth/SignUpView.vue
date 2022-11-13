@@ -6,7 +6,7 @@
         :alertContent="alertContent"
         v-if="isAlert"
       />
-      <div class="col-12 col-lg-5 offset-lg-1 my-auto mt-5 px-5">
+      <div class="col-12 col-lg-5 offset-lg-1 my-auto px-5">
         <RoundLink
           class="position-absolute top-0 start-0 mt-4 ms-3 mt-lg-4 ms-lg-4"
           :path="'/'"
@@ -15,7 +15,7 @@
         >
           <i class="bi-chevron-left text-secondary" style="font-size: 1rem"></i>
         </RoundLink>
-        <div class="my-5">
+        <div class="my-3">
           <h1 class="text-dark-blue">Sign Up</h1>
           <p class="text-black-50">
             Create an account to take your trip planning to the next level!

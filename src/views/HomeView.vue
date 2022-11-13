@@ -539,6 +539,7 @@ export default {
   setup() {
     const authStore = useAuthStore();
     return { authStore };
+    
   },
 
   methods: {

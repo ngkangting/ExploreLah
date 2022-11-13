@@ -13,25 +13,7 @@
 
         <div class="row">
           <div class="col-md-6 pb-4">
-            <GoogleMap
-              api-key="AIzaSyA__JlBf_-nIjvNRUNSpM4gdrygcyDenm0"
-              style="width: 100%; height: 85vh; background-color: azure"
-              :center="center"
-              :zoom="15"
-            >
-              <!-- <Marker v-for="(pos, index) in markers" :options="{ position: pos }" :icon="{url:('../../public/ico/food.ico'), size: {width:30, height:30}}" /> -->
-              <CustomMarker
-                v-for="(pos, index) in markers"
-                :options="{ position: pos }"
-              >
-                <img
-                  src="../../public/ico/food.ico"
-                  width="32"
-                  height="32"
-                  style="margin-top: 8px"
-                />
-              </CustomMarker>
-            </GoogleMap>
+            <GoogleMapWPinsForFood :pins-info="markers" />
           </div>
 
           <div class="col-md-6">
@@ -125,22 +107,25 @@
                 <div class="modal-content">
                   <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">
-                      Give this trip a name!
+                      Give this trip a name!<span class="text-danger">*</span>
                     </h5>
                     <button
-                      type="button"
-                      class="btn-close"
-                      data-bs-dismiss="modal"
-                      aria-label="Close"
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
                     ></button>
                   </div>
                   <div class="modal-body">
                     <input
-                      class="form-control"
-                      type="text"
-                      v-model="inputName"
-                      placeholder="Exciting day trip!"
+                    class="form-control"
+                    type="text"
+                    v-model="inputName"
+                    placeholder="Exciting day trip!"
                     />
+                    <div v-if="showInvalid" class="text-danger mt-1 text-start">
+                      Please enter a name!
+                    </div>
                   </div>
                   <div class="modal-footer">
                     <button
@@ -154,10 +139,29 @@
                       type="button"
                       class="btn btn-pink"
                       @click="saveItineraryToDb"
+                    
+                    
+                    > 
+                    
+                      <lottie-player v-if="submitting"
+                        class="mx-auto"
+                        style="z-index:1;height: 25px;width: 44px;"
+                        src="https://assets4.lottiefiles.com/packages/lf20_rwq6ciql.json"
+                        background="transparent"
+                        speed="1"
+                        loop
+                        autoplay></lottie-player>
+                        
+                      <span v-else>Save</span>
+                    
+                  </button>
+                    <button
+                      type="button"
+                      class="d-none"
                       data-bs-toggle="modal"
                       data-bs-target="#staticBackdrop"
-                    >
-                      Save
+                      ref="hideModal"
+                    > 
                     </button>
                   </div>
                 </div>
@@ -179,6 +183,7 @@ import { getFirestore, collection, addDoc } from "firebase/firestore";
 import firebaseApp from "../firebaseConfig";
 import FoodLocation from "../components/resultpage/FoodLocation.vue";
 import FoodCard from "../components/resultpage/FoodCard.vue";
+import GoogleMapWPinsForFood from "../components/common/GoogleMapWPinsForFood.vue";
 // import pdfMake from "pdfmake/build/pdfmake";
 // import pdfFonts from "pdfmake/build/vfs_fonts";
 // pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -190,13 +195,16 @@ export default {
     FoodLocation,
     CustomMarker,
     FoodCard,
+    GoogleMapWPinsForFood,
   },
   data() {
     return {
       state: 1, //O for lunch, 1 for dinner
       currDay: 1,
-      inputName: null,
+      inputName: "",
       generatedOrder: [],
+      showInvalid:false,
+      submitting:false,
       // itinerary: JSON.parse(this.dayData["itinerary"]),
       // input: JSON.parse(this.dayData["input"]),
     };
@@ -274,38 +282,42 @@ export default {
     goPrevDay() {
       if (this.currDay != 1) {
         this.currDay -= 1;
-        console.log("hi");
-        console.log(this.itineraryStore.details);
       }
     },
     goNextDay() {
       if (this.currDay != Object.keys(this.foodReco).length) {
         this.currDay += 1;
-        console.log("hi");
-        console.log(this.itineraryStore.details);
       }
     },
     async saveItineraryToDb() {
-      //Write to DB
-      let userID = this.authStore.user.uid;
-      let itineraryList = this.itineraryStore.itineraryList;
-      let foodReco = this.itineraryStore.foodReco;
-      let itineraryInput = this.itineraryStore.itineraryInput;
-      let details = this.itineraryStore.details;
-      try {
-        const docRef = await addDoc(collection(this.db, userID), {
-          name: JSON.stringify(this.inputName),
-          itinerary: JSON.stringify(itineraryList),
-          food: JSON.stringify(foodReco),
-          input: JSON.stringify(itineraryInput),
-          details: JSON.stringify(details),
-        });
-        console.log("Document written with ID: ", docRef.id);
-        this.$router.push({
-          path: "/mytrips",
-        });
-      } catch (e) {
-        console.error("Error adding document: ", e);
+      if (this.inputName === ""){
+        //Not valid name
+        this.showInvalid = true;
+      
+      } else {
+        this.submitting = true;
+        //Write to DB
+        let userID = this.authStore.user.uid;
+        let itineraryList = this.itineraryStore.itineraryList;
+        let foodReco = this.itineraryStore.foodReco;
+        let itineraryInput = this.itineraryStore.itineraryInput;
+        let details = this.itineraryStore.details;
+        try {
+          const docRef = await addDoc(collection(this.db, userID), {
+            name: JSON.stringify(this.inputName),
+            itinerary: JSON.stringify(itineraryList),
+            food: JSON.stringify(foodReco),
+            input: JSON.stringify(itineraryInput),
+            details: JSON.stringify(details),
+          })
+          // console.log("Document written with ID: ", docRef.id);
+          this.$router.push({
+            path: "/mytrips",
+          });
+          this.$refs.hideModal.click();
+        } catch (e) {
+          console.error("Error adding document: ", e);
+        }
       }
     },
     // generatePDF() {

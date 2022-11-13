@@ -46,26 +46,26 @@
                 <div class="column col-12 col-lg-6 rounded-3 px-3 py-3">
                   <!-- Header -->
                   <div
-                    class="skeleton skeleton-text rounded pb-1"
-                    style="height: 35px; width: 150px"
+                    class="skeleton skeleton-text rounded pb-1 w-50"
+                    style="height: 35px"
                   ></div>
                   <!-- Tags -->
                   <div class="d-flex">
                     <div
-                      class="skeleton skeleton-text rounded me-2"
-                      style="height: 18px; width: 75px"
+                      class="skeleton skeleton-text rounded me-2 w-25"
+                      style="height: 18px"
                     ></div>
                     <div
-                      class="skeleton skeleton-text rounded mx-2"
-                      style="height: 18px; width: 75px"
+                      class="skeleton skeleton-text rounded mx-2 w-25"
+                      style="height: 18px"
                     ></div>
                     <div
-                      class="skeleton skeleton-text rounded mx-2"
-                      style="height: 18px; width: 75px"
+                      class="skeleton skeleton-text rounded mx-2 w-25"
+                      style="height: 18px"
                     ></div>
                     <div
-                      class="skeleton skeleton-text rounded mx-2"
-                      style="height: 18px; width: 75px"
+                      class="skeleton skeleton-text rounded mx-2 w-25"
+                      style="height: 18px"
                     ></div>
                   </div>
 
@@ -77,8 +77,8 @@
                         style="height: 30px; width: 30px"
                       ></div>
                       <div
-                        class="skeleton skeleton-text ms-2"
-                        style="height: 20px; width: 150px"
+                        class="skeleton skeleton-text rounded ms-2 w-50"
+                        style="height: 20px"
                       ></div>
                     </div>
 
@@ -88,8 +88,8 @@
                         style="height: 30px; width: 30px"
                       ></div>
                       <div
-                        class="skeleton skeleton-text ms-2"
-                        style="height: 20px; width: 150px"
+                        class="skeleton skeleton-text rounded ms-2 w-50"
+                        style="height: 20px"
                       ></div>
                     </div>
 
@@ -99,8 +99,8 @@
                         style="height: 30px; width: 30px"
                       ></div>
                       <div
-                        class="skeleton skeleton-text ms-2"
-                        style="height: 20px; width: 150px"
+                        class="skeleton skeleton-text rounded ms-2 w-50"
+                        style="height: 20px"
                       ></div>
                     </div>
 
@@ -110,8 +110,8 @@
                         style="height: 30px; width: 30px"
                       ></div>
                       <div
-                        class="skeleton skeleton-text ms-2"
-                        style="height: 20px; width: 150px"
+                        class="skeleton skeleton-text rounded ms-2 w-50"
+                        style="height: 20px"
                       ></div>
                     </div>
                   </div>
@@ -126,8 +126,8 @@
           class="col-12 col-md-6 col-lg-4 order-1 order-md-2 position-relative"
         >
           <div
-            class="skeleton skeleton-text rounded mx-auto my-2 mb-4"
-            style="height: 35px; width: 200px"
+            class="skeleton skeleton-text rounded mx-auto my-2 mb-4 w-50"
+            style="height: 35px"
           ></div>
 
           <div
@@ -148,7 +148,7 @@
     </div>
 
     <div v-else>
-      <div class="row d-flex py-5 px-4 px-md-5">
+      <div class="row d-flex py-5 px-4 px-md-5 position-relative">
         <div v-if="itineraryStore.viewingTrip">
           <p class="text-center fw-semibold">Viewing Saved Trip</p>
           <h1 class="text-center fw-semibold mb-4 mb-md-5">
@@ -161,7 +161,7 @@
         </h1>
 
         <!-- Result -->
-        <div class="col-12 col-md-6 col-lg-8 order-2 order-md-1">
+        <div class="col-12 col-md-6 col-lg-8 order-2 order-md-1 mb-5 mb-md-0">
           <div class="card w-100 border-0">
             <div class="card-body">
               <div class="row mb-3">
@@ -273,11 +273,11 @@
                     }}
                   </h3>
 
-                  <div class="mb-4">
+                  <div class="d-flex flex-wrap mb-4">
                     <span
                       v-for="(tag, index) in currentDayData[idx].tags"
                       :key="index"
-                      class="tag bg-grey rounded-2 p-1 px-2 me-2 text-nowrap"
+                      class="tag bg-grey rounded-2 py-1 px-2 me-2 my-1 text-nowrap"
                       >{{ tag }}</span
                     >
                   </div>
@@ -420,6 +420,19 @@
               </div>
             </div>
           </div>
+
+          <div class="position-absolute bottom-0 end-0 p-4 d-block d-md-none">
+            <router-link
+              to="/foodview"
+              class="text-decoration-none text-secondary"
+            >
+              <span class="ps-1"> See Food Recommendations </span>
+              <i
+                class="bi-chevron-right text-secondary"
+                style="font-size: 1rem"
+              ></i>
+            </router-link>
+          </div>
         </div>
 
         <!-- Locations -->
@@ -454,7 +467,7 @@
           </div>
 
           <!-- Next buttons -->
-          <div class="d-flex justify-content-center pb-5 mb-5">
+          <div class="d-flex justify-content-center pb-5 mb-0 mb-md-5">
             <button
               v-if="this.currDay != 1"
               @click="goPrevDay"
@@ -471,7 +484,7 @@
             </button>
           </div>
 
-          <div class="position-absolute bottom-0 end-0 p-3">
+          <div class="position-absolute bottom-0 end-0 p-3 d-none d-md-block">
             <router-link
               to="/foodview"
               class="text-decoration-none text-secondary"
