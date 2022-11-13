@@ -16,62 +16,94 @@
       </h3>
     </div>
 
-    <div class="p-5">
-      <h3 class="fw-bold px-3 py-2">
-        Upcoming & Current Trips ({{
-          upcomingTrips.length - deletedItemsUpcoming
-        }})
-      </h3>
-      <div v-if="!loaded" class="text-center">
-        <!-- <div v-if="!loaded" class="text-center"> -->
-        <!-- <div  class="spinner-border" role="status" style="width: 5rem; height: 5rem;stroke-width:;">
-          </div>           -->
-        <div class="row d-none d-sm-none d-md-flex">
-          <TripCardSkeleton v-for="info in 3" />
+    <div v-if="noShownTrips">
+      <div class="p-5 text-center justify-content-center">
+        <div class="display-4 mb-2">
+          No planned trips yet!
+        </div >
+        <div class="col-sm-6 offset-sm-3  mb-5">
+          <div
+            class="d-flex justify-content-center align-items-center bg-light-blue h-100 w-100 text-center p-3 py-5 rounded-4"
+          >
+            <div class="fw-bold w-90 display-5 me-3">{{counter}}</div>
+            <h5>
+              trips planned and counting!            
+            </h5>
+          </div>
         </div>
-      </div>
-      <div v-else class="row d-none d-sm-none d-md-flex">
-        <TripCard
-          v-for="info in this.upcomingTrips"
-          :dayData="info"
-          @trip-Deleted="tripDeletedHandler"
-        />
-      </div>
-      <div class="row d-md-none d-lg-none d-xl-none">
-        <PhoneTripCard
-          v-for="info in this.upcomingTrips"
-          :dayData="info"
-          @trip-Deleted="tripDeletedHandler"
-        />
+        <h2 class="fw-bold">Start planning your first trip with us!</h2>
       </div>
     </div>
-    <div class="px-5 pb-5">
-      <h3 class="fw-bold px-3 py-2">
-        Past Trips ({{ pastTrips.length - deletedItemsPast }})
-      </h3>
-      <div v-if="!loaded" class="text-center">
-        <!-- <div  class="spinner-border" role="status" style="width: 5rem; height: 5rem;stroke-width:;">
-          </div>           -->
-        <div class="row d-none d-sm-none d-md-flex">
-          <TripCardSkeleton v-for="info in 1" />
+    
+    <div v-else>
+      <div class="p-5">
+        <h3 class="fw-bold px-3 py-2">
+          Upcoming & Current Trips ({{
+            upcomingTrips.length - deletedItemsUpcoming
+          }})
+        </h3>
+        <div v-if="!loaded" class="text-center">
+          <!-- <div v-if="!loaded" class="text-center"> -->
+          <!-- <div  class="spinner-border" role="status" style="width: 5rem; height: 5rem;stroke-width:;">
+            </div>           -->
+          <div class="row d-none d-sm-none d-md-flex">
+            <TripCardSkeleton v-for="info in 3" />
+          </div>
+        </div>
+        <div v-else class="row d-none d-sm-none d-md-flex">
+          <TripCard
+            v-for="info in this.upcomingTrips"
+            :dayData="info"
+            @trip-Deleted="tripDeletedHandler"
+          />
+        </div>
+        <div class="row d-md-none d-lg-none d-xl-none">
+          <PhoneTripCard
+            v-for="info in this.upcomingTrips"
+            :dayData="info"
+            @trip-Deleted="tripDeletedHandler"
+          />
         </div>
       </div>
+      <div class="px-5 pb-5">
+        <h3 class="fw-bold px-3 py-2">
+          Past Trips ({{ pastTrips.length - deletedItemsPast }})
+        </h3>
+        <div v-if="!loaded" class="text-center">
+          <!-- <div  class="spinner-border" role="status" style="width: 5rem; height: 5rem;stroke-width:;">
+            </div>           -->
+          <div class="row d-none d-sm-none d-md-flex">
+            <TripCardSkeleton v-for="info in 1" />
+          </div>
+        </div>
+  
+        <div v-else class="row d-none d-sm-none d-md-flex">
+          <TripCard
+            v-for="info in this.pastTrips"
+            :dayData="info"
+            @trip-Deleted="tripDeletedHandler"
+          />
+        </div>
+        <div class="row d-md-none d-lg-none d-xl-none">
+          <PhoneTripCard
+            v-for="info in this.pastTrips"
+            :dayData="info"
+            @trip-Deleted="tripDeletedHandler"
+          />
+        </div>
+      </div>
+    </div>
 
-      <div v-else class="row d-none d-sm-none d-md-flex">
-        <TripCard
-          v-for="info in this.pastTrips"
-          :dayData="info"
-          @trip-Deleted="tripDeletedHandler"
-        />
-      </div>
-      <div class="row d-md-none d-lg-none d-xl-none">
-        <PhoneTripCard
-          v-for="info in this.pastTrips"
-          :dayData="info"
-          @trip-Deleted="tripDeletedHandler"
-        />
-      </div>
-    </div>
+    <lottie-player 
+      v-if="noShownTrips"
+      class="w-100 mx-auto position-absolute"
+      style="z-index:1; top: 75vh;"
+      src="https://assets5.lottiefiles.com/packages/lf20_iIAhmmGBMG.json"
+      background="transparent"
+      speed="1"
+      loop
+      autoplay
+    ></lottie-player>
   </div>
 </template>
 
@@ -106,6 +138,7 @@ export default {
       pastTrips: [],
       deletedItemsUpcoming: 0,
       deletedItemsPast: 0,
+      counter:258,
     };
   },
   components: {
@@ -121,6 +154,7 @@ export default {
     return { authStore, db, itineraryStore };
   },
   mounted() {
+    setInterval(this.addCount, 2300);
     this.triggerWatcher += 1;
     //Runs whenever got snapshot
     const q = query(collection(this.db, this.authStore.userUid));
@@ -141,6 +175,12 @@ export default {
       });
       return null;
     },
+    noShownTrips(){
+      if ((this.pastTrips.length - this.deletedItemsPast + this.upcomingTrips.length -this.deletedItemsUpcoming) == 0) {
+        return true
+      }
+      return false
+    }
   },
   watch: {
     async triggerWatcher() {
@@ -152,41 +192,22 @@ export default {
         } else {
           //Get from firebaseDB this work...
           this.loaded = false;
-          // console.log(`Is loading is ${this.loaded}`)
-          // const q = query(collection(this.db, this.authStore.userUid));
-          // const querySnapshot = await getDocs(q);
-          // // console.log(querySnapshot);
-          // querySnapshot.forEach((doc) => {
-          //   // doc.data() is never undefined for query doc snapshots
-          //   this.itineraryStore.myTripsData[doc.id] = doc.data();
-          //   // console.log(doc.id, " => ", doc.data());
-          //   this.itineraryStore.myTripsData = this.data;
-          // });
-          // this.itineraryStore.myTripsDataExist = true;
-          // console.log("We have loaded ")
           this.loaded = true;
         }
         this.parseTrips();
-        // querySnapshot.forEach((doc) => {
-        //   // doc.data() is never undefined for query doc snapshots
-        //   this.data[doc.id] = doc.data();
-        //   // console.log(doc.id, " => ", doc.data());
-        //   this.itineraryStore.myTripsData = this.data;
-        //   this.loaded = true;
-        //   this.parseTrips();
-        // });
-        //Write to local
+
       }
     },
   },
   methods: {
+    addCount(){
+      // Math.floor(Math.random() * 35)
+      this.counter += Math.floor(Math.random() * 35);
+    },
     tripDeletedHandler(tripDate) {
-      console.log("Event recieved");
       let todayDate = new Date();
-      todayDate.setDate(todayDate.getDate() + 1);
-      console.log(
-        `The trip date is GREATER than today ${tripDate > todayDate}`
-      );
+      todayDate.setDate(todayDate.getDate() - 1);
+ 
       if (tripDate >= todayDate) {
         //Minus from upcoming
         this.deletedItemsUpcoming += 1;
@@ -202,6 +223,7 @@ export default {
         let tripDate = new Date(tempData.dates[1]);
         let todayDate = new Date();
         todayDate.setDate(todayDate.getDate() + 1);
+
         if (this.itineraryStore.myTripsData[info]["deleted"] == true) {
           //pass
         } else if (tripDate >= todayDate) {
@@ -217,9 +239,7 @@ export default {
       return null;
     },
   },
-  handleDelete() {
-    console.log("deleted");
-  },
+ 
 };
 </script>
 
