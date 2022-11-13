@@ -433,7 +433,7 @@
         <img
           src="../assets/img/merlionReview.gif"
           alt="merlion gif"
-          class="w-100"
+          class="w-100 pb-5 mb-5"
         />
       </div>
       <div class="col-5 col-md-3 justify-content-center">
