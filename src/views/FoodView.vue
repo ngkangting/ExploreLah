@@ -13,13 +13,14 @@
 
         <div class="row">
           <div class="col-md-6 pb-4">
-            <GoogleMap
+            <GoogleMapWPinsForFood :pins-info="markers" />
+            <!-- <GoogleMap
               api-key="AIzaSyA__JlBf_-nIjvNRUNSpM4gdrygcyDenm0"
               style="width: 100%; height: 85vh; background-color: azure"
               :center="center"
               :zoom="15"
             >
-              <!-- <Marker v-for="(pos, index) in markers" :options="{ position: pos }" :icon="{url:('../../public/ico/food.ico'), size: {width:30, height:30}}" /> -->
+              <Marker v-for="(pos, index) in markers" :options="{ position: pos }" :icon="{url:('../../public/ico/food.ico'), size: {width:30, height:30}}" />
               <CustomMarker
                 v-for="(pos, index) in markers"
                 :options="{ position: pos }"
@@ -31,7 +32,7 @@
                   style="margin-top: 8px"
                 />
               </CustomMarker>
-            </GoogleMap>
+            </GoogleMap> -->
           </div>
 
           <div class="col-md-6">
@@ -157,6 +158,7 @@
                       data-bs-toggle="modal"
                       data-bs-target="#staticBackdrop"
                     >
+        
                       Save
                     </button>
                   </div>
