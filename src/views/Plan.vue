@@ -441,6 +441,7 @@ export default {
       };
 
       this.itineraryStore.fetchItinerary(userInfo);
+      this.itineraryStore.isLoading = true;
       this.$router.push({
         path: "/result",
       });

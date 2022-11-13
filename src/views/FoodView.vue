@@ -175,7 +175,8 @@
 import { useAuthStore } from "@/stores/auth";
 import { useItineraryStore } from "@/stores/itinerary";
 import { GoogleMap, Marker, CustomMarker } from "vue3-google-map";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { getFirestore, collection, addDoc, query, getDocs } from "firebase/firestore";
+
 import firebaseApp from "../firebaseConfig";
 import FoodLocation from "../components/resultpage/FoodLocation.vue";
 import FoodCard from "../components/resultpage/FoodCard.vue";
@@ -320,6 +321,7 @@ export default {
             input: JSON.stringify(itineraryInput),
             details: JSON.stringify(details),
           });
+          
           // console.log("Document written with ID: ", docRef.id);
           this.$router.push({
             path: "/mytrips",

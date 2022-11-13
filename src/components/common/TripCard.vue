@@ -179,6 +179,7 @@ export default {
       this.$emit("tripDeleted", startDate);
 
       this.showTripCard = false;
+      delete this.itineraryStore.myTripsData[docID];
       await updateDoc(docRef, {
         deleted: true,
       });

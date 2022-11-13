@@ -82,9 +82,12 @@ import {
   getDocs,
   deleteDoc,
   doc,
+  onSnapshot
 } from "firebase/firestore";
 import firebaseApp from "../firebaseConfig";
 import { useItineraryStore } from "../stores/itinerary";
+
+
 
 export default {
   name: "MyTrips",
@@ -113,6 +116,18 @@ export default {
   },
   mounted() {
     this.triggerWatcher += 1;    
+    //Runs whenever got snapshot
+    const q = query(collection(this.db, this.authStore.userUid));
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      //clear current itienrarystore
+      this.itineraryStore.myTripsData = {}
+      querySnapshot.forEach((doc) => {
+        this.itineraryStore.myTripsData[doc.id] = doc.data();
+          // console.log(doc.id, " => ", doc.data());
+          this.itineraryStore.myTripsData = this.data;
+      });
+
+    });
   },
   computed: {
     async userUid() {
@@ -124,32 +139,27 @@ export default {
   },
   watch: {
     async triggerWatcher() {
-      console.log("Trigger watcher triggered");
-      console.log(this.itineraryStore.myTripsDataExist != {})
-      console.log(`Is loading is ${this.loaded}`)
       //Check if store have
      if (this.authStore.isLoggedIn != null) {
-        if (this.itineraryStore.myTripsDataExist != {}){
+        if (this.itineraryStore.myTripsDataExist){
           this.loaded = true;
           //When redirect gets here
-          console.log("This is here")
-          console.log(`Is loading is ${this.loaded}`)
-          
         } else {
-          //Get from firebaseDB
+          //Get from firebaseDB this work...
           this.loaded = false;
-          console.log("This is here !")
-          console.log(`Is loading is ${this.loaded}`)
-          const q = query(collection(this.db, this.authStore.user.uid));
-          const querySnapshot = await getDocs(q);
-          // console.log(querySnapshot);
-          querySnapshot.forEach((doc) => {
-            // doc.data() is never undefined for query doc snapshots
-            this.itineraryStore.myTripsData[doc.id] = doc.data();
-            // console.log(doc.id, " => ", doc.data());
-            this.itineraryStore.myTripsData = this.data;
-            this.loaded = true;
-          });
+          // console.log(`Is loading is ${this.loaded}`)
+          // const q = query(collection(this.db, this.authStore.userUid));
+          // const querySnapshot = await getDocs(q);
+          // // console.log(querySnapshot);
+          // querySnapshot.forEach((doc) => {
+          //   // doc.data() is never undefined for query doc snapshots
+          //   this.itineraryStore.myTripsData[doc.id] = doc.data();
+          //   // console.log(doc.id, " => ", doc.data());
+          //   this.itineraryStore.myTripsData = this.data;
+          // });
+          // this.itineraryStore.myTripsDataExist = true;
+          // console.log("We have loaded ")
+          this.loaded = true;
         }
         this.parseTrips();
         // querySnapshot.forEach((doc) => {
@@ -166,12 +176,15 @@ export default {
   },
   methods: {
     tripDeletedHandler(tripDate) {
+      console.log("Event recieved")
       let todayDate = new Date();
       todayDate.setDate(todayDate.getDate() + 1);
+      console.log(`The trip date is GREATER than today ${tripDate > todayDate}`)
       if (tripDate > todayDate) {
         //Minus from upcoming
         this.deletedItemsUpcoming += 1;
       } else {
+
         this.deletedItemsPast += 1;
       }
     },
@@ -205,7 +218,7 @@ export default {
         todayDate.setDate(todayDate.getDate() + 1);
         if (this.itineraryStore.myTripsData[info]["deleted"] == true) {
           //pass
-        } else if (tripDate > todayDate) {
+        } else if (tripDate >= todayDate) {
           //Adding in the unique document ID
           this.itineraryStore.myTripsData[info]["docID"] = info;
           this.upcomingTrips.push(this.itineraryStore.myTripsData[info]);
