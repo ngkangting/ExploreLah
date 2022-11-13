@@ -56,25 +56,24 @@
               ></FoodCard>
             </div>
 
-            <div class="d-flex justify-content-start ps-3 py-2">
+            <!-- Next buttons -->
+            <div class="d-flex justify-content-center pb-3">
               <button
+                v-if="this.currDay != 1"
                 @click="goPrevDay"
-                class="rounded bg-dark-blue border-0 p-2 px-3 text-white"
+                class="rounded bg-dark-blue border-0 py-2 px-3 mx-2 text-white"
               >
-                Prev
+                Back
               </button>
-              <span
-                class="mx-3 d-flex justify-content-center align-items-center"
-              >
-                Day {{ currDay }}
-              </span>
               <button
+                v-if="this.currDay != this.itineraryStore.itineraryList.length"
                 @click="goNextDay"
-                class="rounded bg-dark-blue border-0 py-1 px-3 text-white"
+                class="rounded bg-dark-blue border-0 py-2 px-3 mx-2 text-white"
               >
                 Next
               </button>
             </div>
+
             <!-- Button trigger modal -->
             <div v-if="authStore.isLoggedIn" class="d-flex justify-content-end">
               <button
@@ -87,11 +86,11 @@
               </button>
             </div>
 
-            <!-- <div v-else>
-              <button @click="generatePDF" type="btn" class="btn bg-pink text-white btn-sm my-2">
+            <div v-else class="d-flex justify-content-end">
+              <button @click="generatePDF" type="button" class="btn btn-pink">
                 Download as PDF
               </button>
-            </div> -->
+            </div>
 
             <!-- Modal -->
             <div
@@ -110,18 +109,18 @@
                       Give this trip a name!<span class="text-danger">*</span>
                     </h5>
                     <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
                     ></button>
                   </div>
                   <div class="modal-body">
                     <input
-                    class="form-control"
-                    type="text"
-                    v-model="inputName"
-                    placeholder="Exciting day trip!"
+                      class="form-control"
+                      type="text"
+                      v-model="inputName"
+                      placeholder="Exciting day trip!"
                     />
                     <div v-if="showInvalid" class="text-danger mt-1 text-start">
                       Please enter a name!
@@ -139,30 +138,27 @@
                       type="button"
                       class="btn btn-pink"
                       @click="saveItineraryToDb"
-                    
-                    
-                    > 
-                    
-                      <lottie-player v-if="submitting"
+                    >
+                      <lottie-player
+                        v-if="submitting"
                         class="mx-auto"
-                        style="z-index:1;height: 25px;width: 44px;"
+                        style="z-index: 1; height: 25px; width: 44px"
                         src="https://assets4.lottiefiles.com/packages/lf20_rwq6ciql.json"
                         background="transparent"
                         speed="1"
                         loop
-                        autoplay></lottie-player>
-                        
+                        autoplay
+                      ></lottie-player>
+
                       <span v-else>Save</span>
-                    
-                  </button>
+                    </button>
                     <button
                       type="button"
                       class="d-none"
                       data-bs-toggle="modal"
                       data-bs-target="#staticBackdrop"
                       ref="hideModal"
-                    > 
-                    </button>
+                    ></button>
                   </div>
                 </div>
               </div>
@@ -203,8 +199,8 @@ export default {
       currDay: 1,
       inputName: "",
       generatedOrder: [],
-      showInvalid:false,
-      submitting:false,
+      showInvalid: false,
+      submitting: false,
       // itinerary: JSON.parse(this.dayData["itinerary"]),
       // input: JSON.parse(this.dayData["input"]),
     };
@@ -260,19 +256,31 @@ export default {
     },
     markers() {
       if (this.state) {
-        console.log(this.foodReco[this.currDay - 1]["lunchPin"][0]);
         return this.foodReco[this.currDay - 1]["lunchPin"];
       }
       return this.foodReco[this.currDay - 1]["dinnerPin"];
+    },
+    formInputs() {
+      // get inputs
+      return this.itineraryStore.itineraryInput;
+    },
+    formActivities() {
+      // get activities
+      return this.itineraryStore.itineraryList;
     },
   },
   mounted() {
     let noOfDays = Object.keys(this.foodReco).length;
     let noOfFood = noOfDays * 3 * 2;
     let noOfImages = 42;
+    var unselectedImgs = [];
+    for (let i = 0; i < 42; i++) {
+      unselectedImgs.push(i);
+    }
     for (let i = 0; i <= noOfFood; i++) {
-      let rnd = Math.floor(Math.random() * noOfImages);
-      this.generatedOrder.push(rnd);
+      let rnd = Math.floor(Math.random() * unselectedImgs.length);
+      this.generatedOrder.push(unselectedImgs[rnd]);
+      unselectedImgs.splice(rnd, 1);
     }
   },
   methods: {
@@ -282,18 +290,20 @@ export default {
     goPrevDay() {
       if (this.currDay != 1) {
         this.currDay -= 1;
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
     },
     goNextDay() {
-      if (this.currDay != Object.keys(this.foodReco).length) {
+      if (this.currDay != this.itineraryStore.itineraryList.length) {
         this.currDay += 1;
+        this.idx = 0;
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
     },
     async saveItineraryToDb() {
-      if (this.inputName === ""){
+      if (this.inputName === "") {
         //Not valid name
         this.showInvalid = true;
-      
       } else {
         this.submitting = true;
         //Write to DB
@@ -309,7 +319,7 @@ export default {
             food: JSON.stringify(foodReco),
             input: JSON.stringify(itineraryInput),
             details: JSON.stringify(details),
-          })
+          });
           // console.log("Document written with ID: ", docRef.id);
           this.$router.push({
             path: "/mytrips",
@@ -320,38 +330,39 @@ export default {
         }
       }
     },
-    // generatePDF() {
-    //   var dayCounter = 1;
-    //   var activityCounter = 1;
-    //   var docDefinition = {
-    //     content: [
-    //       "Trip Name: " + this.dayData.name.slice(1, -1),
-    //       "Starting Location: " + this.input.startLoc,
-    //       " ",
-    //     ],
-    //   };
-    //   for (let day of this.itinerary) {
-    //     docDefinition.content.push("Day" + dayCounter);
-    //     docDefinition.content.push(" ");
-    //     dayCounter += 1;
-    //     for (let activity of day.itinerary) {
-    //       docDefinition.content.push("Activity" + activityCounter);
-    //       docDefinition.content.push("Location: " + activity.name);
-    //       docDefinition.content.push("Start Time: " + activity.arriveTime);
-    //       docDefinition.content.push("End Time: " + activity.endTime);
-    //       docDefinition.content.push("Duration of Activity: " + activity.dur);
-    //       docDefinition.content.push(
-    //         "Travel Time to Location: " + activity.travelTimeTo
-    //       );
-    //       docDefinition.content.push("Weather: " + activity.status);
-    //       docDefinition.content.push(" ");
-    //       activityCounter += 1;
-    //     }
-    //     docDefinition.content.push(" ");
-    //     activityCounter = 1;
-    //   }
-    //   pdfMake.createPdf(docDefinition).download();
-    // },
+    generatePDF() {
+      var dayCounter = 1;
+      var activityCounter = 1;
+      var docDefinition = {
+        content: [
+          "My Itinerary",
+          " ",
+          "Starting Location: " + this.formInputs.startLoc,
+          " ",
+        ],
+      };
+      for (let day of this.formActivities) {
+        docDefinition.content.push("Day" + dayCounter);
+        docDefinition.content.push(" ");
+        dayCounter += 1;
+        for (let activity of day.itinerary) {
+          docDefinition.content.push("Activity" + activityCounter);
+          docDefinition.content.push("Location: " + activity.name);
+          docDefinition.content.push("Start Time: " + activity.arriveTime);
+          docDefinition.content.push("End Time: " + activity.endTime);
+          docDefinition.content.push("Duration of Activity: " + activity.dur);
+          docDefinition.content.push(
+            "Travel Time to Location: " + activity.travelTimeTo
+          );
+          docDefinition.content.push("Weather: " + activity.status);
+          docDefinition.content.push(" ");
+          activityCounter += 1;
+        }
+        docDefinition.content.push(" ");
+        activityCounter = 1;
+      }
+      pdfMake.createPdf(docDefinition).download();
+    },
   },
 };
 </script>

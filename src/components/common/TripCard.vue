@@ -57,8 +57,12 @@ import { useItineraryStore } from "@/stores/itinerary";
 import { useAuthStore } from "@/stores/auth";
 import { getFirestore, doc, updateDoc, collection } from "firebase/firestore";
 import firebaseApp from "../../firebaseConfig";
+// import pdfFonts from "pdfmake/build/vfs_fonts";
+// import pdfMake from "pdfmake/build/pdfmake";
+// pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+import * as pdfFonts from "pdfmake/build/vfs_fonts.js";
 import pdfMake from "pdfmake/build/pdfmake";
-import pdfFonts from "pdfmake/build/vfs_fonts";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 export default {
@@ -189,12 +193,12 @@ export default {
   position: relative;
 }
 .trip-card img {
-  border-radius: 30px !important;
+  border-radius: 5px !important;
 }
 .overlay {
   position: absolute;
-  border-top-left-radius: 30px !important;
-  border-top-right-radius: 30px !important;
+  border-top-left-radius: 5px !important;
+  border-top-right-radius: 5px !important;
   top: 0;
   right: 0;
   left: 0;
@@ -207,8 +211,8 @@ export default {
   justify-content: left;
   align-items: center;
   text-align: left;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
   bottom: 0;
   right: 0;
   left: 0;
@@ -220,7 +224,7 @@ export default {
 }
 
 .zoom-effect-1 img {
-  border-radius: 30px !important;
+  border-radius: 5px !important;
   transform: scale(1);
   -webkit-transform: scale(1);
 }
@@ -231,7 +235,7 @@ export default {
 }
 
 .effect-image-1 {
-  border-radius: 30px !important;
+  border-radius: 5px !important;
   position: relative;
   display: block;
 }

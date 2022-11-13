@@ -91,7 +91,6 @@ export default {
             if (output % 2 != 0) {
                 output += '<i class="bi bi-star-half icon-pink"></i>';
             }
-            console.log(output);
             return output;
         },
     },

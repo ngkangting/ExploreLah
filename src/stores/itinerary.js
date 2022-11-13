@@ -31,10 +31,10 @@ export const useItineraryStore = defineStore("itinerary", {
         .post(path, formInfo)
         .then((res) => {
           // console.log(res.data);
-          this.itineraryList = JSON.parse(res.data.itinerary);
-          this.foodReco = res.data.foodReco;
-          this.itineraryInput = res.data["user"];
-          this.details = res.data["details"];
+          this.itineraryList = JSON.parse(res.data.itinerary); //Gives you activities
+          this.foodReco = res.data.foodReco; //Gives you food reco
+          this.itineraryInput = res.data["user"]; //Form details
+          this.details = res.data["details"]; //Extra details for result page
           this.isLoading = false;
           this.viewingTrip = false;
         })
