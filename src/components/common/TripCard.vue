@@ -5,11 +5,11 @@
   >
     <div class="card-img-wrap position-relative">
       <img
-        src="../../assets/img/tripcard.jpg"
+        src="../../assets/img/merli5.jpg"
         class="card-img-top w-100"
         style="max-height: 300px"
       />
-      <div class="overlay"></div>
+      <div class="overlay h-100"></div>
     </div>
 
     <div class="card-body bg-white d-flex flex-column p-4 position-relative">
