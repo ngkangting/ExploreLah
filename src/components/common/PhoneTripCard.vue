@@ -2,26 +2,26 @@
   <div v-if="showTripCard">
     <div class="card m-4 col-10 ps-0 border-0 shadow-sm">
       <div class="row g-0">
-        <div class="col-4 position-relative" style="overflow: hidden">
+        <div class="col-0 col-sm-4 position-relative" style="overflow: hidden">
           <img
-            src="../../assets/img/tripcard.jpg"
-            class="img-fluid rounded-start h-100"
+            src="../../assets/img/merli5.jpg"
+            class="img-fluid rounded-start h-100 d-none d-sm-block"
           />
           <div
-            class="overlay"
+            class="overlay d-none d-sm-block h-100"
             style="
               border-top-left-radius: 4px !important;
               border-top-right-radius: 0px !important;
             "
           ></div>
         </div>
-        <div class="col-8">
+        <div class="col-12 col-sm-8">
           <div class="card-body p-4">
             <div class="card-title">
               <h3>{{ dayData.name.slice(1, -1) }}</h3>
               <p>{{ startDate }} - {{ endDate }}</p>
             </div>
-  
+
             <div class="position-absolute end-0 top-0 pt-4 pe-4">
               <button class="btn border-0 p-0 me-4" @click="generatePDF">
                 <i
@@ -29,7 +29,7 @@
                   style="font-size: 1.4rem"
                 ></i>
               </button>
-  
+
               <button class="btn border-0 p-0" @click="deleteTrip">
                 <i
                   class="bi bi-trash-fill text-secondary"
@@ -37,7 +37,7 @@
                 ></i>
               </button>
             </div>
-  
+
             <div class="card-text d-none d-sm-block text-dark-blue mb-4">
               <p class="mb-1">
                 <strong>Starting Location:</strong> {{ input.startLoc }}
@@ -51,7 +51,6 @@
         </div>
       </div>
     </div>
-  
   </div>
 </template>
 
@@ -118,7 +117,7 @@ export default {
       itinerary: JSON.parse(this.dayData["itinerary"]),
       food: JSON.parse(this.dayData["food"]),
       input: JSON.parse(this.dayData["input"]),
-      showTripCard:true,
+      showTripCard: true,
     };
   },
 
@@ -172,11 +171,11 @@ export default {
       let userID = this.authStore.user.uid;
       const docRef = doc(this.db, userID, docID);
       //Start date
-      
+
       let startDate = new Date(this.input["dates"][0].toString());
-      if (startDate == NaN){
+      if (startDate == NaN) {
         startDate = new Date();
-        startDate.setDate(startDate.getDate()-1);
+        startDate.setDate(startDate.getDate() - 1);
       }
       this.$emit("tripDeleted", startDate);
 

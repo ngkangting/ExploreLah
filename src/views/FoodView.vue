@@ -123,10 +123,10 @@
                       class="form-control"
                       type="text"
                       v-model="inputName"
-                      placeholder="Exciting day trip!"
+                      placeholder="For e.g. Exciting day trip!"
                     />
                     <div v-if="showInvalid" class="text-danger mt-1 text-start">
-                      Please enter a name!
+                      Please enter a trip name!
                     </div>
                   </div>
                   <div class="modal-footer">

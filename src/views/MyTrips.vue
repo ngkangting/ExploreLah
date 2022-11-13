@@ -6,9 +6,7 @@
     >
       <h1 class="fw-bold text-white display-3 pb-3">Relive your trips</h1>
       <h3 class="text-white type">
-        <span v-if="noShownTrips"
-          >Start planning your trips now!
-        </span>
+        <span v-if="noShownTrips">Start planning your trips now! </span>
         <span v-else
           >Together, we have planned
           {{ upcomingTrips.length + pastTrips.length }} trips!
@@ -18,23 +16,21 @@
 
     <div v-if="noShownTrips">
       <div class="p-5 text-center justify-content-center">
-        <div class="display-4 mb-2">
-          No planned trips yet!
-        </div >
-        <div class="col-sm-6 offset-sm-3  mb-5">
+        <div class="display-3 fw-normal mb-2">No planned trips yet!</div>
+        <div class="col-sm-6 offset-sm-3 mb-5 mt-4">
           <div
             class="d-flex justify-content-center align-items-center bg-light-blue h-100 w-100 text-center p-3 py-5 rounded-4"
           >
-            <div class="fw-bold w-90 display-5 me-3">{{itineraryStore.tripsCreated}}</div>
-            <h5>
-              trips planned and counting!            
-            </h5>
+            <div class="fw-bold w-90 display-5 me-3">
+              {{ itineraryStore.tripsCreated }}
+            </div>
+            <h5>Trips planned and counting!</h5>
           </div>
         </div>
-        <h2 class="fw-bold">Start planning your first trip with us!</h2>
+        <h2 class="fw-normal">Start planning your first trip with us!</h2>
       </div>
     </div>
-    
+
     <div v-else>
       <div class="p-5">
         <h3 class="fw-bold px-3 py-2">
@@ -76,7 +72,7 @@
             <TripCardSkeleton v-for="info in 1" />
           </div>
         </div>
-  
+
         <div v-else class="row d-none d-sm-none d-md-flex">
           <TripCard
             v-for="info in this.pastTrips"
@@ -94,10 +90,10 @@
       </div>
     </div>
 
-    <lottie-player 
+    <lottie-player
       v-if="noShownTrips"
       class="w-100 mx-auto position-absolute"
-      style="z-index:1; top: 75vh;"
+      style="z-index: 1; top: 75vh"
       src="https://assets5.lottiefiles.com/packages/lf20_iIAhmmGBMG.json"
       background="transparent"
       speed="1"
@@ -174,12 +170,18 @@ export default {
       });
       return null;
     },
-    noShownTrips(){
-      if ((this.pastTrips.length - this.deletedItemsPast + this.upcomingTrips.length -this.deletedItemsUpcoming) == 0) {
-        return true
+    noShownTrips() {
+      if (
+        this.pastTrips.length -
+          this.deletedItemsPast +
+          this.upcomingTrips.length -
+          this.deletedItemsUpcoming ==
+        0
+      ) {
+        return true;
       }
-      return false
-    }
+      return false;
+    },
   },
   watch: {
     async triggerWatcher() {
@@ -194,19 +196,18 @@ export default {
           this.loaded = true;
         }
         this.parseTrips();
-
       }
     },
   },
   methods: {
-    addCount(){
+    addCount() {
       // Math.floor(Math.random() * 35)
       this.itineraryStore.tripsCreated += Math.floor(Math.random() * 350);
     },
     tripDeletedHandler(tripDate) {
       let todayDate = new Date();
       todayDate.setDate(todayDate.getDate() - 1);
- 
+
       if (tripDate >= todayDate) {
         //Minus from upcoming
         this.deletedItemsUpcoming += 1;
@@ -238,7 +239,6 @@ export default {
       return null;
     },
   },
- 
 };
 </script>
 
