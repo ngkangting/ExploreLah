@@ -29,7 +29,7 @@
       ]"
     >
       <h4 class="pb-2">{{ place }}</h4>
-      <div class="pb-2">
+      <div class="d-flex flex-wrap pb-2">
         <span
           v-for="(tag, index) in type"
           :key="index"
