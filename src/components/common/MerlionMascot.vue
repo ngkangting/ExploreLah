@@ -1,31 +1,27 @@
 <template>
   <div
     class="mask-merlion"
-    @mouseover="hover = true"
-    @mouseleave="hover = false"
+    @mouseover="handleHoverOn"
+    @mouseleave="handleHoverOff"
+
     :style="merlionPos"
   >
+
   
     <img
-      class="merlionHand"
-      :style="merlionHand"
+      class="merlionHands"
       src="../../assets/img/merlion/merlionHand.png"
       ref="merlion"
     />
     <img
       v-if="!hover"
-      class="merlionBody baseShake"
-      :style="merlionBodyStyle"
+      class="merlionBody merlionIdle"
       src="../../assets/img/merlion/merlionBaseWEye.png"
       ref="merlion"
     />
     <img
       v-else
-      class="merlionBody"
-      :style="[
-        merlionBodyStyle,
-        'animation: merlionDuck 0.5s ease 2 alternate; width: 100%;',
-      ]"
+      class="merlionBody merlionWinkAnimation"      
       src="../../assets/img/merlion/merlionBaseWink.png"
       ref="merlion"
     />
@@ -52,6 +48,7 @@ export default {
       eyeRotation: null,
       hover: false,
       isMovable: true,
+      animationPlaying:false,
     };
   },
   // setup() {
@@ -59,6 +56,19 @@ export default {
   //   return { x, y };
   // },
   methods: {
+    handleHoverOn(){
+      //Set animation to true
+      //append and remove class
+      if (this.hover == false){
+        this.hover = true;
+      } 
+    },
+    handleHoverOff(){
+      if (this.hover == true) {}
+      setTimeout(()=>{
+        this.hover = false;
+      }, 750)
+    },
     calculateDistance(mouseX, mouseY) {
       //element.getBoundingClientRect().left
       return Math.floor(
@@ -146,6 +156,7 @@ export default {
 
 <style lang="scss">
 .mask-merlion {
+  //Edit posx and y here here
   // background-color: red;
   height: 250px;
   width: 250px;
@@ -154,29 +165,55 @@ export default {
   scale: 0.5;
 }
 
-.baseShake{
-  animation: merlionShake 2s  infinite;
+.merlionBody{
+  position: absolute;
+  top: 65px;
+  left: -22px;
+  z-index: -1;
 }
-@keyframes merlionShake {
+
+.merlionHands{
+  position: absolute;
+  top: 80px;
+  left: -22px;
+  z-index: 1;
+}
+
+.merlionIdle{
+  animation: bobbing 2s ease alternate infinite;
+}
+
+@keyframes bobbing{
   0%{
-    transform: rotate(0deg);
-    right:0px;
-    opacity: 0.5;
+    top:65px;
+  }
+  50%{
+    top:65px;
+  }
+
+
+  75%{
+    top:85px;
+    transform: rotate(-1deg);
   }
   100%{
-    transform: rotate(905deg);
-    opacity: 1;
-    right:50px
+    top:65px;
+    transform: rotate(2deg);
   }
 }
 
-@keyframes merlionDuck {
-  0% {
-    top: 85px;
+.merlionWinkAnimation{
+  animation: hideUnder 0.5s ease 2 alternate;
+}
+@keyframes hideUnder {
+  0%{
+    top: 65px;
   }
-  100% {
-    top: 95px;
+  100%{
+    top: 85px
   }
 }
+
+
 
 </style>
