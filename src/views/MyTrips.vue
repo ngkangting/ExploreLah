@@ -180,7 +180,7 @@ export default {
       let todayDate = new Date();
       todayDate.setDate(todayDate.getDate() + 1);
       console.log(`The trip date is GREATER than today ${tripDate > todayDate}`)
-      if (tripDate > todayDate) {
+      if (tripDate >= todayDate) {
         //Minus from upcoming
         this.deletedItemsUpcoming += 1;
       } else {
@@ -189,26 +189,6 @@ export default {
       }
     },
     parseTrips() {
-      // for (var info in this.data) {
-      //   let tempData = JSON.parse(
-      //     this.data[info]["input"]
-      //   );
-      //   let tripDate = new Date(tempData.dates[1]);
-      //   let todayDate = new Date();
-      //   todayDate.setDate(todayDate.getDate() + 1);
-      //   if (this.data[info]["deleted"] == true) {
-      //     //pass
-      //   } else if (tripDate > todayDate) {
-      //     //Adding in the unique document ID
-      //     this.data[info]["docID"] = info;
-      //     this.upcomingTrips.push(this.data[info]);
-      //     //Write to itinerary store
-      //   } else {
-      //     this.data[info]["docID"] = info;
-      //     this.pastTrips.push(this.data[info]);
-      //   }
-      // }
-      // return null;
       for (var info in this.itineraryStore.myTripsData) {
         let tempData = JSON.parse(
           this.itineraryStore.myTripsData[info]["input"]
