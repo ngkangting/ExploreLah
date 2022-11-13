@@ -6,7 +6,7 @@
     >
       <h1 class="fw-bold text-white display-3 pb-3">Relive your trips</h1>
       <h3 class="text-white type">
-        <span v-if="(pastTrips.length + upcomingTrips.length) == 0"
+        <span v-if="noShownTrips"
           >Start planning your trips now!
         </span>
         <span v-else
@@ -25,7 +25,7 @@
           <div
             class="d-flex justify-content-center align-items-center bg-light-blue h-100 w-100 text-center p-3 py-5 rounded-4"
           >
-            <div class="fw-bold w-90 display-5 me-3">{{counter}}</div>
+            <div class="fw-bold w-90 display-5 me-3">{{itineraryStore.tripsCreated}}</div>
             <h5>
               trips planned and counting!            
             </h5>
@@ -138,7 +138,6 @@ export default {
       pastTrips: [],
       deletedItemsUpcoming: 0,
       deletedItemsPast: 0,
-      counter:258,
     };
   },
   components: {
@@ -202,7 +201,7 @@ export default {
   methods: {
     addCount(){
       // Math.floor(Math.random() * 35)
-      this.counter += Math.floor(Math.random() * 35);
+      this.itineraryStore.tripsCreated += Math.floor(Math.random() * 350);
     },
     tripDeletedHandler(tripDate) {
       let todayDate = new Date();

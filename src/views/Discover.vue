@@ -54,7 +54,7 @@
         <div
           class="d-flex justify-content-center align-items-center bg-light-blue h-100 w-100 text-center p-3 py-5 rounded-4"
         >
-          <div class="fw-bold w-90 display-5 me-3">{{counter}}</div>
+          <div class="fw-bold w-90 display-5 me-3">{{itineraryStore.tripsCreated}}</div>
           <h5>
             trips planned and counting!            
           </h5>
@@ -136,6 +136,7 @@ import Attractions from "../assets/img/Attractions.jpg";
 import Culture from "../assets/img/culture.jpg";
 import FunActivities from "../assets/img/FunActivities.jpg";
 import Shopping from "../assets/img/shopping.jpg";
+import { useItineraryStore } from "../stores/itinerary";
 
 export default {
   name: "Discover",
@@ -146,7 +147,6 @@ export default {
   },
   data() {
     return {
-      counter:258,
       cards: [
         {
           img: LocalFood,
@@ -189,11 +189,15 @@ export default {
       ],
     };
   },
+  setup(){
+    const itineraryStore = useItineraryStore();
+    return {itineraryStore}
+  },
 
   methods: {
     addCount(){
       // Math.floor(Math.random() * 35)
-      this.counter += Math.floor(Math.random() * 35);
+      this.itineraryStore.tripsCreated += Math.floor(Math.random() * 450);
     }
   },
   mounted(){
