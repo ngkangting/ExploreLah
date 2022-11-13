@@ -1,19 +1,24 @@
 <template>
   <div class="d-none d-sm-none d-md-none d-lg-block">
-    <div class="card m-3 bg-light" style="width: 90%; height: 160px">
+    <div
+      class="card mx-3 my-4 bg-light border-0"
+      style="width: 90%; height: 160px"
+    >
       <div class="row g-0 h-100">
         <div class="col-md-4 col-lg-4 h-100 mask">
           <img :src="foodImg" class="img-fluid rounded-start w-100 h-100" />
         </div>
         <div class="col-md-8 col-lg-8">
-          <div class="card-body">
+          <div class="card-body p-3">
             <h6 class="fw-bold">{{ placeName }}</h6>
             <span class="fs-6">
               <i class="bi bi-person-circle pe-2"></i>"{{
                 this.comments[randomNum % 23]
               }}"</span
             >
-            <p>Ratings:<span class="ms-1" v-html="starRating"></span></p>
+            <p class="mt-1">
+              Ratings:<span class="ms-1" v-html="starRating"></span>
+            </p>
           </div>
         </div>
       </div>
@@ -21,9 +26,9 @@
   </div>
 
   <div class="d-block d-sm-block d-md-block d-lg-none">
-    <div class="card m-3 bg-light" style="width: 90%; height: 160px">
+    <div class="card m-3 bg-light border-0" style="width: 90%; height: 160px">
       <div class="row g-0 h-100">
-        <div class="card-body">
+        <div class="card-body p-3">
           <h6 class="fw-bold">{{ placeName }}</h6>
           <span class="fs-6">
             <i class="bi bi-person-circle pe-2"></i>"{{
