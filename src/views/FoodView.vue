@@ -142,7 +142,19 @@
                     
                     
                     > 
-                    Save</button>
+                    
+                      <lottie-player v-if="submitting"
+                        class="mx-auto"
+                        style="z-index:1;height: 25px;width: 44px;"
+                        src="https://assets4.lottiefiles.com/packages/lf20_rwq6ciql.json"
+                        background="transparent"
+                        speed="1"
+                        loop
+                        autoplay></lottie-player>
+                        
+                      <span v-else>Save</span>
+                    
+                  </button>
                     <button
                       type="button"
                       class="d-none"
@@ -192,6 +204,7 @@ export default {
       inputName: "",
       generatedOrder: [],
       showInvalid:false,
+      submitting:false,
       // itinerary: JSON.parse(this.dayData["itinerary"]),
       // input: JSON.parse(this.dayData["input"]),
     };
@@ -282,6 +295,7 @@ export default {
         this.showInvalid = true;
       
       } else {
+        this.submitting = true;
         //Write to DB
         let userID = this.authStore.user.uid;
         let itineraryList = this.itineraryStore.itineraryList;
