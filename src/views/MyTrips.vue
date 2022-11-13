@@ -6,7 +6,7 @@
     >
       <h1 class="fw-bold text-white display-3 pb-3">Relive your trips</h1>
       <h3 class="text-white type">
-        <span v-if="(pastTrips.length + upcomingTrips.length) == 0"
+        <span v-if="noShownTrips"
           >Start planning your trips now!
         </span>
         <span v-else
