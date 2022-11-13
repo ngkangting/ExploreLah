@@ -1,6 +1,13 @@
 <template>
   <div class="container-fluid pb-5">
-    <h1 class="text-center fw-semibold p-4 pb-0">Recommended Food Places</h1>
+   
+     
+      <h1 class="text-center fw-semibold p-4 pb-0">Recommended Food Places</h1>
+    
+
+    
+    
+    
     <div class="p-3 offset-1">
       <router-link to="/result" class="text-decoration-none text-secondary"
         ><i class="bi-chevron-left text-secondary" style="font-size: 1rem"></i>
@@ -9,6 +16,8 @@
     </div>
     <div class="col-10 offset-1 card border-0 p-3 rounded-4">
       <div class="card-body">
+        <MerlionMascot class="d-inline" :posX="0" :posY="-60" />
+
         <div class="pb-3"></div>
 
         <div class="row">
@@ -181,6 +190,8 @@ import firebaseApp from "../firebaseConfig";
 import FoodLocation from "../components/resultpage/FoodLocation.vue";
 import FoodCard from "../components/resultpage/FoodCard.vue";
 import GoogleMapWPinsForFood from "../components/common/GoogleMapWPinsForFood.vue";
+import MerlionMascot from "@/components/common/MerlionMascot.vue";
+
 // import pdfMake from "pdfmake/build/pdfmake";
 // import pdfFonts from "pdfmake/build/vfs_fonts";
 // pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -193,6 +204,7 @@ export default {
     CustomMarker,
     FoodCard,
     GoogleMapWPinsForFood,
+    MerlionMascot
   },
   data() {
     return {
@@ -202,6 +214,7 @@ export default {
       generatedOrder: [],
       showInvalid: false,
       submitting: false,
+      windowWidth: window.innerWidth,
       // itinerary: JSON.parse(this.dayData["itinerary"]),
       // input: JSON.parse(this.dayData["input"]),
     };
@@ -271,6 +284,10 @@ export default {
     },
   },
   mounted() {
+    this.$nextTick(() => {
+      window.addEventListener('resize', this.onResize);
+    })
+
     let noOfDays = Object.keys(this.foodReco).length;
     let noOfFood = noOfDays * 3 * 2;
     let noOfImages = 42;
@@ -284,7 +301,13 @@ export default {
       unselectedImgs.splice(rnd, 1);
     }
   },
+  beforeDestroy() { 
+    window.removeEventListener('resize', this.onResize); 
+  },
   methods: {
+    onResize() {
+      this.windowWidth = window.innerWidth
+    },
     toggleState() {
       this.state = !this.state;
     },

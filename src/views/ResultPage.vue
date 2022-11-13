@@ -3,9 +3,12 @@
       <div v-if="itineraryStore.viewingTrip">
           <p class="text-center fw-semibold pt-5 "> Recommended Food Places for</p>
           <h1 class="text-center fw-semibold mb-5">{{itineraryStore.name}}</h1>
+          <MerlionMascot :posX="35" :posY="0" />
       </div>
-
-        <h1 v-else class="text-center fw-semibold mb-5 pt-5">Recommended Food Places</h1>
+      <div v-else>
+        <h1  class="text-center fw-semibold mb-5 pt-5">Recommended Food Places</h1>
+        <MerlionMascot :posX="0" :posY="0" />
+      </div>
       <div class="col-10 offset-1 card border-0 p-3 rounded-4">
         <div class="card-body">
           <h2 class="mb-4 py-2 fw-bold d-flex justify-content-center text-white bg-dark-blue">
@@ -97,13 +100,14 @@ import firebaseApp from "../firebaseConfig";
 
 import FoodLocation from "../components/resultpage/FoodLocation.vue";
 import GoogleMapWPinsForFood from "@/components/common/GoogleMapWPinsForFood.vue";
+import MerlionMascot from "@/components/common/MerlionMascot.vue";
 
 
 
 export default {
   name: "ResultPage",
   components: {
-    GoogleMap, Marker, FoodLocation,CustomMarker, GoogleMapWPinsForFood
+    GoogleMap, Marker, FoodLocation,CustomMarker, GoogleMapWPinsForFood, MerlionMascot
   },
   data() {
     return {
