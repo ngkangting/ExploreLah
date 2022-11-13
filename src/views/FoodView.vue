@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid pb-5">
-    <h1 class="text-center fw-semibold p-4 pb-0">Recommended Food Places</h1>
+    <h1 class="text-center fw-semibold py-5 pb-0">Recommended Food Places</h1>
 
     <div class="p-3 offset-1">
       <router-link to="/result" class="text-decoration-none text-secondary"
@@ -8,10 +8,8 @@
         <span class="ps-1"> Back to Itinerary </span>
       </router-link>
     </div>
-    <div class="col-10 offset-1 card border-0 p-3 rounded-4">
+    <div class="col-10 offset-1 card border-0 p-3 rounded-4 position-relative">
       <div class="card-body">
-        <MerlionMascot class="d-inline" :posX="0" :posY="-60" />
-
         <div class="pb-3"></div>
 
         <div class="row">
@@ -21,6 +19,8 @@
 
           <div class="col-md-6">
             <ul class="nav nav-tabs position-relative">
+              <MerlionMascot class="d-none d-lg-block" :posX="210" :posY="25" />
+
               <li class="nav-item">
                 <button
                   @click="toggleState"

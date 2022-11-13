@@ -1,7 +1,7 @@
 <template>
   <GoogleMap
     :api-key="apiKey"
-    style="height: 500px; background-color: azure"
+    style="height: 100%; min-height: 500px; background-color: azure"
     :center="centerMap"
     :zoom="15"
   >
