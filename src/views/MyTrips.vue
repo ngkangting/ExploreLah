@@ -90,6 +90,7 @@
       </div>
     </div>
 
+
     <lottie-player
       v-if="noShownTrips"
       class="w-100 mx-auto position-absolute"
